@@ -1,0 +1,147 @@
+[
+  {
+    "college": "ITE College East",
+    "college_id": "ite_east",
+    "location": "Simei",
+    "official_url": "https://www.ite.edu.sg/colleges/ite-college-east",
+    "courses": [
+      {
+        "course_name": "Higher NITEC in Engineering Systems & Management",
+        "qualification": "Higher NITEC",
+        "duration_years": 2,
+        "entry_requirement": "NITEC in a relevant engineering discipline, or O-Level passes (English C6, Math D7, one science)",
+        "industry_sector": "Engineering & Technical",
+        "career_paths": ["Engineering Technician", "Production Supervisor", "Maintenance Technician", "Plant Operator"],
+        "progression_to_poly": true,
+        "note": "Higher NITEC holders can apply to Polytechnic Year 2 via N2P pathway.",
+        "official_url": "https://www.ite.edu.sg"
+      },
+      {
+        "course_name": "NITEC in Automotive Technology",
+        "qualification": "NITEC",
+        "duration_years": 2,
+        "entry_requirement": "N(T)-Level passes in English and 2 other subjects, or N(A)-Level passes",
+        "industry_sector": "Engineering & Technical",
+        "career_paths": ["Automotive Technician", "Vehicle Inspector", "Fleet Maintenance Technician"],
+        "progression_to_poly": true,
+        "note": "Strong industry partnerships with car dealers and workshops. Apprenticeship options available.",
+        "official_url": "https://www.ite.edu.sg"
+      },
+      {
+        "course_name": "NITEC in Hospitality Operations",
+        "qualification": "NITEC",
+        "duration_years": 2,
+        "entry_requirement": "N(T)-Level passes in English and 2 other subjects",
+        "industry_sector": "Business & Services",
+        "career_paths": ["Hotel Front Desk Officer", "F&B Service Crew", "Housekeeping Supervisor"],
+        "progression_to_poly": true,
+        "note": "Practical training at ITE's on-campus training hotel. Singapore Tourism Board partnerships.",
+        "official_url": "https://www.ite.edu.sg"
+      }
+    ]
+  },
+  {
+    "college": "ITE College Central",
+    "college_id": "ite_central",
+    "location": "Ang Mo Kio",
+    "official_url": "https://www.ite.edu.sg/colleges/ite-college-central",
+    "courses": [
+      {
+        "course_name": "Higher NITEC in InfoComm Technology (Information Security)",
+        "qualification": "Higher NITEC",
+        "duration_years": 2,
+        "entry_requirement": "NITEC in relevant IT discipline, or O-Level passes (English C6, Math D7)",
+        "industry_sector": "Info-Communications Technology",
+        "career_paths": ["IT Security Analyst", "Network Technician", "Cybersecurity Support Specialist"],
+        "progression_to_poly": true,
+        "note": "In-demand cybersecurity skills. Leads to Diploma in Cybersecurity at polys via N2P.",
+        "official_url": "https://www.ite.edu.sg"
+      },
+      {
+        "course_name": "NITEC in Healthcare (Nursing Aid)",
+        "qualification": "NITEC",
+        "duration_years": 2,
+        "entry_requirement": "N(T)-Level passes in English and 2 other subjects, medical fitness",
+        "industry_sector": "Health & Lifestyle",
+        "career_paths": ["Nursing Aid", "Healthcare Assistant", "Patient Care Associate"],
+        "progression_to_poly": true,
+        "note": "MOH-approved. Working closely with nurses in hospitals and nursing homes.",
+        "official_url": "https://www.ite.edu.sg"
+      },
+      {
+        "course_name": "NITEC in Retail Services",
+        "qualification": "NITEC",
+        "duration_years": 2,
+        "entry_requirement": "N(T)-Level passes in English and 2 other subjects",
+        "industry_sector": "Business & Services",
+        "career_paths": ["Retail Sales Associate", "Visual Merchandiser", "Store Supervisor"],
+        "progression_to_poly": true,
+        "note": "Covers customer service, visual merchandising, and retail operations.",
+        "official_url": "https://www.ite.edu.sg"
+      },
+      {
+        "course_name": "Higher NITEC in Interior & Spatial Design",
+        "qualification": "Higher NITEC",
+        "duration_years": 2,
+        "entry_requirement": "NITEC in design discipline or O-Level passes, portfolio preferred",
+        "industry_sector": "Design & Media",
+        "career_paths": ["Interior Design Assistant", "Space Planner", "Design Draughtsman"],
+        "progression_to_poly": true,
+        "note": "Portfolio and design aptitude valued. Practical studio training.",
+        "official_url": "https://www.ite.edu.sg"
+      }
+    ]
+  },
+  {
+    "college": "ITE College West",
+    "college_id": "ite_west",
+    "location": "Choa Chu Kang",
+    "official_url": "https://www.ite.edu.sg/colleges/ite-college-west",
+    "courses": [
+      {
+        "course_name": "Higher NITEC in Chemical Process Technology",
+        "qualification": "Higher NITEC",
+        "duration_years": 2,
+        "entry_requirement": "NITEC in chemistry/engineering or O-Level passes (English C6, Chemistry or Combined Science)",
+        "industry_sector": "Applied & Natural Sciences",
+        "career_paths": ["Process Technician", "Quality Control Analyst", "Lab Technician"],
+        "progression_to_poly": true,
+        "note": "Supports Singapore's pharmaceutical and chemical manufacturing sectors.",
+        "official_url": "https://www.ite.edu.sg"
+      },
+      {
+        "course_name": "NITEC in Electrical Technology",
+        "qualification": "NITEC",
+        "duration_years": 2,
+        "entry_requirement": "N(T)-Level passes in English, Mathematics, and one technical subject",
+        "industry_sector": "Engineering & Technical",
+        "career_paths": ["Electrical Technician", "Building Services Technician", "Facilities Maintenance"],
+        "progression_to_poly": true,
+        "note": "EMA-related training. Practical workshop training component is a key feature.",
+        "official_url": "https://www.ite.edu.sg"
+      },
+      {
+        "course_name": "NITEC in Culinary Arts",
+        "qualification": "NITEC",
+        "duration_years": 2,
+        "entry_requirement": "N(T)-Level passes in English and 2 other subjects, medical fitness",
+        "industry_sector": "Health & Lifestyle",
+        "career_paths": ["Cook", "Pastry Chef", "Kitchen Supervisor", "Catering Assistant"],
+        "progression_to_poly": true,
+        "note": "On-campus training restaurant. WSQ modules included.",
+        "official_url": "https://www.ite.edu.sg"
+      },
+      {
+        "course_name": "NITEC in Media & Communication",
+        "qualification": "NITEC",
+        "duration_years": 2,
+        "entry_requirement": "N(T)-Level passes in English and 2 other subjects",
+        "industry_sector": "Design & Media",
+        "career_paths": ["Media Production Assistant", "Content Creator", "Social Media Executive"],
+        "progression_to_poly": true,
+        "note": "Covers digital media production, photography, and social media content creation.",
+        "official_url": "https://www.ite.edu.sg"
+      }
+    ]
+  }
+]

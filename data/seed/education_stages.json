@@ -1,0 +1,249 @@
+[
+  {
+    "id": "early_childhood",
+    "name": "Early Childhood Education",
+    "age_range": "0-6",
+    "duration": "Up to 6 years",
+    "description": "Foundational years covering nursery and kindergarten. Providers include PCF Sparkletots, NTUC First Campus My First Skool, and MOE Kindergartens. Regulated by the Early Childhood Development Agency (ECDA).",
+    "entry_criteria": "Age 3-6. No formal academic criteria. Registration on a first-come, first-served or ballot basis depending on provider. Singaporeans prioritised over PRs and foreigners.",
+    "exit_process": "No formal exit exam. Children proceed to Primary 1 at age 7.",
+    "governing_body": "Early Childhood Development Agency (ECDA) / Ministry of Education (MOE Kindergartens)",
+    "official_url": "https://www.ecda.gov.sg",
+    "streams": ["Nursery (N1/N2)", "Kindergarten (K1/K2)"],
+    "key_facts": [
+      "MOE Kindergartens (MKs) are located in selected primary schools and offer bilingual programmes",
+      "KidSTART programme provides extra support for children from low-income families",
+      "Anchor operators (PCF, NTUC) receive government subsidies keeping fees low",
+      "CDA (Child Development Account) can be used to offset fees",
+      "Mandatory Medisave vaccination regime applies to all children"
+    ]
+  },
+  {
+    "id": "primary",
+    "name": "Primary School",
+    "age_range": "7-12",
+    "duration": "6 years (Primary 1 to Primary 6)",
+    "description": "Compulsory education covering English, Mother Tongue, Mathematics, and from P3: Science and Social Studies. Ends with the Primary School Leaving Examination (PSLE). All Singaporean children must attend a national primary school under the Compulsory Education Act.",
+    "entry_criteria": "P1 Registration Exercise conducted in July-August the year before entry. Phases 1-3 based on alumni affiliation, sibling links, volunteer parent status, and home-to-school distance. Citizens registered first, then PRs, then foreigners.",
+    "exit_process": "PSLE taken at the end of P6. Achievement Level (AL) scoring: each subject graded AL1-8, total AL across 4 subjects ranges from 4 (best) to 32 (weakest). Lower total = better placement.",
+    "governing_body": "Ministry of Education (MOE)",
+    "official_url": "https://www.moe.gov.sg/primary",
+    "streams": ["Single stream from 2008; subject-based banding (SBB) from P5 introduced in 2020"],
+    "key_facts": [
+      "PSLE AL scoring replaced T-score system from 2021",
+      "Each PSLE subject scored AL1 (90+) to AL8 (below 50)",
+      "Total PSLE AL score used for Secondary 1 posting (not individual subject scores)",
+      "Edusave account provides annual government top-ups for school fees and enrichment",
+      "Foundation vs Standard subjects available for weaker students from P5",
+      "P1 registration phases: Phase 1 (alumni children), Phase 2A1/2A2 (community ties), Phase 2B (volunteer parents/church), Phase 2C (all remaining), Phase 2C Supplementary, Phase 3 (foreigners)"
+    ]
+  },
+  {
+    "id": "secondary_express",
+    "name": "Secondary School — Express Stream",
+    "age_range": "13-16",
+    "duration": "4 years (Secondary 1 to Secondary 4)",
+    "description": "The main secondary stream. Students study English, Mother Tongue, Mathematics, Humanities, and Sciences. Culminates in GCE O-Level examinations at the end of Sec 4. Schools may offer the Integrated Programme (IP), skipping O-levels entirely.",
+    "entry_criteria": "PSLE total AL approximately 4-20. Exact cut-off varies by school. S1 Posting Exercise in December after PSLE results.",
+    "exit_process": "GCE O-Level examinations (10-point grading, A1 best, F9 fail). Results used for JAE (Joint Admissions Exercise) to JC, Poly, or ITE.",
+    "governing_body": "Ministry of Education (MOE) / Singapore Examinations and Assessment Board (SEAB)",
+    "official_url": "https://www.moe.gov.sg/secondary",
+    "streams": ["Express (non-IP)", "Express (IP — Integrated Programme)"],
+    "key_facts": [
+      "Subject-Based Banding (SBB) allows mixing of Express and Normal Academic subjects from Sec 1",
+      "O-Level grade scale: A1=1 pt, A2=2, B3=3, B4=4, C5=5, C6=6, D7=7, E8=8, F9=9",
+      "English Language is compulsory and must be passed for most post-secondary options",
+      "Affiliation bonus (-2 to L1R5) if applying to affiliated JC after O-levels",
+      "CCA involvement important for JAE bonus points (up to -2 for Grade A/B CCA)",
+      "Autonomous schools have more flexibility in curriculum and may charge higher fees"
+    ]
+  },
+  {
+    "id": "secondary_normal_academic",
+    "name": "Secondary School — Normal Academic Stream",
+    "age_range": "13-17",
+    "duration": "4-5 years (Sec 1-4 for N-levels, optional Sec 5 for O-levels)",
+    "description": "For students who qualify for the Normal Academic (N(A)) stream. Sit N(A)-Level exams at end of Sec 4. Can proceed to Sec 5 for O-Levels, or enter the Polytechnic Foundation Programme (PFP) directly with good N(A) results.",
+    "entry_criteria": "PSLE total AL approximately 21-22. Specific AL bands vary by school availability.",
+    "exit_process": "N(A)-Level exams at Sec 4. Options: (1) Sec 5 → O-Levels → JAE, (2) PFP → Polytechnic, (3) Direct ITE entry with N(A) passes.",
+    "governing_body": "Ministry of Education (MOE)",
+    "official_url": "https://www.moe.gov.sg/secondary",
+    "streams": ["Normal Academic (N(A))"],
+    "key_facts": [
+      "Polytechnic Foundation Programme (PFP) requires 4 N(A)-level passes including English",
+      "PFP is a 1-year bridging programme before entering poly Year 1",
+      "Direct Entry Scheme to Polytechnic (DPP) also available for some students",
+      "Sec 5 students sit the same O-Level papers as Express Sec 4 students",
+      "Subject-Based Banding allows strong N(A) students to take Express-level subjects",
+      "With good N(A) results (including English), students may qualify for poly without taking O-Levels"
+    ]
+  },
+  {
+    "id": "secondary_normal_technical",
+    "name": "Secondary School — Normal Technical Stream",
+    "age_range": "13-16",
+    "duration": "4 years (Secondary 1 to Secondary 4)",
+    "description": "Practical, hands-on curriculum with technical subjects like Design & Technology and Food & Consumer Education alongside core academic subjects. Ends with N(T)-Level examinations. Direct pathway to ITE.",
+    "entry_criteria": "PSLE total AL approximately 23-32.",
+    "exit_process": "N(T)-Level exams at Sec 4. Direct entry to ITE NITEC or Higher NITEC programmes.",
+    "governing_body": "Ministry of Education (MOE)",
+    "official_url": "https://www.moe.gov.sg/secondary",
+    "streams": ["Normal Technical (N(T))"],
+    "key_facts": [
+      "Strong N(T) students may transfer to N(A) stream within first 2 years",
+      "ITE direct entry pathway well-established with N(T) passes",
+      "Some N(T) students with exceptional results may apply for Polytechnic Foundation Programme",
+      "Technical subjects counted in aggregate for ITE entry requirements",
+      "Broad-Based Learning (BBL) programme provides additional exposure to technical skills",
+      "EAE (Early Admissions Exercise) allows students to get conditional ITE offers before N(T) results"
+    ]
+  },
+  {
+    "id": "ip_programme",
+    "name": "Integrated Programme (IP)",
+    "age_range": "13-18",
+    "duration": "6 years (Secondary 1 to JC2 or equivalent)",
+    "description": "A through-train programme offered by selected schools. IP students skip the GCE O-Level examination and proceed directly to the final 2 years of their programme, sitting A-Levels, IB, or other qualifications at the end of Year 6. Designed for academically strong students.",
+    "entry_criteria": "Very competitive. PSLE AL typically ≤ 8 for top IP schools (RI, HCI, SCGS, Nanyang Girls). Some schools use interviews, aptitude tests, or specific subject requirements in addition to PSLE score.",
+    "exit_process": "GCE A-Levels (most schools), International Baccalaureate (ACS Independent, SJI, SOTA), NUS High Diploma, or other specialised qualifications. Used for university admission.",
+    "governing_body": "Ministry of Education (MOE)",
+    "official_url": "https://www.moe.gov.sg/secondary/programmes/integrated-programme",
+    "streams": ["A-Level track", "IB track", "Specialised (NUS High Diploma, SOTA)"],
+    "key_facts": [
+      "IP students cannot transfer back to O-Level stream easily after Sec 3",
+      "Internal school exams replace O-Levels for assessment during the 6 years",
+      "School-specific retention/exit policies apply if students underperform",
+      "IP is offered at around 17 schools including RI, RGS, HCI, ACSI, SCGS, NJC, VS, Cedar Girls, CHIJ SNGS, Nanyang Girls, Dunman High, River Valley High, SJI, SOTA",
+      "IP students applying to same school's JC receive priority in JAE",
+      "Some IP students may choose to exit after Sec 4 and take O-Levels as private candidates"
+    ]
+  },
+  {
+    "id": "junior_college",
+    "name": "Junior College (JC)",
+    "age_range": "17-18",
+    "duration": "2 years (JC1 and JC2)",
+    "description": "Pre-university education leading to GCE A-Level examinations. Academically rigorous with H1, H2, and H3 subject levels. There are 11 JCs in Singapore. Entry via the Joint Admissions Exercise (JAE) each January.",
+    "entry_criteria": "O-Level results with net L1R5 ≤ 20 (after bonus points deductions). English Language pass required. JAE application in January after O-Level results (released in January).",
+    "exit_process": "GCE A-Level examinations at end of JC2. Rank Points calculated for university admission. Maximum 90 rank points.",
+    "governing_body": "Ministry of Education (MOE) / SEAB",
+    "official_url": "https://www.moe.gov.sg/post-secondary/junior-colleges",
+    "streams": ["Science", "Arts", "Commerce", "combination streams"],
+    "key_facts": [
+      "L1R5 = English (L1) + best 5 relevant subjects (R5). Net aggregate = L1R5 minus bonus points",
+      "Bonus points: CCA Grade A/B = -2, CCA Grade C = -1, Affiliation = -2 (minimum net = 2)",
+      "H1 = 1 principal subject (1 A-Level unit), H2 = 2 units, H3 = advanced university-level content",
+      "Typical subject combination: 3 H2 + 1 H1 (contrasting) + H1 Mother Tongue + H1 General Paper",
+      "General Paper (GP) or Knowledge & Inquiry (KI) is compulsory",
+      "University admission uses best 3 H2 + 1 H1 (excluding GP and MT) for rank point calculation",
+      "A-Level grades: A=5 pts (H2), B=4, C=3, D=2, E=1, S=0.5 (H2), U=0",
+      "JAE: Students can list up to 12 choices. Posting based on merit and availability"
+    ]
+  },
+  {
+    "id": "millennia_institute",
+    "name": "Millennia Institute (MI)",
+    "age_range": "17-19",
+    "duration": "3 years",
+    "description": "The only 3-year pre-university institution in Singapore, designed primarily for students from the Normal Academic stream who have passed O-Levels from Sec 5. Offers the same GCE A-Level qualification as JCs. More time given to master the same content.",
+    "entry_criteria": "O-Level passes from Sec 5 (or Express Sec 4). Specific L1R5 or relevant subject requirements. JAE application in January.",
+    "exit_process": "GCE A-Level examinations at end of Year 3. Same qualification as JC A-Levels.",
+    "governing_body": "Ministry of Education (MOE)",
+    "official_url": "https://www.millenniainstitute.moe.edu.sg",
+    "streams": ["Arts", "Science", "Commerce"],
+    "key_facts": [
+      "One of the most accessible pre-university A-Level routes for N(A) students",
+      "Same A-Level certificate as JC graduates — no distinction made by universities",
+      "Located in Buona Vista, West Singapore",
+      "3-year programme provides extra scaffolding for A-Level content",
+      "MI graduates are eligible for SNUFA (university admissions) on same basis as JC graduates"
+    ]
+  },
+  {
+    "id": "polytechnic",
+    "name": "Polytechnic",
+    "age_range": "17-19",
+    "duration": "3 years",
+    "description": "Applied learning diploma programmes across engineering, IT, business, design, health sciences, and more. 5 polytechnics: Singapore Polytechnic (SP), Temasek Polytechnic (TP), Nanyang Polytechnic (NYP), Ngee Ann Polytechnic (NP), Republic Polytechnic (RP). Entry via JAE after O-Levels or PFP after N(A)-Levels.",
+    "entry_criteria": "O-Level results with ELR2B2 aggregate (English + L2 + 2 relevant subjects + 2 best). English Language compulsory pass. JAE application in January. PFP route for N(A) students.",
+    "exit_process": "Diploma awarded upon completion. GPA (0–4.0) used for Direct Admissions Exercise (DAE) to university. Graduates may also work directly.",
+    "governing_body": "Ministry of Education (MOE) / Individual Polytechnics",
+    "official_url": "https://www.moe.gov.sg/post-secondary/polytechnics",
+    "streams": ["Engineering", "IT", "Business", "Health Sciences", "Design", "Media", "Hospitality", "Applied Sciences"],
+    "key_facts": [
+      "ELR2B2: English (E) + L2 (second language/relevant) + R2 (2 relevant) + B2 (2 best others)",
+      "Lower ELR2B2 aggregate = more competitive course",
+      "Early Admissions Exercise (EAE) allows students to get conditional poly offers before O-Level results",
+      "DAE (Direct Admissions Exercise) allows poly graduates to apply to local universities",
+      "Poly graduates can apply via SNUFA in limited numbers or mainly through DAE",
+      "GPA of 3.5+ generally needed for competitive university courses via DAE",
+      "Advanced Standing: Some poly diploma holders may enter university at Year 2",
+      "Poly diplomas recognised by employers; many graduates enter workforce directly"
+    ]
+  },
+  {
+    "id": "ite",
+    "name": "Institute of Technical Education (ITE)",
+    "age_range": "17-18",
+    "duration": "2 years",
+    "description": "Practical, industry-focused training leading to NITEC or Higher NITEC qualifications. 3 colleges: ITE College East, ITE College Central, ITE College West. Routes to polytechnic available after Higher NITEC.",
+    "entry_criteria": "N(T)-Level or N(A)-Level passes. Some courses require O-Level. JAE or EAE (Early Admissions Exercise) application. ITE accepts students across a wide range of academic results.",
+    "exit_process": "NITEC (2 yr) or Higher NITEC (2 yr after NITEC). Higher NITEC holders can progress to Polytechnic Year 2 via NITEC-to-Poly (N2P) scheme.",
+    "governing_body": "ITE Education Services (ITEES)",
+    "official_url": "https://www.ite.edu.sg",
+    "streams": ["Engineering & Technology", "Info-Communications Technology", "Business & Services", "Health & Lifestyle", "Design & Media", "Applied & Natural Sciences"],
+    "key_facts": [
+      "NITEC to Polytechnic (N2P) progression: Higher NITEC holders can enter Poly Year 2",
+      "EAE (Early Admissions Exercise) allows conditional ITE offers before N-Level results",
+      "ITE graduates are industry-ready with hands-on training",
+      "WSQ (Workforce Skills Qualifications) framework aligns ITE certs with industry needs",
+      "ITE International provides overseas training partnerships",
+      "Post-ITE SkillsFuture pathways allow continuous upskilling throughout career"
+    ]
+  },
+  {
+    "id": "university",
+    "name": "University (Autonomous Universities)",
+    "age_range": "21-24",
+    "duration": "3-4 years (some programmes 5 years, e.g. Medicine, Architecture)",
+    "description": "Degree education at Singapore's 6 Autonomous Universities (AUs): NUS, NTU, SMU, SUTD, SIT, SUSS. Entry via SNUFA (Scholarships/NUS/NTU/etc University Admissions) for A-Level holders, or DAE (Direct Admissions Exercise) for polytechnic diploma holders.",
+    "entry_criteria": "A-Level: Rank Points (H2+H1 subjects, max 90). Min rank points vary by course (Medicine ~87-90, Law ~82-88, CS ~78-85, Engineering ~72-82). Poly DAE: GPA typically 3.0-3.9+ depending on course. IB: Points (min 24-45 depending on course). Foreign qualifications also accepted.",
+    "exit_process": "Bachelor's degree (Honours, Pass, or Merit depending on course). Graduates enter workforce or pursue post-graduate studies.",
+    "governing_body": "Ministry of Education (MOE) / Individual Autonomous Universities",
+    "official_url": "https://www.moe.gov.sg/post-secondary/universities",
+    "streams": ["SNUFA (A-Level/IB entry)", "DAE (Polytechnic entry)", "Foreign Qualifications"],
+    "key_facts": [
+      "SNUFA application window: March-April for entry in August",
+      "DAE application window: February-March for entry in August/October",
+      "Rank point calculation: H2 (A=5, B=4, C=3, D=2, E=1, S=0.5) × 2 + H1 (A=2.5, B=2, C=1.5, D=1, E=0.5)",
+      "GP/KI and Project Work not counted in rank points",
+      "10% of NUS/NTU places reserved for 'exceptional circumstances' — portfolio, interview",
+      "SMU uses a different admissions process including interview and essay",
+      "SUTD focuses on technology and design; uses own aptitude test",
+      "SIT (Singapore Institute of Technology) focuses on applied degrees, often with industry attachments",
+      "SUSS (Singapore University of Social Sciences) has a strong part-time/adult learner focus",
+      "Some courses require interviews, portfolios, or admissions tests (Medicine, Law, Architecture)"
+    ]
+  },
+  {
+    "id": "postgrad",
+    "name": "Post-Graduate & Lifelong Learning",
+    "age_range": "24+",
+    "duration": "Masters: 1-2 years; PhD: 3-5 years; Professional certs: varies",
+    "description": "Post-graduate education and continuous upskilling. Options include Masters degrees, PhDs, professional certifications, SkillsFuture courses, and mid-career conversion programmes. SkillsFuture Singapore provides $500 credit (topped up periodically) for all Singaporeans aged 25+.",
+    "entry_criteria": "Masters: Bachelor's degree (usually 2nd class honours or above). PhD: Good honours degree or Masters. SkillsFuture: Open to all Singaporeans/PRs 25+.",
+    "exit_process": "Masters degree, PhD, or professional certificate upon completion. Continuing education is self-directed.",
+    "governing_body": "Individual universities / SkillsFuture Singapore (SSG)",
+    "official_url": "https://www.skillsfuture.gov.sg",
+    "streams": ["Masters (coursework)", "Masters (research)", "PhD", "Professional certs (CPA, CFA, etc.)", "SkillsFuture courses", "Mid-career conversion programmes"],
+    "key_facts": [
+      "Every Singaporean citizen aged 25+ receives S$500 SkillsFuture Credit (topped up over time)",
+      "SkillsFuture Career Transition Programme (SCTP) supports mid-career switches",
+      "Professional Conversion Programmes (PCPs) run by Workforce Singapore (WSG)",
+      "IBF (Institute of Banking and Finance) accreditation for finance professionals",
+      "Singapore Medical Council (SMC) handles specialist medical training post-degree",
+      "NUS, NTU, SMU all offer part-time Masters programmes for working professionals",
+      "INSEAD, ESSEC, Chicago Booth have Singapore campuses for MBA programmes"
+    ]
+  }
+]

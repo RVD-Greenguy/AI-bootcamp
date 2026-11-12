@@ -1,0 +1,347 @@
+[
+  {
+    "id": "nus",
+    "name": "National University of Singapore",
+    "short_name": "NUS",
+    "type": "Autonomous University (Research-intensive)",
+    "founded": 1905,
+    "location": "Kent Ridge / Buona Vista",
+    "official_url": "https://www.nus.edu.sg",
+    "focus_areas": ["Research", "Medicine", "Law", "Engineering", "Computing", "Arts & Social Sciences", "Business"],
+    "entry_routes": ["A-levels (SNUFA)", "Polytechnic Diploma (DAE)", "IB Diploma", "Foreign Qualifications"],
+    "world_ranking_approx": "Top 25 globally (QS 2024)",
+    "popular_faculties": [
+      {
+        "faculty_name": "Medicine (MBBS)",
+        "min_rank_points_alevel": 87,
+        "min_gpa_poly": 3.9,
+        "course_duration": "5 years",
+        "notable_courses": ["MBBS", "Dentistry (BDS)"],
+        "notes": "Interview required. Only about 300 places per year. Very competitive.",
+        "official_url": "https://medicine.nus.edu.sg"
+      },
+      {
+        "faculty_name": "Law (LLB)",
+        "min_rank_points_alevel": 84,
+        "min_gpa_poly": 3.9,
+        "course_duration": "4 years",
+        "notable_courses": ["LLB", "LLB/LLM (combined)"],
+        "notes": "Interview and written assignment required. About 250 places.",
+        "official_url": "https://law.nus.edu.sg"
+      },
+      {
+        "faculty_name": "Computing (School of Computing)",
+        "min_rank_points_alevel": 80,
+        "min_gpa_poly": 3.6,
+        "course_duration": "4 years",
+        "notable_courses": ["Computer Science", "Information Systems", "Computer Engineering", "Data Science & Analytics"],
+        "notes": "High demand. Computing courses consistently oversubscribed.",
+        "official_url": "https://www.comp.nus.edu.sg"
+      },
+      {
+        "faculty_name": "Engineering (Faculty of Engineering)",
+        "min_rank_points_alevel": 72,
+        "min_gpa_poly": 3.4,
+        "course_duration": "4 years",
+        "notable_courses": ["Civil Engineering", "Electrical Engineering", "Mechanical Engineering", "Chemical Engineering", "Industrial & Systems Engineering"],
+        "notes": "Various specialisations. Biomedical Engineering and Environmental Engineering also offered.",
+        "official_url": "https://www.eng.nus.edu.sg"
+      },
+      {
+        "faculty_name": "Business (NUS Business School)",
+        "min_rank_points_alevel": 72,
+        "min_gpa_poly": 3.4,
+        "course_duration": "4 years",
+        "notable_courses": ["Business Administration (BBA)", "Accountancy", "Real Estate"],
+        "notes": "Triple accredited (AACSB, EQUIS, AMBA). Top business school in Asia.",
+        "official_url": "https://bschool.nus.edu.sg"
+      },
+      {
+        "faculty_name": "Arts & Social Sciences (FASS)",
+        "min_rank_points_alevel": 65,
+        "min_gpa_poly": 3.0,
+        "course_duration": "4 years",
+        "notable_courses": ["Psychology", "Economics", "Political Science", "Geography", "Sociology", "History"],
+        "notes": "Wide range of humanities and social science majors. Economics is most competitive within FASS.",
+        "official_url": "https://www.fas.nus.edu.sg"
+      },
+      {
+        "faculty_name": "Nursing (Alice Lee Centre for Nursing Studies)",
+        "min_rank_points_alevel": 62,
+        "min_gpa_poly": 3.2,
+        "course_duration": "3 years",
+        "notable_courses": ["Bachelor of Science (Nursing)"],
+        "notes": "Interview required. Must be SNB-fit.",
+        "official_url": "https://nursing.nus.edu.sg"
+      }
+    ]
+  },
+  {
+    "id": "ntu",
+    "name": "Nanyang Technological University",
+    "short_name": "NTU",
+    "type": "Autonomous University (Research-intensive)",
+    "founded": 1991,
+    "location": "Jurong West / Novena (Medical)",
+    "official_url": "https://www.ntu.edu.sg",
+    "focus_areas": ["Engineering", "Computing", "Science", "Business", "Humanities & Social Sciences", "Medicine", "Education"],
+    "entry_routes": ["A-levels (SNUFA)", "Polytechnic Diploma (DAE)", "IB Diploma", "Foreign Qualifications"],
+    "world_ranking_approx": "Top 30 globally (QS 2024)",
+    "popular_faculties": [
+      {
+        "faculty_name": "Medicine (LKC Medicine, joint with Imperial College London)",
+        "min_rank_points_alevel": 87,
+        "min_gpa_poly": 3.9,
+        "course_duration": "5 years",
+        "notable_courses": ["MBBS (joint NTU-Imperial)"],
+        "notes": "Unique joint programme with Imperial College London. About 150 places.",
+        "official_url": "https://www.lkcmedicine.ntu.edu.sg"
+      },
+      {
+        "faculty_name": "Computer Science & Engineering (SCSE)",
+        "min_rank_points_alevel": 78,
+        "min_gpa_poly": 3.5,
+        "course_duration": "4 years",
+        "notable_courses": ["Computer Science", "Computer Engineering", "Data Science & AI"],
+        "notes": "One of Asia's top CS schools. Strong research output.",
+        "official_url": "https://www.ntu.edu.sg/scse"
+      },
+      {
+        "faculty_name": "College of Engineering",
+        "min_rank_points_alevel": 70,
+        "min_gpa_poly": 3.3,
+        "course_duration": "4 years",
+        "notable_courses": ["Aerospace Engineering", "Electrical & Electronic Engineering", "Mechanical Engineering", "Bioengineering"],
+        "notes": "Aerospace Engineering is unique in Singapore — only offered at NTU.",
+        "official_url": "https://www.ntu.edu.sg/mae"
+      },
+      {
+        "faculty_name": "Nanyang Business School (NBS)",
+        "min_rank_points_alevel": 70,
+        "min_gpa_poly": 3.3,
+        "course_duration": "4 years",
+        "notable_courses": ["Accountancy", "Business", "Banking & Finance"],
+        "notes": "AACSB accredited. ICPAS-recognised accountancy programme.",
+        "official_url": "https://www.ntu.edu.sg/nbs"
+      },
+      {
+        "faculty_name": "College of Science",
+        "min_rank_points_alevel": 65,
+        "min_gpa_poly": 3.0,
+        "course_duration": "4 years",
+        "notable_courses": ["Biological Sciences", "Chemistry", "Physics", "Mathematical Sciences", "Environmental Earth Systems Science"],
+        "notes": "Research-focused. Many graduates go into R&D or graduate school.",
+        "official_url": "https://www.ntu.edu.sg/cos"
+      },
+      {
+        "faculty_name": "National Institute of Education (NIE) — Education",
+        "min_rank_points_alevel": 60,
+        "min_gpa_poly": 2.8,
+        "course_duration": "4 years (BTEd/B.A. Ed)",
+        "notable_courses": ["Bachelor of Arts (Education)", "Bachelor of Science (Education)", "Physical Education"],
+        "notes": "Only teacher training institution in Singapore. Graduates become MOE teachers.",
+        "official_url": "https://www.nie.edu.sg"
+      }
+    ]
+  },
+  {
+    "id": "smu",
+    "name": "Singapore Management University",
+    "short_name": "SMU",
+    "type": "Autonomous University (Business-focused)",
+    "founded": 2000,
+    "location": "City Hall (City Campus)",
+    "official_url": "https://www.smu.edu.sg",
+    "focus_areas": ["Business", "Law", "Information Systems", "Accountancy", "Social Sciences", "Computing & Law"],
+    "entry_routes": ["A-levels", "Polytechnic Diploma (DAE)", "IB Diploma", "Foreign Qualifications"],
+    "world_ranking_approx": "Top 500 globally; Top 20 Asia for Business",
+    "popular_faculties": [
+      {
+        "faculty_name": "School of Law",
+        "min_rank_points_alevel": 83,
+        "min_gpa_poly": 3.9,
+        "course_duration": "4 years",
+        "notable_courses": ["LLB", "Juris Doctor (JD)"],
+        "notes": "Competitive entry. Interview required. Known for business law focus.",
+        "official_url": "https://law.smu.edu.sg"
+      },
+      {
+        "faculty_name": "School of Accountancy",
+        "min_rank_points_alevel": 72,
+        "min_gpa_poly": 3.4,
+        "course_duration": "4 years",
+        "notable_courses": ["Accountancy"],
+        "notes": "One of best accountancy schools in Asia. Strong Big 4 recruitment.",
+        "official_url": "https://accountancy.smu.edu.sg"
+      },
+      {
+        "faculty_name": "Lee Kong Chian School of Business",
+        "min_rank_points_alevel": 70,
+        "min_gpa_poly": 3.3,
+        "course_duration": "4 years",
+        "notable_courses": ["Business Management", "Finance", "Marketing", "Human Resource Management"],
+        "notes": "Seminar-style learning. Active student participation. Strong global exchange programmes.",
+        "official_url": "https://business.smu.edu.sg"
+      },
+      {
+        "faculty_name": "School of Information Systems",
+        "min_rank_points_alevel": 72,
+        "min_gpa_poly": 3.4,
+        "course_duration": "4 years",
+        "notable_courses": ["Information Systems Management", "Computer Science", "Data Science & Analytics"],
+        "notes": "Blends business and technology. Strong fintech and analytics focus.",
+        "official_url": "https://sis.smu.edu.sg"
+      },
+      {
+        "faculty_name": "College of Integrative Studies",
+        "min_rank_points_alevel": 62,
+        "min_gpa_poly": 3.0,
+        "course_duration": "4 years",
+        "notable_courses": ["Politics, Law & Economics", "Philosophy, Politics & Economics"],
+        "notes": "Interdisciplinary liberal arts-style degree. Good for students with broad intellectual interests.",
+        "official_url": "https://cis.smu.edu.sg"
+      }
+    ]
+  },
+  {
+    "id": "sutd",
+    "name": "Singapore University of Technology and Design",
+    "short_name": "SUTD",
+    "type": "Autonomous University (Technology & Design)",
+    "founded": 2012,
+    "location": "Changi / Expo",
+    "official_url": "https://www.sutd.edu.sg",
+    "focus_areas": ["Engineering", "Architecture", "Design", "Technology", "AI & Innovation"],
+    "entry_routes": ["A-levels", "Polytechnic Diploma (DAE)", "IB Diploma", "Foreign Qualifications"],
+    "world_ranking_approx": "Young University rankings — Top 20 globally",
+    "popular_faculties": [
+      {
+        "faculty_name": "Architecture & Sustainable Design (ASD)",
+        "min_rank_points_alevel": 72,
+        "min_gpa_poly": 3.4,
+        "course_duration": "4 years",
+        "notable_courses": ["Bachelor of Science (Architecture & Sustainable Design)"],
+        "notes": "Portfolio required. Unique design-focused architecture programme.",
+        "official_url": "https://www.sutd.edu.sg/asd"
+      },
+      {
+        "faculty_name": "Computer Science & Design (CSD)",
+        "min_rank_points_alevel": 76,
+        "min_gpa_poly": 3.5,
+        "course_duration": "4 years",
+        "notable_courses": ["Computer Science", "AI", "Human-Computer Interaction"],
+        "notes": "Integrates design thinking into computer science education.",
+        "official_url": "https://www.sutd.edu.sg/csd"
+      },
+      {
+        "faculty_name": "Engineering Systems & Design (ESD)",
+        "min_rank_points_alevel": 72,
+        "min_gpa_poly": 3.3,
+        "course_duration": "4 years",
+        "notable_courses": ["Engineering Systems", "Industrial & Systems Engineering", "Operations Research"],
+        "notes": "Systems thinking approach to engineering. Cross-disciplinary design projects.",
+        "official_url": "https://www.sutd.edu.sg/esd"
+      },
+      {
+        "faculty_name": "Information Systems Technology & Design (ISTD)",
+        "min_rank_points_alevel": 72,
+        "min_gpa_poly": 3.3,
+        "course_duration": "4 years",
+        "notable_courses": ["Information Technology", "Digital Humanities", "Cybersecurity"],
+        "notes": "MIT-SUTD collaboration. Focus on design thinking in tech.",
+        "official_url": "https://www.sutd.edu.sg/istd"
+      }
+    ]
+  },
+  {
+    "id": "sit",
+    "name": "Singapore Institute of Technology",
+    "short_name": "SIT",
+    "type": "Autonomous University (Applied/Industry-focused)",
+    "founded": 2009,
+    "location": "Punggol (new campus) / various partner locations",
+    "official_url": "https://www.singaporetech.edu.sg",
+    "focus_areas": ["Applied Learning", "Engineering", "Healthcare", "ICT", "Hospitality", "Design"],
+    "entry_routes": ["Polytechnic Diploma (primary — DAE)", "A-levels", "IB Diploma"],
+    "world_ranking_approx": "Young university; industry-focused rankings",
+    "popular_faculties": [
+      {
+        "faculty_name": "Health & Social Sciences",
+        "min_rank_points_alevel": 62,
+        "min_gpa_poly": 3.2,
+        "course_duration": "3-4 years",
+        "notable_courses": ["Nursing (top-up degree)", "Occupational Therapy", "Physiotherapy", "Dietetics", "Radiation Therapy"],
+        "notes": "Many programmes are degree top-ups for polytechnic diploma holders. Healthcare focused.",
+        "official_url": "https://www.singaporetech.edu.sg/cluster/health-social-sciences"
+      },
+      {
+        "faculty_name": "Engineering",
+        "min_rank_points_alevel": 65,
+        "min_gpa_poly": 3.0,
+        "course_duration": "3-4 years",
+        "notable_courses": ["Electrical Power Engineering", "Sustainable Infrastructure Engineering", "Food Technology"],
+        "notes": "Strong Integrated Work Study Programme (IWSP) — work full-time for 8 months with partner company.",
+        "official_url": "https://www.singaporetech.edu.sg/cluster/engineering"
+      },
+      {
+        "faculty_name": "Infocomm Technology",
+        "min_rank_points_alevel": 68,
+        "min_gpa_poly": 3.2,
+        "course_duration": "3-4 years",
+        "notable_courses": ["Applied AI & Analytics", "Cybersecurity", "Software Engineering"],
+        "notes": "Partnerships with industry (AWS, Microsoft, Grab) for real-world projects.",
+        "official_url": "https://www.singaporetech.edu.sg/cluster/infocomm-technology"
+      }
+    ]
+  },
+  {
+    "id": "suss",
+    "name": "Singapore University of Social Sciences",
+    "short_name": "SUSS",
+    "type": "Autonomous University (Social Sciences & Lifelong Learning)",
+    "founded": 2017,
+    "location": "Clementi",
+    "official_url": "https://www.suss.edu.sg",
+    "focus_areas": ["Social Work", "Psychology", "Law", "Business", "Part-time degrees", "Adult learners"],
+    "entry_routes": ["A-levels", "Polytechnic Diploma (DAE)", "IB Diploma", "Working adults (part-time)"],
+    "world_ranking_approx": "Specialised social sciences focus; not in general world rankings",
+    "popular_faculties": [
+      {
+        "faculty_name": "Social Work",
+        "min_rank_points_alevel": 55,
+        "min_gpa_poly": 3.0,
+        "course_duration": "4 years (full-time) / 6 years (part-time)",
+        "notable_courses": ["Bachelor of Social Work (BSW)"],
+        "notes": "SSSA-accredited. Field placement required. High demand due to social services growth.",
+        "official_url": "https://www.suss.edu.sg/schools/school-of-humanities-and-behavioural-sciences"
+      },
+      {
+        "faculty_name": "Psychology",
+        "min_rank_points_alevel": 58,
+        "min_gpa_poly": 3.0,
+        "course_duration": "4 years (full-time)",
+        "notable_courses": ["Psychology", "Counselling"],
+        "notes": "APS-accredited. Pathway to counselling and HR careers.",
+        "official_url": "https://www.suss.edu.sg"
+      },
+      {
+        "faculty_name": "Business",
+        "min_rank_points_alevel": 58,
+        "min_gpa_poly": 3.0,
+        "course_duration": "4 years (full-time) / part-time available",
+        "notable_courses": ["Business Administration", "Finance", "Human Resource Management", "Marketing"],
+        "notes": "Strong part-time programmes for working adults. Flexible pace allows work-study balance.",
+        "official_url": "https://www.suss.edu.sg/schools/school-of-business"
+      },
+      {
+        "faculty_name": "Law",
+        "min_rank_points_alevel": 72,
+        "min_gpa_poly": 3.5,
+        "course_duration": "4 years",
+        "notable_courses": ["LLB"],
+        "notes": "Newest law school in Singapore. Focus on community and social justice law.",
+        "official_url": "https://www.suss.edu.sg/schools/school-of-law"
+      }
+    ]
+  }
+]

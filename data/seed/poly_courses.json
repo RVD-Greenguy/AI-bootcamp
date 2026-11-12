@@ -1,0 +1,431 @@
+[
+  {
+    "poly_id": "sp",
+    "poly_name": "Singapore Polytechnic",
+    "poly_short": "SP",
+    "poly_url": "https://www.sp.edu.sg",
+    "location": "Dover",
+    "courses": [
+      {
+        "course_name": "Diploma in Aerospace Technology",
+        "course_id": "SP-DAERO",
+        "school_within_poly": "School of Engineering",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 10,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Additional Mathematics or Mathematics (at least B3 recommended)", "Pass in Physics"],
+        "career_paths": ["Aircraft Maintenance Engineer", "Aerospace Technologist", "Aviation Quality Engineer"],
+        "note": "One of Singapore's most competitive poly engineering courses. CAAS-approved training.",
+        "official_url": "https://www.sp.edu.sg/engg/courses/aerospace-technology"
+      },
+      {
+        "course_name": "Diploma in Electrical & Electronic Engineering",
+        "course_id": "SP-DEEE",
+        "school_within_poly": "School of Electrical & Electronic Engineering",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 13,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Mathematics", "Pass in Physics or Combined Science (Physics)"],
+        "career_paths": ["Electronics Engineer", "Automation Engineer", "IoT Specialist", "Electrical Engineer"],
+        "note": "Broad-based engineering diploma. Leads to roles in electronics, automation, and smart systems.",
+        "official_url": "https://www.sp.edu.sg/eee/courses/diploma-in-electrical-electronic-engineering"
+      },
+      {
+        "course_name": "Diploma in Business Studies",
+        "course_id": "SP-DBS",
+        "school_within_poly": "School of Business",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 15,
+        "min_english_grade": "C6",
+        "special_requirements": [],
+        "career_paths": ["Business Analyst", "Marketing Executive", "Operations Manager", "Entrepreneur"],
+        "note": "Comprehensive business education with specialisation tracks in marketing, HR, and operations.",
+        "official_url": "https://www.sp.edu.sg/business/courses/business-studies"
+      },
+      {
+        "course_name": "Diploma in Accountancy",
+        "course_id": "SP-DACCT",
+        "school_within_poly": "School of Business",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 13,
+        "min_english_grade": "C6",
+        "special_requirements": ["Mathematics recommended"],
+        "career_paths": ["Accountant", "Auditor", "Financial Analyst", "Tax Consultant"],
+        "note": "ISCA-recognised diploma. Good pathway to accounting degree at NTU/NUS/SMU via DAE.",
+        "official_url": "https://www.sp.edu.sg/business/courses/accountancy"
+      },
+      {
+        "course_name": "Diploma in Information Technology",
+        "course_id": "SP-DIT",
+        "school_within_poly": "School of Computing",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 12,
+        "min_english_grade": "C6",
+        "special_requirements": ["Mathematics recommended"],
+        "career_paths": ["Software Developer", "IT Consultant", "Systems Analyst", "DevOps Engineer"],
+        "note": "Covers software development, networking, databases, and cybersecurity fundamentals.",
+        "official_url": "https://www.sp.edu.sg/computing/courses/information-technology"
+      },
+      {
+        "course_name": "Diploma in Optometry",
+        "course_id": "SP-DOPT",
+        "school_within_poly": "School of Chemical & Life Sciences",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 10,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Biology or Combined Science (Biology)", "Pass in Chemistry or Physics"],
+        "career_paths": ["Optometrist", "Clinical Optician", "Optical Retail Manager"],
+        "note": "Only polytechnic optometry course in Singapore. Graduates can register with Singapore Optometric Association.",
+        "official_url": "https://www.sp.edu.sg/cls/courses/optometry"
+      },
+      {
+        "course_name": "Diploma in Mass Communication",
+        "course_id": "SP-DMC",
+        "school_within_poly": "School of Communication, Arts & Social Sciences",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 14,
+        "min_english_grade": "B4",
+        "special_requirements": ["Higher English grade preferred"],
+        "career_paths": ["Journalist", "Public Relations Executive", "Content Creator", "Media Producer"],
+        "note": "Strong industry connections with local media companies (Mediacorp, SPH).",
+        "official_url": "https://www.sp.edu.sg/sass/courses/mass-communication"
+      },
+      {
+        "course_name": "Diploma in Product & Industrial Design",
+        "course_id": "SP-DPID",
+        "school_within_poly": "School of Architecture & the Built Environment",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 15,
+        "min_english_grade": "C6",
+        "special_requirements": ["Portfolio may be required", "Design aptitude test"],
+        "career_paths": ["Product Designer", "Industrial Designer", "UX Designer", "Design Consultant"],
+        "note": "Combines engineering and design thinking. Industry projects with leading companies.",
+        "official_url": "https://www.sp.edu.sg/arbe/courses/product-industrial-design"
+      }
+    ]
+  },
+  {
+    "poly_id": "tp",
+    "poly_name": "Temasek Polytechnic",
+    "poly_short": "TP",
+    "poly_url": "https://www.tp.edu.sg",
+    "location": "Tampines",
+    "courses": [
+      {
+        "course_name": "Diploma in Nursing",
+        "course_id": "TP-DN",
+        "school_within_poly": "School of Nursing",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 11,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Biology or Combined Science (Biology)", "Medical fitness required", "Interview"],
+        "career_paths": ["Registered Nurse", "Community Nurse", "Specialist Nurse"],
+        "note": "Leads to SRN (Registered Nurse) licence from SNB. High demand profession in Singapore.",
+        "official_url": "https://www.tp.edu.sg/schools-and-courses/students/all-schools-and-courses/school-of-nursing.html"
+      },
+      {
+        "course_name": "Diploma in Digital Game Art & Design",
+        "course_id": "TP-DGAD",
+        "school_within_poly": "School of Design",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 14,
+        "min_english_grade": "C6",
+        "special_requirements": ["Portfolio required"],
+        "career_paths": ["Game Artist", "3D Modeller", "Concept Artist", "Animation Designer"],
+        "note": "Unique game art course. Industry partnerships with game studios.",
+        "official_url": "https://www.tp.edu.sg/design"
+      },
+      {
+        "course_name": "Diploma in Computer Engineering",
+        "course_id": "TP-DCE",
+        "school_within_poly": "School of Engineering",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 13,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Mathematics", "Physics recommended"],
+        "career_paths": ["Systems Engineer", "Embedded Software Developer", "Hardware Engineer"],
+        "note": "Covers hardware and software integration. Good base for electronics and computing careers.",
+        "official_url": "https://www.tp.edu.sg/engineering"
+      },
+      {
+        "course_name": "Diploma in Cybersecurity & Digital Forensics",
+        "course_id": "TP-DCDF",
+        "school_within_poly": "School of Informatics & IT",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 11,
+        "min_english_grade": "C6",
+        "special_requirements": ["Mathematics recommended"],
+        "career_paths": ["Cybersecurity Analyst", "Digital Forensics Investigator", "Penetration Tester", "Security Consultant"],
+        "note": "High demand course in Singapore's growing cybersecurity sector. NICF-aligned.",
+        "official_url": "https://www.tp.edu.sg/iit"
+      },
+      {
+        "course_name": "Diploma in Banking & Finance",
+        "course_id": "TP-DBF",
+        "school_within_poly": "School of Business",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 14,
+        "min_english_grade": "C6",
+        "special_requirements": ["Mathematics recommended"],
+        "career_paths": ["Banking Officer", "Financial Planner", "Investment Analyst", "Compliance Officer"],
+        "note": "IBF-accredited modules. Strong internship programme with local and global banks.",
+        "official_url": "https://www.tp.edu.sg/business"
+      },
+      {
+        "course_name": "Diploma in Hospitality & Tourism Management",
+        "course_id": "TP-DHTM",
+        "school_within_poly": "School of Business",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 17,
+        "min_english_grade": "C6",
+        "special_requirements": [],
+        "career_paths": ["Hotel Manager", "Event Manager", "Tour Operations Manager", "F&B Manager"],
+        "note": "Industry attachments at hotels and attractions. Singapore Tourism Board partnerships.",
+        "official_url": "https://www.tp.edu.sg/business"
+      },
+      {
+        "course_name": "Diploma in Pharmaceutical Science",
+        "course_id": "TP-DPS",
+        "school_within_poly": "School of Applied Science",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 12,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Chemistry", "Pass in Biology or Combined Science (Biology)"],
+        "career_paths": ["Pharmaceutical Technologist", "Quality Control Analyst", "Pharmacy Technician"],
+        "note": "GPhC-recognised in UK. Pathway to pharmacy degree at NUS via DAE.",
+        "official_url": "https://www.tp.edu.sg/applied-science"
+      }
+    ]
+  },
+  {
+    "poly_id": "nyp",
+    "poly_name": "Nanyang Polytechnic",
+    "poly_short": "NYP",
+    "poly_url": "https://www.nyp.edu.sg",
+    "location": "Ang Mo Kio",
+    "courses": [
+      {
+        "course_name": "Diploma in Health Sciences (Physiotherapy)",
+        "course_id": "NYP-DHSP",
+        "school_within_poly": "School of Health Sciences",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 10,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Biology", "Pass in Chemistry or Physics", "Interview", "Medical fitness"],
+        "career_paths": ["Physiotherapist", "Rehabilitation Specialist", "Sports Therapist"],
+        "note": "Allied Health Professions Council (AHPC) accredited. Graduates register as physiotherapists.",
+        "official_url": "https://www.nyp.edu.sg/schools/shs.html"
+      },
+      {
+        "course_name": "Diploma in Mechatronics & Robotics",
+        "course_id": "NYP-DMR",
+        "school_within_poly": "School of Engineering",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 13,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Mathematics", "Pass in Physics recommended"],
+        "career_paths": ["Robotics Engineer", "Automation Specialist", "Mechatronics Technologist"],
+        "note": "Growing field with Industry 4.0 demand. Practical robotics lab training.",
+        "official_url": "https://www.nyp.edu.sg/schools/seg.html"
+      },
+      {
+        "course_name": "Diploma in Data Science",
+        "course_id": "NYP-DDS",
+        "school_within_poly": "School of Information Technology",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 11,
+        "min_english_grade": "C6",
+        "special_requirements": ["Mathematics B3 or above recommended"],
+        "career_paths": ["Data Scientist", "Machine Learning Engineer", "Data Analyst", "AI Developer"],
+        "note": "High demand course. Python, R, SQL, machine learning taught from Year 1.",
+        "official_url": "https://www.nyp.edu.sg/schools/sit.html"
+      },
+      {
+        "course_name": "Diploma in Business Administration",
+        "course_id": "NYP-DBA",
+        "school_within_poly": "School of Business Management",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 15,
+        "min_english_grade": "C6",
+        "special_requirements": [],
+        "career_paths": ["Business Administrator", "Project Coordinator", "HR Executive", "Operations Executive"],
+        "note": "Flexible electives allow personalisation. Strong internship network.",
+        "official_url": "https://www.nyp.edu.sg/schools/sbm.html"
+      },
+      {
+        "course_name": "Diploma in Early Childhood Education",
+        "course_id": "NYP-DECE",
+        "school_within_poly": "School of Health Sciences",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 15,
+        "min_english_grade": "C6",
+        "special_requirements": ["Interview", "Interest in working with young children"],
+        "career_paths": ["Early Childhood Educator", "Preschool Teacher", "Centre Director"],
+        "note": "ECDA-approved. Graduates can teach at ECDA-licensed childcare centres and kindergartens.",
+        "official_url": "https://www.nyp.edu.sg/schools/shs.html"
+      },
+      {
+        "course_name": "Diploma in Visual Communication",
+        "course_id": "NYP-DVC",
+        "school_within_poly": "School of Design",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 14,
+        "min_english_grade": "C6",
+        "special_requirements": ["Portfolio required"],
+        "career_paths": ["Graphic Designer", "Art Director", "Brand Designer", "UX/UI Designer"],
+        "note": "Creative design course with industry mentorship programme.",
+        "official_url": "https://www.nyp.edu.sg/schools/sdm.html"
+      }
+    ]
+  },
+  {
+    "poly_id": "np",
+    "poly_name": "Ngee Ann Polytechnic",
+    "poly_short": "NP",
+    "poly_url": "https://www.np.edu.sg",
+    "location": "Clementi",
+    "courses": [
+      {
+        "course_name": "Diploma in Mass Communication",
+        "course_id": "NP-DMC",
+        "school_within_poly": "School of Film & Media Studies",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 13,
+        "min_english_grade": "B4",
+        "special_requirements": ["English B4 or higher preferred", "Interview"],
+        "career_paths": ["Journalist", "PR Executive", "Content Strategist", "Film/TV Producer"],
+        "note": "NP's most competitive course. Strong alumni in Singapore media. Mediacorp and SPH partnerships.",
+        "official_url": "https://www.np.edu.sg/fms"
+      },
+      {
+        "course_name": "Diploma in Engineering with Business",
+        "course_id": "NP-DEB",
+        "school_within_poly": "School of Engineering",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 13,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Mathematics", "Physics recommended"],
+        "career_paths": ["Engineering Sales", "Project Manager", "Technical Consultant", "Operations Manager"],
+        "note": "Combines technical and business skills. Valued by employers needing technically literate managers.",
+        "official_url": "https://www.np.edu.sg/engg"
+      },
+      {
+        "course_name": "Diploma in Biomedical Science",
+        "course_id": "NP-DBMS",
+        "school_within_poly": "School of Life Sciences & Chemical Technology",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 12,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Chemistry", "Pass in Biology"],
+        "career_paths": ["Biomedical Scientist", "Clinical Laboratory Technologist", "Pharmaceutical Researcher"],
+        "note": "SMC-accredited. Graduates can work in hospital laboratories and research institutions.",
+        "official_url": "https://www.np.edu.sg/slct"
+      },
+      {
+        "course_name": "Diploma in Law & Management",
+        "course_id": "NP-DLM",
+        "school_within_poly": "School of Business & Accountancy",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 13,
+        "min_english_grade": "C6",
+        "special_requirements": [],
+        "career_paths": ["Legal Executive", "Paralegal", "Corporate Secretary", "Compliance Officer"],
+        "note": "Only polytechnic law-related diploma in Singapore. Good foundation for law degrees via DAE.",
+        "official_url": "https://www.np.edu.sg/ba"
+      },
+      {
+        "course_name": "Diploma in Information Technology",
+        "course_id": "NP-DIT",
+        "school_within_poly": "School of ICT",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 13,
+        "min_english_grade": "C6",
+        "special_requirements": ["Mathematics recommended"],
+        "career_paths": ["Software Developer", "IT Systems Analyst", "Database Administrator", "Cloud Engineer"],
+        "note": "Comprehensive IT diploma covering full-stack development, cloud computing, and AI basics.",
+        "official_url": "https://www.np.edu.sg/ict"
+      },
+      {
+        "course_name": "Diploma in Culinary & Catering Management",
+        "course_id": "NP-DCCM",
+        "school_within_poly": "School of Design & Environment",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 18,
+        "min_english_grade": "C6",
+        "special_requirements": ["Medical fitness", "Interest in food and culinary arts"],
+        "career_paths": ["Chef", "F&B Manager", "Catering Operations Manager", "Food Entrepreneur"],
+        "note": "Professional kitchen training. Industry attachments at hotels and restaurants.",
+        "official_url": "https://www.np.edu.sg/sde"
+      }
+    ]
+  },
+  {
+    "poly_id": "rp",
+    "poly_name": "Republic Polytechnic",
+    "poly_short": "RP",
+    "poly_url": "https://www.rp.edu.sg",
+    "location": "Woodlands",
+    "courses": [
+      {
+        "course_name": "Diploma in Logistics & Supply Chain Management",
+        "course_id": "RP-DLSCM",
+        "school_within_poly": "School of Management & Communication",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 17,
+        "min_english_grade": "C6",
+        "special_requirements": [],
+        "career_paths": ["Logistics Coordinator", "Supply Chain Analyst", "Procurement Executive", "Operations Manager"],
+        "note": "Republic Polytechnic uses Problem-Based Learning (PBL) pedagogy — no traditional lectures.",
+        "official_url": "https://www.rp.edu.sg/smc"
+      },
+      {
+        "course_name": "Diploma in Sports & Exercise Science",
+        "course_id": "RP-DSES",
+        "school_within_poly": "School of Applied Science",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 15,
+        "min_english_grade": "C6",
+        "special_requirements": ["Medical fitness", "Sports aptitude preferred"],
+        "career_paths": ["Fitness Trainer", "Sports Scientist", "Exercise Physiologist", "Athletic Coach"],
+        "note": "Only poly sports science diploma with strong links to Singapore Sports Institute.",
+        "official_url": "https://www.rp.edu.sg/sas"
+      },
+      {
+        "course_name": "Diploma in Environmental & Marine Science",
+        "course_id": "RP-DEMS",
+        "school_within_poly": "School of Applied Science",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 16,
+        "min_english_grade": "C6",
+        "special_requirements": ["Pass in Biology recommended"],
+        "career_paths": ["Environmental Consultant", "Marine Biologist", "Sustainability Officer", "Environmental Scientist"],
+        "note": "Growing field with Singapore's Green Plan 2030 creating demand for environmental professionals.",
+        "official_url": "https://www.rp.edu.sg/sas"
+      },
+      {
+        "course_name": "Diploma in Infocomm Security Management",
+        "course_id": "RP-DISM",
+        "school_within_poly": "School of Infocomm",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 14,
+        "min_english_grade": "C6",
+        "special_requirements": ["Mathematics recommended"],
+        "career_paths": ["Information Security Manager", "Risk & Compliance Analyst", "IT Auditor"],
+        "note": "Covers governance, risk, compliance (GRC) and technical security. Good for financial sector roles.",
+        "official_url": "https://www.rp.edu.sg/soi"
+      },
+      {
+        "course_name": "Diploma in Arts Management",
+        "course_id": "RP-DAM",
+        "school_within_poly": "School of Management & Communication",
+        "duration_years": 3,
+        "elr2b2_cutoff_approximate": 16,
+        "min_english_grade": "C6",
+        "special_requirements": ["Interest in arts and culture"],
+        "career_paths": ["Arts Administrator", "Gallery Manager", "Cultural Programme Coordinator", "Events Manager"],
+        "note": "Unique arts management diploma. Partnerships with NAC, Singapore art institutions.",
+        "official_url": "https://www.rp.edu.sg/smc"
+      }
+    ]
+  }
+]

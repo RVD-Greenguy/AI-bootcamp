@@ -1,0 +1,253 @@
+[
+  {
+    "id": "rjc",
+    "name": "Raffles Institution (Junior College)",
+    "short_name": "RJC / RIJC",
+    "location": "Central (Bishan)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 3, "max": 4},
+    "l1r5_note": "Most competitive JC in Singapore. Net L1R5 of 3-4 typical.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Physics, Chemistry, Biology",
+      "H2 Math, Physics, Economics, Geography",
+      "H2 Math, Biology, Chemistry, Economics",
+      "H2 Literature, History, Economics, Math",
+      "H2 History, Geography, Economics, Math"
+    ],
+    "notable_cca": ["Track and Field", "Debate", "Choir", "Orchestra", "Raffles Press"],
+    "affiliation_schools": ["Raffles Institution (Sec)", "Raffles Girls' School"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.ri.edu.sg/college",
+    "note": "Consistently ranked Singapore's top JC. Strong Oxbridge and Ivy League university placements. IP students from RI/RGS proceed here directly."
+  },
+  {
+    "id": "hcjc",
+    "name": "Hwa Chong Institution (College Section)",
+    "short_name": "HCJC",
+    "location": "Bukit Timah",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 3, "max": 5},
+    "l1r5_note": "Joint top with RJC. Co-ed after being all-boys at secondary level.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Physics, Chemistry, Biology",
+      "H2 Math, Biology, Chemistry, Economics",
+      "H2 Chinese Language & Literature, History, Economics, Math",
+      "H2 Literature, History, Economics, Math"
+    ],
+    "notable_cca": ["Chinese Drama", "Symphonic Band", "Track", "Debate", "Chinese Orchestra"],
+    "affiliation_schools": ["Hwa Chong Institution (Sec)", "Nanyang Girls' High School"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.hci.edu.sg/college",
+    "note": "SAP school at secondary level becomes co-ed at JC. Known for bilingual education and Chinese language programmes. Bicultural Studies Programme (BSP) offered."
+  },
+  {
+    "id": "njc",
+    "name": "National Junior College",
+    "short_name": "NJC",
+    "location": "North (Toa Payoh)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 5, "max": 7},
+    "l1r5_note": "Consistently third most competitive JC.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Physics, Biology, Economics",
+      "H2 Literature, History, Geography, Economics",
+      "H2 Math, Economics, Literature, History"
+    ],
+    "notable_cca": ["Fencing", "Debate", "Wind Orchestra", "Choir"],
+    "affiliation_schools": ["NJC IP feeders (secondary section on same campus)"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.nationaljc.moe.edu.sg",
+    "note": "Through-train campus with NJC secondary section. Known for Humanities Programme and research opportunities."
+  },
+  {
+    "id": "acjc",
+    "name": "Anglo-Chinese Junior College",
+    "short_name": "ACJC",
+    "location": "Central (Queenstown)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 7, "max": 9},
+    "l1r5_note": "Well-regarded JC. Strong in Sports and Performing Arts.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Physics, Chemistry, Biology",
+      "H2 Math, Economics, Literature, History",
+      "H2 Biology, Chemistry, Economics, Math"
+    ],
+    "notable_cca": ["Track & Field", "Choir", "Symphonic Band", "Drama"],
+    "affiliation_schools": ["Anglo-Chinese School (Barker)", "Anglo-Chinese School (Independent)", "Anglo-Chinese School (Primary)"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.acjc.moe.edu.sg",
+    "note": "Part of the ACS family of schools. Methodist tradition. Co-ed at JC level. Strong sporting tradition."
+  },
+  {
+    "id": "vjc",
+    "name": "Victoria Junior College",
+    "short_name": "VJC",
+    "location": "East (Pasir Ris)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 7, "max": 9},
+    "l1r5_note": "Top Eastern JC. Popular choice for students from East.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Physics, Biology, Economics",
+      "H2 Literature, History, Economics, Math",
+      "H2 Geography, Economics, Literature, Math"
+    ],
+    "notable_cca": ["Hockey", "Choir", "Chinese Orchestra", "Debate"],
+    "affiliation_schools": ["Victoria School", "Victoria-Flyer (primary)"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.vjc.moe.edu.sg",
+    "note": "Located in the East. Strong academic reputation with good university placement rates."
+  },
+  {
+    "id": "tjc",
+    "name": "Temasek Junior College",
+    "short_name": "TJC",
+    "location": "East (Tampines)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 8, "max": 11},
+    "l1r5_note": "Popular Eastern JC. Mid-range competitiveness.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Biology, Chemistry, Economics",
+      "H2 Literature, History, Economics, Math",
+      "H2 Geography, History, Economics, Literature"
+    ],
+    "notable_cca": ["Badminton", "Symphonic Band", "Drama", "Chinese Orchestra"],
+    "affiliation_schools": ["Temasek Secondary School"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.temasekjc.moe.edu.sg",
+    "note": "Located near Tampines. Serves the Eastern part of Singapore. Good holistic education programme."
+  },
+  {
+    "id": "cjc",
+    "name": "Catholic Junior College",
+    "short_name": "CJC",
+    "location": "North (Bishan)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 8, "max": 11},
+    "l1r5_note": "Catholic mission JC. Mid-range competitiveness.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Biology, Chemistry, Economics",
+      "H2 Literature, History, Economics, Math",
+      "H2 Geography, Economics, Literature, History"
+    ],
+    "notable_cca": ["Soccer", "Choir", "Drama", "Wind Ensemble"],
+    "affiliation_schools": ["Catholic High School", "Maris Stella High School", "CHIJ schools"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.cjc.moe.edu.sg",
+    "note": "Only Catholic JC in Singapore. Strong values-based education. Affiliated with many Catholic secondary schools."
+  },
+  {
+    "id": "asrjc",
+    "name": "Anderson Serangoon Junior College",
+    "short_name": "ASRJC",
+    "location": "North-East (Ang Mo Kio)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 10, "max": 13},
+    "l1r5_note": "Formed from merger of AJC and SRJC in 2019.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Biology, Chemistry, Economics",
+      "H2 Literature, History, Geography, Economics"
+    ],
+    "notable_cca": ["Basketball", "Chinese Dance", "Guitar Ensemble"],
+    "affiliation_schools": ["Anderson Secondary School", "Serangoon Secondary School"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.asrjc.moe.edu.sg",
+    "note": "Merged JC formed in 2019 from Anderson JC and Serangoon JC. Located in Ang Mo Kio."
+  },
+  {
+    "id": "jpjc",
+    "name": "Jurong Pioneer Junior College",
+    "short_name": "JPJC",
+    "location": "West (Jurong)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 11, "max": 14},
+    "l1r5_note": "Formed from merger of JJC and PJC in 2019. Serves Western Singapore.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Biology, Chemistry, Economics",
+      "H2 Literature, History, Economics, Math"
+    ],
+    "notable_cca": ["Bowling", "Choir", "Symphonic Band"],
+    "affiliation_schools": ["Jurong Secondary", "Pioneer Secondary"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.jpjc.moe.edu.sg",
+    "note": "Merged JC in the West formed in 2019. Serves students from Jurong, Boon Lay, and surrounding areas."
+  },
+  {
+    "id": "tmjc",
+    "name": "Tampines Meridian Junior College",
+    "short_name": "TMJC",
+    "location": "East (Tampines)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 10, "max": 13},
+    "l1r5_note": "Formed from merger of TJC and MJC in 2019 (note: separate from the older TJC listed).",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Biology, Chemistry, Economics",
+      "H2 Literature, History, Economics, Geography"
+    ],
+    "notable_cca": ["Volleyball", "Chinese Orchestra", "Drama"],
+    "affiliation_schools": ["Tampines Secondary", "Meridian Secondary", "Cedar Girls (secondary)"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.tmjc.moe.edu.sg",
+    "note": "Merged JC formed in 2019 from Tampines JC and Meridian JC. Serves the East region."
+  },
+  {
+    "id": "yijc",
+    "name": "Yishun Innova Junior College",
+    "short_name": "YIJC",
+    "location": "North (Yishun)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": 12, "max": 15},
+    "l1r5_note": "Formerly Innova JC, renamed in 2021. Serves Northern Singapore.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Biology, Chemistry, Economics",
+      "H2 Literature, History, Economics, Math"
+    ],
+    "notable_cca": ["Soccer", "Chinese Dance", "Symphonic Band"],
+    "affiliation_schools": ["Yishun Secondary", "North View Secondary"],
+    "affiliation_bonus": -2,
+    "official_url": "https://www.yijc.moe.edu.sg",
+    "note": "Serves students from the North region. Known for strong CCA and character development programmes."
+  },
+  {
+    "id": "mi",
+    "name": "Millennia Institute",
+    "short_name": "MI",
+    "location": "West (Buona Vista)",
+    "gender": "mixed",
+    "l1r5_cutoff_2023": {"min": null, "max": null},
+    "l1r5_note": "3-year A-level programme for Normal Academic O-level graduates. L1R4 (not L1R5) used for entry. Accepts students from Sec 5 O-levels.",
+    "ib_offered": false,
+    "h2_subject_combinations": [
+      "H2 Math, Physics, Chemistry, Economics",
+      "H2 Math, Biology, Chemistry, Economics",
+      "H2 Literature, History, Economics, Geography",
+      "H2 Principles of Accounts, Economics, Math, Literature"
+    ],
+    "notable_cca": ["Choir", "Drama", "Soccer", "Badminton"],
+    "affiliation_schools": [],
+    "affiliation_bonus": 0,
+    "official_url": "https://www.millenniainstitute.moe.edu.sg",
+    "note": "Singapore's only 3-year pre-university institution. Primarily serves Normal Academic students who take O-levels via Sec 5. L1R4 of ≤20 required. Same A-Level certification as JCs — no distinction at university level."
+  }
+]

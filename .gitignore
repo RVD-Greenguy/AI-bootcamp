@@ -1,0 +1,22 @@
+# Secrets — never commit
+.env
+.streamlit/secrets.toml
+
+# Generated storage (rebuilt on startup)
+storage/edupathsg.sqlite
+storage/tfidf_store.pkl
+storage/chroma_db/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db

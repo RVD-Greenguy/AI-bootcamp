@@ -1,0 +1,403 @@
+[
+  {
+    "id": "failed_english_olevels",
+    "scenario": "Failed English Language at O-Levels",
+    "trigger_condition": "Student receives grade 7 (D7), 8 (E8), or 9 (F9) for English Language in GCE O-Levels",
+    "official_policy": "English Language is compulsory for entry to Junior College (L1R5 requires English as L1) and most Polytechnic courses. Without a pass in English (minimum C6 for JC, some poly courses accept D7), students cannot apply to JC or most poly courses via JAE.",
+    "options": [
+      {
+        "option_name": "Retake English as SEAB Private Candidate",
+        "description": "Register with SEAB to retake O-Level English Language as a private candidate in the October/November sitting the following year.",
+        "timeline": "Register with SEAB in March-April. Sit exam in October/November. Results in January.",
+        "eligibility": "Any student who has previously sat O-Levels. No age restriction.",
+        "pros": ["Can retake just English without repeating all subjects", "Same O-Level certification", "No school re-enrollment needed"],
+        "cons": ["Wait of approximately 1 year", "Must self-study or find tuition", "Some employers/universities note first-attempt results"]
+      },
+      {
+        "option_name": "Enroll in ITE (English pass not mandatory for all NITEC)",
+        "description": "Some ITE NITEC courses accept students with N(T)-Level or N(A)-Level English grades. ITE entry requirements are more flexible.",
+        "timeline": "Apply via JAE in January. Begin ITE in April.",
+        "eligibility": "Students with N-Level or partial O-Level passes. Check specific course requirements.",
+        "pros": ["Start formal education immediately", "Gain vocational skills and qualifications", "Can progress to poly via N2P after Higher NITEC"],
+        "cons": ["Must choose ITE course, not JC or most Poly options", "Longer pathway to degree if that is the goal"]
+      },
+      {
+        "option_name": "Private or International Education Routes",
+        "description": "Some private schools (Kaplan, SIM, PSB Academy) have different English requirements and may accept students for foundation or diploma programmes.",
+        "timeline": "Applications year-round for most private institutions.",
+        "eligibility": "Varies by institution. Some accept students with grade D7 in English conditionally.",
+        "pros": ["Can start studies sooner", "More flexible entry criteria"],
+        "cons": ["Higher fees than public institutions", "Private diplomas may be less recognized by employers", "May not qualify for Edusave or MOE subsidies"]
+      }
+    ],
+    "important_notes": [
+      "JC requires English Language pass as L1 — no exceptions for JAE",
+      "Minimum English grade for most poly courses is C6; a few accept D7",
+      "ITE has the most flexible English requirements",
+      "SEAB private candidate results appear on the same O-Level certificate",
+      "NUS/NTU/SMU accept O-Level English at minimum D7 for university admission consideration (but competitive courses need better)",
+      "For retake: register at SEAB (www.seab.gov.sg) in March-April of the year you wish to sit the exam"
+    ],
+    "official_url": "https://www.seab.gov.sg/home/examinations/gce-o-level/private-candidates"
+  },
+  {
+    "id": "failed_to_meet_jc_cutoff",
+    "scenario": "L1R5 Score Too High to Enter Desired JC",
+    "trigger_condition": "Student's net L1R5 (after bonus points) exceeds the cutoff of their preferred JC(s) during JAE",
+    "official_policy": "JAE postings are merit-based. Students are posted to the highest-choice school they qualify for based on their net L1R5. Students who do not get any of their listed choices are unposted.",
+    "options": [
+      {
+        "option_name": "Accept JAE Posting to Available JC",
+        "description": "Accept the posting to the JC that your net L1R5 qualifies for. All JCs offer the same A-Level qualification — the school name matters less than your A-Level grades for university admission.",
+        "timeline": "JAE posting released in late January. Must accept posting within days.",
+        "eligibility": "All JAE applicants",
+        "pros": ["Start JC immediately", "Same A-Level certification regardless of JC", "All JCs have good university placement rates"],
+        "cons": ["May not be preferred school", "May need to adjust subject combination expectations"]
+      },
+      {
+        "option_name": "Appeal to Desired JC",
+        "description": "Contact the JC directly to appeal for a place. Some JCs accept appeals based on special talents, CCAs, or circumstances. Appeals are usually in January.",
+        "timeline": "Appeal period: Usually 1-2 weeks after JAE posting. Contact schools directly.",
+        "eligibility": "Any JAE applicant. Appeals considered on a case-by-case basis.",
+        "pros": ["May secure a place at preferred school", "Free to try"],
+        "cons": ["Low success rate for academic appeals", "May miss JAE posting deadline if appeal unsuccessful", "CCA appeals more successful than pure academic appeals"]
+      },
+      {
+        "option_name": "Consider Polytechnic Instead",
+        "description": "With the same O-Level results, apply to Polytechnic via JAE. A poly diploma can still lead to university via DAE. Good GPA at poly opens doors to NUS/NTU/SMU.",
+        "timeline": "Same JAE timeline as JC. Can list poly choices alongside JC choices.",
+        "eligibility": "All JAE applicants with English pass and ELR2B2 within range",
+        "pros": ["More direct career pathway", "Practical learning environment", "University still accessible via DAE with good GPA"],
+        "cons": ["Different academic route than A-levels", "JC+uni may be faster if going the degree route", "Limited to DAE for university entry (not SNUFA)"]
+      },
+      {
+        "option_name": "Consider Millennia Institute (MI)",
+        "description": "MI is a 3-year A-Level programme generally accessible to students with O-Level results from Sec 5. However, it also takes Sec 4 Express students who may not qualify for JC. Contact MI directly.",
+        "timeline": "MI applications through JAE.",
+        "eligibility": "Sec 5 (N(A) stream) graduates mainly; some Sec 4 Express students may apply",
+        "pros": ["Same A-Level qualification in 3 years", "More time to master content", "Accessible entry requirements"],
+        "cons": ["Longer by 1 year compared to 2-year JC", "Less recognised brand than top JCs among some employers"]
+      }
+    ],
+    "important_notes": [
+      "Net L1R5 = raw L1R5 minus bonus points (CCA, affiliation). Minimum net is 2.",
+      "CCA bonus: Grade A/B = -2 points, Grade C = -1 point",
+      "Affiliation bonus: -2 points if applying to affiliated JC",
+      "JAE allows up to 12 course choices across JCs, Polys, and ITE — list strategically",
+      "A-Level grades matter more than which JC you attend for university applications",
+      "Some JCs have specific programme requirements (e.g., Bicultural Studies needs Chinese results)"
+    ],
+    "official_url": "https://www.moe.gov.sg/post-secondary/joint-admissions-exercise"
+  },
+  {
+    "id": "failed_olevels_subjects",
+    "scenario": "Failed One or More O-Level Subjects (Other Than English)",
+    "trigger_condition": "Student receives F9 or insufficient grades in one or more O-Level subjects, affecting their L1R5 or ELR2B2 aggregate",
+    "official_policy": "Students may retake individual O-Level subjects as SEAB private candidates. Only the subject(s) with weak grades need to be retaken — not the entire O-Level examination.",
+    "options": [
+      {
+        "option_name": "Retake Individual Subjects as SEAB Private Candidate",
+        "description": "Register with SEAB to retake specific O-Level subjects. Best grades across all sittings are used for JAE applications (verify with JAE guidelines each year).",
+        "timeline": "Register March-April. Sit October/November. Results January next year.",
+        "eligibility": "Any student who has previously sat O-Levels. Can retake as many times as needed.",
+        "pros": ["No need to retake subjects already passed", "Best results considered for applications", "Cost-effective — pay per subject"],
+        "cons": ["1 year wait per retake cycle", "Must self-study or find tuition", "First-attempt grades visible on transcript"]
+      },
+      {
+        "option_name": "Proceed with Current Results to ITE or Some Poly Courses",
+        "description": "Depending on the failed subject and your overall grades, ITE may still be accessible. Some poly courses have flexible requirements too.",
+        "timeline": "Apply via JAE in January as normal.",
+        "eligibility": "Depends on specific course requirements — check JAE net aggregate requirements",
+        "pros": ["Start formal education immediately", "Can still progress to poly or university eventually"],
+        "cons": ["Limited options with weaker results", "May need to upgrade later"]
+      }
+    ],
+    "important_notes": [
+      "SEAB private candidates can retake individual subjects — you do not need to resit all subjects",
+      "The O-Level certificate will show ALL sittings, with dates",
+      "For JAE, the best grade across all sittings is typically used for the aggregate (confirm with MOE each year)",
+      "For competitive university courses (Medicine, Law), some admissions offices review all sittings",
+      "Subject retakes are common — it does not disadvantage you in most applications",
+      "Register at seab.gov.sg; approximate fees: S$78-S$105 per subject per sitting (2023 rates)"
+    ],
+    "official_url": "https://www.seab.gov.sg/home/examinations/gce-o-level/private-candidates"
+  },
+  {
+    "id": "failed_alevels",
+    "scenario": "A-Level Results — Insufficient Rank Points for University",
+    "trigger_condition": "Student's A-Level rank points fall below the minimum required for their desired university course",
+    "official_policy": "Students may apply to university with their current results, retake A-Levels as private candidates, or pursue alternative routes such as polytechnic diplomas.",
+    "options": [
+      {
+        "option_name": "Retake A-Levels as SEAB Private Candidate",
+        "description": "Retake one or more A-Level subjects to improve rank points. Can retake specific H2 or H1 subjects.",
+        "timeline": "Register with SEAB in March-April. Sit October/November. Results in February next year.",
+        "eligibility": "Any student who has previously sat A-Levels. Can retake individual subjects.",
+        "pros": ["Significantly improve rank points with one good retake", "Same A-Level qualification", "Competitive courses may consider best sitting"],
+        "cons": ["1 year delay", "High pressure retake year", "Some universities note number of sittings"]
+      },
+      {
+        "option_name": "Apply to SIT or SUSS (Broader Intake)",
+        "description": "SIT and SUSS have broader intake criteria and may accept students with lower rank points. SIT focuses on applied degrees; SUSS on social sciences and part-time options.",
+        "timeline": "SNUFA applications in March-April.",
+        "eligibility": "A-Level holders. SIT primarily targets poly diploma holders but also takes A-Level students.",
+        "pros": ["Start university sooner", "Real-world applied learning", "Part-time options at SUSS"],
+        "cons": ["Different prestige perception than NUS/NTU/SMU in some sectors", "Less research-focused"]
+      },
+      {
+        "option_name": "Pursue Polytechnic Diploma then DAE",
+        "description": "Enroll in a 3-year poly diploma. With a strong GPA (typically 3.0-3.9+), apply to university via Direct Admissions Exercise (DAE). This actually opens doors that A-Level route alone cannot.",
+        "timeline": "Apply to poly via JAE or independent applications. 3 years to diploma. Then DAE.",
+        "eligibility": "A-Level holders can apply to poly directly. Must meet poly entry requirements.",
+        "pros": ["Practical skills and industry attachment", "GPA resets — can build fresh academic record", "DAE allows entry to NUS/NTU/SMU for many courses"],
+        "cons": ["4+ more years before degree", "Longer total education journey", "Some courses (Medicine, Law) rarely accept via DAE"]
+      },
+      {
+        "option_name": "Private Local or Overseas University",
+        "description": "Private universities in Singapore (Kaplan-Glasgow, PSB-Newcastle, SIM-partner universities) or overseas degrees in Australia, UK, US.",
+        "timeline": "Year-round applications for many private institutions.",
+        "eligibility": "A-Level holders. Requirements more flexible than local AUs.",
+        "pros": ["International degree", "More flexible entry", "Many have part-time options"],
+        "cons": ["Higher fees than local AUs (no MOE subsidies)", "May need to verify degree recognition for some employers/professions in Singapore"]
+      }
+    ],
+    "important_notes": [
+      "A-Level rank points: H2 (A=5, B=4, C=3, D=2, E=1, S=0.5) × 2, plus H1 contributions",
+      "Maximum rank points: 90 (3×H2×2 = 30, converted to 90 scale)",
+      "SNUFA application: typically March-April for August intake",
+      "Best results across sittings are considered for most courses; verify with individual university admissions offices",
+      "Medicine and Law specifically note number of A-Level attempts",
+      "Project Work grade (A/B/C) can contribute to rank points calculation — verify with SEAB",
+      "For retake enquiries: contact SEAB at seab.gov.sg"
+    ],
+    "official_url": "https://www.seab.gov.sg/home/examinations/gce-a-level/private-candidates"
+  },
+  {
+    "id": "failed_english_alevels",
+    "scenario": "Failed H1 General Paper (GP) or H1 Knowledge & Inquiry (KI) at A-Levels",
+    "trigger_condition": "Student fails (grade U/S below threshold) the compulsory English component at A-Levels",
+    "official_policy": "H1 General Paper (GP) or H1 Knowledge & Inquiry (KI) is compulsory for all JC students. While GP/KI grades do not count in rank point calculations for university, a fail in GP can affect university admission as many faculties require a minimum GP result.",
+    "options": [
+      {
+        "option_name": "Retake H1 General Paper as Private Candidate",
+        "description": "Retake just the H1 GP paper as a SEAB private candidate in the following October/November sitting.",
+        "timeline": "Register March-April. Sit October/November. Results February next year.",
+        "eligibility": "Any A-Level holder.",
+        "pros": ["Only one paper to retake", "Improves university admission eligibility"],
+        "cons": ["1 year delay for most university applications", "GP retake is challenging without school support"]
+      },
+      {
+        "option_name": "Apply to SIT/SUSS with Current Results",
+        "description": "Some programmes at SIT and SUSS have more flexible GP requirements. Check individual course requirements.",
+        "timeline": "SNUFA applications March-April.",
+        "eligibility": "Varies by course. Check university admissions requirements.",
+        "pros": ["Start university without retaking GP"],
+        "cons": ["May be ineligible for NUS/NTU/SMU courses with GP requirement"]
+      }
+    ],
+    "important_notes": [
+      "GP/KI is compulsory for ALL JC students. Grade S or U typically means a fail",
+      "GP is marked on a scale: A-E (pass), S (sub-pass), U (ungraded/fail)",
+      "NUS/NTU/SMU do not explicitly require a minimum GP grade but check specific faculties",
+      "GP grade does NOT contribute to rank point calculation for university",
+      "Knowledge & Inquiry (KI) is offered as an alternative to GP at some JCs — same rules apply",
+      "Project Work (PW) is separately graded (A/B/C) and counts for rank points"
+    ],
+    "official_url": "https://www.seab.gov.sg/home/examinations/gce-a-level/subjects-offered"
+  },
+  {
+    "id": "ip_exit",
+    "scenario": "Student Struggles in Integrated Programme (IP) School",
+    "trigger_condition": "Student underperforms consistently in IP school's internal examinations and may need to exit the programme",
+    "official_policy": "Each IP school has its own retention and exit policies. Schools may counsel students to exit the IP if performance falls below a threshold, especially in Sec 1-2. After Sec 4, options are limited.",
+    "options": [
+      {
+        "option_name": "Exit to O-Level Stream (Sec 1-2)",
+        "description": "If caught early (Sec 1 or 2), student can transfer to a non-IP Express school and sit O-Levels normally. School transfers facilitated by MOE.",
+        "timeline": "School transfer requests at end of Sec 1 or Sec 2. Must be before Sec 3.",
+        "eligibility": "IP students in Sec 1-2 who exit or are asked to exit. Must apply to receiving school.",
+        "pros": ["Clear O-Level pathway ahead", "Can choose a school that suits the student's strengths", "No disadvantage in JAE later"],
+        "cons": ["Stressful transition", "May need to adjust to different school culture and curriculum"]
+      },
+      {
+        "option_name": "Seek Additional Support Within IP School",
+        "description": "Most IP schools have academic support programmes, learning support, and mentoring. Work with school counsellors and teachers before deciding to exit.",
+        "timeline": "Available throughout the academic year.",
+        "eligibility": "All IP students.",
+        "pros": ["Stay in original school", "Continuity of friendships and activities"],
+        "cons": ["May not be enough if fundamental academic struggles persist"]
+      },
+      {
+        "option_name": "Complete Sec 4, Then Take O-Levels as Private Candidate",
+        "description": "If the student is in Sec 3 or 4 IP, completing school is usually better. After Sec 4, they can sit O-Levels as a private candidate to get the standard qualification for JAE.",
+        "timeline": "Register with SEAB as private candidate. Sit O-Levels in October/November.",
+        "eligibility": "IP students who have completed at least Sec 4 of IP.",
+        "pros": ["Completes the school year", "O-Level cert provides JAE options"],
+        "cons": ["Must self-study O-Level syllabus which may differ from IP curriculum", "Need to study for O-Levels while still at IP school or after"]
+      }
+    ],
+    "important_notes": [
+      "IP schools are not legally required to retain a student against the school's recommendation",
+      "Each IP school publishes (or provides on request) their retention criteria",
+      "Exiting IP does NOT mean the student will not go to university — many non-IP students go to NUS/NTU",
+      "The key is which path best suits the student's learning style and academic ability",
+      "School counsellors at both IP schools and MOE can provide guidance",
+      "Contact MOE's SchoolConnect at 6872 2220 for transfer enquiries"
+    ],
+    "official_url": "https://www.moe.gov.sg/secondary/programmes/integrated-programme"
+  },
+  {
+    "id": "n_level_pathway",
+    "scenario": "Normal Academic (N(A)) Stream — Options After Sec 4",
+    "trigger_condition": "Student completing Sec 4 Normal Academic stream with N(A)-Level results",
+    "official_policy": "N(A) students at Sec 4 have multiple pathways: proceed to Sec 5 for O-Levels, apply for the Polytechnic Foundation Programme (PFP), or enter ITE directly.",
+    "options": [
+      {
+        "option_name": "Proceed to Sec 5 → O-Levels",
+        "description": "Return to school for a 5th year (Sec 5) and sit the full GCE O-Level examinations. Requires passing English and at least 3 other subjects at N(A)-Level.",
+        "timeline": "Register for Sec 5 at current school. Sit O-Levels at end of Sec 5. Apply to JAE in January.",
+        "eligibility": "N(A) students with passes in English and at least 3 N(A)-Level subjects.",
+        "pros": ["Full O-Level qualification", "Access to JC and all Poly courses via JAE", "Same starting point as Express stream students for JAE"],
+        "cons": ["One extra year (total 5 years secondary)", "Must perform well under O-Level pressure"]
+      },
+      {
+        "option_name": "Polytechnic Foundation Programme (PFP)",
+        "description": "A 1-year bridging programme at any of the 5 polys for eligible N(A)-Level students. Upon completion, proceeds to Poly Year 1. Must meet PFP ELR2B2 requirement.",
+        "timeline": "Apply to PFP via JAE in January after N(A) results. PFP runs April to March.",
+        "eligibility": "N(A) students with aggregate (ELR2B2) of 26 or better in N(A)-Level. English pass required.",
+        "pros": ["Skips O-Levels entirely", "Enters poly 1 year faster than Sec 5 route", "Full Poly diploma at end"],
+        "cons": ["Must perform well in PFP to progress to Poly Year 1", "PFP aggregate cutoff can be competitive for popular poly courses", "Cannot apply to JC via this route"]
+      },
+      {
+        "option_name": "Direct Polytechnic Programme (DPP)",
+        "description": "A select group of N(A) students with strong results can enter specific polytechnic courses directly without going through PFP. Limited places.",
+        "timeline": "Apply via JAE in January. Limited courses available.",
+        "eligibility": "Best-performing N(A) students. Very competitive — check JAE intake data.",
+        "pros": ["Direct poly entry", "No bridging year required"],
+        "cons": ["Very limited places and courses available"]
+      },
+      {
+        "option_name": "Enter ITE Directly",
+        "description": "Apply to ITE NITEC or Higher NITEC courses via JAE. N(A)-Level passes are accepted for ITE entry.",
+        "timeline": "Apply via JAE in January. ITE starts April.",
+        "eligibility": "N(A) students with passes in English and 2 other subjects.",
+        "pros": ["Start formal vocational education immediately", "Can progress to poly via N2P after Higher NITEC"],
+        "cons": ["Longer overall pathway if university degree is the goal"]
+      }
+    ],
+    "important_notes": [
+      "PFP ELR2B2 aggregate for 2023: 26 or better across all polys. Some courses are more competitive.",
+      "PFP aggregate uses N(A)-Level ELR2B2: English + L2 + 2 relevant + 2 best",
+      "Students who do PFP and then poly diploma can still apply to university via DAE",
+      "The full journey: N(A) → PFP → Poly (3yr) → University (3-4yr) = approx 8 years post-secondary",
+      "Sec 5 → O-Levels → JC → University = approx 7 years — similar total time",
+      "N(A) students who do well in Sec 1-2 may be able to transfer to Express stream — check with MOE"
+    ],
+    "official_url": "https://www.moe.gov.sg/post-secondary/joint-admissions-exercise"
+  },
+  {
+    "id": "poly_low_gpa",
+    "scenario": "Polytechnic GPA Too Low for Desired University via DAE",
+    "trigger_condition": "Student graduates from poly with GPA below 3.0 (or below specific course requirement for target university)",
+    "official_policy": "DAE (Direct Admissions Exercise) is competitive. GPA requirements vary by university and course. Students with lower GPAs have more limited options at local AUs.",
+    "options": [
+      {
+        "option_name": "Apply to SIT or SUSS",
+        "description": "SIT and SUSS generally have more accessible GPA requirements than NUS/NTU/SMU. Many SIT programmes are designed specifically for poly diploma holders.",
+        "timeline": "DAE applications February-March.",
+        "eligibility": "Poly graduates. GPA 2.5-3.2 may still qualify for some SIT/SUSS courses.",
+        "pros": ["Start degree education sooner", "SIT has strong industry integration", "SUSS has part-time options"],
+        "cons": ["May not be desired course or university brand"]
+      },
+      {
+        "option_name": "Private Local University (SIM, Kaplan, PSB Academy)",
+        "description": "Private education institutions with university partnerships (University of London, University of Manchester, Newcastle University, etc.) have flexible entry criteria.",
+        "timeline": "Applications year-round for most private institutions.",
+        "eligibility": "Poly diploma holders. GPA requirements vary — often 2.0 or higher.",
+        "pros": ["International degree", "Flexible entry", "Part-time options"],
+        "cons": ["Higher fees — no MOE tuition subsidy", "Must verify degree recognition for specific professions"]
+      },
+      {
+        "option_name": "Overseas University",
+        "description": "Australian, UK, and some US universities readily accept poly diploma holders. Some may grant advanced standing.",
+        "timeline": "Varies by institution. Australian intake: Feb and July. UK: September.",
+        "eligibility": "Poly diploma with GPA typically 2.5-3.0+ depending on institution.",
+        "pros": ["International experience", "Some universities grant Year 2 or Year 3 entry based on diploma", "Broad range of courses"],
+        "cons": ["High cost (tuition + living)", "May be away from family", "Must evaluate graduate employment back in Singapore"]
+      },
+      {
+        "option_name": "Work and Apply SkillsFuture",
+        "description": "Enter the workforce and use SkillsFuture credits and Career Transition Programmes for upskilling. Some careers value practical experience over degree. Can pursue part-time degree later.",
+        "timeline": "Immediate employment possible. Part-time degree applications year-round.",
+        "eligibility": "All graduates.",
+        "pros": ["Earn while learning", "Real-world experience valued", "SUSS and SIM have strong part-time degree options"],
+        "cons": ["Degree progress is slower part-time", "Must balance work and study demands"]
+      }
+    ],
+    "important_notes": [
+      "DAE GPA benchmarks: NUS/NTU/SMU competitive courses need 3.5-3.9+; SIT/SUSS may accept 2.5-3.0+",
+      "GPA is calculated on a 4.0 scale across all 3 poly years (or best 20 MCs depending on poly)",
+      "Some courses use portfolio, interview, or relevant work experience alongside GPA",
+      "Advanced standing: UK universities may grant Year 2 entry for poly graduates in relevant disciplines",
+      "Australian universities: QUT, Griffith, Curtin, Murdoch have strong recruitment from Singapore polys",
+      "SUSS BBA (part-time) is popular among working adults with poly diplomas",
+      "SkillsFuture Mid-Career Enhanced Subsidy available for Singaporeans 40+ (90% subsidy)"
+    ],
+    "official_url": "https://www.moe.gov.sg/post-secondary/universities"
+  },
+  {
+    "id": "private_candidate_rules",
+    "scenario": "General Rules for SEAB Private Candidates",
+    "trigger_condition": "Student wishes to retake any SEAB examination as a private (non-school) candidate",
+    "official_policy": "SEAB accepts private candidates for all national examinations including PSLE, N-Levels, O-Levels, and A-Levels. Private candidates follow the same syllabus and sit the same papers as school candidates.",
+    "options": [
+      {
+        "option_name": "Register as SEAB Private Candidate",
+        "description": "Register directly with SEAB (via their website or in-person at SEAB office at 10 Courthill Road) during the registration window, usually March-April for the October/November sitting.",
+        "timeline": "Registration: March-April each year. Examination: October-November. Results: January (O/N-Levels) or February (A-Levels) the following year.",
+        "eligibility": "Singapore Citizens, PRs, and foreigners with valid pass. Must be at least 16 for O-Levels, 17 for A-Levels.",
+        "pros": ["Flexible — retake any number of subjects", "Same certification as school candidates", "No age limit"],
+        "cons": ["Must self-study or arrange own tutoring", "Examination fee per subject", "Less support than being in school"]
+      }
+    ],
+    "important_notes": [
+      "SEAB Private Candidate registration: usually March-April for October/November sitting",
+      "Fees (2023 approximate): O-Level ~S$78-105 per subject; A-Level ~S$105-140 per H1/H2 subject",
+      "O-Level certificate shows ALL sittings (school + private) with the year of each result",
+      "For JAE, best grade across all sittings is used for the aggregate (confirm with MOE each year)",
+      "For university SNUFA/DAE applications, verify with individual AUs how they treat multiple sittings",
+      "PSLE cannot be retaken as private candidate — primary school is the only route",
+      "SEAB official website: www.seab.gov.sg for exact dates, fees, and registration procedures",
+      "No dress code requirement for private candidates — attend exam at designated exam centre"
+    ],
+    "official_url": "https://www.seab.gov.sg/home/examinations/private-candidates"
+  },
+  {
+    "id": "cert_endorsement",
+    "scenario": "Certificate Transcript Policy — Multiple Attempts & Grade Improvements",
+    "trigger_condition": "Student has retaken examinations and wants to know how results appear on official certificates and transcripts",
+    "official_policy": "GCE O-Level and A-Level certificates issued by SEAB show results from ALL sittings, with the year/session clearly marked. Best grades across sittings are shown for most purposes, but all results are visible.",
+    "options": [
+      {
+        "option_name": "Understanding the Certificate",
+        "description": "The official O-Level or A-Level Statement of Results (and later the Certificate) shows each subject with its grade and the year/session it was obtained. Improved grades from retakes appear alongside original grades.",
+        "timeline": "Certificates issued once — originals from initial sitting. Supplementary entries added for retakes.",
+        "eligibility": "All candidates",
+        "pros": ["Transparent record", "Improvement in later sittings shows commitment", "Best grade is used by most institutions"],
+        "cons": ["All attempts visible — cannot hide a weaker first attempt", "Competitive courses (Medicine, Law) review full transcript"]
+      }
+    ],
+    "important_notes": [
+      "SEAB O-Level and A-Level results appear on a single cumulative Statement of Results",
+      "Each entry shows: subject, grade, year obtained",
+      "For JAE (polytechnic/JC/ITE): best grade across all sittings used to compute L1R5 or ELR2B2",
+      "For NUS/NTU/SMU SNUFA: universities generally consider best A-Level sitting for rank point calculation — verify annually",
+      "Medicine admissions (NUS and NTU): known to consider all A-Level sittings; first attempt strongly preferred",
+      "Law admissions (NUS/SMU): similar policy to Medicine — multiple sittings noted",
+      "For poly DAE: GPA from poly transcript is the main criterion; O-Level grades less critical",
+      "SEAB can issue a Certifying Statement listing all results for official purposes",
+      "If original cert is lost, SEAB issues a replacement Statement of Results (fee applies)"
+    ],
+    "official_url": "https://www.seab.gov.sg/home/certifying-statements-and-transcripts"
+  }
+]

@@ -1,0 +1,389 @@
+{
+  "counselling": [
+    {
+      "id": "moe_ecg",
+      "name": "MOE Education & Career Guidance (ECG) Counsellors",
+      "type": "School-based",
+      "description": "Every MOE secondary school, JC, polytechnic and ITE has trained ECG counsellors. They help students explore education options, career interests and subject choices. Free for all students.",
+      "eligibility": "All students in MOE schools",
+      "how_to_access": "Approach your school's ECG counsellor directly, or ask your form teacher to refer you.",
+      "official_url": "https://www.moe.gov.sg/education-in-sg/our-programmes/education-and-career-guidance",
+      "stage": ["secondary", "jc", "poly", "ite"]
+    },
+    {
+      "id": "myskillsfuture_ecg",
+      "name": "MySkillsFuture ECG Portal",
+      "type": "Online + Centre-based",
+      "description": "Online career interest profiling, education pathway explorer and ECG centre appointments. Students can book a 1-on-1 session with an ECG counsellor at an ECG centre.",
+      "eligibility": "Secondary school students and above",
+      "how_to_access": "Register at https://www.myskillsfuture.gov.sg and use the ECG portal, or book an appointment at an ECG centre.",
+      "official_url": "https://www.myskillsfuture.gov.sg/content/student/en/secondary.html",
+      "stage": ["secondary", "jc", "poly", "ite", "university"]
+    },
+    {
+      "id": "chat",
+      "name": "CHAT (Community Health Assessment Team)",
+      "type": "Mental Health",
+      "description": "Free mental health screening and support for youth aged 16–30. Walk-in or online assessment. Referral to appropriate support if needed. Run by IMH.",
+      "eligibility": "Youth aged 16–30 in Singapore",
+      "how_to_access": "Walk in to CHAT @ Orchard (8 Grange Road) or start online at chat.mentalhealth.sg",
+      "official_url": "https://www.chat.mentalhealth.sg",
+      "stage": ["secondary", "jc", "poly", "ite", "university"]
+    },
+    {
+      "id": "samh",
+      "name": "Singapore Association for Mental Health (SAMH)",
+      "type": "Mental Health",
+      "description": "Counselling, case management and community mental health services. Helpline available.",
+      "eligibility": "All ages",
+      "how_to_access": "Helpline: 1800-283-7019 (Mon–Fri 9am–6pm). Referral via GP or self-referral.",
+      "official_url": "https://www.samh.org.sg",
+      "stage": ["all"]
+    },
+    {
+      "id": "sos",
+      "name": "Samaritans of Singapore (SOS)",
+      "type": "Crisis Support",
+      "description": "24-hour emotional support and crisis intervention for those in distress. Completely confidential.",
+      "eligibility": "Anyone in distress",
+      "how_to_access": "24-hour hotline: 1-767. CareText (WhatsApp): 9151 1767 (7pm–midnight daily).",
+      "official_url": "https://www.sos.org.sg",
+      "stage": ["all"]
+    },
+    {
+      "id": "touch_youth",
+      "name": "TOUCH Youth Intervention",
+      "type": "Youth Counselling",
+      "description": "Individual and group counselling for at-risk youth. School-based student support, family services.",
+      "eligibility": "Youth up to age 21",
+      "how_to_access": "Via school referral or self-referral to TOUCH Community Services.",
+      "official_url": "https://www.touch.org.sg/about-touch/our-services/touch-youth-intervention",
+      "stage": ["secondary", "ite"]
+    }
+  ],
+  "career_guidance": [
+    {
+      "id": "ecg_centre",
+      "name": "MOE ECG Centres",
+      "type": "Career Counselling",
+      "description": "Free career guidance sessions with professional ECG counsellors. Help students match interests to education pathways and future careers. Located at multiple centres island-wide.",
+      "eligibility": "Secondary school students, N/O/A-level students, poly/ITE students",
+      "how_to_access": "Book via MySkillsFuture portal. Locations: Tampines, Queenstown, Woodlands.",
+      "official_url": "https://www.moe.gov.sg/education-in-sg/our-programmes/education-and-career-guidance/ecg-counselling-service",
+      "stage": ["secondary", "jc", "poly", "ite"]
+    },
+    {
+      "id": "myskillsfuture_students",
+      "name": "MySkillsFuture for Students",
+      "type": "Online Platform",
+      "description": "Career interest profiler, skills explorer, education pathway mapping, job market insights. Personalised based on your profile. Free for all Singaporeans.",
+      "eligibility": "Secondary school and above, Singapore Citizens and PRs",
+      "how_to_access": "Login with Singpass at myskillsfuture.gov.sg",
+      "official_url": "https://www.myskillsfuture.gov.sg",
+      "stage": ["secondary", "jc", "poly", "ite", "university", "postgrad"]
+    },
+    {
+      "id": "wsg_careers",
+      "name": "Workforce Singapore (WSG) Career Centres",
+      "type": "Career Services",
+      "description": "Career coaching, resume writing, interview preparation, job matching. Especially useful for poly/ITE graduates entering the workforce or mid-career switches.",
+      "eligibility": "Job seekers and career switchers in Singapore",
+      "how_to_access": "Walk in or book appointment at WSG Career Centres (Aliwal Arts Centre, Kolam Ayer, etc.).",
+      "official_url": "https://www.wsg.gov.sg/home/job-seekers/career-services",
+      "stage": ["poly", "ite", "university", "postgrad"]
+    },
+    {
+      "id": "e2i",
+      "name": "e2i (Employment and Employability Institute)",
+      "type": "Employment Support",
+      "description": "Career guidance, job matching and upgrading support under NTUC. Offers career fairs and industry networking events.",
+      "eligibility": "All workers in Singapore",
+      "how_to_access": "Walk in to e2i centres or visit e2i.com.sg",
+      "official_url": "https://e2i.com.sg",
+      "stage": ["poly", "ite", "university", "postgrad"]
+    },
+    {
+      "id": "poly_career_centres",
+      "name": "Polytechnic Career Services",
+      "type": "Institution-based",
+      "description": "Each polytechnic has a dedicated career services centre offering internship placement, job fairs, employer networking, and career counselling.",
+      "eligibility": "Current students and recent graduates of respective polytechnic",
+      "how_to_access": "Contact your polytechnic's Career Services / Student Development office.",
+      "official_url": "https://www.sp.edu.sg/sp/student-services/career-development-centre",
+      "stage": ["poly"]
+    },
+    {
+      "id": "ite_career_centre",
+      "name": "ITE Career & Placement Services",
+      "type": "Institution-based",
+      "description": "ITE helps graduates find jobs through industry partnerships, job fairs and career coaching. Strong placement rates in technical sectors.",
+      "eligibility": "Current ITE students and graduates",
+      "how_to_access": "Contact your ITE college's career services unit.",
+      "official_url": "https://www.ite.edu.sg/student-life/career-and-placement-services",
+      "stage": ["ite"]
+    }
+  ],
+  "talks_events": [
+    {
+      "id": "poly_open_house",
+      "name": "Polytechnic Open Houses",
+      "type": "Open House",
+      "description": "Annual open houses where prospective students explore courses, facilities and talk to current students and lecturers. Usually held in October–November.",
+      "eligibility": "All prospective students",
+      "typical_timing": "October–November annually",
+      "institutions": ["Singapore Polytechnic", "Temasek Polytechnic", "Nanyang Polytechnic", "Ngee Ann Polytechnic", "Republic Polytechnic"],
+      "official_url": "https://www.sp.edu.sg/sp/admission/open-house",
+      "stage": ["secondary", "normal_academic"]
+    },
+    {
+      "id": "ite_open_house",
+      "name": "ITE Open House",
+      "type": "Open House",
+      "description": "Annual open house at all 3 ITE colleges. Showcases NITEC and Higher NITEC courses, workshops and employer partners.",
+      "eligibility": "All prospective students",
+      "typical_timing": "November–December annually",
+      "official_url": "https://www.ite.edu.sg/admissions/open-house",
+      "stage": ["secondary", "normal_technical"]
+    },
+    {
+      "id": "university_open_days",
+      "name": "University Open Days & Information Sessions",
+      "type": "Open House",
+      "description": "NUS, NTU, SMU, SUTD, SIT and SUSS hold open houses and information days. Great for A-level and poly students exploring degree options.",
+      "eligibility": "JC students, poly students, parents",
+      "typical_timing": "September–March (varies by university)",
+      "institutions": ["NUS", "NTU", "SMU", "SUTD", "SIT", "SUSS"],
+      "official_url": "https://www.nus.edu.sg/oam/open-house",
+      "stage": ["jc", "poly", "ite"]
+    },
+    {
+      "id": "moe_school_tours",
+      "name": "MOE Secondary School Open Houses",
+      "type": "Open House",
+      "description": "Secondary schools hold open houses in October–November for P6 students and parents. Opportunity to understand school culture, CCAs and academic programmes.",
+      "eligibility": "P6 students and parents",
+      "typical_timing": "October–November annually",
+      "official_url": "https://www.moe.gov.sg/secondary/schools",
+      "stage": ["primary"]
+    },
+    {
+      "id": "nyc_youth_events",
+      "name": "National Youth Council (NYC) Programmes",
+      "type": "Youth Development",
+      "description": "NYC runs youth leadership programmes, community service initiatives and career exposure events for youths aged 15–35.",
+      "eligibility": "Youth aged 15–35",
+      "official_url": "https://www.nyc.gov.sg",
+      "stage": ["secondary", "jc", "poly", "ite", "university"]
+    },
+    {
+      "id": "career_fairs",
+      "name": "Career Fairs & Job Expos",
+      "type": "Career Event",
+      "description": "SGJobsFest, e2i Career Fairs and polytechnic/ITE career fairs connect graduating students with employers. Many have on-the-spot interviews.",
+      "eligibility": "Final-year students and recent graduates",
+      "typical_timing": "Year-round; major fairs in March–April and September",
+      "official_url": "https://content.mycareersfuture.gov.sg",
+      "stage": ["poly", "ite", "university"]
+    }
+  ],
+  "scholarships": [
+    {
+      "id": "psc_scholarship",
+      "name": "Public Service Commission (PSC) Scholarships",
+      "type": "Government",
+      "award_level": "University (local or overseas)",
+      "value": "Full tuition + living allowance + return airfare (overseas)",
+      "description": "Prestigious scholarships to develop future leaders of Singapore's public service. Includes President's Scholarship (most prestigious), PSC Merit Scholarship, and various statutory board scholarships.",
+      "eligibility": "Outstanding A-level / IB / poly students. Singapore Citizens. Strong academics + leadership.",
+      "bond": "4–6 years in public service",
+      "application_period": "September–December (for the following academic year)",
+      "official_url": "https://www.psc.gov.sg/scholarships",
+      "stage": ["jc", "poly"]
+    },
+    {
+      "id": "saf_scholarship",
+      "name": "SAF Scholarship (Singapore Armed Forces)",
+      "type": "Government",
+      "award_level": "University (local or overseas)",
+      "value": "Full scholarship + monthly allowance",
+      "description": "Develops future SAF leaders. Covers all degree levels. Recipients commissioned as officers.",
+      "eligibility": "Singapore Citizens with strong A-level / IB results. Must complete NS first.",
+      "bond": "Up to 8 years",
+      "official_url": "https://www.mindef.gov.sg/oms/imindef/mindef_websites/atozlistings/army/microsites/scholarship.html",
+      "stage": ["jc"]
+    },
+    {
+      "id": "mha_scholarship",
+      "name": "MHA Scholarship (Ministry of Home Affairs)",
+      "type": "Government",
+      "award_level": "University",
+      "value": "Full tuition + allowances",
+      "description": "For future leaders in SPF (Police), SCDF (Civil Defence) or ICA. Includes mentorship and leadership development.",
+      "eligibility": "Singapore Citizens with strong academic record",
+      "bond": "6 years",
+      "official_url": "https://www.mha.gov.sg/scholarship",
+      "stage": ["jc"]
+    },
+    {
+      "id": "moe_teaching_scholarship",
+      "name": "MOE Teaching Scholarship",
+      "type": "Government",
+      "award_level": "University",
+      "value": "Full tuition + monthly stipend",
+      "description": "For those passionate about teaching. Leads to a teaching career in MOE schools. Local or overseas degree options.",
+      "eligibility": "A-level / IB / poly students with good results and passion for education",
+      "bond": "4 years teaching in MOE schools",
+      "official_url": "https://www.moe.gov.sg/careers/teach/scholarships-and-awards/moe-teaching-scholarship",
+      "stage": ["jc", "poly"]
+    },
+    {
+      "id": "astar_scholarship",
+      "name": "A*STAR Scholarships (National Science Scholarship)",
+      "type": "Government Research",
+      "award_level": "University + Post-Graduate",
+      "value": "Full tuition + generous stipend + research opportunities",
+      "description": "For students passionate about research and science. National Science Scholarship (NSS) for undergrad, Singapore International Graduate Award (SINGA) for PhD.",
+      "eligibility": "Strong STEM results, genuine research interest",
+      "bond": "Varies; research placement at A*STAR institutes",
+      "official_url": "https://www.a-star.edu.sg/Scholarships",
+      "stage": ["jc", "poly", "university"]
+    },
+    {
+      "id": "moe_fas",
+      "name": "MOE Financial Assistance Scheme (FAS)",
+      "type": "Bursary / Financial Aid",
+      "award_level": "Primary to Pre-University",
+      "value": "School fees waiver + free textbooks + uniforms + transport assistance",
+      "description": "For families with monthly household income ≤ $3,000 or per capita income ≤ $750. Covers primary school through JC/poly/ITE.",
+      "eligibility": "Singapore Citizens in government / government-aided schools. Income criteria apply.",
+      "how_to_apply": "Apply through your child's school at the start of the year.",
+      "official_url": "https://www.moe.gov.sg/financial-matters/financial-assistance",
+      "stage": ["primary", "secondary", "jc", "poly", "ite"]
+    },
+    {
+      "id": "mendaki_bursary",
+      "name": "Yayasan MENDAKI Bursaries",
+      "type": "Community Bursary",
+      "award_level": "Primary to University",
+      "value": "$300–$2,500 per year depending on level",
+      "description": "Financial assistance for Malay/Muslim students from lower-income families at all education levels.",
+      "eligibility": "Malay/Muslim Singapore Citizens. Income criteria apply.",
+      "official_url": "https://www.mendaki.org.sg/assistance_programme/bursary-award-scheme",
+      "stage": ["primary", "secondary", "jc", "poly", "ite", "university"]
+    },
+    {
+      "id": "cdac_bursary",
+      "name": "CDAC Bursaries (Chinese Development Assistance Council)",
+      "type": "Community Bursary",
+      "award_level": "Primary to University",
+      "value": "$300–$2,000 per year",
+      "description": "Financial assistance for Chinese students from lower-income families.",
+      "eligibility": "Chinese Singapore Citizens/PRs. Income criteria apply.",
+      "official_url": "https://www.cdac.org.sg/education/financial-assistance",
+      "stage": ["primary", "secondary", "jc", "poly", "ite", "university"]
+    },
+    {
+      "id": "sinda_bursary",
+      "name": "SINDA Bursaries (Singapore Indian Development Association)",
+      "type": "Community Bursary",
+      "award_level": "Primary to University",
+      "value": "Up to $2,000 per year",
+      "description": "Financial assistance and academic support for Indian students.",
+      "eligibility": "Indian Singapore Citizens/PRs. Income criteria apply.",
+      "official_url": "https://www.sinda.org.sg/education",
+      "stage": ["primary", "secondary", "jc", "poly", "ite", "university"]
+    },
+    {
+      "id": "nus_scholarship",
+      "name": "NUS Scholarships (Merit & Need-based)",
+      "type": "University",
+      "award_level": "Undergraduate",
+      "value": "Full to partial tuition; NUS Merit Scholarship covers full fees",
+      "description": "NUS offers merit scholarships (top students) and need-based bursaries. Includes Global Merit Scholarship for most outstanding students.",
+      "eligibility": "Admitted NUS students. Merit: exceptional results. Need: household income criteria.",
+      "official_url": "https://www.nus.edu.sg/oam/scholarships-and-financial-aid",
+      "stage": ["university"]
+    },
+    {
+      "id": "skillsfuture_credit",
+      "name": "SkillsFuture Credit",
+      "type": "Upskilling Credit",
+      "award_level": "Post-Secondary and above",
+      "value": "$500 opening credit + $500 mid-career top-up at 40",
+      "description": "Every Singapore Citizen aged 25+ receives SkillsFuture Credit for approved courses at universities, polytechnics, ITE and private providers. Use for part-time degrees, professional certs, short courses.",
+      "eligibility": "Singapore Citizens aged 25 and above",
+      "official_url": "https://www.skillsfuture.gov.sg/credit",
+      "stage": ["university", "postgrad"]
+    }
+  ],
+  "earn_and_learn": [
+    {
+      "id": "ite_wsp",
+      "name": "ITE Work-Study Programme (WSP)",
+      "type": "Work-Study",
+      "award_level": "ITE (NITEC / Higher NITEC)",
+      "description": "Alternating blocks of school-based learning and company-based training. Students are paid a monthly allowance by the company. Leads to Higher NITEC qualification with industry experience.",
+      "eligibility": "ITE students in selected courses. Must be offered by participating companies.",
+      "allowance": "Monthly training allowance paid by employer (varies by industry)",
+      "sectors": ["Engineering", "Hospitality", "Retail", "F&B", "Logistics", "IT"],
+      "official_url": "https://www.ite.edu.sg/admissions/full-time-courses/work-study-programmes",
+      "stage": ["ite"]
+    },
+    {
+      "id": "poly_wsdip",
+      "name": "Polytechnic Work-Study Diploma (WSDip)",
+      "type": "Work-Study",
+      "award_level": "Polytechnic Diploma",
+      "description": "Structured programme combining poly study with structured on-the-job training at a company. Same diploma as full-time study but with paid work experience built in.",
+      "eligibility": "Selected poly students; companies and poly must have WSDip arrangement",
+      "allowance": "Paid by company during work attachment periods",
+      "polys": ["Temasek Polytechnic", "Singapore Polytechnic", "Nanyang Polytechnic", "Ngee Ann Polytechnic", "Republic Polytechnic"],
+      "official_url": "https://www.tp.edu.sg/admissions/full-time-courses/work-study-diploma-programmes.html",
+      "stage": ["poly"]
+    },
+    {
+      "id": "sf_earn_learn",
+      "name": "SkillsFuture Earn & Learn Programme",
+      "type": "Apprenticeship",
+      "award_level": "Post-ITE / Post-Poly",
+      "description": "Fresh poly diploma or ITE Higher NITEC graduates are hired by a company and sponsored to pursue a part-time degree or specialist diploma while working. Company pays salary. Government provides training grant to company.",
+      "eligibility": "Fresh poly diploma holders (within 2 years of graduation). Singapore Citizens and PRs.",
+      "sectors": ["Precision Engineering", "ICT", "Healthcare", "Logistics", "Food Manufacturing", "Built Environment"],
+      "official_url": "https://www.skillsfuture.gov.sg/initiatives/mid-career/earningandlearning",
+      "stage": ["poly", "ite"]
+    },
+    {
+      "id": "pcp",
+      "name": "Professional Conversion Programmes (PCP)",
+      "type": "Career Conversion",
+      "award_level": "University graduates / Mid-career",
+      "description": "Structured training programmes to help professionals switch to a new career sector. Employer hires candidate, government co-funds salary during training period.",
+      "eligibility": "Singapore Citizens and PRs. Varies by programme — some for fresh grads, others for mid-career.",
+      "sectors": ["Data Science & AI", "Cybersecurity", "FinTech", "Healthcare", "Education", "Built Environment", "Hospitality"],
+      "salary_support": "Up to 90% of salary supported for eligible candidates during training period",
+      "official_url": "https://www.wsg.gov.sg/home/employers-industry-partners/workforce-development-programmes/professional-conversion-programmes",
+      "stage": ["university", "postgrad"]
+    },
+    {
+      "id": "ntu_wsp",
+      "name": "NTU / NUS Industry Attachment & Co-op Programmes",
+      "type": "Internship / Co-op",
+      "award_level": "University",
+      "description": "Structured industry attachments (6–12 months) or co-op programmes where students work in real companies. Paid. Many lead to job offers. NUS iCPEX, NTU Industry Attachment.",
+      "eligibility": "NUS / NTU students in eligible programmes",
+      "official_url": "https://www.ntu.edu.sg/education/undergraduate-programme/professional-attachment-programme",
+      "stage": ["university"]
+    },
+    {
+      "id": "apprenticeship_sg",
+      "name": "SGUnited Traineeships / Apprenticeships",
+      "type": "Traineeship",
+      "award_level": "ITE / Poly / University graduates",
+      "description": "Government-supported traineeship programme connecting fresh graduates with host companies for structured on-the-job training. Monthly stipend paid. Builds industry-ready skills.",
+      "eligibility": "Fresh graduates (ITE, poly, university). Singapore Citizens and PRs.",
+      "stipend": "Varies by qualification: ITE ~$1,200/month, Poly ~$1,500/month, Degree ~$1,800/month",
+      "official_url": "https://www.wsg.gov.sg/home/job-seekers/wsg-programmes/traineeships",
+      "stage": ["ite", "poly", "university"]
+    }
+  ]
+}
