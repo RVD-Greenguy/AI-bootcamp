@@ -1,0 +1,156 @@
+[
+  {
+    "id": "sp",
+    "name": "Singapore Polytechnic",
+    "type": "poly",
+    "short": "SP",
+    "postal": "139651",
+    "lat": 1.3109,
+    "lng": 103.7784,
+    "address": "500 Dover Road",
+    "official_url": "https://www.sp.edu.sg"
+  },
+  {
+    "id": "tp",
+    "name": "Temasek Polytechnic",
+    "type": "poly",
+    "short": "TP",
+    "postal": "529757",
+    "lat": 1.3453,
+    "lng": 103.9312,
+    "address": "21 Tampines Ave 1",
+    "official_url": "https://www.tp.edu.sg"
+  },
+  {
+    "id": "nyp",
+    "name": "Nanyang Polytechnic",
+    "type": "poly",
+    "short": "NYP",
+    "postal": "569830",
+    "lat": 1.3802,
+    "lng": 103.8484,
+    "address": "180 Ang Mo Kio Ave 8",
+    "official_url": "https://www.nyp.edu.sg"
+  },
+  {
+    "id": "np",
+    "name": "Ngee Ann Polytechnic",
+    "type": "poly",
+    "short": "NP",
+    "postal": "599489",
+    "lat": 1.3331,
+    "lng": 103.7753,
+    "address": "535 Clementi Road",
+    "official_url": "https://www.np.edu.sg"
+  },
+  {
+    "id": "rp",
+    "name": "Republic Polytechnic",
+    "type": "poly",
+    "short": "RP",
+    "postal": "738964",
+    "lat": 1.4393,
+    "lng": 103.7823,
+    "address": "9 Woodlands Ave 9",
+    "official_url": "https://www.rp.edu.sg"
+  },
+  {
+    "id": "ite_east",
+    "name": "ITE College East",
+    "type": "ite",
+    "short": "ITE East",
+    "postal": "529760",
+    "lat": 1.3429,
+    "lng": 103.9519,
+    "address": "10 Simei Ave",
+    "official_url": "https://www.ite.edu.sg"
+  },
+  {
+    "id": "ite_central",
+    "name": "ITE College Central",
+    "type": "ite",
+    "short": "ITE Central",
+    "postal": "569750",
+    "lat": 1.3769,
+    "lng": 103.8503,
+    "address": "2 Ang Mo Kio Drive",
+    "official_url": "https://www.ite.edu.sg"
+  },
+  {
+    "id": "ite_west",
+    "name": "ITE College West",
+    "type": "ite",
+    "short": "ITE West",
+    "postal": "689732",
+    "lat": 1.3914,
+    "lng": 103.7461,
+    "address": "1 Choa Chu Kang Grove",
+    "official_url": "https://www.ite.edu.sg"
+  },
+  {
+    "id": "nus",
+    "name": "National University of Singapore",
+    "type": "university",
+    "short": "NUS",
+    "postal": "119077",
+    "lat": 1.2966,
+    "lng": 103.7764,
+    "address": "21 Lower Kent Ridge Road",
+    "official_url": "https://www.nus.edu.sg"
+  },
+  {
+    "id": "ntu",
+    "name": "Nanyang Technological University",
+    "type": "university",
+    "short": "NTU",
+    "postal": "639798",
+    "lat": 1.3483,
+    "lng": 103.6831,
+    "address": "50 Nanyang Avenue",
+    "official_url": "https://www.ntu.edu.sg"
+  },
+  {
+    "id": "smu",
+    "name": "Singapore Management University",
+    "type": "university",
+    "short": "SMU",
+    "postal": "178899",
+    "lat": 1.2966,
+    "lng": 103.8495,
+    "address": "81 Victoria Street",
+    "official_url": "https://www.smu.edu.sg"
+  },
+  {
+    "id": "sutd",
+    "name": "Singapore Univ of Technology and Design",
+    "type": "university",
+    "short": "SUTD",
+    "postal": "487372",
+    "lat": 1.3413,
+    "lng": 103.9633,
+    "address": "8 Somapah Road",
+    "official_url": "https://www.sutd.edu.sg"
+  },
+  {
+    "id": "sit",
+    "name": "Singapore Institute of Technology",
+    "type": "university",
+    "short": "SIT",
+    "postal": "138683",
+    "lat": 1.3135,
+    "lng": 103.7826,
+    "address": "10 Dover Drive",
+    "official_url": "https://www.singaporetech.edu.sg"
+  },
+  {
+    "id": "suss",
+    "name": "Singapore Univ of Social Sciences",
+    "type": "university",
+    "short": "SUSS",
+    "postal": "599494",
+    "lat": 1.327,
+    "lng": 103.7763,
+    "address": "463 Clementi Road",
+    "official_url": "https://www.suss.edu.sg"
+  }
+]

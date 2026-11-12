@@ -26,11 +26,12 @@ st.info("All cutoff figures are **approximate** based on recent years. Actual cu
 GRADE_OPTIONS = ["A1", "A2", "B3", "B4", "C5", "C6", "D7", "E8", "F9"]
 GRADE_POINTS = {"A1": 1, "A2": 2, "B3": 3, "B4": 4, "C5": 5, "C6": 6, "D7": 7, "E8": 8, "F9": 9}
 
-tab_psle, tab_olevels, tab_alevels, tab_dae = st.tabs([
+tab_psle, tab_olevels, tab_alevels, tab_dae, tab_nearby = st.tabs([
     "📊 PSLE → Secondary School",
     "🏫 O-levels → JC / Poly / ITE (JAE)",
     "🎓 A-levels → University",
     "📜 Poly Diploma → University (DAE)",
+    "📍 Nearby Schools",
 ])
 
 # ── TAB 1: PSLE ──────────────────────────────────────────────────────────────
@@ -333,3 +334,225 @@ with tab_dae:
         | **Result** | May–June | June–July |
         | **Advance standing** | May get credit exemptions | Standard Year 1 entry |
         """)
+
+# ── TAB 5: NEARBY INSTITUTIONS ───────────────────────────────────────────────
+with tab_nearby:
+    st.subheader("📍 Nearby Institutions — Distance & Travel Time")
+    st.markdown(
+        "Enter your Singapore postal code to find secondary schools, JCs, polytechnics, "
+        "ITE colleges and universities near you — with live or estimated bus and car travel times."
+    )
+
+    from services.location_service import (
+        geocode_postal, get_drive_time, get_pt_time,
+        haversine_km, estimate_drive_min, estimate_pt_min, travel_convenience,
+        _get_token,
+    )
+    from services.pathway_service import get_secondary_schools, get_jc_data, get_institution_locations
+
+    col_postal, col_type, col_gender = st.columns([2, 2, 1])
+    with col_postal:
+        postal_input = st.text_input(
+            "Your postal code (6 digits):",
+            placeholder="e.g. 520123",
+            max_chars=6,
+        )
+    with col_type:
+        inst_types = st.multiselect(
+            "Institution types:",
+            ["Secondary School", "Junior College", "Polytechnic", "ITE College", "University"],
+            default=["Secondary School", "Junior College", "Polytechnic"],
+        )
+    with col_gender:
+        gender_filter = st.selectbox("Gender (Sec/JC):", ["Any", "Boys", "Girls"])
+
+    sort_by = st.radio(
+        "Sort results by:",
+        ["Distance", "🚌 Bus time", "🚗 Car time"],
+        horizontal=True,
+    )
+
+    search = st.button("🔍 Find Nearby Institutions", type="primary")
+
+    if search and postal_input:
+        if len(postal_input) != 6 or not postal_input.isdigit():
+            st.error("Please enter a valid 6-digit Singapore postal code.")
+        elif not inst_types:
+            st.warning("Select at least one institution type.")
+        else:
+            with st.spinner("Locating your address via OneMap…"):
+                loc = geocode_postal(postal_input)
+
+            if not loc:
+                st.error("Postal code not found. Please check and try again.")
+            else:
+                st.success(f"📍 **Your location:** {loc['address']}")
+                user_lat, user_lng = loc["lat"], loc["lng"]
+                token_available = bool(_get_token())
+
+                # Build unified institution list
+                candidates = []
+                TYPE_LABEL = {
+                    "Secondary School": "🏫 Secondary",
+                    "Junior College": "🎓 JC",
+                    "Polytechnic": "🏛️ Poly",
+                    "ITE College": "🔧 ITE",
+                    "University": "🏢 University",
+                }
+                TYPE_COLOR = {
+                    "Secondary School": "blue",
+                    "Junior College": "purple",
+                    "Polytechnic": "cyan",
+                    "ITE College": "orange",
+                    "University": "green",
+                }
+
+                if "Secondary School" in inst_types:
+                    for s in get_secondary_schools():
+                        if "lat" not in s: continue
+                        if gender_filter != "Any":
+                            sg = s.get("gender", "mixed")
+                            if sg != "mixed" and sg != gender_filter.lower(): continue
+                        candidates.append({
+                            "id": s["id"], "name": s["name"],
+                            "category": "Secondary School",
+                            "detail": f"AL {s.get('psle_al_cutoff_min','?')}–{s.get('psle_al_cutoff_max','?')} · {'IP' if s.get('is_ip') else 'Non-IP'}",
+                            "lat": s["lat"], "lng": s["lng"],
+                            "address": s.get("address",""), "url": s.get("official_url",""),
+                        })
+
+                if "Junior College" in inst_types:
+                    for j in get_jc_data():
+                        if "lat" not in j: continue
+                        cutoff = j.get("l1r5_cutoff_2023","")
+                        cutoff_str = f"L1R5 ~{cutoff['min']}–{cutoff['max']}" if isinstance(cutoff, dict) else f"L1R5 ~{cutoff}"
+                        candidates.append({
+                            "id": j["id"], "name": j["name"],
+                            "category": "Junior College",
+                            "detail": cutoff_str,
+                            "lat": j["lat"], "lng": j["lng"],
+                            "address": j.get("address",""), "url": j.get("official_url",""),
+                        })
+
+                for inst in get_institution_locations():
+                    cat_map = {"poly": "Polytechnic", "ite": "ITE College", "university": "University"}
+                    cat = cat_map.get(inst.get("type",""), "")
+                    if cat in inst_types:
+                        candidates.append({
+                            "id": inst["id"], "name": inst["name"],
+                            "category": cat,
+                            "detail": inst.get("short",""),
+                            "lat": inst["lat"], "lng": inst["lng"],
+                            "address": inst.get("address",""), "url": inst.get("official_url",""),
+                        })
+
+                rows = []
+                with st.spinner(f"Calculating distances for {len(candidates)} institutions…"):
+                    for c in candidates:
+                        dist = haversine_km(user_lat, user_lng, c["lat"], c["lng"])
+                        conv = travel_convenience(dist)
+
+                        if token_available:
+                            drive_min = get_drive_time(user_lat, user_lng, c["lat"], c["lng"])
+                            pt_min = get_pt_time(user_lat, user_lng, c["lat"], c["lng"])
+                        else:
+                            drive_min, pt_min = None, None
+
+                        drive_min = drive_min or estimate_drive_min(dist)
+                        pt_min = pt_min or estimate_pt_min(dist)
+
+                        rows.append({
+                            "Institution": c["name"],
+                            "Category": TYPE_LABEL.get(c["category"], c["category"]),
+                            "cat_raw": c["category"],
+                            "Detail": c["detail"],
+                            "Distance (km)": round(dist, 1),
+                            "dist_raw": dist,
+                            "🚌 Bus (min)": pt_min,
+                            "🚗 Car (min)": drive_min,
+                            "Zone": conv["emoji"] + " " + conv["label"],
+                            "P1 Priority": conv["p1_zone"],
+                            "Address": c["address"],
+                            "URL": c["url"],
+                            "color": TYPE_COLOR.get(c["category"], "blue"),
+                            "lat": c["lat"], "lng": c["lng"],
+                        })
+
+                if not rows:
+                    st.warning("No institutions found. Try selecting more types.")
+                else:
+                    if sort_by == "Distance":
+                        rows.sort(key=lambda r: r["dist_raw"])
+                    elif sort_by == "🚌 Bus time":
+                        rows.sort(key=lambda r: r["🚌 Bus (min)"])
+                    else:
+                        rows.sort(key=lambda r: r["🚗 Car (min)"])
+
+                    if not token_available:
+                        st.info(
+                            "ℹ️ **Estimated** travel times shown (no OneMap token). "
+                            "Add `ONEMAP_TOKEN` to Streamlit Secrets for real routing.",
+                            icon="ℹ️",
+                        )
+
+                    import pandas as pd
+                    df = pd.DataFrame(rows)[[
+                        "Institution", "Category", "Detail",
+                        "Distance (km)", "🚌 Bus (min)", "🚗 Car (min)", "Zone"
+                    ]]
+                    st.dataframe(df, use_container_width=True, hide_index=True)
+
+                    # Map
+                    st.divider()
+                    st.markdown("### 🗺️ Map View")
+                    map_data = [{"Institution": "📍 My Home", "lat": user_lat, "lng": user_lng,
+                                 "color": "red", "size": 16, "Detail": "Your location"}]
+                    for r in rows:
+                        map_data.append({"Institution": r["Institution"], "lat": r["lat"], "lng": r["lng"],
+                                         "color": r["color"], "size": 8, "Detail": r["Detail"]})
+                    map_df = pd.DataFrame(map_data)
+                    color_map = {"red": "#ef4444", "blue": "#3b82f6", "purple": "#8b5cf6",
+                                 "cyan": "#06b6d4", "orange": "#f97316", "green": "#10b981"}
+                    import plotly.express as px
+                    fig = px.scatter_mapbox(
+                        map_df, lat="lat", lon="lng",
+                        hover_name="Institution", hover_data={"Detail": True, "lat": False, "lng": False, "color": False, "size": False},
+                        zoom=11, height=500,
+                        color="color", size="size",
+                        color_discrete_map=color_map,
+                    )
+                    fig.update_layout(mapbox_style="open-street-map", showlegend=False,
+                                      margin=dict(l=0, r=0, t=0, b=0))
+                    st.plotly_chart(fig, use_container_width=True)
+
+                    # Legend
+                    leg_cols = st.columns(5)
+                    for col, (cat, color) in zip(leg_cols, TYPE_COLOR.items()):
+                        col.markdown(f"<span style='color:{color_map[color]}'>⬤</span> {TYPE_LABEL[cat]}", unsafe_allow_html=True)
+
+                    # Detail expanders (top 10 nearest)
+                    st.divider()
+                    st.markdown("### Top 10 Nearest")
+                    for r in rows[:10]:
+                        with st.expander(f"**{r['Institution']}** {r['Category']} — {r['Distance (km)']} km · 🚌 {r['🚌 Bus (min)']} min · 🚗 {r['🚗 Car (min)']} min"):
+                            c1, c2, c3 = st.columns(3)
+                            c1.metric("Distance", f"{r['Distance (km)']} km")
+                            c2.metric("🚌 Bus / PT", f"{r['🚌 Bus (min)']} min")
+                            c3.metric("🚗 Car / Drive", f"{r['🚗 Car (min)']} min")
+                            st.markdown(f"**Zone:** {r['Zone']}  ·  **P1 priority:** {r['P1 Priority']}")
+                            st.caption(f"📍 {r['Address']}")
+                            if r["URL"]:
+                                st.markdown(f"[Official website →]({r['URL']})")
+
+    st.divider()
+    st.markdown("### P1 Registration Distance Priority Zones")
+    st.markdown("""
+| Zone | Distance | Phase | Priority |
+|------|----------|-------|---------|
+| 🟢 | Within 1 km | Phase 2B / 2C | Highest — distance ballot advantage |
+| 🟡 | 1–2 km | Phase 2C | High — distance considered |
+| 🟠 | 2–5 km | Phase 2C+ | No distance priority; purely ballot |
+| 🔴 | 5 km+ | Phase 3 | No priority |
+
+*Distance priority applies to **primary school P1 registration** only. Secondary (PSLE), JC (JAE), Poly/ITE/Uni admissions are based purely on scores — distance has no bearing.*
+    """)

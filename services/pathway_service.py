@@ -90,6 +90,14 @@ def get_fallback_policies() -> list[dict]:
 
 
 @lru_cache(maxsize=1)
+def get_institution_locations() -> list[dict]:
+    path = DATA_DIR / "institution_locations.json"
+    if path.exists():
+        return json.loads(path.read_text())
+    return []
+
+
+@lru_cache(maxsize=1)
 def get_support_resources() -> dict:
     path = DATA_DIR / "support_resources.json"
     if path.exists():

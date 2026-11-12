@@ -54,8 +54,10 @@ def ask_guide(question: str, context_chunks: list[dict], conversation_history: l
         messages.extend(conversation_history[-8:])
         messages.append({"role": "user", "content": question})
 
+        from utils.config import _secret
+        model = _secret("OPENAI_MODEL", "gpt-4o-mini")
         resp = client.chat.completions.create(
-            model="gpt-4o",
+            model=model,
             messages=messages,
             max_tokens=800,
             temperature=0.3,

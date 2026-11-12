@@ -12,9 +12,18 @@
     "psle_al_cutoff_max": 7,
     "location": "Central",
     "gender": "boys",
-    "notable_programmes": ["Raffles Programme", "Humanities Programme", "Research@Raffles", "Talent Development Programme"],
+    "notable_programmes": [
+      "Raffles Programme",
+      "Humanities Programme",
+      "Research@Raffles",
+      "Talent Development Programme"
+    ],
     "official_url": "https://www.ri.edu.sg",
-    "note": "One of Singapore's most prestigious IP schools. Sec 1-4 at RI, then Raffles Institution JC (RIJC). Part of the Raffles family of schools."
+    "note": "One of Singapore's most prestigious IP schools. Sec 1-4 at RI, then Raffles Institution JC (RIJC). Part of the Raffles family of schools.",
+    "postal": "575954",
+    "lat": 1.32,
+    "lng": 103.8449,
+    "address": "1 Raffles Institution Lane"
   },
   {
     "id": "rgs",
@@ -29,9 +38,17 @@
     "psle_al_cutoff_max": 7,
     "location": "Central",
     "gender": "girls",
-    "notable_programmes": ["Raffles Programme", "Humanities Scholarship Programme", "Raffles Academy"],
+    "notable_programmes": [
+      "Raffles Programme",
+      "Humanities Scholarship Programme",
+      "Raffles Academy"
+    ],
     "official_url": "https://www.rgs.edu.sg",
-    "note": "Girls' counterpart to RI. After Sec 4, students proceed to RIJC. Affiliated with RIJC (affiliation bonus -2 L1R5)."
+    "note": "Girls' counterpart to RI. After Sec 4, students proceed to RIJC. Affiliated with RIJC (affiliation bonus -2 L1R5).",
+    "postal": "259978",
+    "lat": 1.3263,
+    "lng": 103.8321,
+    "address": "20 Anderson Road"
   },
   {
     "id": "hci",
@@ -46,9 +63,18 @@
     "psle_al_cutoff_max": 7,
     "location": "Bukit Timah",
     "gender": "boys",
-    "notable_programmes": ["Humanities Programme", "Science Research Programme", "Global Leadership Programme", "Bicultural Studies Programme"],
+    "notable_programmes": [
+      "Humanities Programme",
+      "Science Research Programme",
+      "Global Leadership Programme",
+      "Bicultural Studies Programme"
+    ],
     "official_url": "https://www.hci.edu.sg",
-    "note": "SAP school with strong Chinese language emphasis. Sec 1-4 at HCI, then proceeds to HCJC. Known for holistic education and strong CCA culture."
+    "note": "SAP school with strong Chinese language emphasis. Sec 1-4 at HCI, then proceeds to HCJC. Known for holistic education and strong CCA culture.",
+    "postal": "269734",
+    "lat": 1.3331,
+    "lng": 103.8046,
+    "address": "661 Bukit Timah Road"
   },
   {
     "id": "acsi",
@@ -63,9 +89,17 @@
     "psle_al_cutoff_max": 8,
     "location": "Bukit Timah",
     "gender": "boys",
-    "notable_programmes": ["International Baccalaureate (IB)", "Bicultural Studies", "Service Learning"],
+    "notable_programmes": [
+      "International Baccalaureate (IB)",
+      "Bicultural Studies",
+      "Service Learning"
+    ],
     "official_url": "https://www.acsindep.moe.edu.sg",
-    "note": "Offers IB Diploma Programme (Year 5-6). One of only a few schools in Singapore offering IB within the government school system. ACJC is affiliated JC if student opts for A-levels path."
+    "note": "Offers IB Diploma Programme (Year 5-6). One of only a few schools in Singapore offering IB within the government school system. ACJC is affiliated JC if student opts for A-levels path.",
+    "postal": "139650",
+    "lat": 1.3109,
+    "lng": 103.776,
+    "address": "121 Dover Road"
   },
   {
     "id": "scgs",
@@ -80,9 +114,17 @@
     "psle_al_cutoff_max": 8,
     "location": "Central",
     "gender": "girls",
-    "notable_programmes": ["Bicultural Studies Programme", "Humanities Programme", "Talent Development"],
+    "notable_programmes": [
+      "Bicultural Studies Programme",
+      "Humanities Programme",
+      "Talent Development"
+    ],
     "official_url": "https://www.scgs.moe.edu.sg",
-    "note": "SAP school for girls. IP pathway leads to A-levels. Strong Chinese language and culture emphasis."
+    "note": "SAP school for girls. IP pathway leads to A-levels. Strong Chinese language and culture emphasis.",
+    "postal": "288683",
+    "lat": 1.3196,
+    "lng": 103.807,
+    "address": "37 Linden Drive"
   },
   {
     "id": "vs",
@@ -97,9 +139,17 @@
     "psle_al_cutoff_max": 9,
     "location": "East",
     "gender": "boys",
-    "notable_programmes": ["IP Programme", "Bicultural Studies", "Learning for Life Programme"],
+    "notable_programmes": [
+      "IP Programme",
+      "Bicultural Studies",
+      "Learning for Life Programme"
+    ],
     "official_url": "https://www.victoriasec.moe.edu.sg",
-    "note": "Affiliated with Victoria Junior College (VJC). Boys' IP school in the East of Singapore."
+    "note": "Affiliated with Victoria Junior College (VJC). Boys' IP school in the East of Singapore.",
+    "postal": "448914",
+    "lat": 1.3092,
+    "lng": 103.9099,
+    "address": "2 Siglap Road"
   },
   {
     "id": "njc_sec",
@@ -114,9 +164,17 @@
     "psle_al_cutoff_max": 9,
     "location": "North",
     "gender": "mixed",
-    "notable_programmes": ["IP Programme", "Humanities Programme", "Research & Innovation"],
+    "notable_programmes": [
+      "IP Programme",
+      "Humanities Programme",
+      "Research & Innovation"
+    ],
     "official_url": "https://www.nationaljc.moe.edu.sg",
-    "note": "Through-train from Sec 1 to JC2 on a single campus. Direct progression to NJC JC section."
+    "note": "Through-train from Sec 1 to JC2 on a single campus. Direct progression to NJC JC section.",
+    "postal": "288913",
+    "lat": 1.3473,
+    "lng": 103.8085,
+    "address": "37 Hillcrest Road"
   },
   {
     "id": "sji",
@@ -131,9 +189,17 @@
     "psle_al_cutoff_max": 9,
     "location": "Central",
     "gender": "boys",
-    "notable_programmes": ["International Baccalaureate (IB)", "Lasallian Values Education", "Service Learning"],
+    "notable_programmes": [
+      "International Baccalaureate (IB)",
+      "Lasallian Values Education",
+      "Service Learning"
+    ],
     "official_url": "https://www.sji.edu.sg",
-    "note": "Catholic boys' school offering IB Diploma. One of Singapore's oldest schools. Lasallian tradition."
+    "note": "Catholic boys' school offering IB Diploma. One of Singapore's oldest schools. Lasallian tradition.",
+    "postal": "308274",
+    "lat": 1.322,
+    "lng": 103.8373,
+    "address": "38 Malcolm Road"
   },
   {
     "id": "cedar",
@@ -148,9 +214,17 @@
     "psle_al_cutoff_max": 10,
     "location": "East",
     "gender": "girls",
-    "notable_programmes": ["IP Programme", "Aesthetics Programme", "Global Education Programme"],
+    "notable_programmes": [
+      "IP Programme",
+      "Aesthetics Programme",
+      "Global Education Programme"
+    ],
     "official_url": "https://www.cedargirls.moe.edu.sg",
-    "note": "Girls' IP school in the East. Affiliated with Tampines Meridian JC (TMJC)."
+    "note": "Girls' IP school in the East. Affiliated with Tampines Meridian JC (TMJC).",
+    "postal": "545523",
+    "lat": 1.3697,
+    "lng": 103.8622,
+    "address": "10 Yio Chu Kang Road"
   },
   {
     "id": "chij_sngs",
@@ -165,9 +239,17 @@
     "psle_al_cutoff_max": 9,
     "location": "North",
     "gender": "girls",
-    "notable_programmes": ["IP Programme", "IJ Leadership Programme", "Aesthetics"],
+    "notable_programmes": [
+      "IP Programme",
+      "IJ Leadership Programme",
+      "Aesthetics"
+    ],
     "official_url": "https://www.chijsngs.moe.edu.sg",
-    "note": "Catholic girls' school in the North. Part of CHIJ family of schools. Affiliated with CJC."
+    "note": "Catholic girls' school in the North. Part of CHIJ family of schools. Affiliated with CJC.",
+    "postal": "569168",
+    "lat": 1.3787,
+    "lng": 103.8411,
+    "address": "2 Ang Mo Kio Street 66"
   },
   {
     "id": "nygh",
@@ -182,9 +264,18 @@
     "psle_al_cutoff_max": 8,
     "location": "Bukit Timah",
     "gender": "girls",
-    "notable_programmes": ["Bicultural Studies", "IP Programme", "SAP (Chinese)", "Talent Development"],
+    "notable_programmes": [
+      "Bicultural Studies",
+      "IP Programme",
+      "SAP (Chinese)",
+      "Talent Development"
+    ],
     "official_url": "https://www.nygh.moe.edu.sg",
-    "note": "SAP girls' school near HCI. IP students proceed to HCJC. Strong in academics and sports."
+    "note": "SAP girls' school near HCI. IP students proceed to HCJC. Strong in academics and sports.",
+    "postal": "127383",
+    "lat": 1.3059,
+    "lng": 103.782,
+    "address": "2 West Coast Walk"
   },
   {
     "id": "dhs",
@@ -199,9 +290,17 @@
     "psle_al_cutoff_max": 9,
     "location": "East",
     "gender": "mixed",
-    "notable_programmes": ["IP Programme", "Bicultural Studies", "STEM"],
+    "notable_programmes": [
+      "IP Programme",
+      "Bicultural Studies",
+      "STEM"
+    ],
     "official_url": "https://www.dunmanhigh.moe.edu.sg",
-    "note": "SAP school with IP pathway. Co-ed in a predominantly single-sex IP landscape. Strong in Chinese language and culture."
+    "note": "SAP school with IP pathway. Co-ed in a predominantly single-sex IP landscape. Strong in Chinese language and culture.",
+    "postal": "436895",
+    "lat": 1.303,
+    "lng": 103.8713,
+    "address": "10 Tanjong Rhu Road"
   },
   {
     "id": "rvhs",
@@ -216,9 +315,17 @@
     "psle_al_cutoff_max": 9,
     "location": "Central",
     "gender": "mixed",
-    "notable_programmes": ["IP Programme", "Bicultural Studies", "Research & Innovation"],
+    "notable_programmes": [
+      "IP Programme",
+      "Bicultural Studies",
+      "Research & Innovation"
+    ],
     "official_url": "https://www.rivervalleyhigh.moe.edu.sg",
-    "note": "SAP school with IP. Co-ed. Known for strong academic and CCA performance."
+    "note": "SAP school with IP. Co-ed. Known for strong academic and CCA performance.",
+    "postal": "649926",
+    "lat": 1.342,
+    "lng": 103.7231,
+    "address": "6 Boon Lay Avenue"
   },
   {
     "id": "nushigh",
@@ -233,9 +340,18 @@
     "psle_al_cutoff_max": null,
     "location": "North",
     "gender": "mixed",
-    "notable_programmes": ["NUS High Diploma", "Major-Minor System", "Research", "Mathematics Olympiad"],
+    "notable_programmes": [
+      "NUS High Diploma",
+      "Major-Minor System",
+      "Research",
+      "Mathematics Olympiad"
+    ],
     "official_url": "https://www.nushigh.edu.sg",
-    "note": "Specialised independent school for STEM-focused students. Own curriculum with modular system. Admission by aptitude test and interview, not purely PSLE score. Graduates receive NUS High Diploma recognised by universities."
+    "note": "Specialised independent school for STEM-focused students. Own curriculum with modular system. Admission by aptitude test and interview, not purely PSLE score. Graduates receive NUS High Diploma recognised by universities.",
+    "postal": "129777",
+    "lat": 1.2983,
+    "lng": 103.7752,
+    "address": "20 Clementi Avenue 1"
   },
   {
     "id": "sota",
@@ -250,9 +366,20 @@
     "psle_al_cutoff_max": null,
     "location": "Central",
     "gender": "mixed",
-    "notable_programmes": ["IB Diploma", "Visual Arts", "Dance", "Music", "Theatre", "Film"],
+    "notable_programmes": [
+      "IB Diploma",
+      "Visual Arts",
+      "Dance",
+      "Music",
+      "Theatre",
+      "Film"
+    ],
     "official_url": "https://www.sota.edu.sg",
-    "note": "Specialised arts school. Admission by audition/portfolio, not PSLE score. Students develop arts specialisation alongside academics. IB Diploma in Year 5-6."
+    "note": "Specialised arts school. Admission by audition/portfolio, not PSLE score. Students develop arts specialisation alongside academics. IB Diploma in Year 5-6.",
+    "postal": "227968",
+    "lat": 1.2982,
+    "lng": 103.8459,
+    "address": "1 Zubir Said Drive"
   },
   {
     "id": "sportsschool",
@@ -267,9 +394,17 @@
     "psle_al_cutoff_max": null,
     "location": "North",
     "gender": "mixed",
-    "notable_programmes": ["Sports Excellence Programme", "Dual Career Pathway", "O-Levels"],
+    "notable_programmes": [
+      "Sports Excellence Programme",
+      "Dual Career Pathway",
+      "O-Levels"
+    ],
     "official_url": "https://www.sportsschool.edu.sg",
-    "note": "Specialised school for elite athletes. Admission by sports talent, not PSLE. Flexible timetable to accommodate training. Students still sit O-Levels."
+    "note": "Specialised school for elite athletes. Admission by sports talent, not PSLE. Flexible timetable to accommodate training. Students still sit O-Levels.",
+    "postal": "737913",
+    "lat": 1.4024,
+    "lng": 103.795,
+    "address": "1 Champions Way"
   },
   {
     "id": "anglichigh",
@@ -284,9 +419,17 @@
     "psle_al_cutoff_max": 14,
     "location": "East",
     "gender": "mixed",
-    "notable_programmes": ["SAP Chinese Programme", "Talent Development", "STEM"],
+    "notable_programmes": [
+      "SAP Chinese Programme",
+      "Talent Development",
+      "STEM"
+    ],
     "official_url": "https://www.anglicanhigh.moe.edu.sg",
-    "note": "SAP school with strong Chinese language emphasis. Well-regarded non-IP school. Christian mission school."
+    "note": "SAP school with strong Chinese language emphasis. Well-regarded non-IP school. Christian mission school.",
+    "postal": "148958",
+    "lat": 1.2855,
+    "lng": 103.8208,
+    "address": "10 Stirling Road"
   },
   {
     "id": "chungchenghigh",
@@ -301,9 +444,17 @@
     "psle_al_cutoff_max": 14,
     "location": "Central",
     "gender": "mixed",
-    "notable_programmes": ["SAP Chinese", "Bicultural Studies", "Humanities Programme"],
+    "notable_programmes": [
+      "SAP Chinese",
+      "Bicultural Studies",
+      "Humanities Programme"
+    ],
     "official_url": "https://www.chungchenghigh.moe.edu.sg",
-    "note": "Long-established SAP school. Strong Chinese culture. Has a branch school in Yishun (Yishun branch)."
+    "note": "Long-established SAP school. Strong Chinese culture. Has a branch school in Yishun (Yishun branch).",
+    "postal": "437738",
+    "lat": 1.3064,
+    "lng": 103.881,
+    "address": "751 Mountbatten Road"
   },
   {
     "id": "catholichigh",
@@ -318,9 +469,17 @@
     "psle_al_cutoff_max": 13,
     "location": "Central",
     "gender": "boys",
-    "notable_programmes": ["SAP Chinese", "MOE Humanities Programme", "Science Research"],
+    "notable_programmes": [
+      "SAP Chinese",
+      "MOE Humanities Programme",
+      "Science Research"
+    ],
     "official_url": "https://www.catholichigh.moe.edu.sg",
-    "note": "SAP boys' school. Affiliated with Catholic Junior College (CJC). Strong in academics and sports."
+    "note": "SAP boys' school. Affiliated with Catholic Junior College (CJC). Strong in academics and sports.",
+    "postal": "579780",
+    "lat": 1.3214,
+    "lng": 103.8463,
+    "address": "9 Bishan Street 22"
   },
   {
     "id": "marisstella",
@@ -335,9 +494,17 @@
     "psle_al_cutoff_max": 14,
     "location": "North",
     "gender": "boys",
-    "notable_programmes": ["Catholic Mission", "Talent Development", "Sports Excellence"],
+    "notable_programmes": [
+      "Catholic Mission",
+      "Talent Development",
+      "Sports Excellence"
+    ],
     "official_url": "https://www.marisstella.moe.edu.sg",
-    "note": "Catholic boys' school. Affiliated with Catholic Junior College (CJC). Known for strong values-based education."
+    "note": "Catholic boys' school. Affiliated with Catholic Junior College (CJC). Known for strong values-based education.",
+    "postal": "347691",
+    "lat": 1.3634,
+    "lng": 103.8697,
+    "address": "46 Upper Serangoon Road"
   },
   {
     "id": "fairfieldmeth",
@@ -352,9 +519,18 @@
     "psle_al_cutoff_max": 18,
     "location": "West",
     "gender": "mixed",
-    "notable_programmes": ["Express", "Normal Academic", "Normal Technical", "Methodist Values Programme"],
+    "notable_programmes": [
+      "Express",
+      "Normal Academic",
+      "Normal Technical",
+      "Methodist Values Programme"
+    ],
     "official_url": "https://www.fairfieldmethodist.moe.edu.sg",
-    "note": "Methodist mission school offering all three streams. Located in Clementi area. Holistic character development focus."
+    "note": "Methodist mission school offering all three streams. Located in Clementi area. Holistic character development focus.",
+    "postal": "597942",
+    "lat": 1.3078,
+    "lng": 103.7968,
+    "address": "8 Taman Serasi"
   },
   {
     "id": "crescentgirls",
@@ -369,9 +545,17 @@
     "psle_al_cutoff_max": 14,
     "location": "West",
     "gender": "girls",
-    "notable_programmes": ["STEM for Girls", "Talent Development", "Visual & Performing Arts"],
+    "notable_programmes": [
+      "STEM for Girls",
+      "Talent Development",
+      "Visual & Performing Arts"
+    ],
     "official_url": "https://www.crescentgirls.moe.edu.sg",
-    "note": "Well-regarded girls' Express school in the West. Known for STEM initiatives and arts."
+    "note": "Well-regarded girls' Express school in the West. Known for STEM initiatives and arts.",
+    "postal": "247969",
+    "lat": 1.3014,
+    "lng": 103.7963,
+    "address": "357 Tanglin Road"
   },
   {
     "id": "tanjongkatonggirlss",
@@ -386,9 +570,18 @@
     "psle_al_cutoff_max": 16,
     "location": "East",
     "gender": "girls",
-    "notable_programmes": ["Express", "Normal Academic", "Aesthetics", "Sports"],
+    "notable_programmes": [
+      "Express",
+      "Normal Academic",
+      "Aesthetics",
+      "Sports"
+    ],
     "official_url": "https://www.tanjongkatonggirls.moe.edu.sg",
-    "note": "Girls' school in the East offering Express and Normal Academic streams."
+    "note": "Girls' school in the East offering Express and Normal Academic streams.",
+    "postal": "448897",
+    "lat": 1.3113,
+    "lng": 103.9097,
+    "address": "50 Siglap Road"
   },
   {
     "id": "bedoknorth",
@@ -403,9 +596,18 @@
     "psle_al_cutoff_max": 22,
     "location": "East",
     "gender": "mixed",
-    "notable_programmes": ["Express", "Normal Academic", "Normal Technical", "Applied Learning Programme"],
+    "notable_programmes": [
+      "Express",
+      "Normal Academic",
+      "Normal Technical",
+      "Applied Learning Programme"
+    ],
     "official_url": "https://www.bedoknorthsec.moe.edu.sg",
-    "note": "Neighbourhood school offering all three streams. Good community school with broad-based programmes."
+    "note": "Neighbourhood school offering all three streams. Good community school with broad-based programmes.",
+    "postal": "469732",
+    "lat": 1.3304,
+    "lng": 103.9211,
+    "address": "2 Bedok North Road"
   },
   {
     "id": "bukitpanjanggovt",
@@ -420,9 +622,18 @@
     "psle_al_cutoff_max": 20,
     "location": "West",
     "gender": "mixed",
-    "notable_programmes": ["Express", "Normal Academic", "Outdoor Education", "STEM"],
+    "notable_programmes": [
+      "Express",
+      "Normal Academic",
+      "Outdoor Education",
+      "STEM"
+    ],
     "official_url": "https://www.bpghs.moe.edu.sg",
-    "note": "School in the Bukit Panjang/Choa Chu Kang area. Known for outdoor education programme."
+    "note": "School in the Bukit Panjang/Choa Chu Kang area. Known for outdoor education programme.",
+    "postal": "679941",
+    "lat": 1.3786,
+    "lng": 103.7736,
+    "address": "61 Bukit Panjang Road"
   },
   {
     "id": "compassvale",
@@ -437,9 +648,18 @@
     "psle_al_cutoff_max": 22,
     "location": "North-East",
     "gender": "mixed",
-    "notable_programmes": ["Express", "Normal Academic", "Normal Technical", "Applied Learning"],
+    "notable_programmes": [
+      "Express",
+      "Normal Academic",
+      "Normal Technical",
+      "Applied Learning"
+    ],
     "official_url": "https://www.compassvalesec.moe.edu.sg",
-    "note": "Neighbourhood school in Sengkang. Offers all three streams. Engaged community school."
+    "note": "Neighbourhood school in Sengkang. Offers all three streams. Engaged community school.",
+    "postal": "540110",
+    "lat": 1.3907,
+    "lng": 103.9031,
+    "address": "110 Rivervale Drive"
   },
   {
     "id": "yishtownsecc",
@@ -454,8 +674,18 @@
     "psle_al_cutoff_max": 26,
     "location": "North",
     "gender": "mixed",
-    "notable_programmes": ["Express", "Normal Academic", "Normal Technical", "Sports", "Arts"],
+    "notable_programmes": [
+      "Express",
+      "Normal Academic",
+      "Normal Technical",
+      "Sports",
+      "Arts"
+    ],
     "official_url": "https://www.yishuntownsec.moe.edu.sg",
-    "note": "Neighbourhood school in Yishun North. Good range of CCAs and applied learning programmes."
+    "note": "Neighbourhood school in Yishun North. Good range of CCAs and applied learning programmes.",
+    "postal": "768675",
+    "lat": 1.4323,
+    "lng": 103.8315,
+    "address": "3 Yishun Ring Road"
   }
 ]
