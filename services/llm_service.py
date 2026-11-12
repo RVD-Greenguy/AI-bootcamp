@@ -2,14 +2,13 @@
 LLM service for EduPath SG.
 All calls are stubbed when USE_AI=false. Set USE_AI=true + OPENAI_API_KEY to activate.
 """
-from utils.config import USE_AI, OPENAI_API_KEY
 
 STUB_RESPONSE = (
     "**AI Guide (Demo Mode)**\n\n"
     "The AI tutor is running in demo mode. Here is what I can tell you based on the "
     "knowledge base:\n\n"
     "{context}\n\n"
-    "*To activate full AI responses, add your OpenAI API key to `.env` and set `USE_AI=true`.*"
+    "*To activate full AI responses, add your OpenAI API key to the app's Secrets settings and set `USE_AI=true`.*"
 )
 
 SYSTEM_PROMPT = """You are EduPath SG — an expert guide on Singapore's education system.
@@ -29,13 +28,17 @@ Rules:
 
 
 def ask_guide(question: str, context_chunks: list[dict], conversation_history: list[dict]) -> str:
-    if not USE_AI or not OPENAI_API_KEY:
+    from utils.config import _secret
+    use_ai = _secret("USE_AI", "false").lower() == "true"
+    api_key = _secret("OPENAI_API_KEY", "")
+
+    if not use_ai or not api_key:
         context = "\n\n".join(c["text"][:300] for c in context_chunks[:3]) if context_chunks else "No specific context retrieved."
         return STUB_RESPONSE.format(context=context)
 
     try:
         from openai import OpenAI
-        client = OpenAI(api_key=OPENAI_API_KEY)
+        client = OpenAI(api_key=api_key)
 
         context_text = "\n\n".join(
             f"[{c.get('source', 'Knowledge Base')}] {c['text']}"
