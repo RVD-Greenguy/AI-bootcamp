@@ -6,6 +6,7 @@ from utils.session_manager import require_login, append_chat, get_chat_history, 
 from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
+from components.stage_theme import apply_stage_theme
 from components.rag_sources import render_rag_sources
 from services.rag_service import retrieve_chunks
 from services.llm_service import ask_guide, moderate_content
@@ -13,6 +14,7 @@ from services.llm_service import ask_guide, moderate_content
 user = require_login()
 render_sidebar()
 render_chat_panel()
+apply_stage_theme()
 
 st.title("🤖 AI Education Guide")
 st.caption("Ask anything about Singapore's education system — policies, scores, pathways, fallbacks.")

@@ -10,6 +10,7 @@ from utils.session_manager import require_login
 from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
+from components.stage_theme import apply_stage_theme
 from services.score_service import (
     psle_al_to_stream, match_secondary_schools,
     calculate_l1r5, calculate_elr2b2, match_jcs, match_poly_courses,
@@ -19,6 +20,21 @@ from services.score_service import (
 user = require_login()
 render_sidebar()
 render_chat_panel()
+apply_stage_theme()
+
+from utils.session_manager import get_education_stage
+from utils.stage_config import get_stage_config
+_stage = get_education_stage()
+_tab_hints = {
+    "early_childhood": "📍 The **Nearby Schools** tab is most useful at this stage.",
+    "primary": "📊 Use the **PSLE → Secondary School** tab to find matching secondary schools.",
+    "secondary": "🏫 Use the **O-levels → JC / Poly / ITE** tab for post-secondary options.",
+    "post_secondary": "🎓 Use the **A-levels → University** or **Poly → University (DAE)** tab.",
+    "university_plus": "📜 Use the **Poly Diploma → University (DAE)** tab.",
+}
+if _stage in _tab_hints:
+    _c = get_stage_config(_stage)
+    st.info(f"💡 **{_c['label']}:** {_tab_hints[_stage]}")
 
 st.title("🎯 Score & School Matcher")
 st.caption("Enter your exam scores to see which schools and programmes you qualify for.")

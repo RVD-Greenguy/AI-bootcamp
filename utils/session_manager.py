@@ -42,3 +42,12 @@ def get_chat_history(key: str = "chat") -> list:
 def clear_chat(key: str = "chat"):
     st.session_state[f"chat_{key}"] = []
     st.session_state.pop(f"rag_{key}_chunks", None)
+
+
+def get_education_stage() -> str:
+    from utils.stage_config import DEFAULT_STAGE
+    return st.session_state.get("education_stage", DEFAULT_STAGE)
+
+
+def set_education_stage(stage: str):
+    st.session_state["education_stage"] = stage

@@ -9,11 +9,27 @@ from utils.session_manager import require_login
 from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
+from components.stage_theme import apply_stage_theme
 from services.pathway_service import get_fallback_policies
 
 user = require_login()
 render_sidebar()
 render_chat_panel()
+apply_stage_theme()
+
+from utils.session_manager import get_education_stage
+from utils.stage_config import get_stage_config
+_stage = get_education_stage()
+_fb_hints = {
+    "early_childhood": "🏫 See the **Primary School** tab for P1 and early primary guidance.",
+    "primary": "🏫 The **Primary School** tab covers PSLE fallbacks, transfers, and struggling students.",
+    "secondary": "📚 The **Secondary School** tab covers O-level/N-level retakes and stream changes.",
+    "post_secondary": "🎓 The **Post-Secondary** tab covers JC/Poly/ITE retakes and certificate implications.",
+    "university_plus": "🎓 The **Post-Secondary** tab covers private candidate rules and university retake policies.",
+}
+if _stage in _fb_hints:
+    _c = get_stage_config(_stage)
+    st.info(f"💡 **{_c['label']}:** {_fb_hints[_stage]}")
 
 st.title("🔄 Fallback & Recovery Guide")
 st.caption("What to do when results don't go as planned — retake policies, alternative pathways, and success stories.")

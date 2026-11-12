@@ -4,10 +4,12 @@ st.set_page_config(page_title="About Us — EduPath SG", page_icon="ℹ️", lay
 from utils.session_manager import require_login
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
+from components.stage_theme import apply_stage_theme
 
 user = require_login()
 render_sidebar()
 render_chat_panel()
+apply_stage_theme()
 
 st.title("ℹ️ About EduPath SG")
 st.markdown("*Singapore Education Journey Navigator*")

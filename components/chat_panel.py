@@ -108,7 +108,11 @@ def render_chat_panel():
             with st.spinner("Generating answer…"):
                 try:
                     from services.llm_service import ask_guide
-                    answer = ask_guide(q, chunks, history[-10:])
+                    from utils.session_manager import get_education_stage
+                    from utils.stage_config import get_stage_config
+                    stage_cfg = get_stage_config(get_education_stage())
+                    stage_context = [{"role": "system", "content": stage_cfg["ai_context"]}]
+                    answer = ask_guide(q, chunks, stage_context + history[-10:])
                 except Exception as e:
                     answer = f"Sorry, I couldn't process that: {e}"
 

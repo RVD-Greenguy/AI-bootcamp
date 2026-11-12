@@ -6,11 +6,13 @@ from utils.session_manager import require_login
 from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
+from components.stage_theme import apply_stage_theme
 from services.pathway_service import get_stages, get_pathway_for_profile
 
 user = require_login()
 render_sidebar()
 render_chat_panel()
+apply_stage_theme()
 
 st.title("🗺️ Singapore Education Pathway Planner")
 st.caption("Visualise your complete education journey from any stage to graduation and beyond.")
