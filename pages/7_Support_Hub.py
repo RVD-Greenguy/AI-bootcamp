@@ -8,10 +8,12 @@ from utils.session_manager import require_login
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
 from components.stage_theme import apply_stage_theme
+from components.role_context import get_role_labels
 
 require_login()
 user = st.session_state.user
 role = user.get("role", "student")
+labels = get_role_labels(role)
 
 render_sidebar()
 render_chat_panel()
@@ -56,6 +58,10 @@ with tab1:
         "If you need to talk to someone, your school counsellor is always your first point of contact — "
         "it's free and confidential."
     )
+    if role == "student":
+        st.caption("💡 To see your school counsellor, approach your form teacher or visit the Student Development office directly.")
+    elif role == "parent":
+        st.caption("💡 You can request a counselling session for your child through the form teacher or the school's Student Development office.")
     for item in resources.get("counselling", []):
         with st.expander(f"**{item['name']}** — {item.get('type','')}  {_stage_badge(item.get('stage',[]))}"):
             st.markdown(item.get("description", ""))
@@ -154,6 +160,10 @@ with tab3:
 # ── TAB 4: Scholarships & Bursaries ─────────────────────────────────────────
 with tab4:
     st.subheader("Scholarships, Bursaries & Financial Aid")
+    if role == "parent":
+        st.caption("💡 As a parent, you can apply for most scholarships and bursaries on behalf of your child.")
+    elif role == "student":
+        st.caption("💡 You can apply directly for these through your school or the official portals linked below.")
 
     sub_tab_gov, sub_tab_uni, sub_tab_bursary = st.tabs([
         "🏛️ Government Scholarships",

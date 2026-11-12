@@ -7,16 +7,93 @@ from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
 from components.stage_theme import apply_stage_theme
+from components.role_context import get_role_labels
 from services.pathway_service import get_stages, get_pathway_for_profile
 
 user = require_login()
+labels = get_role_labels(user["role"])
 render_sidebar()
 render_chat_panel()
 apply_stage_theme()
 
 st.title("🗺️ Singapore Education Pathway Planner")
-st.caption("Visualise your complete education journey from any stage to graduation and beyond.")
+st.caption(f"Visualise {labels['journey_label']} from any stage to graduation and beyond.")
 st.warning(f"⚠️ {DISCLAIMER}", icon="⚠️")
+
+# ── CAREER GOAL PATHWAY ────────────────────────────────────────────────────
+from utils.session_manager import get_career_goal
+
+_career_goal = get_career_goal()
+if _career_goal:
+    try:
+        from services.career_service import trace_career_pathway
+        _pathway = trace_career_pathway(_career_goal)
+        if _pathway:
+            st.divider()
+            st.subheader(f"🎯 Career Goal: {_pathway['icon']} {_pathway['career']}")
+            st.caption(f"**Professional requirements:** {_pathway['professional_requirements']}")
+
+            # University targets
+            if _pathway["university_targets"]:
+                import pandas as pd
+                _uni_df = pd.DataFrame([{
+                    "University": t["uni"],
+                    "Faculty": t["faculty"],
+                    "Min RP (A-levels)": t["min_rp"],
+                    "Min GPA (Poly DAE)": t["min_gpa"],
+                    "Duration": t["duration"],
+                } for t in _pathway["university_targets"]])
+                st.dataframe(_uni_df, use_container_width=True, hide_index=True)
+
+            # Three-column pathway visualization
+            _paths = _pathway.get("total_paths", [])
+            if _paths:
+                _html_parts = []
+                _html_parts.append('<div style="display:flex; gap:16px; margin:20px 0;">')
+                for _p in _paths:
+                    _col_color = _p["color"]
+                    _tag = _p["tag"]
+                    _is_shortest = "Shortest" in _tag
+                    _border = f"3px solid {_col_color}" if _is_shortest else f"2px solid {_col_color}55"
+                    _glow = f"box-shadow: 0 0 12px {_col_color}40;" if _is_shortest else ""
+
+                    _steps_html = ""
+                    for _s in _p["steps"]:
+                        _score_badge = (
+                            f"<span style='background:{_col_color}22;color:{_col_color};"
+                            f"padding:2px 8px;border-radius:10px;font-size:0.75em;"
+                            f"font-weight:600;'>{_s['score']}</span>"
+                        ) if _s.get("score") else ""
+                        _steps_html += (
+                            f'<div style="background:#1e293b;border-left:3px solid {_col_color};'
+                            f'padding:8px 12px;margin:4px 0;border-radius:0 6px 6px 0;">'
+                            f'<div style="color:#e2e8f0;font-size:0.88em;font-weight:600;">{_s["label"]}</div>'
+                            f'<div style="color:#94a3b8;font-size:0.78em;">{_s["detail"]}</div>'
+                            f'{_score_badge}</div>'
+                            f'<div style="text-align:center;color:{_col_color};font-size:0.9em;">↓</div>'
+                        )
+
+                    _html_parts.append(
+                        f'<div style="flex:1;background:#0f172a;border:{_border};'
+                        f'border-radius:12px;padding:16px;{_glow}">'
+                        f'<div style="text-align:center;margin-bottom:12px;">'
+                        f'<span style="background:{_col_color};color:white;padding:4px 12px;'
+                        f'border-radius:20px;font-size:0.85em;font-weight:700;">'
+                        f'{_p["name"]} {_tag}</span></div>'
+                        f'{_steps_html}'
+                        f'<div style="text-align:center;margin-top:8px;">'
+                        f'<span style="color:{_col_color};font-weight:700;font-size:1.1em;">'
+                        f'~{_p["years"]} years</span>'
+                        f'<div style="color:#64748b;font-size:0.75em;">from Sec 1 to career</div>'
+                        f'</div></div>'
+                    )
+
+                _html_parts.append("</div>")
+                st.html("".join(_html_parts))
+
+            st.divider()
+    except Exception:
+        pass
 
 STAGE_ID_MAP = {
     "Early Childhood (0–6)": "early_childhood",
@@ -35,7 +112,7 @@ with st.form("pathway_form"):
     with col2:
         citizenship = st.selectbox("Citizenship:", ["Singapore Citizen", "Permanent Resident", "International Student"])
     with col3:
-        age = st.number_input("Child's current age:", min_value=0, max_value=25, value=7)
+        age = st.number_input(f"{labels['subject_cap']}'s current age:", min_value=0, max_value=25, value=7)
 
     interests = st.multiselect(
         "Areas of interest (optional):",

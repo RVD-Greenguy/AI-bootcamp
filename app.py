@@ -67,9 +67,10 @@ def _bootstrap():
 
 _bootstrap()
 
-from utils.session_manager import get_user, set_user, clear_user
+from utils.session_manager import get_user, set_user, clear_user, get_career_goal, set_career_goal
 from utils.config import DISCLAIMER
 from services.auth_service import login_user, register_user
+from components.role_context import get_role_labels
 
 user = get_user()
 
@@ -81,72 +82,90 @@ if user:
 
     role = user["role"]
     name = user["full_name"].split()[0]
+    labels = get_role_labels(role)
 
+    st.markdown(f"### Welcome back, {name}! {labels['home_icon']}")
+    st.markdown(f"{labels['welcome_action']}.")
+
+    # ── Career aspiration section (all roles) ─────────────────────────────
+    st.subheader(labels["career_question"])
+    try:
+        from services.career_service import get_career_list, trace_career_pathway
+        import pandas as pd
+
+        careers = get_career_list()
+        career_options = ["Still exploring..."] + [f"{c['icon']} {c['career']}" for c in careers]
+        current_goal = get_career_goal()
+        idx = 0
+        if current_goal:
+            for i, opt in enumerate(career_options):
+                if current_goal in opt:
+                    idx = i
+                    break
+        selected = st.selectbox(
+            labels["career_question"],
+            career_options, index=idx,
+            key="home_career",
+            label_visibility="collapsed",
+        )
+        if selected and selected != "Still exploring...":
+            career_name = selected.split(" ", 1)[1] if " " in selected else selected
+            set_career_goal(career_name)
+            pathway = trace_career_pathway(career_name)
+            if pathway:
+                st.divider()
+                st.markdown(f"### {pathway['icon']} Path to becoming a {pathway['career']}")
+                st.caption(f"**Professional requirements:** {pathway['professional_requirements']}")
+
+                if pathway.get("university_targets"):
+                    uni_df = pd.DataFrame([{
+                        "University": t["uni"],
+                        "Faculty": t["faculty"],
+                        "Min RP (A-levels)": t["min_rp"],
+                        "Min GPA (Poly DAE)": t["min_gpa"],
+                        "Duration": t["duration"],
+                    } for t in pathway["university_targets"]])
+                    st.dataframe(uni_df, use_container_width=True, hide_index=True)
+
+                for p in pathway.get("total_paths", []):
+                    st.info(f"**{p['name']}** {p.get('tag','')} — ~{p['years']} years from Sec 1 · {len(p.get('steps',[]))} steps")
+
+                st.page_link("pages/1_Pathway_Planner.py", label="🗺️ See full pathway details →", use_container_width=True)
+        else:
+            set_career_goal(None)
+    except Exception:
+        pass
+
+    st.divider()
+
+    # ── Quick links (role-specific) ───────────────────────────────────────
     if role == "parent":
-        st.markdown(f"### Welcome back, {name}! 👨‍👩‍👧")
-        st.markdown("Plan your child's complete education journey — from preschool registration through to university and beyond.")
         col1, col2, col3, col4, col5 = st.columns(5)
-        with col1:
-            st.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
-        with col2:
-            st.page_link("pages/2_Score_Matcher.py", label="🎯 Score Matcher", use_container_width=True)
-        with col3:
-            st.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Guide", use_container_width=True)
-        with col4:
-            st.page_link("pages/4_AI_Guide.py", label="🤖 AI Guide", use_container_width=True)
-        with col5:
-            st.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub", use_container_width=True)
-
+        col1.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
+        col2.page_link("pages/2_Score_Matcher.py", label="🎯 Score Matcher", use_container_width=True)
+        col3.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Guide", use_container_width=True)
+        col4.page_link("pages/4_AI_Guide.py", label="🤖 AI Guide", use_container_width=True)
+        col5.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub", use_container_width=True)
     elif role == "student":
-        st.markdown(f"### Welcome, {name}! 🎒")
-        st.markdown("Check your score, find schools that match, and plan your next steps in Singapore's education system.")
         col1, col2, col3, col4 = st.columns(4)
-        with col1:
-            st.page_link("pages/2_Score_Matcher.py", label="🎯 Check My Scores", use_container_width=True)
-        with col2:
-            st.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Options", use_container_width=True)
-        with col3:
-            st.page_link("pages/4_AI_Guide.py", label="🤖 Ask the Guide", use_container_width=True)
-        with col4:
-            st.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub", use_container_width=True)
-
+        col1.page_link("pages/2_Score_Matcher.py", label="🎯 Check My Scores", use_container_width=True)
+        col2.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Options", use_container_width=True)
+        col3.page_link("pages/4_AI_Guide.py", label="🤖 Ask the Guide", use_container_width=True)
+        col4.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub", use_container_width=True)
     elif role == "teacher":
-        st.markdown(f"### Welcome, {name}! 👩‍🏫")
-        st.markdown("Full Singapore education pathway data for student counselling — from PSLE to post-graduation.")
+        st.caption("👩‍🏫 Full counselling data available on all pages.")
         col1, col2, col3, col4, col5 = st.columns(5)
-        with col1:
-            st.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
-        with col2:
-            st.page_link("pages/2_Score_Matcher.py", label="🎯 Score Matcher", use_container_width=True)
-        with col3:
-            st.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Guide", use_container_width=True)
-        with col4:
-            st.page_link("pages/4_AI_Guide.py", label="🤖 AI Guide", use_container_width=True)
-        with col5:
-            st.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub", use_container_width=True)
+        col1.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
+        col2.page_link("pages/2_Score_Matcher.py", label="🎯 Score Matcher", use_container_width=True)
+        col3.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Guide", use_container_width=True)
+        col4.page_link("pages/4_AI_Guide.py", label="🤖 AI Guide", use_container_width=True)
+        col5.page_link("pages/8_Primary_Hub.py", label="🏫 Primary Hub", use_container_width=True)
 
     st.divider()
     st.markdown("**Quick reference:** [MOE](https://www.moe.gov.sg) · [SEAB](https://www.seab.gov.sg) · [ITE](https://www.ite.edu.sg) · [SkillsFuture](https://www.skillsfuture.gov.sg)")
 
-    with st.sidebar:
-        st.markdown("## 🎓 EduPath SG")
-        st.caption("Singapore Education Journey Navigator")
-        st.divider()
-        st.markdown(f"**{user['full_name'].split()[0]}** ({user['role'].capitalize()})")
-        st.divider()
-        st.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner")
-        st.page_link("pages/2_Score_Matcher.py", label="🎯 Score & School Matcher")
-        st.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Guide")
-        st.page_link("pages/4_AI_Guide.py", label="🤖 AI Education Guide")
-        st.divider()
-        st.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub")
-        st.divider()
-        st.page_link("pages/5_About_Us.py", label="ℹ️ About Us")
-        st.page_link("pages/6_Methodology.py", label="📖 Methodology")
-        st.divider()
-        if st.button("🚪 Logout", use_container_width=True):
-            clear_user()
-            st.rerun()
+    from components.sidebar import render_sidebar
+    render_sidebar()
 
 else:
     # ── LOGIN / REGISTER ─────────────────────────────────────────────────────

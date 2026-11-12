@@ -11,6 +11,7 @@ from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
 from components.stage_theme import apply_stage_theme
+from components.role_context import get_role_labels
 from services.score_service import (
     psle_al_to_stream, match_secondary_schools,
     calculate_l1r5, calculate_elr2b2, match_jcs, match_poly_courses,
@@ -18,6 +19,7 @@ from services.score_service import (
 )
 
 user = require_login()
+labels = get_role_labels(user["role"])
 render_sidebar()
 render_chat_panel()
 apply_stage_theme()
@@ -36,8 +38,20 @@ if _stage in _tab_hints:
     _c = get_stage_config(_stage)
     st.info(f"💡 **{_c['label']}:** {_tab_hints[_stage]}")
 
+from utils.session_manager import get_career_goal
+_career = get_career_goal()
+if _career:
+    try:
+        from services.career_service import lookup_career
+        _cdata = lookup_career(_career)
+        if _cdata and _cdata.get("university_targets"):
+            _best = _cdata["university_targets"][0]
+            st.success(f"🎯 **Career Goal: {_cdata['icon']} {_cdata['career']}** — Target: {_best['uni']} {_best['faculty']} (UAS ≥ {_best['min_rp']} or GPA ≥ {_best['min_gpa']})")
+    except Exception:
+        pass
+
 st.title("🎯 Score & School Matcher")
-st.caption("Enter your exam scores to see which schools and programmes you qualify for.")
+st.caption(f"Enter {labels['possessive']} exam scores to see which schools and programmes qualify.")
 st.warning(f"⚠️ {DISCLAIMER}", icon="⚠️")
 st.info("All cutoff figures are **approximate** based on recent years. Actual cutoffs vary annually — always verify at the school's official website or MOE.")
 
@@ -76,7 +90,7 @@ with tab_psle:
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        al_score = st.slider("Your PSLE total AL score:", min_value=4, max_value=32, value=12, step=1)
+        al_score = st.slider(f"{labels['subject_cap']}'s PSLE total AL score:", min_value=4, max_value=32, value=12, step=1)
     with col2:
         gender_pref = st.selectbox("Gender preference:", ["Any", "Boys", "Girls"])
     with col3:
@@ -238,33 +252,97 @@ with tab_olevels:
 with tab_alevels:
     st.subheader("🎓 A-level Rank Points → University")
 
-    with st.expander("ℹ️ How University Admission Score (UAS) works"):
+    with st.expander("ℹ️ How University Admission Score (UAS) works", expanded=False):
         pts_df = pd.DataFrame({
             "Grade": ["A", "B", "C", "D", "E", "S/U"],
             "H2 Points": [20, 17.5, 15, 12.5, 10, 0],
             "H1 Points": [10, 8.75, 7.5, 6.25, 5, 0],
         })
-        st.markdown("**Formula:** H1 GP + best 3 H2 subjects + H1 MTL (capped at 10) = max **90 points**")
+        st.markdown("""
+**Formula:** `H1 GP + H1 PW + best 3 elective subjects + H1 MTL = max 90 pts`
+
+- **H1 GP** (General Paper): up to 10 pts
+- **H1 PW** (Project Work, compulsory): up to 10 pts
+- **Best 3 elective subjects** from your H2/H1 combination: up to 60 pts
+- **H1 MTL** (Mother Tongue, capped at H1 equivalent): up to 10 pts
+- **H3 bonus** (optional): Merit = 1.25 pts, Distinction = 2.5 pts per subject (max 2 H3s)
+
+**Subject combination options:**
+- **4 H2 subjects** → best 3 H2 count (max 60 pts)
+- **3 H2 + 1 contrasting H1** → 3 H2 + H1 contrasting in pool; best 3 selected
+        """)
         st.dataframe(pts_df, use_container_width=True, hide_index=True)
+
+    ALEVEL_GRADES = ["A", "B", "C", "D", "E", "S", "U"]
+    ALEVEL_OPT    = ["-"] + ALEVEL_GRADES   # "-" = not taken
+    H3_OPTIONS    = {"Not taken": 0.0, "Merit (1.25 pts)": 1.25, "Distinction (2.5 pts)": 2.5}
+
+    col_combo, col_space = st.columns([2, 1])
+    with col_combo:
+        combo_type = st.radio(
+            "My subject combination:",
+            ["4 H2 subjects", "3 H2 + 1 contrasting H1"],
+            horizontal=True, key="combo_type",
+        )
 
     col_a, col_b = st.columns([2, 1])
     with col_a:
-        ALEVEL_GRADES = ["A", "B", "C", "D", "E", "S", "U"]
-        h1_gp  = st.selectbox("H1 General Paper (GP):", ALEVEL_GRADES, key="gp")
-        h2_1   = st.selectbox("H2 Subject 1:", ALEVEL_GRADES, key="h2_1")
-        h2_2   = st.selectbox("H2 Subject 2:", ALEVEL_GRADES, index=1, key="h2_2")
-        h2_3   = st.selectbox("H2 Subject 3:", ALEVEL_GRADES, index=2, key="h2_3")
-        h1_mtl = st.selectbox("H1 Mother Tongue Language:", ALEVEL_GRADES, key="mtl")
-        uni_int = st.text_input("Interest / faculty area:", placeholder="e.g. Computer Science, Medicine")
+        # Compulsory H1s
+        st.markdown("**Compulsory H1 subjects**")
+        c1, c2, c3 = st.columns(3)
+        h1_gp  = c1.selectbox("H1 General Paper:", ALEVEL_GRADES, key="gp")
+        h1_pw  = c2.selectbox("H1 Project Work:", ALEVEL_GRADES, key="pw")
+        h1_mtl = c3.selectbox("H1 Mother Tongue:", ALEVEL_GRADES, key="mtl")
 
-    rp = calculate_rank_points(h1_gp, h2_1, h2_2, h2_3, h1_mtl)
+        st.markdown("**H2 subjects** (elective pool)")
+        d1, d2, d3 = st.columns(3)
+        h2_1 = d1.selectbox("H2 Subject 1:", ALEVEL_GRADES, key="h2_1")
+        h2_2 = d2.selectbox("H2 Subject 2:", ALEVEL_GRADES, index=1, key="h2_2")
+        h2_3 = d3.selectbox("H2 Subject 3:", ALEVEL_GRADES, index=2, key="h2_3")
+
+        h2_4 = "-"
+        h1_contrasting = "-"
+        if combo_type == "4 H2 subjects":
+            h2_4 = st.selectbox("H2 Subject 4 (optional 4th):", ALEVEL_OPT, key="h2_4")
+        else:
+            h1_contrasting = st.selectbox("H1 Contrasting Subject:", ALEVEL_GRADES, key="h1_contr")
+
+        # H3 bonus
+        st.markdown("**H3 subjects** (optional bonus)")
+        e1, e2 = st.columns(2)
+        h3_a = e1.selectbox("H3 Subject 1:", list(H3_OPTIONS.keys()), key="h3_1")
+        h3_b = e2.selectbox("H3 Subject 2:", list(H3_OPTIONS.keys()), key="h3_2")
+        h3_bonus = H3_OPTIONS[h3_a] + H3_OPTIONS[h3_b]
+
+        uni_int = st.text_input("Interest / faculty area (optional):", placeholder="e.g. Computer Science, Medicine", key="uni_int")
+
+    rp = calculate_rank_points(
+        h1_gp=h1_gp, h2_1=h2_1, h2_2=h2_2, h2_3=h2_3,
+        h1_mtl=h1_mtl, h1_pw=h1_pw,
+        h2_4=h2_4, h1_contrasting=h1_contrasting,
+        h3_bonus=h3_bonus,
+    )
 
     with col_b:
-        st.metric("Your UAS", f"{rp['rank_points']} / 90")
+        st.metric(f"{labels['subject_cap']}'s UAS", f"{rp['rank_points']} / 90")
         for k, v in rp["breakdown"].items():
-            st.caption(f"{k}: {v}")
+            if v:
+                st.caption(f"{k}: **{v}**")
 
     st.markdown(f"*{rp['note']}*")
+
+    # UAS gauge bar
+    uas = rp["rank_points"]
+    pct = uas / 90
+    bar_color = "#2ecc71" if uas >= 75 else "#f39c12" if uas >= 60 else "#e74c3c"
+    st.markdown(f"""
+<div style="background:#e5e7eb;border-radius:8px;height:18px;width:100%;margin:4px 0 12px 0;">
+  <div style="background:{bar_color};width:{pct*100:.1f}%;height:18px;border-radius:8px;
+       display:flex;align-items:center;padding-left:8px;color:white;font-size:0.78em;font-weight:600;">
+    {uas} pts
+  </div>
+</div>
+""", unsafe_allow_html=True)
 
     uni_matches = match_universities(rp["rank_points"], uni_int)
     if uni_matches:
@@ -284,13 +362,13 @@ with tab_alevels:
             hover_data=["Faculty / Course", "Duration"],
             title="University Programmes by Rank Points Requirement",
         )
-        fig_uni.add_vline(x=rp["rank_points"], line_dash="dash", line_color="blue",
+        fig_uni.add_vline(x=rp["rank_points"], line_dash="dash", line_color="#3b82f6",
                           annotation_text=f"Your UAS: {rp['rank_points']}")
-        fig_uni.update_layout(height=400)
+        fig_uni.update_layout(height=420, margin=dict(t=40, b=0))
         st.plotly_chart(fig_uni, use_container_width=True)
         st.dataframe(uni_df, use_container_width=True, hide_index=True)
     else:
-        st.info("No matches found. Try adjusting your grades or removing the interest filter.")
+        st.info("No university matches found. Try adjusting your grades or clearing the interest filter.")
 
 # ── TAB 4: POLY → DAE ────────────────────────────────────────────────────────
 with tab_dae:
@@ -307,8 +385,8 @@ with tab_dae:
 
     dcol1, dcol2 = st.columns(2)
     with dcol1:
-        gpa = st.slider("Your Poly GPA:", min_value=0.0, max_value=4.0, value=3.2, step=0.05)
-        poly_name = st.selectbox("Your Polytechnic:", ["SP", "TP", "NYP", "NP", "RP"])
+        gpa = st.slider(f"{labels['subject_cap']}'s Poly GPA:", min_value=0.0, max_value=4.0, value=3.2, step=0.05)
+        poly_name = st.selectbox(f"{labels['subject_cap']}'s Polytechnic:", ["SP", "TP", "NYP", "NP", "RP"])
     with dcol2:
         diploma = st.text_input("Your Diploma course:", placeholder="e.g. Business Studies")
         dae_int = st.text_input("Interest area:", placeholder="e.g. Business, Engineering, IT")

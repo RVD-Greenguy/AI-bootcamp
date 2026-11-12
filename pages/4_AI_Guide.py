@@ -2,11 +2,12 @@ import streamlit as st
 
 st.set_page_config(page_title="AI Education Guide — EduPath SG", page_icon="🤖", layout="wide")
 
-from utils.session_manager import require_login, append_chat, get_chat_history, clear_chat
+from utils.session_manager import require_login, append_chat, get_chat_history, clear_chat, get_career_goal
 from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
 from components.stage_theme import apply_stage_theme
+from components.role_context import get_role_labels
 from components.rag_sources import render_rag_sources
 from services.rag_service import retrieve_chunks
 from services.llm_service import ask_guide, moderate_content
@@ -94,8 +95,12 @@ with col_chat:
                     {"role": m["role"], "content": m["content"]}
                     for m in get_chat_history("guide")
                 ]
+                role_labels = get_role_labels(role)
+                role_ctx = [{"role": "system", "content": role_labels["ai_role_context"]}]
+                career = get_career_goal()
+                career_ctx = [{"role": "system", "content": f"The user's career aspiration is: {career}. Tailor advice toward this goal."}] if career else []
                 append_chat("user", q, "guide")
-                response = ask_guide(q, chunks, history)
+                response = ask_guide(q, chunks, role_ctx + career_ctx + history)
                 append_chat("assistant", response, "guide")
                 st.session_state["guide_last_chunks"] = chunks
 

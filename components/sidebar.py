@@ -1,6 +1,10 @@
 import streamlit as st
-from utils.session_manager import get_user, clear_user, get_education_stage, set_education_stage
+from utils.session_manager import (
+    get_user, clear_user, get_education_stage, set_education_stage,
+    get_career_goal, set_career_goal,
+)
 from utils.stage_config import STAGES, STAGE_ORDER
+from components.role_context import get_role_labels
 
 
 def render_sidebar():
@@ -8,14 +12,17 @@ def render_sidebar():
     if not user:
         return
 
+    role = user["role"]
+    labels = get_role_labels(role)
+
     with st.sidebar:
         st.markdown("## 🎓 EduPath SG")
         st.caption("Singapore Education Journey Navigator")
         st.divider()
 
         # User info
-        st.markdown(f"**{user['full_name'].split()[0]}**")
-        st.caption(f"Role: {user['role'].capitalize()}")
+        st.markdown(f"**{user['full_name'].split()[0]}** {labels['home_icon']}")
+        st.caption(f"Role: {role.capitalize()}")
         st.divider()
 
         # ── Stage selector ────────────────────────────────────
@@ -53,13 +60,54 @@ def render_sidebar():
 
         st.divider()
 
-        # ── Nav links ─────────────────────────────────────────
+        # ── Career goal selector ──────────────────────────────
+        st.markdown(f"**{labels['career_question']}**")
+        try:
+            from services.career_service import get_career_list
+            careers = get_career_list()
+            career_options = ["🔍 Exploring (no specific goal)"] + [
+                f"{c['icon']} {c['career']}" for c in careers
+            ]
+            current_goal = get_career_goal()
+            idx = 0
+            if current_goal:
+                for i, opt in enumerate(career_options):
+                    if current_goal in opt:
+                        idx = i
+                        break
+            selected = st.selectbox(
+                "Career aspiration:",
+                career_options,
+                index=idx,
+                key="sidebar_career_select",
+                label_visibility="collapsed",
+            )
+            if selected and selected != "🔍 Exploring (no specific goal)":
+                career_name = selected.split(" ", 1)[1] if " " in selected else selected
+                if career_name != current_goal:
+                    set_career_goal(career_name)
+                    st.rerun()
+                st.caption(f"🎯 Goal: **{career_name}**")
+            elif current_goal:
+                set_career_goal(None)
+                st.rerun()
+        except Exception:
+            st.caption("Career data loading…")
+
+        st.divider()
+
+        # ── Nav links (role-filtered) ─────────────────────────
         st.markdown("**Explore**")
-        st.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner")
-        st.page_link("pages/2_Score_Matcher.py", label="🎯 Score & School Matcher")
+        if role == "teacher":
+            st.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner (Full Data)")
+            st.page_link("pages/2_Score_Matcher.py", label="🎯 Score Matcher (Full Data)")
+        else:
+            st.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner")
+            st.page_link("pages/2_Score_Matcher.py", label="🎯 Score & School Matcher")
         st.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Guide")
         st.page_link("pages/4_AI_Guide.py", label="🤖 AI Education Guide")
-        st.page_link("pages/8_Primary_Hub.py", label="🏫 Primary School Hub")
+        if role in ("parent", "teacher"):
+            st.page_link("pages/8_Primary_Hub.py", label="🏫 Primary School Hub")
         st.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub")
 
         st.divider()
@@ -70,18 +118,11 @@ def render_sidebar():
         st.divider()
 
         # Role hint styled in stage color
-        role_hints = {
-            "parent": "👨‍👩‍👧 Parent View\nPlan your child's journey.",
-            "student": "🎒 Student View\nCheck scores and find schools.",
-            "teacher": "👩‍🏫 Teacher View\nFull pathway data for counselling.",
-        }
-        hint = role_hints.get(user["role"], "")
-        if hint:
-            color = STAGES[current]["color"]
-            hint_bg = STAGES[current]["bg"]
-            st.markdown(f"""
+        color = STAGES[current]["color"]
+        hint_bg = STAGES[current]["bg"]
+        st.markdown(f"""
 <div style="background:{hint_bg};border-left:3px solid {color};border-radius:4px;padding:8px 10px;font-size:0.82em;">
-{hint}
+{labels['home_icon']} {role.capitalize()} View<br>{labels['welcome_action']}
 </div>
 """, unsafe_allow_html=True)
 

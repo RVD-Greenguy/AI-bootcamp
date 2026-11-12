@@ -155,29 +155,58 @@ def match_poly_courses(elr2b2: int, interest: str = "") -> list[dict]:
 
 # ── A-LEVELS → UNIVERSITY ────────────────────────────────────────────────────
 
-def calculate_rank_points(h1_gp: str, h2_1: str, h2_2: str, h2_3: str, h1_mtl: str = "S") -> dict:
+def calculate_rank_points(
+    h1_gp: str,
+    h2_1: str, h2_2: str, h2_3: str,
+    h1_mtl: str = "S",
+    h1_pw: str = "A",
+    h2_4: str = "-",
+    h1_contrasting: str = "-",
+    h3_bonus: float = 0.0,
+) -> dict:
     """
-    Calculate A-level University Admission Score (rank points).
-    H2 = 20 (A), 17.5 (B), 15 (C), 12.5 (D), 10 (E), 0 (S/U)
-    H1 = 10 (A), 8.75 (B), 7.5 (C), 6.25 (D), 5 (E), 0 (S/U)
-    H1 GP + best 3 H2 + H1 MTL (capped at 10) = max 90.
-    """
-    h2_map = {"A": 20, "B": 17.5, "C": 15, "D": 12.5, "E": 10, "S": 0, "U": 0}
-    h1_map = {"A": 10, "B": 8.75, "C": 7.5, "D": 6.25, "E": 5, "S": 0, "U": 0}
+    Calculate A-level University Admission Score (UAS / rank points).
 
-    gp_pts = h1_map.get(h1_gp.upper(), 0)
-    h2_pts = sorted([h2_map.get(h2_1.upper(), 0), h2_map.get(h2_2.upper(), 0), h2_map.get(h2_3.upper(), 0)], reverse=True)[:3]
+    Formula: H1 GP + H1 PW + best 3 from elective pool + H1 MTL + H3 bonus = max 90 (+H3)
+    Elective pool = H2_1, H2_2, H2_3 + (H2_4 OR H1_contrasting if provided)
+
+    H2 points: A=20, B=17.5, C=15, D=12.5, E=10, S/U=0
+    H1 points: A=10, B=8.75, C=7.5, D=6.25, E=5,  S/U=0
+    H3 bonus:  Distinction=2.5, Merit=1.25 per subject (max 2 H3s = 5 pts)
+    """
+    h2_map = {"A": 20, "B": 17.5, "C": 15, "D": 12.5, "E": 10, "S": 0, "U": 0, "-": 0}
+    h1_map = {"A": 10, "B": 8.75, "C": 7.5, "D": 6.25, "E": 5, "S": 0, "U": 0, "-": 0}
+
+    gp_pts  = h1_map.get(h1_gp.upper(), 0)
+    pw_pts  = h1_map.get(h1_pw.upper(), 0)
     mtl_pts = min(h1_map.get(h1_mtl.upper(), 0), 10)
-    total = gp_pts + sum(h2_pts) + mtl_pts
+
+    # Build elective pool: 3 compulsory H2s + optional 4th H2 or contrasting H1
+    elective_pool = [
+        h2_map.get(h2_1.upper(), 0),
+        h2_map.get(h2_2.upper(), 0),
+        h2_map.get(h2_3.upper(), 0),
+    ]
+    if h2_4.upper() not in ("-", ""):
+        elective_pool.append(h2_map.get(h2_4.upper(), 0))
+    elif h1_contrasting.upper() not in ("-", ""):
+        elective_pool.append(h1_map.get(h1_contrasting.upper(), 0))
+
+    best3_pts = sum(sorted(elective_pool, reverse=True)[:3])
+    h3_pts = round(min(float(h3_bonus), 5.0), 2)
+
+    total = gp_pts + pw_pts + best3_pts + mtl_pts + h3_pts
 
     return {
         "rank_points": round(total, 2),
         "breakdown": {
-            "H1 GP": gp_pts,
-            "H2 subjects": sum(h2_pts),
-            "H1 MTL (capped 10)": mtl_pts,
+            "H1 General Paper": gp_pts,
+            "H1 Project Work": pw_pts,
+            "Best 3 elective subjects": best3_pts,
+            "H1 Mother Tongue": mtl_pts,
+            "H3 bonus": h3_pts,
         },
-        "note": f"University Admission Score (UAS): {round(total, 2)} / 90",
+        "note": f"University Admission Score (UAS): {round(total, 2)} / 90{'+' if h3_pts else ''}",
     }
 
 

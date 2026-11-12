@@ -51,3 +51,14 @@ def get_education_stage() -> str:
 
 def set_education_stage(stage: str):
     st.session_state["education_stage"] = stage
+
+
+def get_career_goal():
+    return st.session_state.get("career_goal")
+
+
+def set_career_goal(career):
+    if career:
+        st.session_state["career_goal"] = career
+    else:
+        st.session_state.pop("career_goal", None)

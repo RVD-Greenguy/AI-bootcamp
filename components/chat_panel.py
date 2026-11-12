@@ -108,11 +108,22 @@ def render_chat_panel():
             with st.spinner("Generating answer…"):
                 try:
                     from services.llm_service import ask_guide
-                    from utils.session_manager import get_education_stage
+                    from utils.session_manager import get_education_stage, get_career_goal
                     from utils.stage_config import get_stage_config
+                    from components.role_context import get_role_labels
+
                     stage_cfg = get_stage_config(get_education_stage())
                     stage_context = [{"role": "system", "content": stage_cfg["ai_context"]}]
-                    answer = ask_guide(q, chunks, stage_context + history[-10:])
+
+                    role_labels = get_role_labels(user["role"])
+                    role_context = [{"role": "system", "content": role_labels["ai_role_context"]}]
+
+                    career = get_career_goal()
+                    career_context = []
+                    if career:
+                        career_context = [{"role": "system", "content": f"The user's career aspiration is: {career}. Tailor your advice toward achieving this goal where relevant."}]
+
+                    answer = ask_guide(q, chunks, role_context + career_context + stage_context + history[-10:])
                 except Exception as e:
                     answer = f"Sorry, I couldn't process that: {e}"
 

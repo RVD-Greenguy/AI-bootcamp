@@ -8,14 +8,19 @@ from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
 from components.stage_theme import apply_stage_theme
+from components.role_context import get_role_labels
 
 user = require_login()
+labels = get_role_labels(user["role"])
 render_sidebar()
 render_chat_panel()
 apply_stage_theme()
 
 st.title("🏫 Primary School Hub")
 st.caption("P1 registration, school options, transfer policies, and PSLE guidance.")
+
+if user.get("role") == "student":
+    st.info("📝 This section is primarily for parents planning P1 registration and primary school options. For secondary school and beyond, check the **Score Matcher** or **Pathway Planner**.")
 st.warning(f"⚠️ {DISCLAIMER}", icon="⚠️")
 
 tab_p1, tab_schools, tab_transfer, tab_psle = st.tabs([

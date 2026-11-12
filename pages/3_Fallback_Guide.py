@@ -10,9 +10,11 @@ from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
 from components.chat_panel import render_chat_panel
 from components.stage_theme import apply_stage_theme
+from components.role_context import get_role_labels
 from services.pathway_service import get_fallback_policies
 
 user = require_login()
+labels = get_role_labels(user["role"])
 render_sidebar()
 render_chat_panel()
 apply_stage_theme()
@@ -32,7 +34,12 @@ if _stage in _fb_hints:
     st.info(f"💡 **{_c['label']}:** {_fb_hints[_stage]}")
 
 st.title("🔄 Fallback & Recovery Guide")
-st.caption("What to do when results don't go as planned — retake policies, alternative pathways, and success stories.")
+st.caption(f"{labels['fallback_prefix']} didn't go as planned — retake policies, alternative pathways, and success stories.")
+
+from utils.session_manager import get_career_goal
+_career = get_career_goal()
+if _career:
+    st.info(f"💡 Even with setbacks, the path to becoming a **{_career}** remains open through alternative routes. Check the **Pathway Planner** for details.")
 st.warning(f"⚠️ {DISCLAIMER}", icon="⚠️")
 st.info("This guide covers official MOE and SEAB policies. Always verify current policies at **moe.gov.sg** and **seab.gov.sg** before making decisions.")
 

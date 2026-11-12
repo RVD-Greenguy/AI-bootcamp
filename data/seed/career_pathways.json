@@ -1,0 +1,556 @@
+[
+  {
+    "career": "Lawyer",
+    "aliases": ["lawyer", "attorney", "legal counsel", "advocate", "solicitor", "barrister"],
+    "icon": "⚖️",
+    "category": "Law & Public Policy",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Law (LLB)", "min_rp": 84, "min_gpa": 3.9, "duration": "4 years", "notes": "Interview and written assignment required. About 250 places."},
+      {"uni": "SMU", "faculty": "School of Law", "min_rp": 83, "min_gpa": 3.9, "duration": "4 years", "notes": "Competitive entry. Interview required. Known for business law focus."},
+      {"uni": "SUSS", "faculty": "Law", "min_rp": 72, "min_gpa": 3.5, "duration": "4 years", "notes": "Newest law school in Singapore. Focus on community and social justice law."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → University Law",
+      "target_rp": 84,
+      "recommended_h2": ["History", "Economics", "Literature in English"],
+      "recommended_jc_l1r5": 7,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Diploma → DAE to University Law",
+      "relevant_diplomas": ["Diploma in Law & Management"],
+      "target_gpa": 3.9,
+      "elr2b2_needed": 13,
+      "estimated_years_from_sec1": 11
+    },
+    "ite_route": {
+      "description": "ITE → Poly → University (longest path)",
+      "relevant_courses": [],
+      "estimated_years_from_sec1": 14,
+      "notes": "No direct ITE-to-law pathway; must go through poly first via Diploma in Law & Management"
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 20",
+      "competitive_schools": "AL ≤ 12 for IP/top schools",
+      "note": "Strong English and Humanities foundation recommended"
+    },
+    "professional_requirements": "Bachelor of Laws (LLB) + Part B bar exams + 6-month Practice Training Contract (PTC) at a law firm"
+  },
+  {
+    "career": "Doctor",
+    "aliases": ["doctor", "physician", "medical doctor", "surgeon", "GP", "general practitioner"],
+    "icon": "🩺",
+    "category": "Healthcare",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Medicine (MBBS)", "min_rp": 87, "min_gpa": 3.9, "duration": "5 years", "notes": "Interview required. Only about 300 places per year. Very competitive."},
+      {"uni": "NTU", "faculty": "Medicine (LKC Medicine, joint with Imperial College London)", "min_rp": 87, "min_gpa": 3.9, "duration": "5 years", "notes": "Unique joint programme with Imperial College London. About 150 places."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → University Medicine",
+      "target_rp": 87,
+      "recommended_h2": ["Chemistry", "Biology", "Physics or Mathematics"],
+      "recommended_jc_l1r5": 4,
+      "estimated_years_from_sec1": 11
+    },
+    "poly_route": {
+      "description": "Poly Diploma → DAE to Medicine (extremely rare)",
+      "relevant_diplomas": ["Diploma in Biomedical Science"],
+      "target_gpa": 3.9,
+      "elr2b2_needed": 12,
+      "estimated_years_from_sec1": 12,
+      "notes": "Very few poly graduates are admitted to Medicine via DAE. A-level route is strongly preferred."
+    },
+    "ite_route": {
+      "description": "ITE → Poly → University Medicine (extremely unlikely)",
+      "relevant_courses": [],
+      "estimated_years_from_sec1": 15,
+      "notes": "No practical ITE-to-Medicine pathway. Consider allied health careers (nursing, physiotherapy) as alternatives."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 20",
+      "competitive_schools": "AL ≤ 8 for IP schools (strongly recommended)",
+      "note": "Strong Science and Mathematics foundation essential. IP schools offer 6-year through-train which is optimal for Medicine."
+    },
+    "professional_requirements": "MBBS degree (5 years) + 1-year housemanship + postgraduate specialty training (4-6 years) + SMC registration"
+  },
+  {
+    "career": "Software Engineer",
+    "aliases": ["software engineer", "software developer", "programmer", "coder", "full-stack developer", "web developer", "app developer"],
+    "icon": "💻",
+    "category": "Technology",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Computing (School of Computing)", "min_rp": 80, "min_gpa": 3.6, "duration": "4 years", "notes": "High demand. Computing courses consistently oversubscribed."},
+      {"uni": "NTU", "faculty": "Computer Science & Engineering (SCSE)", "min_rp": 78, "min_gpa": 3.5, "duration": "4 years", "notes": "One of Asia's top CS schools. Strong research output."},
+      {"uni": "SMU", "faculty": "School of Information Systems", "min_rp": 72, "min_gpa": 3.4, "duration": "4 years", "notes": "Blends business and technology. Strong fintech and analytics focus."},
+      {"uni": "SUTD", "faculty": "Computer Science & Design (CSD)", "min_rp": 76, "min_gpa": 3.5, "duration": "4 years", "notes": "Integrates design thinking into computer science education."},
+      {"uni": "SIT", "faculty": "Infocomm Technology", "min_rp": 68, "min_gpa": 3.2, "duration": "3-4 years", "notes": "Partnerships with industry (AWS, Microsoft, Grab) for real-world projects."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → University Computing/CS",
+      "target_rp": 78,
+      "recommended_h2": ["Mathematics", "Physics", "Computing"],
+      "recommended_jc_l1r5": 8,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly IT/Computing Diploma → DAE to University CS",
+      "relevant_diplomas": ["Diploma in Information Technology", "Diploma in Data Science", "Diploma in Cybersecurity & Digital Forensics", "Diploma in Computer Engineering"],
+      "target_gpa": 3.5,
+      "elr2b2_needed": 12,
+      "estimated_years_from_sec1": 11
+    },
+    "ite_route": {
+      "description": "ITE → Poly IT Diploma → University CS",
+      "relevant_courses": ["Higher NITEC in InfoComm Technology (Information Security)"],
+      "estimated_years_from_sec1": 14,
+      "notes": "Higher NITEC in IT → Poly Diploma in IT → University via DAE. Viable but longer."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 20",
+      "competitive_schools": "AL ≤ 14 for strong academic secondary schools",
+      "note": "Strong Mathematics foundation essential. Additional Mathematics at O-levels strongly recommended."
+    },
+    "professional_requirements": "Bachelor's degree in Computer Science or related field. No mandatory professional license in Singapore, but certifications (AWS, Google Cloud, etc.) are valued."
+  },
+  {
+    "career": "Accountant",
+    "aliases": ["accountant", "auditor", "CPA", "chartered accountant", "tax consultant", "financial accountant"],
+    "icon": "📊",
+    "category": "Business & Finance",
+    "university_targets": [
+      {"uni": "SMU", "faculty": "School of Accountancy", "min_rp": 72, "min_gpa": 3.4, "duration": "4 years", "notes": "One of best accountancy schools in Asia. Strong Big 4 recruitment."},
+      {"uni": "NUS", "faculty": "Business (NUS Business School)", "min_rp": 72, "min_gpa": 3.4, "duration": "4 years", "notes": "Accountancy is offered within the Business School. Triple accredited."},
+      {"uni": "NTU", "faculty": "Nanyang Business School (NBS)", "min_rp": 70, "min_gpa": 3.3, "duration": "4 years", "notes": "AACSB accredited. ICPAS-recognised accountancy programme."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → University Accountancy",
+      "target_rp": 72,
+      "recommended_h2": ["Economics", "Mathematics", "Accounting (H2)"],
+      "recommended_jc_l1r5": 10,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Accountancy Diploma → DAE to University",
+      "relevant_diplomas": ["Diploma in Accountancy", "Diploma in Banking & Finance"],
+      "target_gpa": 3.4,
+      "elr2b2_needed": 13,
+      "estimated_years_from_sec1": 11
+    },
+    "ite_route": {
+      "description": "ITE → Poly Accountancy → University",
+      "relevant_courses": [],
+      "estimated_years_from_sec1": 14,
+      "notes": "No direct ITE accountancy course; go through poly Diploma in Accountancy first."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 22",
+      "competitive_schools": "AL ≤ 16 for schools with strong Mathematics programmes",
+      "note": "Strong Mathematics foundation recommended."
+    },
+    "professional_requirements": "Bachelor's in Accountancy + CA Singapore qualification (requires 3 years practical experience + professional exams) or ACCA"
+  },
+  {
+    "career": "Architect",
+    "aliases": ["architect", "building designer", "urban planner", "architectural designer"],
+    "icon": "🏛️",
+    "category": "Design & Built Environment",
+    "university_targets": [
+      {"uni": "SUTD", "faculty": "Architecture & Sustainable Design (ASD)", "min_rp": 72, "min_gpa": 3.4, "duration": "4 years", "notes": "Portfolio required. Unique design-focused architecture programme."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → SUTD Architecture",
+      "target_rp": 72,
+      "recommended_h2": ["Mathematics", "Physics", "Art"],
+      "recommended_jc_l1r5": 10,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Design/Engineering Diploma → DAE to SUTD ASD",
+      "relevant_diplomas": ["Diploma in Product & Industrial Design", "Diploma in Engineering with Business"],
+      "target_gpa": 3.4,
+      "elr2b2_needed": 13,
+      "estimated_years_from_sec1": 11
+    },
+    "ite_route": {
+      "description": "ITE → Poly → SUTD Architecture",
+      "relevant_courses": ["Higher NITEC in Interior & Spatial Design"],
+      "estimated_years_from_sec1": 14,
+      "notes": "Higher NITEC in Interior & Spatial Design → Poly Design diploma → SUTD ASD. Portfolio essential."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 22",
+      "competitive_schools": "AL ≤ 16 for schools with strong design/art programmes",
+      "note": "Creative portfolio and Mathematics are both important for architecture."
+    },
+    "professional_requirements": "Bachelor's in Architecture (4 years) + Master of Architecture (2 years) + 2 years practical training + Board of Architects (BOA) Professional Practice Exam"
+  },
+  {
+    "career": "Teacher",
+    "aliases": ["teacher", "educator", "school teacher", "MOE teacher", "primary school teacher", "secondary school teacher"],
+    "icon": "👩‍🏫",
+    "category": "Education",
+    "university_targets": [
+      {"uni": "NTU", "faculty": "National Institute of Education (NIE) — Education", "min_rp": 60, "min_gpa": 2.8, "duration": "4 years (BTEd/B.A. Ed)", "notes": "Only teacher training institution in Singapore. Graduates become MOE teachers."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → NIE Bachelor of Education",
+      "target_rp": 60,
+      "recommended_h2": ["Subject you want to teach (e.g. Mathematics, English, Science)"],
+      "recommended_jc_l1r5": 12,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Diploma → NIE Postgraduate Diploma in Education (PGDE)",
+      "relevant_diplomas": ["Diploma in Early Childhood Education"],
+      "target_gpa": 2.8,
+      "elr2b2_needed": 15,
+      "estimated_years_from_sec1": 11,
+      "notes": "Most poly graduates take a degree first, then apply to NIE for PGDE. Direct poly-to-NIE via Bachelor of Education is also possible."
+    },
+    "ite_route": {
+      "description": "ITE → Poly → Degree → NIE PGDE",
+      "relevant_courses": [],
+      "estimated_years_from_sec1": 15,
+      "notes": "Longer pathway but viable. Must complete a degree before NIE admission for secondary teaching."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 22",
+      "competitive_schools": "Any secondary school in Express stream is suitable",
+      "note": "Passion for teaching matters more than school prestige. Strong command of the subject you wish to teach is key."
+    },
+    "professional_requirements": "Bachelor of Education (NIE) OR any Bachelor's degree + PGDE from NIE + MOE bonded teaching service (3-4 years)"
+  },
+  {
+    "career": "Nurse",
+    "aliases": ["nurse", "registered nurse", "staff nurse", "nursing officer", "community nurse"],
+    "icon": "🏥",
+    "category": "Healthcare",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Nursing (Alice Lee Centre for Nursing Studies)", "min_rp": 62, "min_gpa": 3.2, "duration": "3 years", "notes": "Interview required. Must be SNB-fit."},
+      {"uni": "SIT", "faculty": "Health & Social Sciences", "min_rp": 62, "min_gpa": 3.2, "duration": "3-4 years", "notes": "Many programmes are degree top-ups for polytechnic diploma holders. Healthcare focused."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → NUS/SIT Nursing",
+      "target_rp": 62,
+      "recommended_h2": ["Biology", "Chemistry"],
+      "recommended_jc_l1r5": 14,
+      "estimated_years_from_sec1": 9
+    },
+    "poly_route": {
+      "description": "Poly Nursing Diploma → Direct registered nurse OR degree top-up",
+      "relevant_diplomas": ["Diploma in Nursing"],
+      "target_gpa": 3.2,
+      "elr2b2_needed": 11,
+      "estimated_years_from_sec1": 9,
+      "notes": "Poly nursing diploma graduates can register as RNs immediately. Degree top-up (SIT) is optional for career advancement."
+    },
+    "ite_route": {
+      "description": "ITE Healthcare → Poly Nursing → Registered Nurse",
+      "relevant_courses": ["NITEC in Healthcare (Nursing Aid)"],
+      "estimated_years_from_sec1": 13,
+      "notes": "NITEC in Healthcare (Nursing Aid) → Poly Diploma in Nursing → Registered Nurse. A viable and well-trodden path."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 22",
+      "competitive_schools": "Any Express-stream school; strong Science is helpful",
+      "note": "Biology and Chemistry at O-levels are important prerequisites for poly nursing."
+    },
+    "professional_requirements": "Bachelor of Nursing OR Diploma in Nursing + Singapore Nursing Board (SNB) registration + Annual Practising Certificate"
+  },
+  {
+    "career": "Business Executive",
+    "aliases": ["business executive", "business manager", "management consultant", "entrepreneur", "CEO", "business leader", "marketing manager"],
+    "icon": "💼",
+    "category": "Business & Finance",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Business (NUS Business School)", "min_rp": 72, "min_gpa": 3.4, "duration": "4 years", "notes": "Triple accredited (AACSB, EQUIS, AMBA). Top business school in Asia."},
+      {"uni": "NTU", "faculty": "Nanyang Business School (NBS)", "min_rp": 70, "min_gpa": 3.3, "duration": "4 years", "notes": "AACSB accredited. Strong global exchange programmes."},
+      {"uni": "SMU", "faculty": "Lee Kong Chian School of Business", "min_rp": 70, "min_gpa": 3.3, "duration": "4 years", "notes": "Seminar-style learning. Active student participation."},
+      {"uni": "SUSS", "faculty": "Business", "min_rp": 58, "min_gpa": 3.0, "duration": "4 years", "notes": "Strong part-time programmes for working adults. Flexible pace."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → University Business School",
+      "target_rp": 70,
+      "recommended_h2": ["Economics", "Mathematics", "Management of Business"],
+      "recommended_jc_l1r5": 10,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Business Diploma → DAE to University Business School",
+      "relevant_diplomas": ["Diploma in Business Studies", "Diploma in Business Administration", "Diploma in Banking & Finance"],
+      "target_gpa": 3.3,
+      "elr2b2_needed": 14,
+      "estimated_years_from_sec1": 11
+    },
+    "ite_route": {
+      "description": "ITE → Poly Business → University",
+      "relevant_courses": ["NITEC in Retail Services"],
+      "estimated_years_from_sec1": 14,
+      "notes": "ITE business/services courses → Poly business diploma → University. A longer but viable path to business careers."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 22",
+      "competitive_schools": "AL ≤ 16 for schools with strong business/economics programmes",
+      "note": "English and Mathematics are key. Broad interests and leadership skills matter as much as grades."
+    },
+    "professional_requirements": "Bachelor's in Business Administration or related field. No mandatory professional license. MBA is valued for senior roles."
+  },
+  {
+    "career": "Data Scientist",
+    "aliases": ["data scientist", "machine learning engineer", "AI engineer", "data analyst", "ML engineer", "analytics engineer"],
+    "icon": "📈",
+    "category": "Technology",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Computing (School of Computing)", "min_rp": 80, "min_gpa": 3.6, "duration": "4 years", "notes": "Offers Data Science & Analytics as a specialisation within Computing."},
+      {"uni": "NTU", "faculty": "Computer Science & Engineering (SCSE)", "min_rp": 78, "min_gpa": 3.5, "duration": "4 years", "notes": "Offers Data Science & AI track. Strong research output."},
+      {"uni": "SMU", "faculty": "School of Information Systems", "min_rp": 72, "min_gpa": 3.4, "duration": "4 years", "notes": "Data Science & Analytics specialisation. Business analytics focus."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → University Computing/Data Science",
+      "target_rp": 78,
+      "recommended_h2": ["Mathematics", "Further Mathematics", "Physics or Computing"],
+      "recommended_jc_l1r5": 8,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Data Science / IT Diploma → DAE to University",
+      "relevant_diplomas": ["Diploma in Data Science", "Diploma in Information Technology"],
+      "target_gpa": 3.5,
+      "elr2b2_needed": 11,
+      "estimated_years_from_sec1": 11
+    },
+    "ite_route": {
+      "description": "ITE IT → Poly Data Science → University",
+      "relevant_courses": ["Higher NITEC in InfoComm Technology (Information Security)"],
+      "estimated_years_from_sec1": 14,
+      "notes": "Higher NITEC in IT → Poly Diploma in Data Science → University Computing. Viable but longer."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 20",
+      "competitive_schools": "AL ≤ 14 for schools with strong Mathematics programmes",
+      "note": "Strong Mathematics is essential. Additional Mathematics at O-levels is critical for this career path."
+    },
+    "professional_requirements": "Bachelor's in Computer Science, Data Science, Statistics, or related field. Certifications in cloud platforms (AWS, GCP), Python, and ML frameworks are valued."
+  },
+  {
+    "career": "Mechanical Engineer",
+    "aliases": ["mechanical engineer", "design engineer", "manufacturing engineer", "HVAC engineer", "automotive engineer"],
+    "icon": "⚙️",
+    "category": "Engineering",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Engineering (Faculty of Engineering)", "min_rp": 72, "min_gpa": 3.4, "duration": "4 years", "notes": "Mechanical Engineering is one of several specialisations offered."},
+      {"uni": "NTU", "faculty": "College of Engineering", "min_rp": 70, "min_gpa": 3.3, "duration": "4 years", "notes": "Mechanical & Aerospace Engineering offered. Aerospace is unique to NTU."},
+      {"uni": "SIT", "faculty": "Engineering", "min_rp": 65, "min_gpa": 3.0, "duration": "3-4 years", "notes": "Applied focus with Integrated Work Study Programme (IWSP)."},
+      {"uni": "SUTD", "faculty": "Engineering Systems & Design (ESD)", "min_rp": 72, "min_gpa": 3.3, "duration": "4 years", "notes": "Systems thinking approach to engineering. Cross-disciplinary projects."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → University Engineering",
+      "target_rp": 70,
+      "recommended_h2": ["Physics", "Mathematics", "Chemistry"],
+      "recommended_jc_l1r5": 10,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Engineering Diploma → DAE to University Engineering",
+      "relevant_diplomas": ["Diploma in Mechatronics & Robotics", "Diploma in Electrical & Electronic Engineering", "Diploma in Engineering with Business"],
+      "target_gpa": 3.3,
+      "elr2b2_needed": 13,
+      "estimated_years_from_sec1": 11
+    },
+    "ite_route": {
+      "description": "ITE Engineering → Poly Engineering → University",
+      "relevant_courses": ["Higher NITEC in Engineering Systems & Management", "NITEC in Electrical Technology"],
+      "estimated_years_from_sec1": 14,
+      "notes": "Well-established ITE → Poly → University engineering pathway. Many ITE grads succeed in engineering careers."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 22",
+      "competitive_schools": "AL ≤ 16 for schools with strong Science programmes",
+      "note": "Strong Mathematics and Physics foundation essential. Additional Mathematics at O-levels is strongly recommended."
+    },
+    "professional_requirements": "Bachelor's in Mechanical Engineering (4 years) + Professional Engineer (PE) registration with PEB (requires 4 years practical experience + professional interview)"
+  },
+  {
+    "career": "Pharmacist",
+    "aliases": ["pharmacist", "clinical pharmacist", "hospital pharmacist", "retail pharmacist", "pharmaceutical scientist"],
+    "icon": "💊",
+    "category": "Healthcare",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Medicine (MBBS)", "min_rp": 87, "min_gpa": 3.9, "duration": "4 years", "notes": "NUS Pharmacy is housed under the Yong Loo Lin School of Medicine umbrella. Separate admission. Approximately 85 places."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → NUS Pharmacy",
+      "target_rp": 82,
+      "recommended_h2": ["Chemistry", "Biology", "Mathematics"],
+      "recommended_jc_l1r5": 6,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Pharmaceutical Science Diploma → DAE to NUS Pharmacy",
+      "relevant_diplomas": ["Diploma in Pharmaceutical Science", "Diploma in Biomedical Science"],
+      "target_gpa": 3.8,
+      "elr2b2_needed": 12,
+      "estimated_years_from_sec1": 11
+    },
+    "ite_route": {
+      "description": "ITE → Poly → NUS Pharmacy (very challenging)",
+      "relevant_courses": ["Higher NITEC in Chemical Process Technology"],
+      "estimated_years_from_sec1": 15,
+      "notes": "Higher NITEC in Chemical Process Technology → Poly Pharmaceutical Science → NUS Pharmacy DAE. Long but possible."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 20",
+      "competitive_schools": "AL ≤ 10 for top academic schools",
+      "note": "Strong Chemistry and Biology foundation essential."
+    },
+    "professional_requirements": "Bachelor of Pharmacy (4 years) + 1-year pre-registration training + Singapore Pharmacy Council registration + Annual Practising Certificate"
+  },
+  {
+    "career": "Dentist",
+    "aliases": ["dentist", "dental surgeon", "orthodontist", "dental officer"],
+    "icon": "🦷",
+    "category": "Healthcare",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Medicine (MBBS)", "min_rp": 87, "min_gpa": 3.9, "duration": "4 years", "notes": "Dentistry (BDS) is offered within the Yong Loo Lin School of Medicine. Very competitive — about 50 places per year."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → NUS Dentistry",
+      "target_rp": 87,
+      "recommended_h2": ["Chemistry", "Biology", "Physics or Mathematics"],
+      "recommended_jc_l1r5": 4,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Biomedical Science → DAE to NUS Dentistry (extremely rare)",
+      "relevant_diplomas": ["Diploma in Biomedical Science"],
+      "target_gpa": 3.9,
+      "elr2b2_needed": 12,
+      "estimated_years_from_sec1": 12,
+      "notes": "Practically all dentistry students come through the A-level route. DAE admission is extremely rare."
+    },
+    "ite_route": {
+      "description": "Not a viable pathway to dentistry",
+      "relevant_courses": [],
+      "estimated_years_from_sec1": 16,
+      "notes": "No practical ITE-to-Dentistry pathway exists. Consider dental hygienist or dental therapy as alternative allied health careers."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 20",
+      "competitive_schools": "AL ≤ 8 for IP schools (strongly recommended)",
+      "note": "Top academic results at every stage are essential. IP through-train schools are the most common feeder route."
+    },
+    "professional_requirements": "Bachelor of Dental Surgery (BDS, 4 years) + 1-year housemanship + Singapore Dental Council registration + optional specialty training (3-6 years)"
+  },
+  {
+    "career": "Psychologist",
+    "aliases": ["psychologist", "clinical psychologist", "counsellor", "counselling psychologist", "therapist"],
+    "icon": "🧠",
+    "category": "Social Sciences",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Arts & Social Sciences (FASS)", "min_rp": 65, "min_gpa": 3.0, "duration": "4 years", "notes": "Psychology major within FASS. Honours year required for graduate school eligibility."},
+      {"uni": "SUSS", "faculty": "Psychology", "min_rp": 58, "min_gpa": 3.0, "duration": "4 years", "notes": "APS-accredited. Pathway to counselling and HR careers."},
+      {"uni": "NTU", "faculty": "College of Science", "min_rp": 65, "min_gpa": 3.0, "duration": "4 years", "notes": "Psychology offered within College of Science. Research-focused."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → University Psychology",
+      "target_rp": 65,
+      "recommended_h2": ["Biology", "Mathematics", "Economics or Sociology"],
+      "recommended_jc_l1r5": 12,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Diploma → DAE to University Psychology",
+      "relevant_diplomas": ["Diploma in Early Childhood Education", "Diploma in Health Sciences (Physiotherapy)"],
+      "target_gpa": 3.0,
+      "elr2b2_needed": 15,
+      "estimated_years_from_sec1": 11,
+      "notes": "No direct Psychology poly diploma exists. Social science or health-related diplomas are accepted for DAE."
+    },
+    "ite_route": {
+      "description": "ITE → Poly → University Psychology",
+      "relevant_courses": [],
+      "estimated_years_from_sec1": 15,
+      "notes": "No direct ITE-to-Psychology pathway. Must complete a poly diploma first, then DAE to university."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 22",
+      "competitive_schools": "Any Express-stream school is suitable",
+      "note": "Strong English and analytical thinking are important. Psychology is a common second-choice major — entry is accessible."
+    },
+    "professional_requirements": "Bachelor's in Psychology (4 years, Honours required) + Master's in Clinical/Counselling Psychology (2-3 years) + supervised practice hours + SRP registration"
+  },
+  {
+    "career": "Social Worker",
+    "aliases": ["social worker", "community worker", "case worker", "family service professional", "youth worker"],
+    "icon": "🤝",
+    "category": "Social Sciences",
+    "university_targets": [
+      {"uni": "SUSS", "faculty": "Social Work", "min_rp": 55, "min_gpa": 3.0, "duration": "4 years", "notes": "SSSA-accredited. Field placement required. High demand due to social services growth."},
+      {"uni": "NUS", "faculty": "Arts & Social Sciences (FASS)", "min_rp": 65, "min_gpa": 3.0, "duration": "4 years", "notes": "Social Work is offered as a major within FASS."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → SUSS or NUS Social Work",
+      "target_rp": 55,
+      "recommended_h2": ["Sociology", "Economics", "Geography"],
+      "recommended_jc_l1r5": 14,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Diploma → DAE to SUSS Social Work",
+      "relevant_diplomas": ["Diploma in Early Childhood Education", "Diploma in Health Sciences (Physiotherapy)"],
+      "target_gpa": 3.0,
+      "elr2b2_needed": 15,
+      "estimated_years_from_sec1": 11,
+      "notes": "No direct Social Work poly diploma. Health, community, or education-related diplomas are accepted for DAE."
+    },
+    "ite_route": {
+      "description": "ITE → Poly → University Social Work",
+      "relevant_courses": ["NITEC in Healthcare (Nursing Aid)"],
+      "estimated_years_from_sec1": 14,
+      "notes": "Healthcare or community-related ITE courses → Poly diploma → SUSS Social Work. Passion and volunteer experience matter."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 24",
+      "competitive_schools": "Any Express or Normal Academic school",
+      "note": "Social work values empathy and life experience as much as academic grades. N(A) → Express → University is a proven pathway."
+    },
+    "professional_requirements": "Bachelor of Social Work (BSW, 4 years) + SSSA registration + supervised field placements (built into degree programme)"
+  },
+  {
+    "career": "Journalist / Media Professional",
+    "aliases": ["journalist", "reporter", "news anchor", "editor", "media producer", "PR professional", "content creator", "communications specialist"],
+    "icon": "📰",
+    "category": "Communications & Media",
+    "university_targets": [
+      {"uni": "NUS", "faculty": "Arts & Social Sciences (FASS)", "min_rp": 65, "min_gpa": 3.0, "duration": "4 years", "notes": "Communications and New Media (CNM) is a popular major within FASS."},
+      {"uni": "NTU", "faculty": "College of Science", "min_rp": 65, "min_gpa": 3.0, "duration": "4 years", "notes": "NTU's Wee Kim Wee School of Communication & Information (WKWSCI) is under this cluster. Premier journalism/media school in Singapore."}
+    ],
+    "jc_route": {
+      "description": "JC → A-levels → NTU WKWSCI or NUS CNM",
+      "target_rp": 65,
+      "recommended_h2": ["Literature in English", "History", "Economics"],
+      "recommended_jc_l1r5": 12,
+      "estimated_years_from_sec1": 10
+    },
+    "poly_route": {
+      "description": "Poly Mass Communication Diploma → DAE to University",
+      "relevant_diplomas": ["Diploma in Mass Communication"],
+      "target_gpa": 3.3,
+      "elr2b2_needed": 13,
+      "estimated_years_from_sec1": 11,
+      "notes": "Both SP and NP offer Diploma in Mass Communication. NP's is among the most competitive poly courses in Singapore."
+    },
+    "ite_route": {
+      "description": "ITE Media → Poly Mass Communication → University",
+      "relevant_courses": ["NITEC in Media & Communication"],
+      "estimated_years_from_sec1": 14,
+      "notes": "NITEC in Media & Communication → Poly Diploma in Mass Communication → University. A clear and viable pathway."
+    },
+    "psle_target": {
+      "express_stream": "AL ≤ 22",
+      "competitive_schools": "Any Express-stream school with strong English programme",
+      "note": "Excellent English language skills are essential. Active participation in school media clubs (journalism, debate, broadcasting) is highly valued."
+    },
+    "professional_requirements": "Bachelor's degree in Communications, Journalism, or related field. No mandatory professional license. Portfolio and internships matter more than certifications."
+  }
+]

@@ -24,6 +24,8 @@ Rules:
   rather than making the choice
 - Include relevant fallback options when discussing competitive pathways
 - Respond in the user's preferred language if specified
+- Adapt your response style based on the user's role context (parent, student, or teacher) provided in the conversation. Use appropriate language framing for each audience.
+- If a career aspiration is mentioned, tailor pathway advice toward achieving that goal.
 """
 
 
