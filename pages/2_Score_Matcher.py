@@ -9,6 +9,7 @@ import pandas as pd
 from utils.session_manager import require_login
 from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
+from components.chat_panel import render_chat_panel
 from services.score_service import (
     psle_al_to_stream, match_secondary_schools,
     calculate_l1r5, calculate_elr2b2, match_jcs, match_poly_courses,
@@ -17,6 +18,7 @@ from services.score_service import (
 
 user = require_login()
 render_sidebar()
+render_chat_panel()
 
 st.title("🎯 Score & School Matcher")
 st.caption("Enter your exam scores to see which schools and programmes you qualify for.")

@@ -4,9 +4,11 @@ st.set_page_config(page_title="Methodology — EduPath SG", page_icon="📖", la
 
 from utils.session_manager import require_login
 from components.sidebar import render_sidebar
+from components.chat_panel import render_chat_panel
 
 user = require_login()
 render_sidebar()
+render_chat_panel()
 
 st.title("📖 Methodology")
 st.markdown("*Data flows, implementation details, and process flowcharts for each use case.*")

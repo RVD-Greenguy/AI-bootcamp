@@ -5,10 +5,15 @@ Counselling, career guidance, talks/events, scholarships, earn-and-learn program
 import streamlit as st
 from services.pathway_service import get_support_resources
 from utils.session_manager import require_login
+from components.sidebar import render_sidebar
+from components.chat_panel import render_chat_panel
 
 require_login()
 user = st.session_state.user
 role = user.get("role", "student")
+
+render_sidebar()
+render_chat_panel()
 
 st.title("🤝 Student Support Hub")
 st.markdown("Singapore's official support network — counselling, scholarships, career guidance and work-study programmes.")

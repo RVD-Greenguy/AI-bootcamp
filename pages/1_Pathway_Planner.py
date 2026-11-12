@@ -5,10 +5,12 @@ st.set_page_config(page_title="Pathway Planner — EduPath SG", page_icon="🗺�
 from utils.session_manager import require_login
 from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
+from components.chat_panel import render_chat_panel
 from services.pathway_service import get_stages, get_pathway_for_profile
 
 user = require_login()
 render_sidebar()
+render_chat_panel()
 
 st.title("🗺️ Singapore Education Pathway Planner")
 st.caption("Visualise your complete education journey from any stage to graduation and beyond.")

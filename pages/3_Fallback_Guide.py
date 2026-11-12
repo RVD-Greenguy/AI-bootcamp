@@ -8,10 +8,12 @@ import plotly.graph_objects as go
 from utils.session_manager import require_login
 from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
+from components.chat_panel import render_chat_panel
 from services.pathway_service import get_fallback_policies
 
 user = require_login()
 render_sidebar()
+render_chat_panel()
 
 st.title("🔄 Fallback & Recovery Guide")
 st.caption("What to do when results don't go as planned — retake policies, alternative pathways, and certificate implications.")

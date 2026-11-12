@@ -5,12 +5,14 @@ st.set_page_config(page_title="AI Education Guide — EduPath SG", page_icon="�
 from utils.session_manager import require_login, append_chat, get_chat_history, clear_chat
 from utils.config import DISCLAIMER
 from components.sidebar import render_sidebar
+from components.chat_panel import render_chat_panel
 from components.rag_sources import render_rag_sources
 from services.rag_service import retrieve_chunks
 from services.llm_service import ask_guide, moderate_content
 
 user = require_login()
 render_sidebar()
+render_chat_panel()
 
 st.title("🤖 AI Education Guide")
 st.caption("Ask anything about Singapore's education system — policies, scores, pathways, fallbacks.")
