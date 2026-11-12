@@ -22,6 +22,7 @@ def render_sidebar():
         st.page_link("pages/2_Score_Matcher.py", label="🎯 Score & School Matcher")
         st.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Guide")
         st.page_link("pages/4_AI_Guide.py", label="🤖 AI Education Guide")
+        st.page_link("pages/8_Primary_Hub.py", label="🏫 Primary School Hub")
 
         st.divider()
         st.markdown("**Info**")

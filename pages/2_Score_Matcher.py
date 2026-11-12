@@ -507,24 +507,90 @@ with tab_nearby:
                     # Map
                     st.divider()
                     st.markdown("### 🗺️ Map View")
-                    map_data = [{"Institution": "📍 My Home", "lat": user_lat, "lng": user_lng,
-                                 "color": "red", "size": 16, "Detail": "Your location"}]
+                    import plotly.graph_objects as go
+                    import math as _math
+
+                    color_map_hex = {
+                        "red": "#ef4444", "blue": "#3b82f6", "purple": "#8b5cf6",
+                        "cyan": "#06b6d4", "orange": "#f97316", "green": "#10b981",
+                    }
+
+                    fig = go.Figure()
+
+                    # Distance rings at 1 km, 2 km, 5 km
+                    for ring_km, ring_color, ring_label in [
+                        (1, "#16a34a", "1 km"), (2, "#ca8a04", "2 km"), (5, "#ea580c", "5 km")
+                    ]:
+                        ring_lats, ring_lngs = [], []
+                        for deg in range(0, 361, 5):
+                            rad = _math.radians(deg)
+                            dlat = ring_km / 111.0
+                            dlng = ring_km / (111.0 * _math.cos(_math.radians(user_lat)))
+                            ring_lats.append(user_lat + dlat * _math.sin(rad))
+                            ring_lngs.append(user_lng + dlng * _math.cos(rad))
+                        fig.add_trace(go.Scattermapbox(
+                            lat=ring_lats, lon=ring_lngs,
+                            mode="lines",
+                            line=dict(color=ring_color, width=1.5, dash="dot"),
+                            name=ring_label,
+                            hoverinfo="skip",
+                        ))
+
+                    # Lines from user to each institution
                     for r in rows:
-                        map_data.append({"Institution": r["Institution"], "lat": r["lat"], "lng": r["lng"],
-                                         "color": r["color"], "size": 8, "Detail": r["Detail"]})
-                    map_df = pd.DataFrame(map_data)
-                    color_map = {"red": "#ef4444", "blue": "#3b82f6", "purple": "#8b5cf6",
-                                 "cyan": "#06b6d4", "orange": "#f97316", "green": "#10b981"}
-                    import plotly.express as px
-                    fig = px.scatter_mapbox(
-                        map_df, lat="lat", lon="lng",
-                        hover_name="Institution", hover_data={"Detail": True, "lat": False, "lng": False, "color": False, "size": False},
-                        zoom=11, height=500,
-                        color="color", size="size",
-                        color_discrete_map=color_map,
+                        if r.get("lat") and r.get("lng"):
+                            fig.add_trace(go.Scattermapbox(
+                                lat=[user_lat, r["lat"]], lon=[user_lng, r["lng"]],
+                                mode="lines",
+                                line=dict(color="#94a3b8", width=1),
+                                hoverinfo="skip",
+                                showlegend=False,
+                            ))
+
+                    # Institution markers grouped by category
+                    for cat, color_key in TYPE_COLOR.items():
+                        cat_rows = [r for r in rows if r["cat_raw"] == cat and r.get("lat") and r.get("lng")]
+                        if not cat_rows:
+                            continue
+                        fig.add_trace(go.Scattermapbox(
+                            lat=[r["lat"] for r in cat_rows],
+                            lon=[r["lng"] for r in cat_rows],
+                            mode="markers",
+                            marker=dict(size=10, color=color_map_hex[color_key]),
+                            name=TYPE_LABEL[cat],
+                            text=[
+                                f"{r['Institution']}<br>{r['Distance (km)']} km · 🚌{r['🚌 Bus (min)']}min · 🚗{r['🚗 Car (min)']}min"
+                                for r in cat_rows
+                            ],
+                            hovertemplate="%{text}<extra></extra>",
+                        ))
+
+                    # User home marker
+                    fig.add_trace(go.Scattermapbox(
+                        lat=[user_lat], lon=[user_lng],
+                        mode="markers+text",
+                        marker=dict(size=18, color="#ef4444"),
+                        text=["📍 Home"],
+                        textposition="top right",
+                        name="My Home",
+                        hovertemplate="Your location<extra></extra>",
+                    ))
+
+                    fig.update_layout(
+                        mapbox=dict(
+                            style="open-street-map",
+                            center=dict(lat=user_lat, lon=user_lng),
+                            zoom=11,
+                        ),
+                        height=560,
+                        margin=dict(l=0, r=0, t=0, b=0),
+                        legend=dict(
+                            orientation="h",
+                            yanchor="bottom", y=1.02,
+                            xanchor="right", x=1,
+                            bgcolor="rgba(255,255,255,0.8)",
+                        ),
                     )
-                    fig.update_layout(mapbox_style="open-street-map", showlegend=False,
-                                      margin=dict(l=0, r=0, t=0, b=0))
                     st.plotly_chart(fig, use_container_width=True)
 
                     # Legend

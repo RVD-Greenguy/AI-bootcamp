@@ -55,6 +55,13 @@ def _bootstrap():
     if not index_status()["indexed"]:
         build_index()
 
+    # ── Geocode schools missing coordinates ───────────────────────────────────
+    try:
+        from services.geocode_bootstrap import geocode_all
+        geocode_all()
+    except Exception:
+        pass
+
     return True
 
 

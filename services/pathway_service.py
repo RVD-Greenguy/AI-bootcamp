@@ -105,6 +105,22 @@ def get_support_resources() -> dict:
     return {"counselling": [], "career_guidance": [], "talks_events": [], "scholarships": [], "earn_and_learn": []}
 
 
+@lru_cache(maxsize=1)
+def get_primary_schools() -> list[dict]:
+    path = DATA_DIR / "primary_schools.json"
+    if path.exists():
+        return json.loads(path.read_text())
+    return []
+
+
+@lru_cache(maxsize=1)
+def get_success_stories() -> list[dict]:
+    path = DATA_DIR / "success_stories.json"
+    if path.exists():
+        return json.loads(path.read_text())
+    return []
+
+
 def get_stage_by_id(stage_id: str) -> dict | None:
     for s in get_stages():
         if s.get("id") == stage_id:

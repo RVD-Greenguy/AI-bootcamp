@@ -1,0 +1,112 @@
+[
+  {
+    "id": "jack_neo",
+    "name": "Jack Neo (梁智强)",
+    "known_as": "Singapore's most commercially successful filmmaker",
+    "struggle": "Faced academic difficulties in school and did not follow a conventional academic path.",
+    "stage": "o_levels",
+    "turning_point": "Discovered his talent in comedy and entertainment. Began performing and writing, eventually moving into film direction.",
+    "achievement": "Directed some of Singapore's highest-grossing films including 'Money No Enough', 'I Not Stupid', 'Homerun', and the 'Ah Boys to Men' series. His films have collectively earned hundreds of millions at the Singapore box office.",
+    "lesson": "Academic results measure one kind of intelligence. Creative talent, persistence, and the ability to connect with an audience can build a career no exam can predict.",
+    "source_note": "Jack Neo's background has been widely covered in Singapore media including The Straits Times and Channel NewsAsia."
+  },
+  {
+    "id": "douglas_foo",
+    "name": "Douglas Foo",
+    "known_as": "Founder and Executive Chairman of Sakae Sushi",
+    "struggle": "Failed his O-level examinations and did not pursue traditional post-secondary education.",
+    "stage": "o_levels",
+    "turning_point": "Rather than retaking exams, he entered the workforce and gradually built entrepreneurial experience in the food and beverage industry.",
+    "achievement": "Founded Sakae Sushi in 1997, growing it into a publicly listed company on the Singapore Exchange with hundreds of outlets across Asia. He later diversified into other business ventures.",
+    "lesson": "O-level results do not define your business potential. Practical experience, resilience, and market instinct can take you further than a certificate.",
+    "source_note": "Douglas Foo's story has been featured in The Business Times, Channel NewsAsia, and various entrepreneurship forums in Singapore."
+  },
+  {
+    "id": "sim_wong_hoo",
+    "name": "Sim Wong Hoo",
+    "known_as": "Founder of Creative Technology, inventor of the Sound Blaster",
+    "struggle": "Left Ngee Ann Polytechnic without completing his diploma to pursue his entrepreneurial ambitions.",
+    "stage": "poly",
+    "turning_point": "Dropped out to start his own company. Focused relentlessly on hardware innovation, particularly in computer audio technology.",
+    "achievement": "Founded Creative Technology in 1981. Invented the Sound Blaster sound card, which became the global standard for PC audio throughout the 1990s. Built Creative into a billion-dollar global technology company listed on NASDAQ.",
+    "lesson": "A diploma or degree is a tool, not a destination. If you have a clear vision and the drive to execute, the formal qualification can be replaced by results.",
+    "source_note": "Sim Wong Hoo's entrepreneurial journey is documented in his biography 'Chaotic Thoughts from the Old Millennium' and covered extensively in Singapore business media."
+  },
+  {
+    "id": "dick_lee",
+    "name": "Dick Lee",
+    "known_as": "Musician, playwright, creative director — 'The Mad Chinaman'",
+    "struggle": "Did not pursue a conventional academic or professional path after school. Chose the arts at a time when it was not considered a stable or respected career in Singapore.",
+    "stage": "dropped_out",
+    "turning_point": "Committed fully to music and the arts from a young age. His talent was recognised early but the courage to pursue it in 1970s Singapore was itself a form of resilience.",
+    "achievement": "Composed 'Home', one of Singapore's most beloved national songs. Has written and directed numerous musicals, served as Creative Director for the Singapore National Day Parade, and shaped Singapore's cultural identity across five decades.",
+    "lesson": "In Singapore's early years, the arts was not seen as a viable path. Dick Lee's career proves that cultural contribution is as valuable as commercial success.",
+    "source_note": "Dick Lee's contributions are documented in National Arts Council records, NHB oral history archives, and extensive coverage in The Straits Times."
+  },
+  {
+    "id": "kumar",
+    "name": "Kumar (Mani Velautham)",
+    "known_as": "Singapore's most iconic stand-up comedian and entertainer",
+    "struggle": "Did not excel academically and found school difficult. His identity as a performer did not fit the conventional mould expected of students at the time.",
+    "stage": "o_levels",
+    "turning_point": "Found his voice on stage. Began performing in clubs and cabarets, developing a style that blended comedy, commentary, and performance art.",
+    "achievement": "Became Singapore's most recognisable stand-up comedian, performing sell-out shows for over three decades. His shows tackle race, identity, and class in Singapore with humour and insight. A genuine cultural institution.",
+    "lesson": "The traits that make you different in a classroom — being loud, funny, unconventional — can become your greatest professional asset.",
+    "source_note": "Kumar's career has been covered extensively by The Straits Times, Channel NewsAsia, and arts media in Singapore."
+  },
+  {
+    "id": "olivia_lum",
+    "name": "Olivia Lum",
+    "known_as": "Founder of Hyflux, water treatment entrepreneur",
+    "struggle": "Grew up in poverty in Malaysia, was raised in an orphanage, and came to Singapore with very limited resources. Her early years were defined by financial hardship rather than academic failure.",
+    "stage": "primary",
+    "turning_point": "Earned a Chemistry degree from NUS through sheer determination and financial perseverance. Rather than seeking a stable job, she founded a water treatment company with S$20,000 in savings.",
+    "achievement": "Built Hyflux into one of Asia's leading water treatment companies, listed on the Singapore Exchange. At its peak it was valued at over S$1 billion. (Note: Hyflux faced financial difficulties from 2017 onwards, which is itself a lesson in business resilience.)",
+    "lesson": "Your starting point does not determine your ceiling. Olivia Lum's story is about the power of education as a tool for social mobility — and the courage to build something from nothing.",
+    "source_note": "Olivia Lum's story is documented in multiple Singapore business publications and she has spoken publicly about her childhood at various forums."
+  },
+  {
+    "id": "fandi_ahmad",
+    "name": "Fandi Ahmad",
+    "known_as": "Singapore's greatest footballer",
+    "struggle": "Left formal schooling early to pursue football full-time — a path that was not considered secure or prestigious.",
+    "stage": "dropped_out",
+    "turning_point": "His exceptional talent was identified early. He committed to football and was eventually signed by Groningen in the Netherlands, becoming one of the first Singaporeans to play professional football in Europe.",
+    "achievement": "Played professional football in the Netherlands, Indonesia, and Singapore. Won numerous national championships. Retired as the most celebrated footballer in Singapore's history. Currently coaches the Singapore national football team.",
+    "lesson": "Sporting excellence is a legitimate and valuable career path. Early specialisation in a talent, backed by discipline and dedication, can lead to a remarkable career.",
+    "source_note": "Fandi Ahmad's career is extensively documented by the Football Association of Singapore and Singapore sports media."
+  },
+  {
+    "id": "peter_lim",
+    "name": "Peter Lim",
+    "known_as": "Billionaire investor and owner of Valencia CF",
+    "struggle": "Grew up in a low-income family in Singapore with limited financial resources during his formative years.",
+    "stage": "primary",
+    "turning_point": "Graduated from Ngee Ann Polytechnic and worked his way up in stockbroking. His talent for investment analysis and sharp market instincts led to extraordinary returns.",
+    "achievement": "Built a fortune estimated in the billions through investments in palm oil, tobacco, and sports. Purchased Valencia CF football club in Spain. His journey from a Queenstown HDB flat to global investor is one of Singapore's great rags-to-riches stories.",
+    "lesson": "Financial hardship in childhood does not block future wealth. Peter Lim's story is about applying analytical intelligence and disciplined risk-taking — skills that can be developed regardless of background.",
+    "source_note": "Peter Lim's background has been covered in Forbes, Bloomberg, and The Straits Times."
+  },
+  {
+    "id": "ite_skills_champion",
+    "name": "ITE Skills Champions (Composite)",
+    "known_as": "Representing thousands of ITE graduates who built successful careers",
+    "struggle": "Placed in the Normal Technical stream or scored poorly at PSLE. Many faced self-doubt and societal stigma around attending ITE ('It's The End').",
+    "stage": "ite",
+    "turning_point": "Discovered genuine passion for a craft — culinary arts, precision engineering, aerospace maintenance, healthcare. ITE's hands-on training matched their learning style in a way academic routes never did.",
+    "achievement": "ITE graduates have won gold medals at the WorldSkills International Competition, the global Olympics of vocational education. Singapore regularly ranks among the top nations. ITE graduates go on to become master chefs, aircraft engineers, dental technologists, and entrepreneurs. Many pursue Higher NITEC, then polytechnic diplomas, then university.",
+    "lesson": "ITE is a beginning, not an end. The skills pathway — ITE → Higher NITEC → Polytechnic → University — is real, proven, and leads to careers that Standard-stream students compete for.",
+    "source_note": "ITE Singapore WorldSkills achievements are documented at ite.edu.sg. The 'ITE is Not The End' narrative shift has been covered by MOE and multiple Singapore media outlets."
+  },
+  {
+    "id": "nt_stream_pathway",
+    "name": "Normal Technical Stream Success (Composite)",
+    "known_as": "Representing students who went from NT stream to fulfilling careers",
+    "struggle": "Assigned to the Normal Technical stream after PSLE — often perceived as the 'weakest' stream. Faced low expectations from teachers, peers, and sometimes family.",
+    "stage": "n_levels",
+    "turning_point": "Found direction through hands-on ITE courses in areas like culinary arts, electrical technology, or IT. Realised that practical mastery, not academic ranking, was their strength.",
+    "achievement": "Completed NITEC at ITE, progressed to Higher NITEC, then earned a polytechnic diploma. Some went on to part-time degrees while working. Career outcomes span engineering technicians, paramedics, chefs, early childhood educators, and IT support specialists — all well above median wages.",
+    "lesson": "The NT stream is not a verdict. It is a different starting point on the same map. The ITE → Poly pathway is a legitimate and increasingly respected route that leads to the same career destinations, just via a different road.",
+    "source_note": "MOE's 'Post-Secondary Pathways' documentation and ITE's graduate employment survey data underpin this composite narrative."
+  }
+]
