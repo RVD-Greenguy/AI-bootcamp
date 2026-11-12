@@ -1,9 +1,9 @@
 import streamlit as st
+
 st.set_page_config(page_title="Methodology — EduPath SG", page_icon="📖", layout="wide")
 
 from utils.session_manager import require_login
 from components.sidebar import render_sidebar
-import plotly.graph_objects as go
 
 user = require_login()
 render_sidebar()
@@ -12,7 +12,7 @@ st.title("📖 Methodology")
 st.markdown("*Data flows, implementation details, and process flowcharts for each use case.*")
 
 tab_uc1, tab_uc2, tab_rag, tab_data = st.tabs([
-    "🗺️ Use Case 1: Pathway Planner",
+    "🗺️ Use Case 1: Pathway Navigator",
     "🎯 Use Case 2: Score Matcher",
     "🔍 RAG Pipeline",
     "🗄️ Data Architecture",
@@ -20,55 +20,106 @@ tab_uc1, tab_uc2, tab_rag, tab_data = st.tabs([
 
 # ── USE CASE 1 ────────────────────────────────────────────────────────────────
 with tab_uc1:
-    st.markdown("## Use Case 1: Education Pathway Planner")
+    st.markdown("## Use Case 1: Education Pathway Navigator")
     st.markdown("""
-The Pathway Planner takes a user's current education stage, citizenship status and interests,
-then renders a personalised visual journey through every remaining stage of Singapore's education system.
+The Pathway Navigator takes a user's current education stage, citizenship status and interests,
+then renders a personalised visual roadmap through every remaining stage of Singapore's education system.
 At each fork (PSLE, JAE, post-secondary), it explains the government process and eligibility criteria.
     """)
 
     st.markdown("### Process Flowchart")
 
-    # Build a Plotly flowchart using scatter + annotations
-    steps = [
-        (0.5, 9, "User inputs:\nCurrent stage\nCitizenship\nInterests", "#1565C0"),
-        (0.5, 7.5, "pathway_service\n.get_pathway_for_profile()", "#1976D2"),
-        (0.5, 6, "Load education_stages.json\nFilter from current stage", "#1976D2"),
-        (0.5, 4.5, "Identify decision forks\n(PSLE, O-levels, A-levels)", "#0288D1"),
-        (0.5, 3, "Render Plotly timeline\n(colour-coded nodes)", "#0097A7"),
-        (0.5, 1.5, "Expandable stage cards\n(entry criteria, gov process, URL)", "#00796B"),
-        (0.5, 0, "Display citizenship notes\n+ links to Score Matcher", "#2E7D32"),
-    ]
+    uc1_html = """
+<style>
+  .fc-wrap {
+    background: #0f172a;
+    padding: 32px 24px;
+    border-radius: 12px;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 700px;
+  }
+  .fc-node {
+    border-radius: 8px;
+    padding: 12px 20px;
+    width: 320px;
+    text-align: center;
+  }
+  .fc-title { font-size: 13px; font-weight: 600; color: #e2e8f0; margin: 0 0 4px 0; }
+  .fc-sub   { font-size: 11px; margin: 0; }
+  .fc-arrow { color: #334155; font-size: 22px; line-height: 1; margin: 6px 0; }
+  .fc-step  { font-size: 10px; font-weight: 700; text-transform: uppercase;
+              letter-spacing: 1.5px; margin-bottom: 4px; }
+</style>
 
-    x = [s[0] for s in steps]
-    y = [s[1] for s in steps]
-    labels = [s[2] for s in steps]
-    colours = [s[3] for s in steps]
+<div class="fc-wrap">
 
-    fig1 = go.Figure()
-    # Connecting lines
-    fig1.add_trace(go.Scatter(
-        x=x, y=y, mode="lines",
-        line=dict(color="#90A4AE", width=2),
-        showlegend=False,
-    ))
-    # Nodes
-    fig1.add_trace(go.Scatter(
-        x=x, y=y, mode="markers+text",
-        marker=dict(size=40, color=colours, symbol="square"),
-        text=labels,
-        textposition="middle center",
-        textfont=dict(color="white", size=10),
-        showlegend=False,
-    ))
-    fig1.update_layout(
-        height=600,
-        xaxis=dict(visible=False, range=[0, 1]),
-        yaxis=dict(visible=False),
-        plot_bgcolor="white",
-        margin=dict(l=20, r=20, t=20, b=20),
-    )
-    st.plotly_chart(fig1, use_container_width=True)
+  <!-- Step 1: User Input -->
+  <div class="fc-node" style="background:#172554;border:2px solid #3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.2);">
+    <p class="fc-step" style="color:#93c5fd;">Step 1</p>
+    <p class="fc-title">👤 User Inputs</p>
+    <p class="fc-sub" style="color:#93c5fd;">Current stage · Citizenship · Age · Interests</p>
+  </div>
+
+  <div class="fc-arrow">↓</div>
+
+  <!-- Step 2: Service call -->
+  <div class="fc-node" style="background:#1e1b4b;border:1.5px solid #6366f1;">
+    <p class="fc-step" style="color:#a5b4fc;">Step 2</p>
+    <p class="fc-title">⚙️ pathway_service</p>
+    <p class="fc-sub" style="color:#a5b4fc;">get_pathway_for_profile(stage, interests, citizenship)</p>
+  </div>
+
+  <div class="fc-arrow">↓</div>
+
+  <!-- Step 3: Data load -->
+  <div class="fc-node" style="background:#1e1b4b;border:1.5px solid #6366f1;">
+    <p class="fc-step" style="color:#a5b4fc;">Step 3</p>
+    <p class="fc-title">📂 Load education_stages.json</p>
+    <p class="fc-sub" style="color:#a5b4fc;">Filter stages from current position · lru_cache</p>
+  </div>
+
+  <div class="fc-arrow">↓</div>
+
+  <!-- Step 4: Fork detection -->
+  <div class="fc-node" style="background:#083344;border:1.5px solid #06b6d4;">
+    <p class="fc-step" style="color:#67e8f9;">Step 4</p>
+    <p class="fc-title">🔀 Identify Decision Forks</p>
+    <p class="fc-sub" style="color:#67e8f9;">PSLE · O-levels / JAE · A-levels / DAE</p>
+  </div>
+
+  <div class="fc-arrow">↓</div>
+
+  <!-- Step 5: Render roadmap -->
+  <div class="fc-node" style="background:#022c22;border:1.5px solid #10b981;">
+    <p class="fc-step" style="color:#6ee7b7;">Step 5</p>
+    <p class="fc-title">🗺️ Render Roadmap HTML</p>
+    <p class="fc-sub" style="color:#6ee7b7;">roadmap.sh-style nodes · track color-coding · current stage glow</p>
+  </div>
+
+  <div class="fc-arrow">↓</div>
+
+  <!-- Step 6: Stage cards -->
+  <div class="fc-node" style="background:#022c22;border:1.5px solid #10b981;">
+    <p class="fc-step" style="color:#6ee7b7;">Step 6</p>
+    <p class="fc-title">📋 Expandable Stage Cards</p>
+    <p class="fc-sub" style="color:#6ee7b7;">Entry criteria · Governing body · Official URL · Key facts</p>
+  </div>
+
+  <div class="fc-arrow">↓</div>
+
+  <!-- Step 7: Output -->
+  <div class="fc-node" style="background:#052e16;border:1.5px solid #22c55e;">
+    <p class="fc-step" style="color:#86efac;">Step 7</p>
+    <p class="fc-title">✅ Citizenship Notes + Next Steps</p>
+    <p class="fc-sub" style="color:#86efac;">Registration priority · Subsidies · Link to Score Matcher</p>
+  </div>
+
+</div>
+"""
+    st.html(uc1_html)
 
     st.markdown("### Key Decision Points in the Pathway")
     st.markdown("""
@@ -91,53 +142,108 @@ Covers four transition stages: PSLE → Sec, O-levels → JAE, A-levels → Univ
 
     st.markdown("### Process Flowchart")
 
-    stages_uc2 = [
-        (0.2, 6, "Student enters\nexam scores", "#1565C0"),
-        (0.2, 4.5, "Select transition:\nPSLE / O-lvl / A-lvl / Poly", "#1976D2"),
-        (0.8, 6, "Score calculator\n(L1R5 / ELR2B2 / Rank pts)", "#0288D1"),
-        (0.8, 4.5, "Bonus points\n(CCA / affiliation)", "#0288D1"),
-        (0.5, 3, "score_service\nmatch function", "#0097A7"),
-        (0.5, 1.5, "Filter schools/courses\nfrom seed data JSON", "#00796B"),
-        (0.5, 0, "Plotly bar chart +\ncomparison table + fit label", "#2E7D32"),
-    ]
+    uc2_html = """
+<style>
+  .fc2-wrap {
+    background: #0f172a;
+    padding: 32px 24px;
+    border-radius: 12px;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 750px;
+  }
+  .fc2-node {
+    border-radius: 8px;
+    padding: 11px 16px;
+    text-align: center;
+  }
+  .fc2-title { font-size: 13px; font-weight: 600; color: #e2e8f0; margin: 0 0 3px 0; }
+  .fc2-sub   { font-size: 11px; margin: 0; }
+  .fc2-arrow { color: #334155; font-size: 20px; line-height: 1; margin: 5px 0; }
+  .fc2-step  { font-size: 10px; font-weight: 700; text-transform: uppercase;
+               letter-spacing: 1.5px; margin-bottom: 3px; }
+  .fc2-split { display: flex; gap: 16px; width: 100%; max-width: 640px; justify-content: center; }
+  .fc2-col   { flex: 1; display: flex; flex-direction: column; align-items: center; min-width: 200px; }
+  .fc2-col .fc2-node { width: 100%; }
+  .fc2-hline { width: 100%; max-width: 640px; height: 1px; background: #334155; }
+  .fc2-single { width: 320px; }
+</style>
 
-    x2 = [s[0] for s in stages_uc2]
-    y2 = [s[1] for s in stages_uc2]
-    labels2 = [s[2] for s in stages_uc2]
-    colours2 = [s[3] for s in stages_uc2]
+<div class="fc2-wrap">
 
-    fig2 = go.Figure()
-    # Connect input boxes to calculator
-    fig2.add_trace(go.Scatter(
-        x=[0.2, 0.2, 0.5, 0.8, 0.8, 0.5],
-        y=[6, 4.5, 3, 4.5, 6, 3],
-        mode="lines",
-        line=dict(color="#90A4AE", width=2),
-        showlegend=False,
-    ))
-    fig2.add_trace(go.Scatter(
-        x=[0.5, 0.5],
-        y=[3, 0],
-        mode="lines",
-        line=dict(color="#90A4AE", width=2),
-        showlegend=False,
-    ))
-    fig2.add_trace(go.Scatter(
-        x=x2, y=y2, mode="markers+text",
-        marker=dict(size=38, color=colours2, symbol="square"),
-        text=labels2,
-        textposition="middle center",
-        textfont=dict(color="white", size=9),
-        showlegend=False,
-    ))
-    fig2.update_layout(
-        height=500,
-        xaxis=dict(visible=False, range=[0, 1]),
-        yaxis=dict(visible=False),
-        plot_bgcolor="white",
-        margin=dict(l=20, r=20, t=20, b=20),
-    )
-    st.plotly_chart(fig2, use_container_width=True)
+  <!-- Top split -->
+  <div class="fc2-hline"></div>
+  <div class="fc2-split">
+
+    <div class="fc2-col">
+      <div class="fc2-arrow">↓</div>
+      <div class="fc2-node" style="background:#172554;border:2px solid #3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.2);">
+        <p class="fc2-step" style="color:#93c5fd;">Input A</p>
+        <p class="fc2-title">👤 Student Enters Scores</p>
+        <p class="fc2-sub" style="color:#93c5fd;">Raw subject grades · PSLE AL values</p>
+      </div>
+      <div class="fc2-arrow">↓</div>
+      <div class="fc2-node" style="background:#172554;border:1.5px solid #3b82f6;">
+        <p class="fc2-step" style="color:#93c5fd;">Input B</p>
+        <p class="fc2-title">🔀 Select Transition</p>
+        <p class="fc2-sub" style="color:#93c5fd;">PSLE → Sec · O-lvl → JC/Poly · A-lvl → Uni · Poly → DAE</p>
+      </div>
+    </div>
+
+    <div class="fc2-col">
+      <div class="fc2-arrow">↓</div>
+      <div class="fc2-node" style="background:#083344;border:2px solid #06b6d4;">
+        <p class="fc2-step" style="color:#67e8f9;">Process A</p>
+        <p class="fc2-title">🧮 Score Calculator</p>
+        <p class="fc2-sub" style="color:#67e8f9;">L1R5 · ELR2B2 · A-lvl Rank Points · Poly GPA</p>
+      </div>
+      <div class="fc2-arrow">↓</div>
+      <div class="fc2-node" style="background:#083344;border:1.5px solid #06b6d4;">
+        <p class="fc2-step" style="color:#67e8f9;">Process B</p>
+        <p class="fc2-title">➕ Bonus Points</p>
+        <p class="fc2-sub" style="color:#67e8f9;">CCA bonus (0–2) · Affiliation bonus (0–2)</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="fc2-hline"></div>
+
+  <div class="fc2-arrow">↓</div>
+
+  <!-- Converge -->
+  <div class="fc2-single">
+    <div class="fc2-node" style="background:#1e1b4b;border:2px solid #8b5cf6;box-shadow:0 0 0 3px rgba(139,92,246,0.2);">
+      <p class="fc2-step" style="color:#c4b5fd;">Core</p>
+      <p class="fc2-title">⚙️ score_service match function</p>
+      <p class="fc2-sub" style="color:#c4b5fd;">match_secondary_schools · match_jcs · match_poly_courses · match_universities</p>
+    </div>
+  </div>
+
+  <div class="fc2-arrow">↓</div>
+
+  <div class="fc2-single">
+    <div class="fc2-node" style="background:#022c22;border:1.5px solid #10b981;">
+      <p class="fc2-step" style="color:#6ee7b7;">Data</p>
+      <p class="fc2-title">📂 Filter from Seed JSON</p>
+      <p class="fc2-sub" style="color:#6ee7b7;">secondary_schools · jc_data · poly_courses · university_data</p>
+    </div>
+  </div>
+
+  <div class="fc2-arrow">↓</div>
+
+  <div class="fc2-single">
+    <div class="fc2-node" style="background:#052e16;border:1.5px solid #22c55e;">
+      <p class="fc2-step" style="color:#86efac;">Output</p>
+      <p class="fc2-title">📊 Ranked Results</p>
+      <p class="fc2-sub" style="color:#86efac;">Plotly bar chart · Comparison table · Fit labels (Eligible / Borderline)</p>
+    </div>
+  </div>
+
+</div>
+"""
+    st.html(uc2_html)
 
     st.markdown("### Score Calculation Formulas")
     st.markdown("""
@@ -163,12 +269,12 @@ with tab_rag:
 EduPath SG uses a **two-tier Retrieval-Augmented Generation** pipeline:
 
 **Tier 1 (always active — no API key needed):**
-TF-IDF vectorisation using scikit-learn over 200+ curriculum chunks sourced from official
+TF-IDF vectorisation using scikit-learn over 147 chunks sourced from official
 Singapore government websites. Retrieval uses cosine similarity. Works fully offline.
 
 **Tier 2 (optional — requires OpenAI API key):**
 ChromaDB vector store with OpenAI `text-embedding-3-small` embeddings for richer semantic retrieval.
-Automatically activated when `USE_AI=true` and `OPENAI_API_KEY` is set in `.env`.
+Automatically activated when `USE_AI=true` and `OPENAI_API_KEY` is set in Streamlit Secrets.
     """)
 
     st.markdown("### RAG Data Flow")
@@ -196,12 +302,20 @@ Retrieved chunks
     """, language="text")
 
     st.markdown("### Knowledge Base Coverage")
-    kb_data = {
-        "Source Type": ["Education stages", "Secondary schools", "JC data", "Poly courses", "ITE courses", "University faculties", "Fallback policies", "Static knowledge chunks"],
-        "Chunks": ["8", "28", "12", "50", "12", "30", "10", "14"],
-        "Source": ["MOE", "MOE school-info", "MOE JAE", "5 polytechnics", "ITE Education Services", "6 AUs", "MOE / SEAB", "Curated from official sources"],
-    }
     import pandas as pd
+    kb_data = {
+        "Source Type": [
+            "Education stages", "Secondary schools", "JC data", "Poly courses",
+            "ITE courses", "University faculties", "Fallback policies",
+            "Support resources", "Static knowledge chunks"
+        ],
+        "Chunks": ["8", "28", "12", "50", "12", "30", "10", "35", "14"],
+        "Source": [
+            "MOE", "MOE school-info", "MOE JAE", "5 polytechnics",
+            "ITE Education Services", "6 AUs", "MOE / SEAB",
+            "MOE / PSC / SkillsFuture / WSG", "Curated from official sources"
+        ],
+    }
     st.dataframe(pd.DataFrame(kb_data), use_container_width=True, hide_index=True)
 
 # ── DATA ARCHITECTURE ────────────────────────────────────────────────────────
@@ -228,21 +342,22 @@ EduPath SG uses two data stores:
     st.markdown("### File Structure")
     st.code("""
 edupathsg/
-├── app.py                      # Login + role router
+├── app.py                      # Login + role router + auto-bootstrap
 ├── pages/
-│   ├── 1_Pathway_Planner.py    # Use Case 1
-│   ├── 2_Score_Matcher.py      # Use Case 2
-│   ├── 3_Fallback_Guide.py     # Retake policies
-│   ├── 4_AI_Guide.py           # RAG-powered chat
-│   ├── 5_About_Us.py           # This project
-│   └── 6_Methodology.py        # This page
+│   ├── 1_Pathway_Planner.py    # Use Case 1 — roadmap.sh-style visualisation
+│   ├── 2_Score_Matcher.py      # Use Case 2 — score calculators + school matching
+│   ├── 3_Fallback_Guide.py     # Retake policies + private candidate guide
+│   ├── 4_AI_Guide.py           # RAG-powered Q&A (GPT-4o + TF-IDF)
+│   ├── 5_About_Us.py           # Project scope + 19 official data sources
+│   ├── 6_Methodology.py        # This page
+│   └── 7_Support_Hub.py        # Counselling, scholarships, Earn & Learn
 ├── services/
 │   ├── db.py                   # SQLite helpers
-│   ├── auth_service.py         # Login / register
-│   ├── pathway_service.py      # Stage + fork data
-│   ├── score_service.py        # L1R5 / rank pts calculators
+│   ├── auth_service.py         # Login / register (bcrypt)
+│   ├── pathway_service.py      # Stage + fork + support resource data
+│   ├── score_service.py        # L1R5 / ELR2B2 / rank pts calculators
 │   ├── rag_service.py          # TF-IDF + ChromaDB RAG
-│   └── llm_service.py          # OpenAI stub / live
+│   └── llm_service.py          # OpenAI GPT-4o stub / live
 ├── data/seed/
 │   ├── education_stages.json
 │   ├── secondary_schools.json
@@ -250,7 +365,8 @@ edupathsg/
 │   ├── poly_courses.json
 │   ├── ite_data.json
 │   ├── university_data.json
-│   └── fallback_policies.json
+│   ├── fallback_policies.json
+│   └── support_resources.json
 ├── storage/
 │   ├── edupathsg.sqlite
 │   └── tfidf_store.pkl
