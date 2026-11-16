@@ -39,7 +39,6 @@ def _bootstrap():
     for email, pw, role, name in [
         ("parent@edupathsg.sg",  "Parent123!",  "parent",  "Demo Parent"),
         ("student@edupathsg.sg", "Student123!", "student", "Demo Student"),
-        ("teacher@edupathsg.sg", "Teacher123!", "teacher", "Demo Teacher"),
     ]:
         if not conn.execute("SELECT 1 FROM users WHERE email=?", (email,)).fetchone():
             pw_hash = bcrypt.hashpw(pw.encode(), bcrypt.gensalt()).decode()
@@ -152,14 +151,6 @@ if user:
         col2.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Options", use_container_width=True)
         col3.page_link("pages/4_AI_Guide.py", label="🤖 Ask the Guide", use_container_width=True)
         col4.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub", use_container_width=True)
-    elif role == "teacher":
-        st.caption("👩‍🏫 Full counselling data available on all pages.")
-        col1, col2, col3, col4, col5 = st.columns(5)
-        col1.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
-        col2.page_link("pages/2_Score_Matcher.py", label="🎯 Score Matcher", use_container_width=True)
-        col3.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Guide", use_container_width=True)
-        col4.page_link("pages/4_AI_Guide.py", label="🤖 AI Guide", use_container_width=True)
-        col5.page_link("pages/8_Primary_Hub.py", label="🏫 Primary Hub", use_container_width=True)
 
     st.divider()
     st.markdown("**Quick reference:** [MOE](https://www.moe.gov.sg) · [SEAB](https://www.seab.gov.sg) · [ITE](https://www.ite.edu.sg) · [SkillsFuture](https://www.skillsfuture.gov.sg)")
@@ -183,8 +174,6 @@ IP vs non-IP schools, and what happens at every fork.
 **For Students** — Enter your scores and instantly see which schools and programmes you qualify for.
 Check fallback options and retake policies.
 
-**For Teachers** — Full pathway data for student counselling. L1R5 calculator, school matcher,
-and DAE university guide.
         """)
         st.info(f"ℹ️ {DISCLAIMER}")
 
@@ -194,7 +183,6 @@ and DAE university guide.
 |------|-------|----------|
 | Parent | parent@edupathsg.sg | Parent123! |
 | Student | student@edupathsg.sg | Student123! |
-| Teacher | teacher@edupathsg.sg | Teacher123! |
         """)
 
     with col_form:
@@ -222,7 +210,7 @@ and DAE university guide.
             with st.form("register_form"):
                 reg_name = st.text_input("Full Name")
                 reg_email = st.text_input("Email", key="reg_email")
-                reg_role = st.selectbox("Role", ["parent", "student", "teacher"])
+                reg_role = st.selectbox("Role", ["parent", "student"])
                 reg_pass = st.text_input("Password (min 8 chars)", type="password", key="reg_pass")
                 reg_submitted = st.form_submit_button("Create Account", type="primary", use_container_width=True)
 
