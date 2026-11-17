@@ -43,11 +43,12 @@ if _career:
 st.warning(f"⚠️ {DISCLAIMER}", icon="⚠️")
 st.info("This guide covers official MOE and SEAB policies. Always verify current policies at **moe.gov.sg** and **seab.gov.sg** before making decisions.")
 
-tab_primary, tab_secondary, tab_postsec, tab_stories = st.tabs([
+tab_primary, tab_secondary, tab_postsec, tab_stories, tab_support = st.tabs([
     "🏫 Primary School",
     "📚 Secondary School",
     "🎓 Post-Secondary",
     "🌟 Success Stories",
+    "🤝 Support & Resources",
 ])
 
 # ── TAB 1: PRIMARY SCHOOL ────────────────────────────────────────────────────
@@ -448,3 +449,41 @@ was not the stream they were placed in — it was the **decision to keep going**
 If you or your child is at a crossroads, the EduPath AI Guide can help you understand all
 the options available from wherever you are right now.
     """)
+
+# ── TAB 5: SUPPORT & RESOURCES ─────────────────────────────────────────────
+with tab_support:
+    st.subheader("🤝 Support & Resources")
+    st.markdown("Singapore's official support network — counselling, scholarships, career guidance and work-study programmes.")
+
+    try:
+        from services.pathway_service import get_support_resources
+        resources = get_support_resources()
+    except Exception:
+        resources = {}
+
+    with st.expander("🧠 Counselling & Mental Health", expanded=True):
+        st.info("Every MOE school has a trained counsellor. Sessions are free and confidential.")
+        for item in resources.get("counselling", [])[:4]:
+            st.markdown(f"- **{item['name']}** — {item.get('description','')[:120]}... [{item.get('how_to_access','See website')}]({item.get('official_url','')})")
+        st.markdown("**Crisis lines:** SOS 1-767 (24h) · IMH 6389-2222 (24h) · CHAT youth: chat.mentalhealth.sg")
+
+    with st.expander("🧭 Career & Education Guidance"):
+        st.info("ECG counsellors are in every secondary school, JC, poly and ITE — free sessions.")
+        for item in resources.get("career_guidance", [])[:4]:
+            st.markdown(f"- **{item['name']}** — {item.get('description','')[:120]}...")
+        st.markdown("[MySkillsFuture Career Profiler →](https://www.myskillsfuture.gov.sg/content/student/en/secondary.html)")
+
+    with st.expander("🏆 Scholarships & Bursaries"):
+        role = user.get("role", "student")
+        if role == "parent":
+            st.caption("💡 You can apply for most scholarships on behalf of your child.")
+        for item in resources.get("scholarships", [])[:6]:
+            value = f" · **{item.get('value','')}**" if item.get("value") else ""
+            st.markdown(f"- **{item['name']}** ({item.get('type','')}) — {item.get('eligibility','')[:100]}{value}")
+        st.markdown("**Community SHGs:** [Mendaki](https://www.mendaki.org.sg) · [CDAC](https://www.cdac.org.sg) · [SINDA](https://www.sinda.org.sg)")
+
+    with st.expander("💼 Earn & Learn Programmes"):
+        st.info("Work-study programmes: earn a salary while completing a qualification.")
+        for item in resources.get("earn_and_learn", [])[:4]:
+            st.markdown(f"- **{item['name']}** — {item.get('description','')[:120]}...")
+        st.markdown("[SkillsFuture Earn & Learn →](https://www.skillsfuture.gov.sg/initiatives/mid-career/earningandlearning)")

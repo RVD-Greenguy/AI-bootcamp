@@ -95,6 +95,48 @@ if _career_goal:
     except Exception:
         pass
 
+# ── PRIMARY SCHOOL GUIDE (shown when stage is early_childhood or primary) ────
+from utils.session_manager import get_education_stage as _get_stage
+if _get_stage() in ("early_childhood", "primary"):
+    st.divider()
+    st.subheader("🏫 Primary School Guide")
+
+    with st.expander("📋 P1 Registration Phases", expanded=True):
+        st.markdown("""
+| Phase | Who qualifies | Distance priority? |
+|-------|--------------|-------------------|
+| **Phase 1** | Sibling in the school | No ballot |
+| **Phase 2A(1)** | Parent is alumni or staff | Ballot if oversubscribed |
+| **Phase 2A(2)** | Parent endorsed by MP/RC/grassroots | Ballot if oversubscribed |
+| **Phase 2B** | Community leader or **within 1 km** | ✅ 1 km = highest priority |
+| **Phase 2C** | All Singapore Citizens / PRs | ✅ 1 km, then 1–2 km |
+| **Phase 2C Supp.** | SC only, not placed in 2C | Distance considered |
+| **Phase 3** | International students | Apply through school |
+
+**Key dates:** Phase 1 mid-July → Phase 2C late August → Phase 3 Oct–Nov.
+At least **40 places** reserved for citizens per phase. [MOE P1 Info →](https://www.moe.gov.sg/primary/p1-registration)
+        """)
+
+    with st.expander("📊 PSLE AL Scoring"):
+        import pandas as _pd
+        _al_df = _pd.DataFrame({
+            "AL": ["1", "2", "3", "4", "5", "6", "7", "8"],
+            "Score %": ["90–100", "85–89", "80–84", "75–79", "65–74", "45–64", "20–44", "<20"],
+            "Label": ["Distinction", "Distinction", "Merit", "Merit", "Pass", "Pass", "Pass", "Needs improvement"],
+        })
+        st.dataframe(_al_df, use_container_width=True, hide_index=True)
+        st.caption("**Total AL** = sum of 4 subjects (range 4–32, lower = better). AL 4–20 → Express, 21–22 → N(A), 23–32 → N(T). Foundation subjects capped at AL C.")
+
+    with st.expander("🔄 Transfer & Learning Support"):
+        st.markdown("""
+- **Transfer P1–P2:** Request to school closer to new home (easiest window)
+- **After P2:** Case-by-case — relocation, medical grounds. P6 transfers generally not approved.
+- **Learning Support (LSP):** P1–P2 small-group literacy/numeracy support, free, opt-in.
+- **Subject-Based Banding:** From P5, take subjects at Standard or Foundation level independently.
+- **If struggling:** School counsellor → Learning Support → Allied Educator → Child Guidance Clinic referral.
+- **SPED:** Pathlight (autism), MINDS, DAS (dyslexia). [MOE SPED →](https://www.moe.gov.sg/special-education)
+        """)
+
 STAGE_ID_MAP = {
     "Early Childhood (0–6)": "early_childhood",
     "Primary School": "primary",

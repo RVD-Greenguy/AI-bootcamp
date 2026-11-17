@@ -152,20 +152,12 @@ if user:
 
     st.divider()
 
-    # ── Quick links (role-specific) ───────────────────────────────────────
-    if role == "parent":
-        col1, col2, col3, col4, col5 = st.columns(5)
-        col1.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
-        col2.page_link("pages/2_Score_Matcher.py", label="🎯 Score Matcher", use_container_width=True)
-        col3.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Guide", use_container_width=True)
-        col4.page_link("pages/4_AI_Guide.py", label="🤖 AI Guide", use_container_width=True)
-        col5.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub", use_container_width=True)
-    elif role == "student":
-        col1, col2, col3, col4 = st.columns(4)
-        col1.page_link("pages/2_Score_Matcher.py", label="🎯 Check My Scores", use_container_width=True)
-        col2.page_link("pages/3_Fallback_Guide.py", label="🔄 Fallback Options", use_container_width=True)
-        col3.page_link("pages/4_AI_Guide.py", label="🤖 Ask the Guide", use_container_width=True)
-        col4.page_link("pages/7_Support_Hub.py", label="🤝 Support Hub", use_container_width=True)
+    # ── Quick links ─────────────────────────────────────────────────────
+    col1, col2, col3 = st.columns(3)
+    col1.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
+    col2.page_link("pages/2_Score_Matcher.py", label="🎯 Score & School Matcher", use_container_width=True)
+    col3.page_link("pages/3_Fallback_Support.py", label="🔄 Fallback & Support", use_container_width=True)
+    st.caption("💬 Use the **🤖 AI Assistant** (bottom-right) to ask questions on any page.")
 
     st.divider()
     st.markdown("**Quick reference:** [MOE](https://www.moe.gov.sg) · [SEAB](https://www.seab.gov.sg) · [ITE](https://www.ite.edu.sg) · [SkillsFuture](https://www.skillsfuture.gov.sg)")
