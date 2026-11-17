@@ -1,19 +1,18 @@
 """
-Persistent top-of-page AI chat panel.
-Renders a collapsible expander on every page.
-Conversation history lives in st.session_state and is persisted to SQLite.
+Sidebar AI assistant panel — VS Code-style persistent chat.
+Renders in the sidebar below navigation. Session history persists
+across page navigations (session_state) and across logins (SQLite).
 """
 import streamlit as st
 from utils.session_manager import get_user
 
 _HISTORY_KEY = "guide_chat_history"
 _LOADED_KEY = "guide_chat_loaded"
-_MAX_PERSIST = 20   # turns saved to DB per user
-_MAX_DISPLAY = 6    # messages shown in panel before scroll
+_MAX_PERSIST = 20
+_MAX_DISPLAY = 8
 
 
 def _load_history_from_db(user_id: int) -> list[dict]:
-    """Load last N turns from chat_sessions for this user."""
     try:
         from services.db import fetchall
         rows = fetchall(
@@ -44,53 +43,54 @@ def _save_turn_to_db(user_id: int, question: str, answer: str, chunks: list):
 
 
 def render_chat_panel():
-    """Render the top-of-page AI chat panel. Call once per page, after render_sidebar()."""
+    """Render AI assistant in the sidebar. Call once per page, after render_sidebar()."""
     user = get_user()
     if not user:
         return
 
     user_id = user["id"]
 
-    # Load history from DB once per session per user
     if not st.session_state.get(_LOADED_KEY):
         st.session_state[_HISTORY_KEY] = _load_history_from_db(user_id)
         st.session_state[_LOADED_KEY] = True
 
     history: list[dict] = st.session_state.get(_HISTORY_KEY, [])
 
-    # Determine expander label
-    unread = len(history)
-    label = (
-        f"💬 Ask EduPath AI — {unread // 2} message{'s' if unread // 2 != 1 else ''} in history"
-        if unread
-        else "💬 Ask EduPath AI Guide"
-    )
+    with st.sidebar:
+        st.markdown("---")
+        msg_count = len(history) // 2
+        st.markdown(f"### 🤖 AI Assistant {'· ' + str(msg_count) + ' msgs' if msg_count else ''}")
 
-    with st.expander(label, expanded=st.session_state.get("chat_panel_open", False)):
-        # Chat display
-        display = history[-_MAX_DISPLAY * 2:] if len(history) > _MAX_DISPLAY * 2 else history
-        if display:
-            for msg in display:
-                with st.chat_message(msg["role"]):
-                    st.markdown(msg["content"])
-        else:
-            st.caption("Ask me anything about Singapore's education system — PSLE, O-levels, JC, Poly, ITE, University, scholarships and more.")
+        # Scrollable chat area via container with fixed height
+        chat_container = st.container(height=320)
+        with chat_container:
+            display = history[-_MAX_DISPLAY * 2:]
+            if display:
+                for msg in display:
+                    if msg["role"] == "user":
+                        st.markdown(f"""<div style="background:#1e3a5f;color:#e2e8f0;padding:8px 12px;
+                            border-radius:12px 12px 4px 12px;margin:4px 0;font-size:0.85em;">
+                            💬 {msg['content']}</div>""", unsafe_allow_html=True)
+                    else:
+                        st.markdown(f"""<div style="background:#f0fdf4;color:#1a1a2e;padding:8px 12px;
+                            border-radius:12px 12px 12px 4px;margin:4px 0;font-size:0.85em;
+                            border-left:3px solid #10b981;">
+                            {msg['content']}</div>""", unsafe_allow_html=True)
+            else:
+                st.caption("Ask me anything about Singapore's education system.")
 
-        st.divider()
-
-        # Input row
-        col_input, col_btn, col_clear = st.columns([6, 1, 1])
-        with col_input:
-            question = st.text_input(
-                "Your question:",
-                key="chat_panel_input",
-                placeholder="e.g. What are the PSLE AL cutoffs for Express stream?",
-                label_visibility="collapsed",
-            )
-        with col_btn:
-            send = st.button("Send", type="primary", use_container_width=True)
+        # Input
+        question = st.text_input(
+            "Ask EduPath AI:",
+            key="sidebar_chat_input",
+            placeholder="e.g. PSLE cutoffs for Express?",
+            label_visibility="collapsed",
+        )
+        col_send, col_clear = st.columns([3, 1])
+        with col_send:
+            send = st.button("💬 Send", type="primary", use_container_width=True, key="sidebar_chat_send")
         with col_clear:
-            clear = st.button("Clear", use_container_width=True)
+            clear = st.button("🗑️", use_container_width=True, key="sidebar_chat_clear")
 
         if clear:
             st.session_state[_HISTORY_KEY] = []
@@ -98,14 +98,14 @@ def render_chat_panel():
 
         if send and question and question.strip():
             q = question.strip()
-            with st.spinner("Searching knowledge base…"):
+
+            with st.spinner("Thinking…"):
                 try:
                     from services.rag_service import search
                     chunks = search(q, top_k=4)
                 except Exception:
                     chunks = []
 
-            with st.spinner("Generating answer…"):
                 try:
                     from services.llm_service import ask_guide
                     from utils.session_manager import get_education_stage, get_career_goal
@@ -127,14 +127,9 @@ def render_chat_panel():
                 except Exception as e:
                     answer = f"Sorry, I couldn't process that: {e}"
 
-            # Update session history
             history.append({"role": "user", "content": q})
             history.append({"role": "assistant", "content": answer})
             st.session_state[_HISTORY_KEY] = history
 
-            # Persist to DB
             _save_turn_to_db(user_id, q, answer, chunks)
-
-            # Keep panel open after send
-            st.session_state["chat_panel_open"] = True
             st.rerun()
