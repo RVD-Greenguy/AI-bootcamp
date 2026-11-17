@@ -29,7 +29,15 @@ def render_sidebar():
         st.markdown("**Your Education Stage**")
         current = get_education_stage()
 
-        for key in STAGE_ORDER:
+        # Students don't see Early Childhood — it's parent-only
+        visible_stages = [k for k in STAGE_ORDER if not (role == "student" and k == "early_childhood")]
+
+        # If student somehow has early_childhood selected, reset to primary
+        if role == "student" and current == "early_childhood":
+            set_education_stage("primary")
+            current = "primary"
+
+        for key in visible_stages:
             s = STAGES[key]
             is_active = key == current
             bg_color = s['color'] if is_active else "transparent"

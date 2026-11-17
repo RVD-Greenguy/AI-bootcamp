@@ -73,6 +73,21 @@ from components.role_context import get_role_labels
 
 user = get_user()
 
+# Hide default Streamlit page nav from sidebar (we render our own)
+st.markdown("""
+<style>
+[data-testid="stSidebarNav"] {display: none !important;}
+</style>
+""", unsafe_allow_html=True)
+
+if not user:
+    # Collapse sidebar on login page
+    st.markdown("""
+    <style>
+    section[data-testid="stSidebar"] {display: none !important;}
+    </style>
+    """, unsafe_allow_html=True)
+
 if user:
     st.title("🎓 EduPath SG")
     st.caption("Singapore Education Journey Navigator")

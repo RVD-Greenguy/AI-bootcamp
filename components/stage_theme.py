@@ -17,6 +17,9 @@ def apply_stage_theme():
 
     st.markdown(f"""
 <style>
+/* ── Hide Streamlit default page nav ──────────────────── */
+[data-testid="stSidebarNav"] {{display: none !important;}}
+
 /* ── Sidebar accent ───────────────────────────────────── */
 section[data-testid="stSidebar"] {{
     border-right: 4px solid {color} !important;
