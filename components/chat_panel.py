@@ -1,6 +1,7 @@
 """
-Right-side AI assistant — SGDS gov.sg styled.
-Streamlit-native two-column layout. Session-only history.
+Sidebar AI assistant — SGDS gov.sg styled.
+Lives in the left sidebar below navigation. Main content always full-width.
+Session-only history (clears on logout).
 """
 import streamlit as st
 from utils.session_manager import get_user
@@ -8,13 +9,13 @@ from utils.session_manager import get_user
 _HISTORY_KEY = "guide_chat_history"
 _PENDING_KEY = "_chat_pending_q"
 _MAX_PERSIST = 20
-_MAX_DISPLAY = 10
+_MAX_DISPLAY = 8
 
 _SUGGESTED = [
-    "What PSLE score do I need for Express stream?",
-    "How does the L1R5 calculation work?",
-    "What are the JC cutoff points?",
-    "How to apply via DAE with a poly diploma?",
+    "What PSLE score for Express?",
+    "How does L1R5 work?",
+    "JC cutoff points?",
+    "DAE with poly diploma?",
 ]
 
 
@@ -32,7 +33,7 @@ def _save_turn_to_db(user_id: int, question: str, answer: str, chunks: list):
 
 
 def _process_question(q: str, user: dict, history: list[dict], user_id: int):
-    """Process a question through validation → RAG → web search → LLM."""
+    """Process a question through validation, RAG, web search, LLM."""
     try:
         from services.web_search_service import validate_question
         is_valid, reason = validate_question(q)
@@ -79,7 +80,10 @@ def _process_question(q: str, user: dict, history: list[dict], user_id: int):
 
 
 def render_chat_panel():
-    """Render SGDS-styled AI assistant in right column. Returns main_col."""
+    """
+    Render AI assistant in the sidebar. Main content stays full-width.
+    Returns st.container() for page content (always full-width).
+    """
     user = get_user()
     if not user:
         return st.container()
@@ -90,117 +94,112 @@ def render_chat_panel():
         st.session_state[_HISTORY_KEY] = []
 
     history: list[dict] = st.session_state.get(_HISTORY_KEY, [])
-    is_open = st.session_state.get("chat_panel_open", True)
 
-    # Handle pending question (from suggested templates or previous send)
+    # Handle pending question before rendering UI
     pending = st.session_state.pop(_PENDING_KEY, None)
-    if pending and is_open:
+    if pending:
         with st.spinner("Searching knowledge base + official sources…"):
             _process_question(pending, user, history, user_id)
         st.rerun()
 
-    if not is_open:
-        with st.sidebar:
-            if st.button("💬 Open AI Assistant", key="chat_open_btn", use_container_width=True):
+    is_open = st.session_state.get("chat_panel_open", False)
+
+    with st.sidebar:
+        st.divider()
+
+        if not is_open:
+            # Collapsed state — prominent button with message count
+            msg_count = len(history) // 2
+            badge = f" ({msg_count})" if msg_count else ""
+            if st.button(f"🤖 AI Assistant{badge}", key="chat_open_btn", use_container_width=True, type="primary"):
                 st.session_state["chat_panel_open"] = True
                 st.rerun()
-        return st.container()
-
-    main_col, chat_col = st.columns([3, 1], gap="medium")
-
-    with chat_col:
-        # ── Header ────────────────────────────────────────────
-        st.markdown("""
+            st.caption("Ask about PSLE, O-levels, pathways…")
+        else:
+            # ── Expanded chat ─────────────────────────────────
+            # Header
+            st.markdown("""
 <div style="background:linear-gradient(135deg,#0269D0,#0151A0);
-    color:white;padding:12px 16px;border-radius:8px 8px 0 0;
-    margin:-1rem -1rem 0 -1rem;font-weight:600;font-size:0.9em;
-    display:flex;align-items:center;gap:8px;">
-    🤖 EduPath AI Assistant
-    <span style="margin-left:auto;opacity:0.8;font-size:0.85em;">
-        Powered by RAG + GPT-4o
-    </span>
+    color:white;padding:10px 14px;border-radius:6px;
+    font-weight:600;font-size:0.88em;margin-bottom:8px;
+    display:flex;align-items:center;gap:6px;">
+    🤖 AI Assistant
+    <span style="margin-left:auto;opacity:0.7;font-size:0.82em;">RAG + GPT-4o</span>
 </div>
 """, unsafe_allow_html=True)
 
-        if st.button("✕ Close", key="chat_close_btn", use_container_width=True):
-            st.session_state["chat_panel_open"] = False
-            st.rerun()
+            if st.button("▾ Minimize", key="chat_close_btn", use_container_width=True):
+                st.session_state["chat_panel_open"] = False
+                st.rerun()
 
-        # ── Chat messages ─────────────────────────────────────
-        chat_box = st.container(height=380)
-        with chat_box:
-            if not history:
-                st.markdown("""
-<div style="text-align:center;padding:16px 8px;color:#6B6B6B;">
-    <div style="font-size:2em;margin-bottom:8px;">🎓</div>
-    <div style="font-size:0.9em;font-weight:600;color:#3B3B3B;">
-        Ask me about Singapore's education system
-    </div>
-    <div style="font-size:0.8em;margin-top:4px;">
-        PSLE · O-levels · A-levels · JC · Poly · ITE · University
+            # Messages
+            chat_box = st.container(height=300)
+            with chat_box:
+                if not history:
+                    st.markdown("""
+<div style="text-align:center;padding:12px 4px;color:#6B6B6B;">
+    <div style="font-size:1.5em;margin-bottom:6px;">🎓</div>
+    <div style="font-size:0.82em;font-weight:600;color:#3B3B3B;">
+        Ask about SG education
     </div>
 </div>
 """, unsafe_allow_html=True)
-                st.markdown("**Try asking:**")
-                for i, sq in enumerate(_SUGGESTED):
-                    if st.button(sq, key=f"sq_{i}", use_container_width=True):
-                        st.session_state[_PENDING_KEY] = sq
-                        st.rerun()
-            else:
-                display = history[-_MAX_DISPLAY * 2:]
-                for msg in display:
-                    if msg["role"] == "user":
-                        st.markdown(f"""
+                    for i, sq in enumerate(_SUGGESTED):
+                        if st.button(f"→ {sq}", key=f"sq_{i}", use_container_width=True):
+                            st.session_state[_PENDING_KEY] = sq
+                            st.rerun()
+                else:
+                    display = history[-_MAX_DISPLAY * 2:]
+                    for msg in display:
+                        if msg["role"] == "user":
+                            st.markdown(f"""
 <div style="background:#ECF5FE;border:1px solid #C8E2FB;
-    padding:8px 12px;border-radius:8px 8px 2px 8px;
-    margin:6px 0 6px 15%;font-size:0.85em;color:#0E0E0E;">
-    {msg['content']}
+    padding:6px 10px;border-radius:6px 6px 2px 6px;
+    margin:4px 0;font-size:0.82em;color:#0E0E0E;">
+    💬 {msg['content']}
 </div>""", unsafe_allow_html=True)
-                    else:
-                        st.markdown(f"""
-<div style="background:#FFFFFF;border:1px solid #DFDFDF;
-    border-left:3px solid #0269D0;
-    padding:8px 12px;border-radius:2px 8px 8px 8px;
-    margin:6px 15% 6px 0;font-size:0.85em;color:#3B3B3B;">
+                        else:
+                            st.markdown(f"""
+<div style="background:#fff;border:1px solid #DFDFDF;border-left:3px solid #0269D0;
+    padding:6px 10px;border-radius:2px 6px 6px 6px;
+    margin:4px 0;font-size:0.82em;color:#3B3B3B;">
     {msg['content'].replace(chr(10), '<br>')}
 </div>""", unsafe_allow_html=True)
 
-        # ── Source indicator ──────────────────────────────────
-        msg_count = len(history) // 2
-        if msg_count:
-            st.caption(f"📋 {msg_count} exchange{'s' if msg_count != 1 else ''} · Sources: Local KB + gov.sg/edu.sg")
+            # Source indicator
+            msg_count = len(history) // 2
+            if msg_count:
+                st.caption(f"📋 {msg_count} exchanges · KB + gov.sg")
 
-        # ── Input ─────────────────────────────────────────────
-        question = st.text_input(
-            "Your question:",
-            key="chat_input",
-            placeholder="Ask about education pathways...",
-            label_visibility="collapsed",
-        )
+            # Input
+            question = st.text_input(
+                "Ask:",
+                key="chat_input",
+                placeholder="Ask about pathways…",
+                label_visibility="collapsed",
+            )
+            c1, c2 = st.columns([4, 1])
+            with c1:
+                send = st.button("Send", type="primary", use_container_width=True, key="chat_send")
+            with c2:
+                clear = st.button("🗑️", use_container_width=True, key="chat_clear")
 
-        c1, c2 = st.columns([4, 1])
-        with c1:
-            send = st.button("Send", type="primary", use_container_width=True, key="chat_send")
-        with c2:
-            clear = st.button("🗑️", use_container_width=True, key="chat_clear", help="Clear chat history")
+            if clear:
+                st.session_state[_HISTORY_KEY] = []
+                st.rerun()
 
-        if clear:
-            st.session_state[_HISTORY_KEY] = []
-            st.rerun()
+            if send and question and question.strip():
+                st.session_state[_PENDING_KEY] = question.strip()
+                st.rerun()
 
-        if send and question and question.strip():
-            st.session_state[_PENDING_KEY] = question.strip()
-            st.rerun()
-
-        # ── Footer ────────────────────────────────────────────
-        st.markdown("""
-<div style="background:#F3F3F3;border-radius:0 0 8px 8px;padding:8px 12px;
-    margin:8px -1rem -1rem -1rem;font-size:0.72em;color:#6B6B6B;text-align:center;">
-    Data from <a href="https://www.moe.gov.sg" style="color:#0269D0;">MOE</a> ·
+            # Footer
+            st.markdown("""
+<div style="font-size:0.68em;color:#6B6B6B;text-align:center;margin-top:4px;">
+    <a href="https://www.moe.gov.sg" style="color:#0269D0;">MOE</a> ·
     <a href="https://www.seab.gov.sg" style="color:#0269D0;">SEAB</a> ·
     <a href="https://www.ite.edu.sg" style="color:#0269D0;">ITE</a><br>
-    AI responses are for guidance only. Verify with official sources.
+    For guidance only. Verify with official sources.
 </div>
 """, unsafe_allow_html=True)
 
-    return main_col
+    return st.container()
