@@ -6,6 +6,7 @@ import streamlit as st
 from utils.session_manager import get_user
 
 _HISTORY_KEY = "guide_chat_history"
+_PENDING_KEY = "_chat_pending_q"
 _MAX_PERSIST = 20
 _MAX_DISPLAY = 10
 
@@ -30,11 +31,55 @@ def _save_turn_to_db(user_id: int, question: str, answer: str, chunks: list):
         pass
 
 
+def _process_question(q: str, user: dict, history: list[dict], user_id: int):
+    """Process a question through validation → RAG → web search → LLM."""
+    try:
+        from services.web_search_service import validate_question
+        is_valid, reason = validate_question(q)
+        if not is_valid:
+            history.append({"role": "user", "content": q})
+            history.append({"role": "assistant", "content": f"I can't process that: {reason}\n\nPlease ask about Singapore's education system."})
+            st.session_state[_HISTORY_KEY] = history
+            return
+    except Exception:
+        pass
+
+    try:
+        from services.rag_service import search
+        chunks = search(q, top_k=4)
+    except Exception:
+        chunks = []
+
+    try:
+        from services.llm_service import ask_guide
+        from utils.session_manager import get_education_stage, get_career_goal
+        from utils.stage_config import get_stage_config
+        from components.role_context import get_role_labels
+
+        stage_cfg = get_stage_config(get_education_stage())
+        stage_context = [{"role": "system", "content": stage_cfg["ai_context"]}]
+
+        role_labels = get_role_labels(user["role"])
+        role_context = [{"role": "system", "content": role_labels["ai_role_context"]}]
+
+        career = get_career_goal()
+        career_context = []
+        if career:
+            career_context = [{"role": "system", "content": f"The user's career aspiration is: {career}. Tailor your advice toward achieving this goal where relevant."}]
+
+        answer = ask_guide(q, chunks, role_context + career_context + stage_context + history[-10:])
+    except Exception as e:
+        answer = f"Sorry, I couldn't process that: {e}"
+        chunks = []
+
+    history.append({"role": "user", "content": q})
+    history.append({"role": "assistant", "content": answer})
+    st.session_state[_HISTORY_KEY] = history
+    _save_turn_to_db(user_id, q, answer, chunks)
+
+
 def render_chat_panel():
-    """
-    Render SGDS-styled AI assistant in right column.
-    Returns main_col for page content.
-    """
+    """Render SGDS-styled AI assistant in right column. Returns main_col."""
     user = get_user()
     if not user:
         return st.container()
@@ -47,18 +92,24 @@ def render_chat_panel():
     history: list[dict] = st.session_state.get(_HISTORY_KEY, [])
     is_open = st.session_state.get("chat_panel_open", True)
 
+    # Handle pending question (from suggested templates or previous send)
+    pending = st.session_state.pop(_PENDING_KEY, None)
+    if pending and is_open:
+        with st.spinner("Searching knowledge base + official sources…"):
+            _process_question(pending, user, history, user_id)
+        st.rerun()
+
     if not is_open:
-        main_col, toggle_col = st.columns([50, 1])
-        with toggle_col:
-            if st.button("💬", key="chat_open_btn", help="Open AI Assistant"):
+        with st.sidebar:
+            if st.button("💬 Open AI Assistant", key="chat_open_btn", use_container_width=True):
                 st.session_state["chat_panel_open"] = True
                 st.rerun()
-        return main_col
+        return st.container()
 
     main_col, chat_col = st.columns([3, 1], gap="medium")
 
     with chat_col:
-        # ── Header (gov.sg blue) ──────────────────────────────
+        # ── Header ────────────────────────────────────────────
         st.markdown("""
 <div style="background:linear-gradient(135deg,#0269D0,#0151A0);
     color:white;padding:12px 16px;border-radius:8px 8px 0 0;
@@ -71,7 +122,6 @@ def render_chat_panel():
 </div>
 """, unsafe_allow_html=True)
 
-        # Close button
         if st.button("✕ Close", key="chat_close_btn", use_container_width=True):
             st.session_state["chat_panel_open"] = False
             st.rerun()
@@ -80,7 +130,6 @@ def render_chat_panel():
         chat_box = st.container(height=380)
         with chat_box:
             if not history:
-                # Welcome state with suggestions
                 st.markdown("""
 <div style="text-align:center;padding:16px 8px;color:#6B6B6B;">
     <div style="font-size:2em;margin-bottom:8px;">🎓</div>
@@ -93,9 +142,9 @@ def render_chat_panel():
 </div>
 """, unsafe_allow_html=True)
                 st.markdown("**Try asking:**")
-                for sq in _SUGGESTED:
-                    if st.button(f"→ {sq}", key=f"sq_{hash(sq)}", use_container_width=True):
-                        st.session_state["_prefill_q"] = sq
+                for i, sq in enumerate(_SUGGESTED):
+                    if st.button(sq, key=f"sq_{i}", use_container_width=True):
+                        st.session_state[_PENDING_KEY] = sq
                         st.rerun()
             else:
                 display = history[-_MAX_DISPLAY * 2:]
@@ -122,10 +171,8 @@ def render_chat_panel():
             st.caption(f"📋 {msg_count} exchange{'s' if msg_count != 1 else ''} · Sources: Local KB + gov.sg/edu.sg")
 
         # ── Input ─────────────────────────────────────────────
-        prefill = st.session_state.pop("_prefill_q", "")
         question = st.text_input(
             "Your question:",
-            value=prefill,
             key="chat_input",
             placeholder="Ask about education pathways...",
             label_visibility="collapsed",
@@ -142,54 +189,10 @@ def render_chat_panel():
             st.rerun()
 
         if send and question and question.strip():
-            q = question.strip()
-
-            try:
-                from services.web_search_service import validate_question
-                is_valid, reason = validate_question(q)
-                if not is_valid:
-                    history.append({"role": "user", "content": q})
-                    history.append({"role": "assistant", "content": f"I can't process that: {reason}\n\nPlease ask about Singapore's education system."})
-                    st.session_state[_HISTORY_KEY] = history
-                    st.rerun()
-            except Exception:
-                pass
-
-            with st.spinner("Searching knowledge base + official sources…"):
-                try:
-                    from services.rag_service import search
-                    chunks = search(q, top_k=4)
-                except Exception:
-                    chunks = []
-
-                try:
-                    from services.llm_service import ask_guide
-                    from utils.session_manager import get_education_stage, get_career_goal
-                    from utils.stage_config import get_stage_config
-                    from components.role_context import get_role_labels
-
-                    stage_cfg = get_stage_config(get_education_stage())
-                    stage_context = [{"role": "system", "content": stage_cfg["ai_context"]}]
-
-                    role_labels = get_role_labels(user["role"])
-                    role_context = [{"role": "system", "content": role_labels["ai_role_context"]}]
-
-                    career = get_career_goal()
-                    career_context = []
-                    if career:
-                        career_context = [{"role": "system", "content": f"The user's career aspiration is: {career}. Tailor your advice toward achieving this goal where relevant."}]
-
-                    answer = ask_guide(q, chunks, role_context + career_context + stage_context + history[-10:])
-                except Exception as e:
-                    answer = f"Sorry, I couldn't process that: {e}"
-
-            history.append({"role": "user", "content": q})
-            history.append({"role": "assistant", "content": answer})
-            st.session_state[_HISTORY_KEY] = history
-            _save_turn_to_db(user_id, q, answer, chunks)
+            st.session_state[_PENDING_KEY] = question.strip()
             st.rerun()
 
-        # ── Footer note ───────────────────────────────────────
+        # ── Footer ────────────────────────────────────────────
         st.markdown("""
 <div style="background:#F3F3F3;border-radius:0 0 8px 8px;padding:8px 12px;
     margin:8px -1rem -1rem -1rem;font-size:0.72em;color:#6B6B6B;text-align:center;">

@@ -498,3 +498,13 @@ with main_col:
                              │  users · chat_sessions │
                              └─────────────────────┘
         """, language="text")
+
+    st.markdown("""
+<div class="gov-footer">
+    <a href="https://www.moe.gov.sg">MOE</a> ·
+    <a href="https://www.seab.gov.sg">SEAB</a> ·
+    <a href="https://www.ite.edu.sg">ITE</a> ·
+    <a href="https://www.skillsfuture.gov.sg">SkillsFuture</a><br>
+    <small>EduPath SG is a capstone project. Not affiliated with the Singapore Government.</small>
+</div>
+""", unsafe_allow_html=True)
