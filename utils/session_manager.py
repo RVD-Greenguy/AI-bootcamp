@@ -17,7 +17,8 @@ def clear_user():
 def require_login():
     user = get_user()
     if not user:
-        st.error("Please log in to access this page.")
+        st.warning("Please log in to access this page.")
+        st.page_link("app.py", label="🔐 Go to Login", use_container_width=True)
         st.stop()
     return user
 

@@ -488,3 +488,13 @@ with main_col:
             for item in resources.get("earn_and_learn", [])[:4]:
                 st.markdown(f"- **{item['name']}** — {item.get('description','')[:120]}...")
             st.markdown("[SkillsFuture Earn & Learn →](https://www.skillsfuture.gov.sg/initiatives/mid-career/earningandlearning)")
+
+    st.markdown("""
+<div class="gov-footer">
+    <a href="https://www.moe.gov.sg">MOE</a> ·
+    <a href="https://www.seab.gov.sg">SEAB</a> ·
+    <a href="https://www.ite.edu.sg">ITE</a> ·
+    <a href="https://www.skillsfuture.gov.sg">SkillsFuture</a><br>
+    <small>EduPath SG is a capstone project. Not affiliated with the Singapore Government.</small>
+</div>
+""", unsafe_allow_html=True)

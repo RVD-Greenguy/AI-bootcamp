@@ -553,3 +553,13 @@ with main_col:
         st.divider()
         st.markdown("**🎯 Want to check specific school eligibility based on scores?**")
         st.page_link("pages/2_Score_Matcher.py", label="→ Go to Score & School Matcher", icon="🎯")
+
+    st.markdown("""
+<div class="gov-footer">
+    <a href="https://www.moe.gov.sg">MOE</a> ·
+    <a href="https://www.seab.gov.sg">SEAB</a> ·
+    <a href="https://www.ite.edu.sg">ITE</a> ·
+    <a href="https://www.skillsfuture.gov.sg">SkillsFuture</a><br>
+    <small>EduPath SG is a capstone project. Not affiliated with the Singapore Government.</small>
+</div>
+""", unsafe_allow_html=True)

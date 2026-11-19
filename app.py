@@ -89,6 +89,7 @@ if not user:
     """, unsafe_allow_html=True)
 
 if user:
+    st.markdown('<div style="background:#0269D0;padding:10px 20px;color:white;font-size:0.85em;font-weight:600;border-radius:4px;margin-bottom:8px;">🇸🇬 A Singapore Government Education Service</div>', unsafe_allow_html=True)
     st.title("🎓 EduPath SG")
     st.caption("Singapore Education Journey Navigator")
     st.info(f"⚠️ {DISCLAIMER}")
@@ -159,14 +160,23 @@ if user:
     col3.page_link("pages/3_Fallback_Support.py", label="🔄 Fallback & Support", use_container_width=True)
     st.caption("💬 Use the **🤖 AI Assistant** (bottom-right) to ask questions on any page.")
 
-    st.divider()
-    st.markdown("**Quick reference:** [MOE](https://www.moe.gov.sg) · [SEAB](https://www.seab.gov.sg) · [ITE](https://www.ite.edu.sg) · [SkillsFuture](https://www.skillsfuture.gov.sg)")
+    st.markdown("""
+<div class="gov-footer">
+    <a href="https://www.moe.gov.sg">MOE</a> ·
+    <a href="https://www.seab.gov.sg">SEAB</a> ·
+    <a href="https://www.ite.edu.sg">ITE</a> ·
+    <a href="https://www.skillsfuture.gov.sg">SkillsFuture</a> ·
+    <a href="https://www.moe.gov.sg/post-secondary/admissions">Admissions</a><br>
+    <small>EduPath SG is a capstone project. Not affiliated with the Singapore Government.</small>
+</div>
+""", unsafe_allow_html=True)
 
     from components.sidebar import render_sidebar
     render_sidebar()
 
 else:
     # ── LOGIN / REGISTER ─────────────────────────────────────────────────────
+    st.markdown('<div style="background:#0269D0;padding:10px 20px;color:white;font-size:0.85em;font-weight:600;border-radius:4px;margin-bottom:16px;">🇸🇬 A Singapore Government Education Service</div>', unsafe_allow_html=True)
     col_hero, col_form = st.columns([3, 2])
 
     with col_hero:
@@ -232,3 +242,14 @@ Check fallback options and retake policies.
                         set_user(user_data)
                         st.success("Account created! Welcome to EduPath SG.")
                         st.rerun()
+
+    st.markdown("""
+<div class="gov-footer">
+    <strong>EduPath SG</strong> · Built on publicly available data from
+    <a href="https://www.moe.gov.sg">MOE</a> ·
+    <a href="https://www.seab.gov.sg">SEAB</a> ·
+    <a href="https://www.ite.edu.sg">ITE</a> ·
+    <a href="https://www.skillsfuture.gov.sg">SkillsFuture</a><br>
+    This is a capstone project and is not affiliated with the Singapore Government.
+</div>
+""", unsafe_allow_html=True)

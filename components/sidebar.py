@@ -67,6 +67,7 @@ def render_sidebar():
         st.divider()
 
         # ── Nav links ─────────────────────────────────────────
+        st.page_link("app.py", label="🏠 Home")
         st.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner")
         st.page_link("pages/2_Score_Matcher.py", label="🎯 Score & School Matcher")
         st.page_link("pages/3_Fallback_Support.py", label="🔄 Fallback & Support")
