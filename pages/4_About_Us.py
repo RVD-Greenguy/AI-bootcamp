@@ -41,6 +41,7 @@ with _main:
     3. **Explain** every government process interactively — from P1 registration ballot to JAE, DAE, AEIS, and SNUFA
     4. **Present** information across multiple formats: visual timelines, comparison tables, score calculators and AI-powered Q&A
     5. **Differentiate** pathways for Singapore Citizens, PRs, and International Students — including fees, eligibility, and NS obligations
+    6. **Cover part-time options** — work-study diplomas, SUSS/SIT/private part-time degrees, and SkillsFuture funding for career changers and working adults
         """)
 
         st.markdown("## Key Features")
@@ -50,6 +51,7 @@ with _main:
                 "🗺️ Pathway Planner",
                 "🎯 Score & School Matcher",
                 "🔄 Fallback Guide",
+                "🎓 Part-Time Diplomas & Degrees",
                 "🤖 AI Education Guide",
                 "📚 RAG Knowledge Base",
                 "🌏 PR & International Pathways",
@@ -57,19 +59,21 @@ with _main:
             ],
             "Description": [
                 "Interactive visual timeline with citizenship-specific notes, fees, and admission rules",
-                "Enter PSLE AL / L1R5 / rank points / poly GPA — matched schools with eligibility indicators",
+                "Enter PSLE AL / L1R5 / rank points / poly GPA — matched schools with fee comparison by citizenship",
                 "Official policies on retakes, private candidates, certificate implications, and alternatives",
+                "Poly/ITE work-study, SUSS/SIT/private part-time degrees, SkillsFuture funding, fee comparison",
                 "Ask any question about SG education — answered using retrieved official references",
                 "TF-IDF retrieval over 254+ chunks from MOE, SEAB, ITE, polytechnic, university, and intl school data",
                 "AEIS/S-AEIS admission, fee tiers, Student Pass, NS timelines, Tuition Grant & bond info",
                 "18 international schools with curricula (IB, IGCSE, AP), fee ranges, and uni pathway conversion",
             ],
-            "SC": ["✅", "✅", "✅", "✅", "✅", "—", "—"],
-            "PR": ["✅", "✅", "✅", "✅", "✅", "✅", "✅"],
-            "International": ["✅", "✅", "✅", "✅", "✅", "✅", "✅"],
+            "SC": ["✅", "✅", "✅", "✅", "✅", "✅", "—", "—"],
+            "PR": ["✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅"],
+            "International": ["✅", "✅", "✅", "✅", "✅", "✅", "✅", "✅"],
             "Login Roles": [
                 "All roles",
                 "Student / Parent",
+                "All roles",
                 "All roles",
                 "All roles",
                 "All roles",
@@ -182,6 +186,7 @@ with _main:
     **Coverage:**
     - Singapore Citizens, PRs, and International Students
     - Government schools, autonomous/independent schools, and international schools
+    - Part-time diplomas (poly/ITE work-study) and degrees (SUSS, SIT, private institutions)
     - Full Subject-Based Banding (FSBB) from 2024 cohort onwards
         """)
 
@@ -212,6 +217,8 @@ with _main:
             "SkillsFuture Singapore",
             "ICA — Student Pass",
             "International Schools (18 schools)",
+            "SkillsFuture — Work-Study Programmes",
+            "Private Institutions (SIM, Kaplan, PSB, MDIS)",
         ],
         "URL": [
             "https://www.moe.gov.sg/primary",
@@ -237,6 +244,8 @@ with _main:
             "https://www.skillsfuture.gov.sg",
             "https://www.ica.gov.sg/reside/STP",
             "Individual school websites",
+            "https://www.skillsfuture.gov.sg/initiatives/mid-career/workstudy",
+            "Individual institution websites + CPE registry",
         ],
         "Data Used": [
             "PSLE AL scoring, curriculum, gifted education",
@@ -262,6 +271,8 @@ with _main:
             "SkillsFuture Credit, CPP, courses",
             "Student Pass application, renewal, work restrictions",
             "IB/IGCSE/AP curricula, fee ranges, IB-to-uni conversion",
+            "Poly/ITE work-study diplomas, SkillsFuture subsidies, programme details",
+            "Part-time degree programmes, fees, entry requirements, partner universities",
         ],
     }
     st.dataframe(pd.DataFrame(sources), use_container_width=True, hide_index=True)

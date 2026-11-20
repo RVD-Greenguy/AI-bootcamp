@@ -29,7 +29,7 @@ with _main:
         "primary":         ("🏫 Primary School", "PSLE didn't go as planned? Transfers, retakes, and alternative pathways.", "📝"),
         "secondary":       ("📚 Secondary School", "O-level/N-level retakes, stream changes, private candidate rules.", "📚"),
         "post_secondary":  ("🎓 Post-Secondary", "A-level retakes, poly GPA recovery, ITE progression, certificate implications.", "🎓"),
-        "university_plus": ("🎓 Post-Secondary", "Private candidate rules, university retake policies, DAE fallbacks.", "🏛️"),
+        "university_plus": ("🎓 Part-Time Diplomas & Degrees", "Part-time diplomas, degrees, and work-study options for career changers and working adults.", "🏛️"),
     }
     if _stage in _fb_hints:
         _hint_tab, _hint_text, _hint_icon = _fb_hints[_stage]
@@ -58,10 +58,11 @@ with _main:
     st.warning(f"⚠️ {DISCLAIMER}", icon="⚠️")
     st.info("This guide covers official MOE and SEAB policies. Always verify current policies at **moe.gov.sg** and **seab.gov.sg** before making decisions.")
 
-    tab_primary, tab_secondary, tab_postsec, tab_stories, tab_support = st.tabs([
+    tab_primary, tab_secondary, tab_postsec, tab_parttime, tab_stories, tab_support = st.tabs([
         "🏫 Primary School",
         "📚 Secondary School",
         "🎓 Post-Secondary",
+        "🎓 Part-Time Diplomas & Degrees",
         "🌟 Success Stories",
         "🤝 Support & Resources",
     ])
@@ -384,7 +385,267 @@ with _main:
             cols[i % 3].markdown(f"🔗 [{name}]({url})")
 
 
-    # ── TAB 4: SUCCESS STORIES ──────────────────────────────────────────────────
+    # ── TAB 4: PART-TIME DIPLOMAS & DEGREES ────────────────────────────────────
+    with tab_parttime:
+        st.subheader("🎓 Part-Time Diplomas & Degrees")
+        st.markdown("""
+    Whether you're a working adult looking to upskill, a career changer, or someone who didn't qualify
+    for full-time programmes — **part-time study is a legitimate, well-supported pathway** in Singapore.
+    Many programmes are subsidised by SkillsFuture and can be completed alongside full-time work.
+        """)
+
+        st.markdown("## 📜 Part-Time Diplomas")
+
+        with st.expander("🏛️ Polytechnic Work-Study Diplomas", expanded=True):
+            st.markdown("""
+    All 5 polytechnics offer **Work-Study Diplomas** for ITE graduates and working adults.
+    You work full-time with a sponsoring employer while earning a polytechnic diploma.
+
+    | Polytechnic | Example Programmes | Duration | Entry |
+    |---|---|---|---|
+    | **SP** | Engineering, Business, ICT | 2–3 years | NITEC/Higher NITEC or relevant work experience |
+    | **TP** | Applied Sciences, Business, Design | 2–3 years | NITEC/Higher NITEC or relevant work experience |
+    | **NYP** | Engineering, Health Sciences, IT | 2–3 years | NITEC/Higher NITEC or relevant work experience |
+    | **NP** | Engineering, Business, ICT | 2–3 years | NITEC/Higher NITEC or relevant work experience |
+    | **RP** | Engineering, Technology, Business | 2–3 years | NITEC/Higher NITEC or relevant work experience |
+
+    **Key benefits:**
+    - Earn a salary while studying (employer-sponsored)
+    - SkillsFuture subsidy covers up to 70–90% of course fees
+    - Same diploma qualification as full-time poly graduates
+    - Direct pathway to university via DAE after graduation
+
+    🔗 [SkillsFuture Work-Study Programmes](https://www.skillsfuture.gov.sg/initiatives/mid-career/workstudy)
+            """)
+
+        with st.expander("🔧 ITE Work-Study Programme"):
+            st.markdown("""
+    ITE offers **Work-Study programmes** that allow you to earn a Higher NITEC or Technical Diploma
+    while working full-time with a participating employer.
+
+    **How it works:**
+    - Study 1–2 days per week at ITE, work the remaining days
+    - Employer pays a monthly training allowance (~$1,200–$1,800/mth)
+    - Programme duration: 1.5–2.5 years
+    - SkillsFuture subsidised: SC pay minimal out-of-pocket fees
+
+    **Entry requirements:**
+    - NITEC or Higher NITEC holders
+    - Or O-level / N-level holders with relevant work experience (min 2 years)
+
+    **Progression:**
+    - Higher NITEC → Poly Work-Study Diploma → University (DAE)
+
+    🔗 [ITE Work-Study Programmes](https://www.ite.edu.sg/admissions/work-study-programmes)
+            """)
+
+        with st.expander("🏢 Private Institution Diplomas"):
+            st.markdown("""
+    Several private institutions offer part-time diplomas with **evening and weekend classes**,
+    suitable for working adults who cannot attend daytime classes.
+
+    | Institution | Programmes | Duration | Fees (approx) | Schedule |
+    |---|---|---|---|---|
+    | **Kaplan Singapore** | Business, IT, Hospitality, Accounting | 8–16 months | $8,000–$15,000 | Evenings / weekends |
+    | **PSB Academy** | Engineering, Business, Life Sciences | 8–16 months | $8,000–$14,000 | Evenings / weekends |
+    | **MDIS** | Business, Tourism, Engineering, IT | 8–14 months | $7,000–$13,000 | Evenings / weekends |
+    | **SIM Global Education** | Business, IT, Social Sciences | 12–18 months | $8,000–$16,000 | Evenings / weekends |
+
+    **Note:** These are **private qualifications** or qualifications from overseas partner universities.
+    Check that the institution is registered with CPE (Committee for Private Education) at
+    [ssg.gov.sg](https://www.ssg.gov.sg).
+
+    **SkillsFuture Credit** ($500) can be used for eligible private diploma courses.
+            """)
+
+        st.divider()
+        st.markdown("## 🎓 Part-Time Degrees")
+
+        with st.expander("🏛️ SUSS — Singapore University of Social Sciences", expanded=True):
+            st.markdown("""
+    SUSS is Singapore's **primary university for part-time degrees**, with ~30 undergraduate programmes
+    designed for working adults. Classes are held on **weekday evenings and Saturdays**.
+
+    **Popular programmes:**
+    - Bachelor of Business Administration (BBA)
+    - Bachelor of Science in Finance / Marketing / HR
+    - Bachelor of Laws (LLB) — part-time only
+    - Bachelor of Social Work
+    - Bachelor of Science in IT / Data Analytics
+
+    **Duration:** 4–6 years (part-time)
+
+    **Entry requirements:**
+    - Polytechnic diploma (GPA 2.5+ for most), or
+    - A-level results, or
+    - Mature applicants (age 30+) with 8+ years work experience — no diploma needed
+
+    **Fees (subsidised for SC):**
+    - SC: ~$3,000–$4,500 per year (after MOE subsidy)
+    - PR: ~$5,000–$7,000 per year
+    - International: ~$10,000–$14,000 per year
+    - Total over 4–6 years: ~$18,000–$27,000 (SC)
+
+    **MOE Tuition Grant:** Available for SC and PR (no bond for SC/PR)
+
+    🔗 [SUSS Part-Time Undergraduate](https://www.suss.edu.sg/programmes)
+            """)
+
+        with st.expander("🏗️ SIT — Singapore Institute of Technology"):
+            st.markdown("""
+    SIT offers **applied degree programmes** with an integrated work-study model.
+    While most SIT programmes are full-time, some are structured for working adults.
+
+    **Work-Study Degree options:**
+    - Typically 3–4 year programmes with industry placements built in
+    - Employer-sponsored options available under SkillsFuture Work-Study Degree
+    - Focus areas: Engineering, Health Sciences, ICT, Design, Hospitality
+
+    **Entry:** Poly diploma (GPA 3.0+) or relevant industry experience
+
+    **Fees (SC):** ~$3,000–$5,000/yr (after MOE subsidy) — comparable to SUSS
+
+    🔗 [SIT Admissions](https://www.singaporetech.edu.sg/admissions)
+            """)
+
+        with st.expander("🏛️ NUS / NTU / SMU — Part-Time Options"):
+            st.markdown("""
+    The top 3 autonomous universities have **limited part-time undergraduate** options
+    but offer more part-time postgraduate programmes.
+
+    **Part-time undergraduate:**
+    - **NUS** — Bachelor of Technology (BTech) in selected engineering fields, part-time over 4–5 years
+    - **NTU** — Very limited part-time undergrad; mainly postgraduate and continuing education
+    - **SMU** — No part-time undergrad; strong executive and postgraduate part-time offerings
+
+    **Part-time postgraduate (all 3 universities):**
+    - MBA (part-time): $50,000–$80,000 total, 2–3 years
+    - Masters programmes in Business, IT, Engineering, Public Policy: $20,000–$50,000
+    - Evening/weekend classes, typically 1.5–3 years
+
+    **For working adults without a degree:**
+    SUSS or private universities are usually the better part-time undergrad route.
+            """)
+
+        with st.expander("🏢 Private Universities — Overseas Partner Degrees"):
+            st.markdown("""
+    Private education institutions in Singapore partner with overseas universities to offer
+    **part-time bachelor's degrees** with evening and weekend classes.
+
+    | Institution | Partner University | Programmes | Duration | Fees (total) |
+    |---|---|---|---|---|
+    | **SIM Global Education** | University of London (UOL) | Business, IT, Accounting, Economics | 2–4 years | $15,000–$28,000 |
+    | **SIM Global Education** | University of Birmingham | Business, Engineering | 2–3 years | $20,000–$35,000 |
+    | **Kaplan Singapore** | Murdoch University | Business, IT, Psychology, Communications | 2–3 years | $22,000–$35,000 |
+    | **Kaplan Singapore** | Northumbria University | Business, Engineering, Computing | 2–3 years | $20,000–$32,000 |
+    | **PSB Academy** | La Trobe University | Business, IT, Engineering | 2–3 years | $22,000–$38,000 |
+    | **PSB Academy** | Edinburgh Napier University | Business, Engineering, Hospitality | 2–3 years | $20,000–$30,000 |
+    | **MDIS** | University of Sunderland | Business, Tourism, Engineering | 2–3 years | $18,000–$30,000 |
+
+    **Important considerations:**
+    - Ensure the programme is registered with CPE (Committee for Private Education)
+    - Check if the degree is recognised by your target employers
+    - SIM-UOL degrees are widely recognised in Singapore's job market
+    - Some employers may treat private degrees differently from local university degrees
+    - SkillsFuture Credit can be used for eligible programmes
+
+    🔗 [CPE — List of Registered Institutions](https://www.ssg.gov.sg/cpe/pei.html)
+            """)
+
+        st.divider()
+        st.markdown("## 💰 Funding & Financial Support")
+        st.info("""
+    **Singapore offers substantial subsidies for part-time education:**
+
+    - **SkillsFuture Credit** — Every SC aged 25+ receives $500 (one-time top-ups periodically). Usable for approved courses at any provider.
+    - **SkillsFuture Mid-Career Enhanced Subsidy** — SC aged 40+: up to **90% subsidy** on course fees for SSG-supported programmes.
+    - **PSEA (Post-Secondary Education Account)** — SC students: government-deposited funds usable for approved part-time diplomas and degrees.
+    - **CPF Education Scheme** — Use your CPF Ordinary Account to pay for approved part-time degree programmes.
+    - **MOE Tuition Grant** — Available for SUSS, SIT part-time degrees (SC/PR: no bond; International: 3-year bond).
+    - **Employer Sponsorship** — Many Work-Study programmes are employer-sponsored (employer pays fees + training allowance).
+    - **NTUC Union Training Assistance Programme (UTAP)** — NTUC members: up to $500/yr for approved courses.
+        """)
+
+        st.divider()
+        st.markdown("## 📊 Part-Time Study Comparison")
+        _pt_compare = pd.DataFrame({
+            "Provider": [
+                "Poly Work-Study Diploma",
+                "ITE Work-Study",
+                "SUSS (Part-Time Degree)",
+                "SIT (Work-Study Degree)",
+                "SIM-UOL (Private Degree)",
+                "Kaplan / PSB / MDIS",
+            ],
+            "Qualification": [
+                "Polytechnic Diploma",
+                "Higher NITEC / Tech Diploma",
+                "Bachelor's Degree",
+                "Bachelor's Degree (Applied)",
+                "Bachelor's Degree (Overseas Uni)",
+                "Bachelor's Degree (Overseas Uni)",
+            ],
+            "Duration": [
+                "2–3 years", "1.5–2.5 years", "4–6 years",
+                "3–4 years", "2–4 years", "2–3 years",
+            ],
+            "Schedule": [
+                "Work + study days", "1–2 days/wk at ITE", "Evenings + Sat",
+                "Work-integrated", "Evenings + weekends", "Evenings + weekends",
+            ],
+            "Fees (SC, approx)": [
+                "$1,000–$3,000 total",
+                "$500–$2,000 total",
+                "$18,000–$27,000 total",
+                "$15,000–$25,000 total",
+                "$15,000–$28,000 total",
+                "$20,000–$38,000 total",
+            ],
+            "Entry Requirement": [
+                "NITEC / Higher NITEC",
+                "NITEC or O/N-level + work exp",
+                "Poly diploma (GPA 2.5+) or age 30+",
+                "Poly diploma (GPA 3.0+)",
+                "Poly diploma or A-levels",
+                "Poly diploma or A-levels",
+            ],
+        })
+        st.dataframe(_pt_compare, use_container_width=True, hide_index=True)
+
+        st.divider()
+        st.markdown("## 🧭 Which Path is Right for Me?")
+        st.markdown("""
+    | Your Current Qualification | Recommended Part-Time Path | Next Step |
+    |---|---|---|
+    | **N-level / NITEC** | ITE Work-Study → Higher NITEC → Poly Work-Study Diploma | Check ITE work-study listings |
+    | **O-level** | Poly Work-Study Diploma or private diploma (Kaplan/PSB/MDIS) | Apply to poly work-study or private institution |
+    | **Higher NITEC** | Poly Work-Study Diploma → SUSS / SIT / private degree | Apply via SkillsFuture Work-Study |
+    | **Poly Diploma** | SUSS part-time degree, SIT work-study, or SIM-UOL | Apply to SUSS (most flexible entry) |
+    | **Working Adult (no diploma, age 30+)** | SUSS mature entry (8+ years work exp, no diploma needed) | Apply directly to SUSS |
+    | **Career Changer (any qualification)** | SkillsFuture Career Transition Programme → industry cert → degree | Visit MySkillsFuture portal |
+        """)
+
+        st.success("""
+    **Remember:** Part-time study takes longer, but it means you earn while you learn. Many employers
+    in Singapore value the combination of a degree + work experience. A SUSS part-time BBA graduate
+    with 6 years of work experience is highly employable — often more so than a fresh full-time graduate.
+        """)
+
+        st.markdown("### 🔗 Official Resources")
+        pt_links = {
+            "SkillsFuture Work-Study Programmes": "https://www.skillsfuture.gov.sg/initiatives/mid-career/workstudy",
+            "SUSS Part-Time Programmes": "https://www.suss.edu.sg/programmes",
+            "SIT Admissions": "https://www.singaporetech.edu.sg/admissions",
+            "MySkillsFuture Portal": "https://www.myskillsfuture.gov.sg",
+            "CPE Registered Institutions": "https://www.ssg.gov.sg/cpe/pei.html",
+            "ITE Work-Study": "https://www.ite.edu.sg/admissions/work-study-programmes",
+        }
+        pt_cols = st.columns(3)
+        for i, (name, url) in enumerate(pt_links.items()):
+            pt_cols[i % 3].markdown(f"🔗 [{name}]({url})")
+
+
+    # ── TAB 5: SUCCESS STORIES ──────────────────────────────────────────────────
     with tab_stories:
         st.subheader("🌟 Success Stories — Different Roads, Same Destination")
 
@@ -509,6 +770,6 @@ with _main:
     <a href="https://www.seab.gov.sg">SEAB</a> ·
     <a href="https://www.ite.edu.sg">ITE</a> ·
     <a href="https://www.skillsfuture.gov.sg">SkillsFuture</a><br>
-    <small>EduPath SG is a capstone project. Not affiliated with the Singapore Government.</small>
+    <small>EduPath SG is an AI Champion Bootcamp capstone project. Not affiliated with the Singapore Government.</small>
     </div>
     """, unsafe_allow_html=True)

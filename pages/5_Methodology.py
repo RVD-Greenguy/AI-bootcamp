@@ -388,9 +388,10 @@ with _main:
                 "Career pathways", "Fallback policies", "Support resources",
                 "Success stories", "Institution locations",
                 "International schools", "PR & International pathways",
+                "Part-time diplomas & degrees",
                 "Static knowledge (NS, fees, visa, FSBB, etc.)",
             ],
-            "Items": [12, 88, 72, 12, "~50", "~12", 29, 15, 10, "~35", 10, 14, 18, "~25", 21],
+            "Items": [12, 88, 72, 12, "~50", "~12", 29, 15, 10, "~35", 10, 14, 18, "~25", "~20", 21],
             "Source": [
                 "MOE", "MOE school directory", "MOE P1 registration",
                 "MOE JAE", "5 polytechnics", "ITE Education Services",
@@ -398,6 +399,7 @@ with _main:
                 "MOE / SEAB", "MOE / PSC / SkillsFuture / WSG",
                 "Public records / biographies", "OneMap geocoding",
                 "18 international schools (IB/IGCSE/AP)", "MOE AEIS, ICA, MINDEF, MOE fees",
+                "SkillsFuture, SUSS, SIT, Kaplan, PSB, MDIS, SIM, ITE work-study",
                 "NS, Edusave, Student Pass, Tuition Grant, fee comparison, FSBB, IB conversion",
             ],
         }
@@ -437,7 +439,7 @@ with _main:
     ├── pages/
     │   ├── 1_Pathway_Planner.py        # UC1: Roadmap + career pathway viz
     │   ├── 2_Score_Matcher.py          # UC1: PSLE/O-lvl/A-lvl/DAE calculators + nearby map
-    │   ├── 3_Fallback_Support.py       # Fallback policies + support resources + success stories
+    │   ├── 3_Fallback_Support.py       # Fallback policies + part-time diplomas/degrees + success stories
     │   ├── 4_About_Us.py               # Project scope, objectives, data sources
     │   └── 5_Methodology.py            # This page — flowcharts + data architecture
     ├── components/
