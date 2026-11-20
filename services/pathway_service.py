@@ -121,6 +121,22 @@ def get_success_stories() -> list[dict]:
     return []
 
 
+@lru_cache(maxsize=1)
+def get_international_schools() -> list[dict]:
+    path = DATA_DIR / "international_schools.json"
+    if path.exists():
+        return json.loads(path.read_text())
+    return []
+
+
+@lru_cache(maxsize=1)
+def get_pr_international_pathways() -> dict:
+    path = DATA_DIR / "pr_international_pathways.json"
+    if path.exists():
+        return json.loads(path.read_text())
+    return {}
+
+
 def get_stage_by_id(stage_id: str) -> dict | None:
     for s in get_stages():
         if s.get("id") == stage_id:
@@ -186,15 +202,26 @@ def _get_forks(current_stage: str, interests: list[str]) -> list[dict]:
 def _citizenship_notes(citizenship: str) -> list[str]:
     notes = []
     if citizenship == "Singapore Citizen":
-        notes.append("Priority in P1 registration Phase 1–2B.")
-        notes.append("Eligible for MOE subsidies and bursaries.")
-        notes.append("SkillsFuture Credit ($500 + top-ups) from age 25.")
+        notes.append("🟢 **P1 Registration:** Priority in Phases 1–2B. At least 40 places reserved per phase.")
+        notes.append("🟢 **School Fees:** Minimal — ~SGD 6.50/month (primary), ~SGD 5/month (secondary), ~SGD 6/month (JC).")
+        notes.append("🟢 **University:** SGD 8,000–12,500/year with Tuition Grant. No bond required.")
+        notes.append("🟢 **Financial Aid:** Full access to Edusave, MOE bursaries, and merit scholarships.")
+        notes.append("🟢 **SkillsFuture Credit:** $500 + top-ups from age 25 for lifelong learning.")
     elif citizenship == "Permanent Resident":
-        notes.append("P1 registration starts from Phase 2C.")
-        notes.append("Higher school fees than citizens but same curriculum.")
-        notes.append("May apply for MOE bursary schemes; check eligibility.")
+        notes.append("🟡 **P1 Registration:** Eligible from Phase 2C onwards. Singapore Citizens balloted first if oversubscribed.")
+        notes.append("🟡 **School Fees:** Higher than citizens — ~SGD 268/month (primary), ~SGD 440/month (secondary), ~SGD 520/month (JC) (2025 rates, rising annually).")
+        notes.append("🟡 **Secondary Posting:** Same PSLE and S1 posting process. Tie-breaker favours citizens.")
+        notes.append("🟡 **Post-Secondary:** Same JAE process for JC/Poly/ITE. PR fees are subsidised but higher than citizen fees.")
+        notes.append("🟡 **University:** SGD 11,500–17,600/year with Tuition Grant. No work bond (unlike international students).")
+        notes.append("🟡 **Financial Aid:** Eligible for some MOE bursaries. Many government scholarships are SC-only.")
+        notes.append("🟡 **NS Obligation:** Male PRs have National Service obligation, which affects university/work timelines.")
     else:
-        notes.append("International students apply through school directly.")
-        notes.append("Must sit AEIS/SAEIS admissions test for P2–Sec 3 entry.")
-        notes.append("Full fees apply; limited places available.")
+        notes.append("🔴 **Primary/Secondary Entry:** Must pass AEIS (September) or S-AEIS (February) for P2–P5 and Sec 1–3. Fee: SGD 672. Passing does NOT guarantee a school place.")
+        notes.append("🔴 **No School Choice:** MOE assigns schools based on vacancies and residential address. P1, P6, Sec 4–5 not available through AEIS.")
+        notes.append("🔴 **School Fees (Government Schools):** ~SGD 530–880/month (primary), ~SGD 820–1,600/month (secondary), ~SGD 1,040–1,950/month (JC) depending on ASEAN/non-ASEAN status.")
+        notes.append("🔴 **International School Alternative:** No AEIS needed. Annual fees SGD 18,000–50,000+ depending on school. IB/IGCSE/AP curricula accepted by Singapore universities.")
+        notes.append("🔴 **Student Pass:** Required from ICA. Must be renewed annually. Cannot work without valid work pass (limited exceptions for university students).")
+        notes.append("🔴 **University:** Competitive for international applicants. Tuition Grant available (SGD 17,500–28,000/year) but requires 3-year work bond in Singapore. Without TG: SGD 30,000–60,000+/year.")
+        notes.append("🔴 **IB → Local University:** NUS/NTU accept IB Diploma. Competitive courses (Medicine, Law) need IB 40+. Engineering/Business: IB 36–40.")
+        notes.append("🔴 **JC Entry:** Apply directly to schools in December with O-Level/IGCSE equivalent. Limited international student places.")
     return notes

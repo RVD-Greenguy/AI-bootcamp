@@ -107,6 +107,94 @@ def build_index() -> int:
                     f"Eligibility: {item.get('eligibility','')} Sectors: {', '.join(item.get('sectors', []))}")
             chunks.append({"text": text, "source": "SkillsFuture / WSG Programmes", "topic": item.get("name",""), "url": item.get("official_url","")})
 
+    # International schools
+    for s in _load("international_schools.json"):
+        curricula = ", ".join(s.get("curricula", []))
+        fee_info = s.get("fee_range_sgd", {})
+        fee_parts = [f"{k}: SGD {v}" for k, v in fee_info.items()] if isinstance(fee_info, dict) else []
+        text = (f"{s.get('name','')} ({s.get('short_name','')}) — {s.get('type','')} school. "
+                f"Curricula: {curricula}. "
+                f"Location: {s.get('location','')}. "
+                f"{'IB average: ' + str(s.get('ib_average_score','')) + '. ' if s.get('ib_average_score') else ''}"
+                f"Annual fees: {'; '.join(fee_parts)}. "
+                f"{s.get('university_pathways','')}")
+        chunks.append({"text": text, "source": "International Schools Singapore", "topic": s.get("name",""), "url": s.get("official_url","")})
+
+    # PR and international student pathways
+    pr_intl = _load("pr_international_pathways.json")
+    if isinstance(pr_intl, dict):
+        for ex in pr_intl.get("admission_exercises", []):
+            notes = "; ".join(ex.get("important_notes", [])[:4])
+            text = (f"{ex.get('name','')}: {ex.get('description','')} "
+                    f"Eligibility: {ex.get('eligibility','')}. "
+                    f"Test period: {ex.get('test_period','')}. "
+                    f"Fee: SGD {ex.get('fee_sgd','')}. "
+                    f"Notes: {notes}")
+            chunks.append({"text": text, "source": "MOE International Admissions", "topic": ex.get("name",""), "url": ex.get("official_url","")})
+
+        fees = pr_intl.get("fee_structure", {})
+        for tier in fees.get("fee_tiers", []):
+            text = (f"School fees for {tier.get('tier','')}: "
+                    f"Primary {tier.get('primary_monthly_sgd','')}/month, "
+                    f"Secondary {tier.get('secondary_monthly_sgd','')}/month, "
+                    f"JC {tier.get('jc_monthly_sgd','')}/month. "
+                    f"{tier.get('notes','')}")
+            chunks.append({"text": text, "source": "MOE School Fees", "topic": f"Fees — {tier.get('tier','')}", "url": fees.get("official_url","")})
+
+        uni_fees = fees.get("university_fees", {})
+        if uni_fees:
+            text = (f"University fees by citizenship: "
+                    f"Singapore Citizen: {uni_fees.get('singapore_citizen','')}. "
+                    f"PR: {uni_fees.get('permanent_resident','')}. "
+                    f"International (with Tuition Grant): {uni_fees.get('international_with_tuition_grant','')} — must serve 3-year bond. "
+                    f"International (without TG): {uni_fees.get('international_without_tuition_grant','')}.")
+            chunks.append({"text": text, "source": "MOE University Fees", "topic": "University Tuition Fees", "url": ""})
+
+        tg = fees.get("tuition_grant_scheme", {})
+        if tg:
+            notes = "; ".join(tg.get("important_notes", [])[:3])
+            text = (f"MOE Tuition Grant scheme: {tg.get('description','')} "
+                    f"Bond: {tg.get('bond_duration','')}. Notes: {notes}")
+            chunks.append({"text": text, "source": "MOE Tuition Grant", "topic": "Tuition Grant Scheme", "url": ""})
+
+        pr_pol = pr_intl.get("pr_specific_policies", {})
+        for key, pol in pr_pol.items():
+            if isinstance(pol, dict):
+                notes = "; ".join(pol.get("important_notes", [])[:4])
+                text = f"PR policy — {key.replace('_',' ').title()}: {pol.get('description','')} Notes: {notes}"
+                chunks.append({"text": text, "source": "MOE PR Policies", "topic": f"PR — {key.replace('_',' ').title()}", "url": pol.get("official_url","")})
+
+        intl_paths = pr_intl.get("international_student_pathways", {})
+        for ep in intl_paths.get("entry_points", []):
+            pros = "; ".join(ep.get("pros", []))
+            cons = "; ".join(ep.get("cons", []))
+            text = (f"International student pathway: {ep.get('pathway','')}. {ep.get('description','')} "
+                    f"Suitable for: {ep.get('suitable_for','')}. "
+                    f"Pros: {pros}. Cons: {cons}.")
+            chunks.append({"text": text, "source": "International Student Pathways", "topic": ep.get("pathway",""), "url": ""})
+
+        ib_conv = intl_paths.get("ib_to_local_university_conversion", {})
+        if ib_conv:
+            guidelines = ib_conv.get("general_guidelines", {})
+            guide_text = "; ".join(f"{k.replace('_',' ')}: IB {v}" for k, v in guidelines.items())
+            text = (f"IB to Singapore university conversion: {ib_conv.get('description','')} "
+                    f"Guidelines: {guide_text}")
+            chunks.append({"text": text, "source": "IB University Admission", "topic": "IB Score Conversion", "url": ""})
+
+        fsbb = pr_intl.get("fsbb_info", {})
+        if fsbb:
+            changes = "; ".join(fsbb.get("key_changes", [])[:4])
+            text = (f"Full Subject-Based Banding (FSBB): {fsbb.get('description','')} "
+                    f"Key changes: {changes}")
+            chunks.append({"text": text, "source": "MOE FSBB", "topic": "FSBB Subject-Based Banding", "url": fsbb.get("official_url","")})
+
+        stp = intl_paths.get("student_pass", {})
+        if stp:
+            reqs = "; ".join(stp.get("requirements", [])[:3])
+            text = (f"Student Pass for international students: {stp.get('description','')} "
+                    f"Requirements: {reqs}")
+            chunks.append({"text": text, "source": "ICA Student Pass", "topic": "Student Pass", "url": stp.get("official_url","")})
+
     # Static knowledge chunks (key facts not in JSON)
     static_chunks = [
         {"text": "PSLE Achievement Level (AL) scoring: each subject graded AL1-AL8. Total AL = sum of 4 subjects (4 = best, 32 = weakest). Introduced in 2021 replacing T-score.", "source": "MOE PSLE", "topic": "PSLE Scoring", "url": "https://www.moe.gov.sg/primary/psle"},
@@ -123,6 +211,13 @@ def build_index() -> int:
         {"text": "P1 Registration Phases: Phase 1 (siblings in school), Phase 2A1 (child of staff/former student), Phase 2A2 (member/former student of school), Phase 2B (community/CCA affiliation), Phase 2C (all citizens), Phase 2C Supplementary, Phase 3 (PRs and others). Priority given to Singapore Citizens over PRs in oversubscribed phases.", "source": "MOE P1 Registration", "topic": "P1 Registration", "url": "https://www.moe.gov.sg/primary/p1-registration"},
         {"text": "NITEC and Higher NITEC at ITE: NITEC is 2-year programme. Higher NITEC is 2-year programme for NITEC graduates or O-level holders. Higher NITEC graduates can apply to polytechnic Year 1 or Year 2 (with exemptions). ITE offers 3 colleges: College East, Central, West.", "source": "ITE Education Services", "topic": "ITE NITEC", "url": "https://www.ite.edu.sg"},
         {"text": "Millennia Institute (MI): 3-year A-level programme for Normal Academic students who perform well at O-levels. Alternative to 2-year JC. Offers same A-level subjects. Good option for students who need more preparation time.", "source": "MOE", "topic": "Millennia Institute", "url": "https://www.millenniainstitute.moe.edu.sg"},
+        {"text": "National Service (NS) for male Singapore Citizens and PRs: All male SCs and 2nd-generation PRs must serve 2-year Full-Time National Service (FTNS) after completing pre-university, poly, or ITE education. NS is typically served at age 18-20 before university. University admission is deferred until after NS completion. Male PRs who have completed NS are treated the same as SCs for university admission timing. Disruption options exist for medical or compassionate cases.", "source": "MINDEF NS", "topic": "National Service", "url": "https://www.ns.sg"},
+        {"text": "NS and Education Timeline: Male SCs/PRs typically complete JC/Poly/ITE → serve 2-year NS → enter university at age 21-22 (JC route) or 22-23 (Poly route). University deferment is automatic. Female students proceed directly to university after A-levels/Poly. NS reservist obligations (ICT) continue during and after university, typically 1-2 weeks per year for 10 years.", "source": "MINDEF NS", "topic": "NS Education Timeline", "url": "https://www.ns.sg"},
+        {"text": "School fees comparison by citizenship: Government primary school — SC: SGD 6.50/month, PR: SGD 268/month, International (ASEAN): SGD 530/month, International (non-ASEAN): SGD 880/month. Government secondary — SC: SGD 5/month, PR: SGD 440/month, International (ASEAN): SGD 820/month, International (non-ASEAN): SGD 1,600/month. JC — SC: SGD 6/month, PR: SGD 520/month, International (ASEAN): SGD 1,040/month, International (non-ASEAN): SGD 1,950/month. (2025 rates, fees increasing annually for non-citizens.)", "source": "MOE School Fees", "topic": "School Fee Comparison", "url": "https://www.moe.gov.sg/financial-matters/fees"},
+        {"text": "Student Pass and visa for international students: All non-citizen, non-PR students need a Student Pass (STP) from ICA to study in Singapore. Apply via ICA SOLAR system after receiving a school offer. Requirements: valid offer letter, passport (6+ months validity), photo, SGD 30 processing + SGD 60 issuance fee. Must be renewed annually. STP holders cannot work without a valid work pass (university students may work part-time up to 16 hours/week during term at approved institutions). Long-Term Visit Pass (LTVP) holders do not need a separate Student Pass.", "source": "ICA Student Pass", "topic": "Student Visa Requirements", "url": "https://www.ica.gov.sg/reside/STP"},
+        {"text": "Dependant's Pass (DP) and Long-Term Visit Pass (LTVP) for families: Children of Employment Pass or S Pass holders can apply for a Dependant's Pass. DP holders can enrol in any school (government or international) without a Student Pass. LTVP holders may also study without a separate Student Pass. DP/LTVP holders in government schools pay international student fees.", "source": "ICA Passes", "topic": "Dependant's Pass", "url": "https://www.ica.gov.sg"},
+        {"text": "MOE Tuition Grant for university: Available to SC, PR, and international students at autonomous universities (NUS, NTU, SMU, SUTD, SIT, SUSS). SC: no bond. PR: subsidised fees, no bond (or reduced bond depending on university). International students: must sign 3-year bond to work in a Singapore-registered company after graduation. Without TG, international fees are 2-3x higher. Medicine and Dentistry: limited TG availability for international students.", "source": "MOE Tuition Grant", "topic": "University Tuition Grant", "url": "https://www.moe.gov.sg/financial-matters"},
+        {"text": "Edusave for citizens and PRs: Government provides annual Edusave contributions for Singapore Citizen students (approximately SGD 290/year for primary, SGD 290-390/year for secondary). PR students also receive Edusave but at lower rates. Edusave can be used for enrichment programmes, school fees, and approved educational expenses. International students are not eligible for Edusave.", "source": "MOE Edusave", "topic": "Edusave Account", "url": "https://www.moe.gov.sg/financial-matters/edusave-account"},
     ]
     chunks.extend(static_chunks)
 

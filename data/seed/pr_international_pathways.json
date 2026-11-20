@@ -1,0 +1,273 @@
+{
+  "admission_exercises": [
+    {
+      "id": "aeis",
+      "name": "Admissions Exercise for International Students (AEIS)",
+      "description": "Centralised admissions test for international students (non-SC, non-PR) seeking admission to Primary 2–5 and Secondary 1–3 in Singapore government schools. Tests English and Mathematics proficiency.",
+      "eligibility": "International students not currently studying in a Singapore government school. Must meet age requirements for the level applied for.",
+      "age_requirements": {
+        "primary_2": "7+ at time of test",
+        "primary_3": "8+",
+        "primary_4": "9+",
+        "primary_5": "10+",
+        "secondary_1": "12+",
+        "secondary_2": "13+",
+        "secondary_3": "14+"
+      },
+      "test_components": ["English (reading, writing, vocabulary, grammar)", "Mathematics"],
+      "test_period": "September each year (for following January entry)",
+      "results_period": "December (about 3 months after test)",
+      "fee_sgd": "672 (inclusive of GST)",
+      "important_notes": [
+        "Passing the test does NOT guarantee a school place — depends on vacancies",
+        "Students are allocated to schools by MOE based on vacancies and residential address",
+        "No school choice is given — MOE assigns based on available places",
+        "Primary 1 and Primary 6 admission not available through AEIS",
+        "Secondary 4 and 5 admission not available through AEIS",
+        "Test is conducted in English only",
+        "International students cannot apply for GEP (Gifted Education Programme)",
+        "Student Pass required from ICA before commencing studies"
+      ],
+      "official_url": "https://www.moe.gov.sg/international-students/aeis"
+    },
+    {
+      "id": "saeis",
+      "name": "Supplementary Admissions Exercise for International Students (S-AEIS)",
+      "description": "Supplementary round of AEIS for international students who missed the September AEIS or were unsuccessful. Tests for Primary 2–4 and Secondary 1–2 only (P5 and S3 not available in S-AEIS).",
+      "eligibility": "International students not placed through AEIS. Same criteria as AEIS.",
+      "test_period": "February–March each year (for same-year April entry)",
+      "results_period": "April (about 1–2 months after test)",
+      "fee_sgd": "672 (inclusive of GST)",
+      "important_notes": [
+        "Fewer levels available than AEIS: only P2–P4 and S1–S2",
+        "P5 and S3 are NOT available in S-AEIS — must wait for next AEIS cycle",
+        "Same test format as AEIS",
+        "Placement depends on remaining school vacancies after January intake"
+      ],
+      "official_url": "https://www.moe.gov.sg/international-students/s-aeis"
+    },
+    {
+      "id": "jc_intl_admission",
+      "name": "JC/MI Direct Admission for International Students",
+      "description": "International students seeking JC or Millennia Institute admission apply directly to schools in December, typically after completing IGCSE, O-Levels, or equivalent.",
+      "eligibility": "International students with equivalent qualifications (IGCSE, foreign O-Level equivalent, etc.)",
+      "application_period": "November–December each year",
+      "important_notes": [
+        "Must have equivalent of O-Level passes in relevant subjects",
+        "Schools assess individually — no centralised test",
+        "Student Pass required",
+        "Limited international student places at JCs"
+      ]
+    },
+    {
+      "id": "poly_dae_intl",
+      "name": "Polytechnic Direct Admissions Exercise (DAE) for International Students",
+      "description": "International students with local or international qualifications can apply to polytechnics through DAE. Each polytechnic manages its own DAE.",
+      "eligibility": "International students with O-Levels, IGCSE, or equivalent qualifications",
+      "application_period": "Varies by polytechnic — typically January–March",
+      "important_notes": [
+        "Each polytechnic has its own DAE application portal",
+        "Course-specific requirements apply",
+        "International student quota applies — limited places",
+        "Full international student fees apply (no MOE subsidy unless under Tuition Grant scheme)"
+      ]
+    }
+  ],
+  "fee_structure": {
+    "description": "MOE differentiates school fees by citizenship/residency status. Fees increase in tiers: Singapore Citizen (lowest) → PR → International ASEAN → International non-ASEAN (highest).",
+    "fee_tiers": [
+      {
+        "tier": "Singapore Citizen",
+        "primary_monthly_sgd": "6.50 (standard misc fees only)",
+        "secondary_monthly_sgd": "5.00 (standard misc fees only)",
+        "jc_monthly_sgd": "6.00 (standard misc fees only)",
+        "notes": "Heavily subsidised. Misc fees only. No tuition fees at primary/secondary level."
+      },
+      {
+        "tier": "Permanent Resident",
+        "primary_monthly_sgd": "268 (2025 rate)",
+        "secondary_monthly_sgd": "440 (2025 rate)",
+        "jc_monthly_sgd": "520 (2025 rate)",
+        "notes": "Fees have been increasing annually as part of MOE's fee adjustment roadmap. Additional misc fees apply."
+      },
+      {
+        "tier": "International Student (ASEAN)",
+        "primary_monthly_sgd": "530 (2025 rate)",
+        "secondary_monthly_sgd": "820 (2025 rate)",
+        "jc_monthly_sgd": "1040 (2025 rate)",
+        "notes": "ASEAN member state nationals. Student Pass required from ICA."
+      },
+      {
+        "tier": "International Student (non-ASEAN)",
+        "primary_monthly_sgd": "880 (2025 rate)",
+        "secondary_monthly_sgd": "1600 (2025 rate)",
+        "jc_monthly_sgd": "1950 (2025 rate)",
+        "notes": "Non-ASEAN international students pay the highest fees. Student Pass required from ICA."
+      }
+    ],
+    "independent_school_fees": "Independent schools (e.g., RI, HCI, SCGS, NJC, ACSI) set their own fees — typically SGD 300–500/month for SC, SGD 750–1100 for PR, SGD 1700–2900 for international students.",
+    "university_fees": {
+      "singapore_citizen": "SGD 8,000–12,500 per year (subsidised, with Tuition Grant)",
+      "permanent_resident": "SGD 11,500–17,600 per year (with Tuition Grant)",
+      "international_with_tuition_grant": "SGD 17,500–28,000 per year (must serve 3-year bond in Singapore-registered company after graduation)",
+      "international_without_tuition_grant": "SGD 30,000–60,000+ per year (unsubsidised; varies by course, especially Medicine/Dentistry)"
+    },
+    "tuition_grant_scheme": {
+      "description": "The MOE Tuition Grant (TG) subsidises university tuition for international students at Singapore's autonomous universities. In return, students must sign a bond to work in a Singapore-registered company for 3 years after graduation.",
+      "eligibility": "International students admitted to full-time undergraduate programmes at NUS, NTU, SMU, SUTD, SIT, SUSS.",
+      "bond_duration": "3 years working in a Singapore-registered company",
+      "important_notes": [
+        "Tuition Grant is NOT automatic — students must apply and be approved",
+        "Bond requires working at any Singapore-registered company (not limited to specific sectors)",
+        "Breaking the bond requires repaying the full grant amount with interest",
+        "TG does not cover Medicine and Dentistry for most international students",
+        "TG amount varies by course and university — check individual university websites"
+      ]
+    },
+    "official_url": "https://www.moe.gov.sg/financial-matters/fees"
+  },
+  "pr_specific_policies": {
+    "p1_registration": {
+      "description": "PR children participate in P1 Registration Exercise but at lower priority than Singapore Citizens.",
+      "phases_eligible": ["Phase 2C (if eligible, after all SC applicants)", "Phase 2C Supplementary", "Phase 3"],
+      "important_notes": [
+        "Phase 1–2B: Singapore Citizens only",
+        "Phase 2C: SCs balloted first if oversubscribed; remaining places then open to PRs",
+        "Phase 3: International students (on valid passes) apply if places remain",
+        "Home-school distance (within 1km / 1–2km) still matters for PR applicants",
+        "Singapore Citizens always have priority over PRs in balloting at every phase",
+        "PR children must register during the designated registration window"
+      ],
+      "official_url": "https://www.moe.gov.sg/primary/p1-registration"
+    },
+    "secondary_posting": {
+      "description": "PR students participate in S1 Posting Exercise after PSLE on the same merit basis as Singapore Citizens. However, in the event of a tie-breaker, Singapore Citizens are given priority.",
+      "important_notes": [
+        "PR students sit the same PSLE exam as citizens",
+        "Same PSLE AL scoring and S1 posting process",
+        "Tie-breaker favours Singapore Citizens",
+        "Affiliation priority for PR students applies if their sibling is in the affiliated school"
+      ]
+    },
+    "post_secondary": {
+      "description": "PR students participate in JAE (Joint Admissions Exercise) for JC, Polytechnic, and ITE admission on the same basis as citizens. Fee differences apply.",
+      "important_notes": [
+        "Same JAE application process and merit-based posting",
+        "PR fees at JC/Poly/ITE are higher than citizen fees but still subsidised",
+        "Edusave benefits: PRs receive Edusave contributions but at lower rates than citizens",
+        "NS obligation: Male PRs may have NS obligation affecting university/work timelines"
+      ]
+    },
+    "university": {
+      "description": "PR students apply to local autonomous universities on the same academic criteria as citizens. Fee differences apply. Eligible for MOE Tuition Grant without the 3-year bond (unlike international students).",
+      "important_notes": [
+        "PR students pay higher tuition than SCs but lower than international students",
+        "PRs are eligible for MOE Tuition Grant without a work bond",
+        "PRs may apply for some (not all) bursaries and financial aid schemes",
+        "Some merit scholarships are open to PRs; many government scholarships are SC-only",
+        "Male PRs who have completed NS are treated same as SCs for admission timing"
+      ]
+    }
+  },
+  "international_student_pathways": {
+    "entry_points": [
+      {
+        "pathway": "AEIS → Government Primary/Secondary School",
+        "description": "Pass AEIS/S-AEIS test → placed in a government school → follow Singapore national curriculum → sit PSLE / N-levels / O-levels → JAE to JC/Poly/ITE",
+        "suitable_for": "International students aged 7–16 seeking mainstream Singapore education",
+        "duration_to_university": "Depends on entry point. E.g., entering at Sec 1 → 4 years to O-levels → 2 years JC → university = ~6–7 years",
+        "pros": ["Internationally recognised Singapore qualifications", "Lower fees than international schools", "Full Singapore education experience"],
+        "cons": ["Must pass AEIS test", "No school choice — MOE assigns", "Limited places", "Student Pass required"]
+      },
+      {
+        "pathway": "International School → IB / IGCSE / AP → University",
+        "description": "Enrol in an international school → follow IB/IGCSE/AP curriculum → apply to Singapore or international universities",
+        "suitable_for": "Expat families, families wanting specific curricula, students who may return to home country",
+        "duration_to_university": "Typically 12–13 years total schooling (same as most countries)",
+        "pros": ["No AEIS test required", "Choice of school and curriculum", "International qualifications accepted globally", "Smoother transitions if relocating"],
+        "cons": ["High fees (SGD 20,000–50,000+ per year)", "May not integrate into Singapore's national system", "IB/AP scores need conversion for local university admission"]
+      },
+      {
+        "pathway": "Direct Polytechnic DAE (International Qualifications)",
+        "description": "Apply directly to polytechnics with international qualifications (IGCSE, O-Level equivalent, etc.)",
+        "suitable_for": "International students aged 16+ with completed secondary education",
+        "duration_to_university": "3 years polytechnic → DAE to university = ~6–7 years total post-secondary",
+        "pros": ["Practical diploma qualification", "Pathway to local university via DAE", "Industry-relevant skills"],
+        "cons": ["Full international fees unless Tuition Grant", "Limited international student quota at polys"]
+      },
+      {
+        "pathway": "Direct University Application (Foreign Qualifications)",
+        "description": "Apply to Singapore autonomous universities with IB, A-levels (from any country), AP, or other recognised international qualifications",
+        "suitable_for": "International students who have completed pre-university education abroad or at an international school",
+        "duration_to_university": "Direct entry (3–5 years depending on course)",
+        "pros": ["Direct university entry", "Top universities (NUS, NTU) are world-ranked", "Tuition Grant available with 3-year bond"],
+        "cons": ["Very competitive for international applicants", "Higher fees than citizens/PRs", "3-year work bond if accepting Tuition Grant", "Some courses (Medicine, Law) have very limited international student intake"]
+      }
+    ],
+    "ib_to_local_university_conversion": {
+      "description": "Singapore autonomous universities accept IB Diploma scores. Conversion to equivalent rank points varies by university and faculty.",
+      "general_guidelines": {
+        "nus_ntu_competitive_courses": "IB 40+ (out of 45) for Medicine, Law, Computing",
+        "nus_ntu_engineering_business": "IB 36–40",
+        "nus_ntu_arts_science": "IB 32–38",
+        "smu": "IB 35+ for most courses; interview required",
+        "sutd": "IB 34+ plus design portfolio for some courses",
+        "sit_suss": "IB 28+ for most courses"
+      },
+      "important_notes": [
+        "IB score requirements are approximate — check university admissions pages annually",
+        "Higher Level (HL) subjects given more weight than Standard Level (SL)",
+        "Subject prerequisites apply (e.g., HL Mathematics for Engineering/Computing)",
+        "Bonus points may apply for bilingualism or Theory of Knowledge (TOK)",
+        "Extended Essay and TOK grades can boost applications at some universities"
+      ]
+    },
+    "student_pass": {
+      "description": "All international students (non-SC, non-PR) must hold a valid Student Pass (STP) issued by the Immigration & Checkpoints Authority (ICA) to study in Singapore.",
+      "application_process": "Apply via ICA's Student's Pass Online Application & Registration (SOLAR) system after receiving a school offer letter.",
+      "requirements": [
+        "Valid offer letter from a registered educational institution",
+        "Valid passport with at least 6 months validity",
+        "Recent passport photo",
+        "Application fee (approximately SGD 30 processing + SGD 60 issuance)",
+        "Parent/guardian as local sponsor (for minors)"
+      ],
+      "important_notes": [
+        "Student Pass must be renewed annually",
+        "Pass holders cannot work without a valid work pass (limited exceptions for university students)",
+        "University students on Student Pass may work part-time (up to 16 hours/week during term) at approved institutions",
+        "Breaking Student Pass conditions can result in cancellation and deportation",
+        "Long-Term Visit Pass (LTVP) holders do not need a Student Pass"
+      ],
+      "official_url": "https://www.ica.gov.sg/reside/STP"
+    }
+  },
+  "fsbb_info": {
+    "description": "Full Subject-Based Banding (FSBB) replaces the Express, Normal Academic, and Normal Technical streams from the 2024 Secondary 1 cohort onwards.",
+    "key_changes": [
+      "Students are placed in Posting Groups 1, 2, or 3 (replacing N(T), N(A), Express labels)",
+      "Subjects are taken at G1, G2, or G3 levels (G3 = most demanding, equivalent to old Express level)",
+      "Students can take different subjects at different G-levels based on ability",
+      "Mixed-form classes for non-academic subjects — students from all posting groups learn together",
+      "Common curriculum for certain subjects in lower secondary",
+      "New Secondary Education Certificate (SEC) exam will replace separate N-Level and O-Level exams"
+    ],
+    "g_level_mapping": {
+      "G1": "Maps to old Normal Technical level",
+      "G2": "Maps to old Normal Academic level",
+      "G3": "Maps to old Express level"
+    },
+    "timeline": {
+      "2024": "First cohort placed in Posting Groups instead of streams",
+      "2027": "First FSBB cohort sits national exams (new SEC exam expected)",
+      "2028": "New Post-Secondary Admissions Exercise (PSE) expected to replace JAE for FSBB cohorts"
+    },
+    "impact_on_pathways": [
+      "Students have more flexibility to take subjects at higher or lower levels",
+      "Reduces stigma of being in N(T) or N(A) stream",
+      "Pathway to JC/Poly/ITE will depend on G-level subjects taken and grades achieved",
+      "Details of new admissions criteria still being finalised by MOE"
+    ],
+    "official_url": "https://www.moe.gov.sg/microsites/psle-fsbb"
+  }
+}
