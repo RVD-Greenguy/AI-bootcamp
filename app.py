@@ -37,15 +37,18 @@ def _bootstrap():
         );
     """)
     for email, pw, role, name in [
-        ("parent@edupathsg.sg",  "Parent123!",  "parent",  "AI Champion Parent"),
-        ("student@edupathsg.sg", "Student123!", "student", "AI Champion Student"),
+        ("parent@edupathsg.sg",  "Parent123!",  "parent",  "Parent (AI Champion)"),
+        ("student@edupathsg.sg", "Student123!", "student", "Student (AI Champion)"),
     ]:
-        if not conn.execute("SELECT 1 FROM users WHERE email=?", (email,)).fetchone():
+        existing = conn.execute("SELECT full_name FROM users WHERE email=?", (email,)).fetchone()
+        if not existing:
             pw_hash = bcrypt.hashpw(pw.encode(), bcrypt.gensalt()).decode()
             conn.execute(
                 "INSERT INTO users (email,password_hash,role,full_name) VALUES (?,?,?,?)",
                 (email, pw_hash, role, name)
             )
+        elif existing[0] != name:
+            conn.execute("UPDATE users SET full_name=? WHERE email=?", (name, email))
     conn.commit()
     conn.close()
 
