@@ -79,4 +79,4 @@ def render_sidebar():
         if st.button("🚪 Logout", use_container_width=True):
             st.session_state["show_logout"] = True
             st.session_state["_logout_name"] = get_user()["full_name"].split()[0]
-            st.rerun()
+            st.switch_page("app.py")

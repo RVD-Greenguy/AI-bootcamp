@@ -339,7 +339,9 @@ with _main:
         )
 
         with col_b:
-            st.metric(f"{labels['subject_cap']}'s UAS", f"{rp['rank_points']} / 90")
+            _h3_pts = rp["breakdown"].get("H3 bonus", 0)
+            _max_label = "90 + H3" if _h3_pts else "90"
+            st.metric(f"{labels['subject_cap']}'s UAS", f"{rp['rank_points']} / {_max_label}")
             for k, v in rp["breakdown"].items():
                 if v:
                     st.caption(f"{k}: **{v}**")
@@ -348,7 +350,8 @@ with _main:
 
         # UAS gauge bar
         uas = rp["rank_points"]
-        pct = uas / 90
+        _gauge_max = 90 + _h3_pts
+        pct = min(uas / _gauge_max, 1.0)
         bar_color = "#2ecc71" if uas >= 75 else "#f39c12" if uas >= 60 else "#e74c3c"
         st.markdown(f"""
     <div style="background:#e5e7eb;border-radius:8px;height:18px;width:100%;margin:4px 0 12px 0;">
