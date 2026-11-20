@@ -158,13 +158,15 @@ with _main:
 
     # ── INPUT FORM ──────────────────────────────────────────────────────────────
     with st.form("pathway_form"):
-        col1, col2, col3 = st.columns(3)
+        col1, col2, col3, col4 = st.columns([2, 2, 1, 1])
         with col1:
             stage_label = st.selectbox("Current stage:", list(STAGE_ID_MAP.keys()), index=_form_default_idx)
         with col2:
             citizenship = st.selectbox("Citizenship:", ["Singapore Citizen", "Permanent Resident", "International Student"])
         with col3:
-            age = st.number_input(f"{labels['subject_cap']}'s current age:", min_value=0, max_value=25, value=7)
+            age = st.number_input(f"{labels['subject_cap']}'s current age:", min_value=0, max_value=60, value=7)
+        with col4:
+            study_mode = st.selectbox("Study mode:", ["Full-Time", "Part-Time"])
 
         interests = st.multiselect(
             "Areas of interest (optional):",

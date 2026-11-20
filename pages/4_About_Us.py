@@ -63,7 +63,7 @@ with _main:
                 "Official policies on retakes, private candidates, certificate implications, and alternatives",
                 "Poly/ITE work-study, SUSS/SIT/private part-time degrees, SkillsFuture funding, fee comparison",
                 "Ask any question about SG education — answered using retrieved official references",
-                "TF-IDF retrieval over 254+ chunks from MOE, SEAB, ITE, polytechnic, university, and intl school data",
+                "TF-IDF retrieval over 261+ chunks from MOE, SEAB, ITE, polytechnic, university, and intl school data",
                 "AEIS/S-AEIS admission, fee tiers, Student Pass, NS timelines, Tuition Grant & bond info",
                 "18 international schools with curricula (IB, IGCSE, AP), fee ranges, and uni pathway conversion",
             ],
@@ -284,7 +284,7 @@ with _main:
         "Technology": ["Streamlit 1.41", "TF-IDF (scikit-learn) + ChromaDB (optional)", "OpenAI GPT-4o (optional — local RAG mode when no API key)", "SQLite 3", "Plotly 5", "bcrypt + SQLite"],
         "Notes": [
             "Multi-page app with role-based routing and SGDS gov.sg styling",
-            "254+ chunks from 14 seed files; upgrades to semantic search when OpenAI key provided",
+            "261+ chunks from 14 seed files; upgrades to semantic search when OpenAI key provided",
             "Fully functional without API key; local mode returns structured RAG + web results",
             "Lightweight, file-based, no server required",
             "Interactive charts, timelines, comparison tables",

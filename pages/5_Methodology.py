@@ -247,7 +247,7 @@ with _main:
           <div class="fc2-node" style="background:#083344;border:1.5px solid #06b6d4;">
             <p class="fc2-step" style="color:#67e8f9;">Step 3A — Local RAG</p>
             <p class="fc2-title">📂 rag_service.retrieve_chunks()</p>
-            <p class="fc2-sub" style="color:#67e8f9;">TF-IDF cosine similarity over 254 chunks<br>14 seed JSON files from MOE/SEAB/ITE/Polys/Unis/Intl Schools</p>
+            <p class="fc2-sub" style="color:#67e8f9;">TF-IDF cosine similarity over 261 chunks<br>14 seed JSON files from MOE/SEAB/ITE/Polys/Unis/Intl Schools</p>
           </div>
         </div>
 
@@ -337,7 +337,7 @@ with _main:
     EduPath SG uses a **three-source retrieval** strategy:
 
     **Source 1 — Local TF-IDF RAG (always active, no API key needed):**
-    scikit-learn TF-IDF vectorisation over 254 chunks from 14 official seed files.
+    scikit-learn TF-IDF vectorisation over 261 chunks from 14 official seed files.
     Covers government schools, international schools, PR/international pathways, fees,
     NS, Student Pass, FSBB, and IB-to-university conversion. Works fully offline.
 
@@ -389,9 +389,9 @@ with _main:
                 "Success stories", "Institution locations",
                 "International schools", "PR & International pathways",
                 "Part-time diplomas & degrees",
-                "Static knowledge (NS, fees, visa, FSBB, etc.)",
+                "Static knowledge (NS, fees, visa, FSBB, part-time, etc.)",
             ],
-            "Items": [12, 88, 72, 12, "~50", "~12", 29, 15, 10, "~35", 10, 14, 18, "~25", "~20", 21],
+            "Items": [12, 88, 72, 12, "~50", "~12", 29, 15, 10, "~35", 10, 14, 18, "~25", 7, 28],
             "Source": [
                 "MOE", "MOE school directory", "MOE P1 registration",
                 "MOE JAE", "5 polytechnics", "ITE Education Services",
@@ -399,8 +399,8 @@ with _main:
                 "MOE / SEAB", "MOE / PSC / SkillsFuture / WSG",
                 "Public records / biographies", "OneMap geocoding",
                 "18 international schools (IB/IGCSE/AP)", "MOE AEIS, ICA, MINDEF, MOE fees",
-                "SkillsFuture, SUSS, SIT, Kaplan, PSB, MDIS, SIM, ITE work-study",
-                "NS, Edusave, Student Pass, Tuition Grant, fee comparison, FSBB, IB conversion",
+                "SkillsFuture, SUSS, SIT, Kaplan, PSB, MDIS, SIM, ITE work-study (RAG static chunks)",
+                "NS, Edusave, Student Pass, Tuition Grant, fee comparison, FSBB, IB conversion, part-time pathways",
             ],
         }
         st.dataframe(pd.DataFrame(kb_data), use_container_width=True, hide_index=True)
@@ -427,7 +427,7 @@ with _main:
 
     **2. JSON Seed Files** (`data/seed/`) — 14 files loaded at startup via `@lru_cache`
 
-    **3. TF-IDF Store** (`storage/tfidf_store.pkl`) — pre-built index (254 chunks), auto-rebuilt if missing
+    **3. TF-IDF Store** (`storage/tfidf_store.pkl`) — pre-built index (261 chunks), auto-rebuilt if missing
 
     **4. Geocode Cache** (`storage/geocode_cache.json`) — OneMap results for school coordinates
         """)
@@ -453,7 +453,7 @@ with _main:
     │   ├── pathway_service.py          # Education stage + fork data loaders
     │   ├── score_service.py            # L1R5 / ELR2B2 / UAS / GPA calculators
     │   ├── career_service.py           # Reverse career → pathway tracer
-    │   ├── rag_service.py              # TF-IDF RAG (254 chunks)
+    │   ├── rag_service.py              # TF-IDF RAG (261 chunks)
     │   ├── llm_service.py              # OpenAI GPT-4o-mini + local RAG mode
     │   ├── web_search_service.py       # DuckDuckGo + domain allowlist + guardrails
     │   ├── location_service.py         # OneMap geocoding + travel time
@@ -479,7 +479,7 @@ with _main:
     │   └── stage_config.py             # 5 education stages with color themes
     ├── storage/                        # Auto-generated at runtime
     │   ├── edupathsg.sqlite            # User DB + chat history
-    │   ├── tfidf_store.pkl             # TF-IDF index (254 chunks)
+    │   ├── tfidf_store.pkl             # TF-IDF index (261 chunks)
     │   └── geocode_cache.json          # OneMap coordinate cache
     └── requirements.txt                # 10 dependencies
         """, language="text")
@@ -495,7 +495,7 @@ with _main:
                   │                     │                     │
         ┌─────────▼──────────┐ ┌───────▼────────┐ ┌─────────▼──────────┐
         │   pathway_service  │ │ score_service  │ │  career_service    │
-        │   14 seed JSONs    │ │ 4 calculators  │ │  15 career paths   │
+        │   14 seed JSONs + static KB    │ │ 4 calculators  │ │  15 career paths   │
         │   @lru_cache       │ │ 4 matchers     │ │  reverse tracing   │
         └────────────────────┘ └────────────────┘ └────────────────────┘
                   │                     │                     │
@@ -505,7 +505,7 @@ with _main:
                   │                     │                     │
         ┌─────────▼──────────┐ ┌───────▼────────┐ ┌─────────▼──────────┐
         │   rag_service      │ │ web_search     │ │  llm_service       │
-        │   TF-IDF / 254     │ │ DuckDuckGo     │ │  GPT-4o-mini       │
+        │   TF-IDF / 261     │ │ DuckDuckGo     │ │  GPT-4o-mini       │
         │   chunks           │ │ .gov.sg only   │ │  or local RAG mode │
         └────────────────────┘ └────────────────┘ └────────────────────┘
                   │                     │                     │
