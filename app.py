@@ -124,78 +124,86 @@ if not user:
     """, unsafe_allow_html=True)
 
 if user:
-    st.markdown('<div style="background:#0269D0;padding:10px 20px;color:white;font-size:0.85em;font-weight:600;border-radius:4px;margin-bottom:8px;">🇸🇬 A Singapore Government Education Service</div>', unsafe_allow_html=True)
-    st.title("🎓 EduPath SG")
-    st.caption("Singapore Education Journey Navigator")
-    st.info(f"⚠️ {DISCLAIMER}")
-    st.divider()
+    from components.sidebar import render_sidebar
+    from components.chat_panel import render_chat_panel
+    from components.stage_theme import apply_stage_theme
+    render_sidebar()
+    apply_stage_theme()
+    _main = render_chat_panel()
 
-    role = user["role"]
-    name = user["full_name"].split()[0]
-    labels = get_role_labels(role)
+    with _main:
+        st.markdown('<div style="background:#0269D0;padding:10px 20px;color:white;font-size:0.85em;font-weight:600;border-radius:4px;margin-bottom:8px;">🇸🇬 A Singapore Government Education Service</div>', unsafe_allow_html=True)
+        st.title("🎓 EduPath SG")
+        st.caption("Singapore Education Journey Navigator")
+        st.info(f"⚠️ {DISCLAIMER}")
+        st.divider()
 
-    st.markdown(f"### Welcome back, {name}! {labels['home_icon']}")
-    st.markdown(f"{labels['welcome_action']}.")
+        role = user["role"]
+        name = user["full_name"].split()[0]
+        labels = get_role_labels(role)
 
-    # ── Career aspiration section (all roles) ─────────────────────────────
-    st.subheader(labels["career_question"])
-    try:
-        from services.career_service import get_career_list, trace_career_pathway
-        import pandas as pd
+        st.markdown(f"### Welcome back, {name}! {labels['home_icon']}")
+        st.markdown(f"{labels['welcome_action']}.")
 
-        careers = get_career_list()
-        career_options = ["Still exploring..."] + [f"{c['icon']} {c['career']}" for c in careers]
-        current_goal = get_career_goal()
-        idx = 0
-        if current_goal:
-            for i, opt in enumerate(career_options):
-                if current_goal in opt:
-                    idx = i
-                    break
-        selected = st.selectbox(
-            labels["career_question"],
-            career_options, index=idx,
-            key="home_career",
-            label_visibility="collapsed",
-        )
-        if selected and selected != "Still exploring...":
-            career_name = selected.split(" ", 1)[1] if " " in selected else selected
-            set_career_goal(career_name)
-            pathway = trace_career_pathway(career_name)
-            if pathway:
-                st.divider()
-                st.markdown(f"### {pathway['icon']} Path to becoming a {pathway['career']}")
-                st.caption(f"**Professional requirements:** {pathway['professional_requirements']}")
+        # ── Career aspiration section (all roles) ─────────────────────────────
+        st.subheader(labels["career_question"])
+        try:
+            from services.career_service import get_career_list, trace_career_pathway
+            import pandas as pd
 
-                if pathway.get("university_targets"):
-                    uni_df = pd.DataFrame([{
-                        "University": t["uni"],
-                        "Faculty": t["faculty"],
-                        "Min RP (A-levels)": t["min_rp"],
-                        "Min GPA (Poly DAE)": t["min_gpa"],
-                        "Duration": t["duration"],
-                    } for t in pathway["university_targets"]])
-                    st.dataframe(uni_df, use_container_width=True, hide_index=True)
+            careers = get_career_list()
+            career_options = ["Still exploring..."] + [f"{c['icon']} {c['career']}" for c in careers]
+            current_goal = get_career_goal()
+            idx = 0
+            if current_goal:
+                for i, opt in enumerate(career_options):
+                    if current_goal in opt:
+                        idx = i
+                        break
+            selected = st.selectbox(
+                labels["career_question"],
+                career_options, index=idx,
+                key="home_career",
+                label_visibility="collapsed",
+            )
+            if selected and selected != "Still exploring...":
+                career_name = selected.split(" ", 1)[1] if " " in selected else selected
+                set_career_goal(career_name)
+                pathway = trace_career_pathway(career_name)
+                if pathway:
+                    st.divider()
+                    st.markdown(f"### {pathway['icon']} Path to becoming a {pathway['career']}")
+                    st.caption(f"**Professional requirements:** {pathway['professional_requirements']}")
 
-                for p in pathway.get("total_paths", []):
-                    st.info(f"**{p['name']}** {p.get('tag','')} — ~{p['years']} years from Sec 1 · {len(p.get('steps',[]))} steps")
+                    if pathway.get("university_targets"):
+                        uni_df = pd.DataFrame([{
+                            "University": t["uni"],
+                            "Faculty": t["faculty"],
+                            "Min RP (A-levels)": t["min_rp"],
+                            "Min GPA (Poly DAE)": t["min_gpa"],
+                            "Duration": t["duration"],
+                        } for t in pathway["university_targets"]])
+                        st.dataframe(uni_df, use_container_width=True, hide_index=True)
 
-                st.page_link("pages/1_Pathway_Planner.py", label="🗺️ See full pathway details →", use_container_width=True)
-        else:
-            set_career_goal(None)
-    except Exception:
-        pass
+                    for p in pathway.get("total_paths", []):
+                        st.info(f"**{p['name']}** {p.get('tag','')} — ~{p['years']} years from Sec 1 · {len(p.get('steps',[]))} steps")
 
-    st.divider()
+                    st.page_link("pages/1_Pathway_Planner.py", label="🗺️ See full pathway details →", use_container_width=True)
+            else:
+                set_career_goal(None)
+        except Exception:
+            pass
 
-    # ── Quick links ─────────────────────────────────────────────────────
-    col1, col2, col3 = st.columns(3)
-    col1.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
-    col2.page_link("pages/2_Score_Matcher.py", label="🎯 Score & School Matcher", use_container_width=True)
-    col3.page_link("pages/3_Fallback_Support.py", label="🔄 Fallback & Support", use_container_width=True)
-    st.caption("💬 Use the **🤖 AI Assistant** tab on the right side to ask questions on any page.")
+        st.divider()
 
-    st.markdown("""
+        # ── Quick links ─────────────────────────────────────────────────────
+        col1, col2, col3 = st.columns(3)
+        col1.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
+        col2.page_link("pages/2_Score_Matcher.py", label="🎯 Score & School Matcher", use_container_width=True)
+        col3.page_link("pages/3_Fallback_Support.py", label="🔄 Fallback & Support", use_container_width=True)
+        st.caption("💬 Use the **🤖 AI Assistant** on the right side to ask questions on any page.")
+
+        st.markdown("""
 <div class="gov-footer">
     <a href="https://www.moe.gov.sg">MOE</a> ·
     <a href="https://www.seab.gov.sg">SEAB</a> ·
@@ -205,13 +213,6 @@ if user:
     <small>EduPath SG is a capstone project. Not affiliated with the Singapore Government.</small>
 </div>
 """, unsafe_allow_html=True)
-
-    from components.sidebar import render_sidebar
-    from components.chat_panel import render_chat_panel
-    from components.stage_theme import apply_stage_theme
-    render_sidebar()
-    render_chat_panel()
-    apply_stage_theme()
 
 else:
     # ── LOGIN / REGISTER ─────────────────────────────────────────────────────
