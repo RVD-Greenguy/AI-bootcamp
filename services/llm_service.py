@@ -4,13 +4,31 @@ Combines local RAG chunks with web search from trusted .gov.sg / .edu.sg sources
 All calls are stubbed when USE_AI=false. Set USE_AI=true + OPENAI_API_KEY to activate.
 """
 
-STUB_RESPONSE = (
-    "**AI Guide (Demo Mode)**\n\n"
-    "Here is what I found from the knowledge base and official sources:\n\n"
-    "{context}\n\n"
-    "{web_sources}\n\n"
-    "*To activate full AI responses, add your OpenAI API key to Streamlit Secrets and set `USE_AI=true`.*"
-)
+def _build_local_answer(question: str, context_chunks: list[dict], web_results: list[dict]) -> str:
+    """Build a structured answer from local RAG data without an LLM."""
+    sections = []
+
+    if context_chunks:
+        sections.append("**📚 From our knowledge base:**\n")
+        for i, c in enumerate(context_chunks[:4], 1):
+            source = c.get("source", "Knowledge Base")
+            topic = c.get("topic", "")
+            text = c["text"][:400]
+            header = f"**{topic}**" if topic else f"**{source}**"
+            url = c.get("url", "")
+            link = f" [→ Official source]({url})" if url else ""
+            sections.append(f"{i}. {header} ({source}){link}\n   {text}\n")
+    else:
+        sections.append("No matching information found in the knowledge base for this question.\n")
+
+    if web_results:
+        sections.append("\n**🌐 Official sources:**\n")
+        for r in web_results:
+            sections.append(f"- [{r['title']}]({r['url']}): {r['snippet'][:200]}\n")
+
+    sections.append("\n---\n*Answer generated from local knowledge base and official .gov.sg/.edu.sg sources.*")
+
+    return "\n".join(sections)
 
 SYSTEM_PROMPT = """You are EduPath SG — an expert guide on Singapore's education system.
 You help parents, students and teachers understand every pathway from early childhood through
@@ -54,19 +72,7 @@ def ask_guide(question: str, context_chunks: list[dict], conversation_history: l
     api_key = _secret("OPENAI_API_KEY", "")
 
     if not use_ai or not api_key:
-        context = "\n\n".join(
-            f"**{c.get('source', 'Knowledge Base')}:** {c['text'][:300]}"
-            for c in context_chunks[:3]
-        ) if context_chunks else "No specific context retrieved."
-
-        web_sources = ""
-        if web_results:
-            web_sources = "**Official sources found:**\n" + "\n".join(
-                f"- [{r['title']}]({r['url']}): {r['snippet'][:150]}"
-                for r in web_results
-            )
-
-        return STUB_RESPONSE.format(context=context, web_sources=web_sources)
+        return _build_local_answer(question, context_chunks, web_results)
 
     try:
         from openai import OpenAI

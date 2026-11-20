@@ -45,7 +45,7 @@ def _process_question(q: str, user: dict, history: list[dict], user_id: int):
 
     try:
         from services.rag_service import search
-        chunks = search(q, top_k=4)
+        chunks = search(q, top_k=6)
     except Exception:
         chunks = []
 

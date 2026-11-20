@@ -212,6 +212,11 @@ def _retrieve_openai(query: str, n_results: int) -> list[dict]:
         return []
 
 
+def search(query: str, top_k: int = 4) -> list[dict]:
+    """Alias for retrieve_chunks — used by chat panel."""
+    return retrieve_chunks(query, n_results=top_k)
+
+
 def index_status() -> dict:
     _load_index()
     return {"indexed": _vectorizer is not None, "num_chunks": len(_docs) if _docs else 0}
