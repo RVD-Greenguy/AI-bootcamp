@@ -81,75 +81,105 @@ def _process_question(q: str, user: dict, history: list[dict], user_id: int):
 
 
 def _inject_floating_tab(msg_count: int):
-    """Inject a floating blue tab on the right edge with JS to click a hidden Streamlit button."""
-    badge = f'<span class="ep-badge">{msg_count}</span>' if msg_count else ""
-    st.markdown(f"""
-<style>
-@keyframes ep-tab-pulse {{
-    0%, 100% {{ transform: scale(1); }}
-    50%      {{ transform: scale(1.05); }}
-}}
-@keyframes ep-fade-in {{
-    from {{ opacity: 0; transform: translateY(8px); }}
-    to   {{ opacity: 1; transform: translateY(0); }}
-}}
+    """Inject a floating blue tab on the right edge using st.components.v1.html for JS support."""
+    import streamlit.components.v1 as components
 
-.ep-float-tab {{
-    position: fixed;
-    right: 0;
-    bottom: 100px;
-    z-index: 99999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    background: linear-gradient(135deg, #0269D0, #0151A0);
-    color: white;
-    padding: 16px 12px;
-    border-radius: 12px 0 0 12px;
-    cursor: pointer;
-    box-shadow: -2px 2px 16px rgba(0,0,0,0.18);
-    writing-mode: vertical-rl;
-    font-size: 0.85em;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.25s ease;
-    animation: ep-tab-pulse 2s ease-in-out 3;
-    user-select: none;
-}}
-.ep-float-tab:hover {{
-    padding-right: 18px;
-    box-shadow: -4px 2px 24px rgba(2,105,208,0.35);
-}}
-.ep-badge {{
-    background: #ef4444;
-    color: white;
-    font-size: 10px;
-    font-weight: 700;
-    min-width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    writing-mode: horizontal-tb;
-}}
-</style>
+    badge_html = f'<span class="ep-badge">{msg_count}</span>' if msg_count else ""
 
-<div class="ep-float-tab" id="ep-chat-tab" onclick="
-    (function() {{
+    components.html(f"""
+<script>
+(function() {{
+    // Remove any previous floating tab from parent
+    var old = window.parent.document.getElementById('ep-chat-tab');
+    if (old) old.remove();
+
+    // Create floating tab in parent document
+    var tab = window.parent.document.createElement('div');
+    tab.id = 'ep-chat-tab';
+    tab.innerHTML = '🤖 AI Assistant {badge_html}';
+    tab.style.cssText = `
+        position: fixed;
+        right: 0;
+        bottom: 100px;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        background: linear-gradient(135deg, #0269D0, #0151A0);
+        color: white;
+        padding: 16px 12px;
+        border-radius: 12px 0 0 12px;
+        cursor: pointer;
+        box-shadow: -2px 2px 16px rgba(0,0,0,0.18);
+        writing-mode: vertical-rl;
+        font-size: 0.85em;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.25s ease;
+        user-select: none;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    `;
+
+    tab.addEventListener('mouseenter', function() {{
+        tab.style.paddingRight = '18px';
+        tab.style.boxShadow = '-4px 2px 24px rgba(2,105,208,0.35)';
+    }});
+    tab.addEventListener('mouseleave', function() {{
+        tab.style.paddingRight = '12px';
+        tab.style.boxShadow = '-2px 2px 16px rgba(0,0,0,0.18)';
+    }});
+
+    tab.addEventListener('click', function() {{
+        // Find the sidebar button with "AI Assistant" text and click it
         var buttons = window.parent.document.querySelectorAll('button');
         for (var i = 0; i < buttons.length; i++) {{
-            if (buttons[i].innerText.indexOf('AI Assistant') !== -1) {{
+            if (buttons[i].textContent.indexOf('AI Assistant') !== -1) {{
                 buttons[i].click();
                 return;
             }}
         }}
-    }})();
-">
-    🤖 AI Assistant {badge}
-</div>
-""", unsafe_allow_html=True)
+    }});
+
+    window.parent.document.body.appendChild(tab);
+
+    // Add badge style if not present
+    if (!window.parent.document.getElementById('ep-badge-style')) {{
+        var style = window.parent.document.createElement('style');
+        style.id = 'ep-badge-style';
+        style.textContent = `
+            .ep-badge {{
+                background: #ef4444;
+                color: white;
+                font-size: 10px;
+                font-weight: 700;
+                min-width: 20px;
+                height: 20px;
+                border-radius: 10px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                writing-mode: horizontal-tb;
+            }}
+        `;
+        window.parent.document.head.appendChild(style);
+    }}
+}})();
+</script>
+""", height=0)
+
+
+def _remove_floating_tab():
+    """Remove the floating tab from parent document when chat is open."""
+    import streamlit.components.v1 as components
+    components.html("""
+<script>
+(function() {
+    var tab = window.parent.document.getElementById('ep-chat-tab');
+    if (tab) tab.remove();
+})();
+</script>
+""", height=0)
 
 
 def render_chat_panel():
@@ -189,10 +219,17 @@ def render_chat_panel():
                 st.session_state["chat_panel_open"] = True
                 st.rerun()
     else:
+        _remove_floating_tab()
         with st.sidebar:
             st.divider()
 
             st.markdown("""
+<style>
+@keyframes ep-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+</style>
 <div style="background:linear-gradient(135deg,#0269D0,#0151A0);
     color:white;padding:12px 16px;border-radius:8px;
     font-weight:600;font-size:0.9em;margin-bottom:10px;
