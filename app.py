@@ -37,8 +37,8 @@ def _bootstrap():
         );
     """)
     for email, pw, role, name in [
-        ("parent@edupathsg.sg",  "Parent123!",  "parent",  "Demo Parent"),
-        ("student@edupathsg.sg", "Student123!", "student", "Demo Student"),
+        ("parent@edupathsg.sg",  "Parent123!",  "parent",  "AI Champion Parent"),
+        ("student@edupathsg.sg", "Student123!", "student", "AI Champion Student"),
     ]:
         if not conn.execute("SELECT 1 FROM users WHERE email=?", (email,)).fetchone():
             pw_hash = bcrypt.hashpw(pw.encode(), bcrypt.gensalt()).decode()
@@ -234,7 +234,7 @@ Check fallback options and retake policies.
         """)
         st.info(f"ℹ️ {DISCLAIMER}")
 
-        st.markdown("**Demo accounts (no sign-up needed):**")
+        st.markdown("**AI Champion accounts (no sign-up needed):**")
         st.markdown("""
 | Role | Email | Password |
 |------|-------|----------|
