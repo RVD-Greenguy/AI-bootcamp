@@ -134,9 +134,11 @@ def _render_chat_ui(user: dict, history: list[dict]):
 
     if clear:
         st.session_state[_HISTORY_KEY] = []
+        st.session_state["chat_input"] = ""
         st.rerun()
     if send and question and question.strip():
         st.session_state[_PENDING_KEY] = question.strip()
+        st.session_state["chat_input"] = ""
         st.rerun()
 
     st.markdown("""
@@ -162,12 +164,7 @@ def render_chat_panel():
         st.session_state[_HISTORY_KEY] = []
 
     history: list[dict] = st.session_state.get(_HISTORY_KEY, [])
-
     pending = st.session_state.pop(_PENDING_KEY, None)
-    if pending:
-        with st.spinner("Searching knowledge base + official sources…"):
-            _process_question(pending, user, history, user["id"])
-        st.rerun()
 
     is_open = st.session_state.get("chat_panel_open", True)
 
@@ -177,9 +174,19 @@ def render_chat_panel():
             if st.button("✕ Hide Chat", key="chat_hide_btn", use_container_width=True):
                 st.session_state["chat_panel_open"] = False
                 st.rerun()
+            if pending:
+                with st.status("🔍 Searching knowledge base…", expanded=True) as status:
+                    st.write("Retrieving relevant information…")
+                    _process_question(pending, user, history, user["id"])
+                    status.update(label="✅ Done!", state="complete")
+                st.rerun()
             _render_chat_ui(user, history)
         return main_col
     else:
+        if pending:
+            st.session_state[_PENDING_KEY] = pending
+            st.session_state["chat_panel_open"] = True
+            st.rerun()
         main_col, btn_col = st.columns([14, 1])
         with btn_col:
             if st.button("🤖", key="chat_show_btn", help="Open AI Assistant"):
