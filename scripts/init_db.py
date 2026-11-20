@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS chat_sessions (
 """
 
 DEMO_USERS = [
-    ("parent@edupathsg.sg",  "Parent123!",  "parent",  "Demo Parent"),
-    ("student@edupathsg.sg", "Student123!", "student", "Demo Student"),
-    ("teacher@edupathsg.sg", "Teacher123!", "teacher", "Demo Teacher"),
+    ("parent@edupathsg.sg",  "Parent123!",  "parent",  "AI Champion Parent"),
+    ("student@edupathsg.sg", "Student123!", "student", "AI Champion Student"),
+    ("teacher@edupathsg.sg", "Teacher123!", "teacher", "AI Champion Teacher"),
 ]
 
 

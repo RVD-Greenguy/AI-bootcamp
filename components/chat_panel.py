@@ -83,22 +83,22 @@ def _render_chat_ui(user: dict, history: list[dict]):
 
     st.markdown("""
 <div style="background:linear-gradient(135deg,#0269D0,#0151A0);
-    color:white;padding:10px 14px;border-radius:8px;
-    font-weight:600;font-size:0.85em;margin-bottom:8px;
-    display:flex;align-items:center;gap:8px;">
+    color:white;padding:14px 18px;border-radius:10px;
+    font-weight:600;font-size:1.05em;margin-bottom:10px;
+    display:flex;align-items:center;gap:10px;">
     🤖 AI Assistant
-    <span style="margin-left:auto;opacity:0.7;font-size:0.72em;">RAG + GPT-4o</span>
+    <span style="margin-left:auto;opacity:0.7;font-size:0.8em;">RAG + GPT-4o</span>
 </div>
 """, unsafe_allow_html=True)
 
-    chat_box = st.container(height=320)
+    chat_box = st.container(height=520)
     with chat_box:
         if not history:
             st.markdown("""
-<div style="text-align:center;padding:12px 4px;color:#6B6B6B;">
-    <div style="font-size:1.5em;margin-bottom:6px;">🎓</div>
-    <div style="font-size:0.8em;font-weight:600;color:#3B3B3B;">Ask about SG education</div>
-    <div style="font-size:0.72em;color:#6B6B6B;margin-top:3px;">PSLE · O-levels · JC · Poly · ITE · Uni</div>
+<div style="text-align:center;padding:24px 8px;color:#6B6B6B;">
+    <div style="font-size:2.2em;margin-bottom:10px;">🎓</div>
+    <div style="font-size:1.05em;font-weight:600;color:#3B3B3B;">Ask about SG education</div>
+    <div style="font-size:0.92em;color:#6B6B6B;margin-top:6px;">PSLE · O-levels · JC · Poly · ITE · Uni</div>
 </div>
 """, unsafe_allow_html=True)
             for i, sq in enumerate(_SUGGESTED):
@@ -110,15 +110,15 @@ def _render_chat_ui(user: dict, history: list[dict]):
                 if msg["role"] == "user":
                     st.markdown(f"""
 <div style="background:#ECF5FE;border:1px solid #C8E2FB;
-    padding:6px 10px;border-radius:8px 8px 2px 8px;
-    margin:3px 0;font-size:0.78em;color:#0E0E0E;">
+    padding:10px 14px;border-radius:10px 10px 2px 10px;
+    margin:6px 0;font-size:0.95em;color:#0E0E0E;">
     💬 {msg['content']}
 </div>""", unsafe_allow_html=True)
                 else:
                     st.markdown(f"""
-<div style="background:#fff;border:1px solid #DFDFDF;border-left:3px solid #0269D0;
-    padding:6px 10px;border-radius:2px 8px 8px 8px;
-    margin:3px 0;font-size:0.78em;color:#3B3B3B;">
+<div style="background:#fff;border:1px solid #DFDFDF;border-left:4px solid #0269D0;
+    padding:10px 14px;border-radius:2px 10px 10px 10px;
+    margin:6px 0;font-size:0.95em;line-height:1.5;color:#3B3B3B;">
     {msg['content'].replace(chr(10), '<br>')}
 </div>""", unsafe_allow_html=True)
 
@@ -143,7 +143,7 @@ def _render_chat_ui(user: dict, history: list[dict]):
         st.button("🗑️", use_container_width=True, key="chat_clear", on_click=_on_clear)
 
     st.markdown("""
-<div style="font-size:0.62em;color:#6B6B6B;text-align:center;margin-top:3px;">
+<div style="font-size:0.78em;color:#6B6B6B;text-align:center;margin-top:6px;">
     <a href="https://www.moe.gov.sg" style="color:#0269D0;">MOE</a> ·
     <a href="https://www.seab.gov.sg" style="color:#0269D0;">SEAB</a> ·
     <a href="https://www.ite.edu.sg" style="color:#0269D0;">ITE</a> · For guidance only.
@@ -170,7 +170,7 @@ def render_chat_panel():
     is_open = st.session_state.get("chat_panel_open", True)
 
     if is_open:
-        main_col, chat_col = st.columns([3, 1], gap="medium")
+        main_col, chat_col = st.columns([2, 1], gap="medium")
         with chat_col:
             if st.button("✕ Hide Chat", key="chat_hide_btn", use_container_width=True):
                 st.session_state["chat_panel_open"] = False

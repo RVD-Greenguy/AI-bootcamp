@@ -32,6 +32,11 @@ with _main:
     visual roadmap through Singapore's education system. When a career goal is set, the
     **reverse pathway engine** traces backward from the target university programme to show
     the required scores at every stage.
+
+    Citizenship-specific guidance covers:
+    - **Singapore Citizens:** P1 priority, subsidised fees, SkillsFuture, Edusave
+    - **Permanent Residents:** Phase 2C registration, PR fee tier, NS obligations, Tuition Grant without bond
+    - **International Students:** AEIS/S-AEIS entry, Student Pass requirements, international school alternatives, fee tiers, Tuition Grant with 3-year bond
         """)
 
         st.markdown("### Process Flowchart")
@@ -69,15 +74,15 @@ with _main:
       <div class="fc-node" style="background:#172554;border:2px solid #3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.2);">
         <p class="fc-step" style="color:#93c5fd;">Step 1 — Inputs</p>
         <p class="fc-title">👤 User Profile + Career Goal</p>
-        <p class="fc-sub" style="color:#93c5fd;">Role (parent/student) · Education stage · Citizenship · Career aspiration (optional)</p>
+        <p class="fc-sub" style="color:#93c5fd;">Role (parent/student) · Education stage · Citizenship (SC/PR/International) · Career aspiration (optional)</p>
       </div>
 
       <div class="fc-arrow">↓</div>
 
       <div class="fc-node" style="background:#1e1b4b;border:1.5px solid #6366f1;">
-        <p class="fc-step" style="color:#a5b4fc;">Step 2 — Role Context</p>
-        <p class="fc-title">🎭 role_context.get_role_labels(role)</p>
-        <p class="fc-sub" style="color:#a5b4fc;">Personalise language: "your child's journey" (parent) vs "your journey" (student)</p>
+        <p class="fc-step" style="color:#a5b4fc;">Step 2 — Role & Citizenship Context</p>
+        <p class="fc-title">🎭 role_context + citizenship_notes</p>
+        <p class="fc-sub" style="color:#a5b4fc;">Personalise language + load citizenship-specific fees, admission rules, NS info</p>
       </div>
 
       <div class="fc-arrow">↓</div>
@@ -89,13 +94,13 @@ with _main:
           <div class="fc-node" style="background:#1e1b4b;border:1.5px solid #6366f1;">
             <p class="fc-step" style="color:#a5b4fc;">Step 3A — Pathway</p>
             <p class="fc-title">📂 pathway_service</p>
-            <p class="fc-sub" style="color:#a5b4fc;">Load education_stages.json<br>Filter from current stage · Identify forks</p>
+            <p class="fc-sub" style="color:#a5b4fc;">Load education_stages.json + pr_international_pathways.json<br>Filter from current stage · Identify forks · FSBB info</p>
           </div>
           <div class="fc-arrow">↓</div>
           <div class="fc-node" style="background:#022c22;border:1.5px solid #10b981;">
             <p class="fc-step" style="color:#6ee7b7;">Step 4A — Roadmap</p>
             <p class="fc-title">🗺️ Render HTML Roadmap</p>
-            <p class="fc-sub" style="color:#6ee7b7;">roadmap.sh-style nodes · 4 PSLE streams<br>3 post-sec paths · Current stage glow</p>
+            <p class="fc-sub" style="color:#6ee7b7;">4 PSLE streams · 3 post-sec paths · Current stage glow<br>Citizenship-specific notes (fees, AEIS, NS, Student Pass)</p>
           </div>
         </div>
 
@@ -119,8 +124,8 @@ with _main:
 
       <div class="fc-node" style="background:#052e16;border:2px solid #22c55e;box-shadow:0 0 0 3px rgba(34,197,94,0.2);">
         <p class="fc-step" style="color:#86efac;">Step 5 — Output</p>
-        <p class="fc-title">✅ Personalised Pathway + Stage Cards</p>
-        <p class="fc-sub" style="color:#86efac;">Entry criteria · Citizenship notes · Primary school guide (if stage = primary)<br>Score Matcher link · Expandable detail cards</p>
+        <p class="fc-title">✅ Personalised Pathway + Citizenship Notes</p>
+        <p class="fc-sub" style="color:#86efac;">Entry criteria · Fees by citizenship · AEIS/NS/Student Pass info<br>Primary school guide (if stage = primary) · Score Matcher link</p>
       </div>
 
     </div>
@@ -131,9 +136,10 @@ with _main:
         st.markdown("""
     | Fork | Exam | Timing | Key Metric | Outcome |
     |------|------|--------|-----------|---------|
-    | Primary → Secondary | PSLE | Nov (posting Dec) | Total AL (4–32) | Express / NA / NT / IP |
+    | Primary → Secondary | PSLE | Nov (posting Dec) | Total AL (4–32) | Express / NA / NT / IP (FSBB: Posting Groups 1–3 from 2024) |
     | Secondary → Post-Sec | O-levels | Nov (JAE Jan) | L1R5 / ELR2B2 | JC / Poly / ITE |
     | Post-Sec → University | A-levels or Poly GPA | Nov/Mar | UAS / GPA | Local uni / Overseas / Work |
+    | International Entry | AEIS / S-AEIS | Sep / Feb | English + Maths test | Government school placement (P2–P5, S1–S3) |
         """)
 
         st.markdown("### Career Reverse Tracing Data Flow")
@@ -173,6 +179,10 @@ with _main:
     from trusted `.gov.sg` / `.edu.sg` sites (DuckDuckGo), and GPT-4o-mini for
     natural language synthesis. Includes security guardrails for input validation
     and domain restriction.
+
+    The knowledge base covers **all citizenship categories** — SC, PR, and International
+    Students — including AEIS/S-AEIS admission, fee structures, Student Pass requirements,
+    National Service timelines, 18 international schools, and IB-to-university score conversion.
         """)
 
         st.markdown("### Process Flowchart")
@@ -237,7 +247,7 @@ with _main:
           <div class="fc2-node" style="background:#083344;border:1.5px solid #06b6d4;">
             <p class="fc2-step" style="color:#67e8f9;">Step 3A — Local RAG</p>
             <p class="fc2-title">📂 rag_service.retrieve_chunks()</p>
-            <p class="fc2-sub" style="color:#67e8f9;">TF-IDF cosine similarity over 282 chunks<br>12 seed JSON files from MOE/SEAB/ITE/Polys/Unis</p>
+            <p class="fc2-sub" style="color:#67e8f9;">TF-IDF cosine similarity over 254 chunks<br>14 seed JSON files from MOE/SEAB/ITE/Polys/Unis/Intl Schools</p>
           </div>
         </div>
 
@@ -268,8 +278,8 @@ with _main:
       <div class="fc2-single">
         <div class="fc2-node" style="background:#3b0764;border:2px solid #a855f7;box-shadow:0 0 0 3px rgba(168,85,247,0.2);">
           <p class="fc2-step" style="color:#d8b4fe;">Step 5 — LLM</p>
-          <p class="fc2-title">🤖 GPT-4o-mini (or stub in Demo Mode)</p>
-          <p class="fc2-sub" style="color:#d8b4fe;">Temperature 0.3 · max_tokens 1000 · Cites official URLs<br>Demo mode: returns RAG context + web links without LLM</p>
+          <p class="fc2-title">🤖 GPT-4o-mini (or Local RAG Mode)</p>
+          <p class="fc2-sub" style="color:#d8b4fe;">Temperature 0.3 · max_tokens 1000 · Cites official URLs<br>Local mode: returns structured RAG context + web links without LLM</p>
         </div>
       </div>
 
@@ -327,8 +337,9 @@ with _main:
     EduPath SG uses a **three-source retrieval** strategy:
 
     **Source 1 — Local TF-IDF RAG (always active, no API key needed):**
-    scikit-learn TF-IDF vectorisation over 282 chunks from 12 official seed files.
-    Cosine similarity retrieval. Works fully offline.
+    scikit-learn TF-IDF vectorisation over 254 chunks from 14 official seed files.
+    Covers government schools, international schools, PR/international pathways, fees,
+    NS, Student Pass, FSBB, and IB-to-university conversion. Works fully offline.
 
     **Source 2 — DuckDuckGo Web Search (always active, no API key needed):**
     Live search restricted to `.gov.sg` and `.edu.sg` domains via site: filter
@@ -337,7 +348,7 @@ with _main:
 
     **Source 3 — OpenAI GPT-4o-mini (optional, requires API key):**
     Synthesises RAG chunks + web results into a natural language answer.
-    When disabled, the app returns RAG context + web links directly (demo mode).
+    When disabled, the app returns structured RAG context + web links directly (local RAG mode).
         """)
 
         st.markdown("### Combined Retrieval Flow")
@@ -346,10 +357,10 @@ with _main:
          │
          ├──── validate_question() ── PASS (contains "l1r5", "jc")
          │
-         ├──── Source 1: rag_service.retrieve_chunks(query, top_k=4)
+         ├──── Source 1: rag_service.retrieve_chunks(query, top_k=6)
          │        │
          │        ├── TF-IDF vectorize query
-         │        ├── Cosine similarity vs 282 indexed chunks
+         │        ├── Cosine similarity vs 254 indexed chunks
          │        └── Return: "Raffles JC L1R5 cutoff ~3-4" (score: 0.42)
          │                    "JAE application window Jan..." (score: 0.31)
          │
@@ -365,7 +376,7 @@ with _main:
                   │     + career_context + rag_chunks + web_results + history
                   │
                   ├── [USE_AI=true]  → GPT-4o-mini generates answer citing sources
-                  └── [USE_AI=false] → Return formatted RAG context + web links
+                  └── [USE_AI=false] → Return structured RAG context + web links
         """, language="text")
 
         st.markdown("### Knowledge Base Coverage")
@@ -375,16 +386,19 @@ with _main:
                 "Education stages", "Secondary schools", "Primary schools",
                 "JC data", "Poly courses", "ITE courses", "University faculties",
                 "Career pathways", "Fallback policies", "Support resources",
-                "Success stories", "Institution locations", "Static knowledge",
+                "Success stories", "Institution locations",
+                "International schools", "PR & International pathways",
+                "Static knowledge (NS, fees, visa, FSBB, etc.)",
             ],
-            "Items": [12, 88, 72, 12, "~50", "~12", 29, 15, 10, "~35", 10, 14, 14],
+            "Items": [12, 88, 72, 12, "~50", "~12", 29, 15, 10, "~35", 10, 14, 18, "~25", 21],
             "Source": [
                 "MOE", "MOE school directory", "MOE P1 registration",
                 "MOE JAE", "5 polytechnics", "ITE Education Services",
                 "6 autonomous universities", "Cross-referenced from uni/poly/ITE data",
                 "MOE / SEAB", "MOE / PSC / SkillsFuture / WSG",
                 "Public records / biographies", "OneMap geocoding",
-                "Curated from official sources",
+                "18 international schools (IB/IGCSE/AP)", "MOE AEIS, ICA, MINDEF, MOE fees",
+                "NS, Edusave, Student Pass, Tuition Grant, fee comparison, FSBB, IB conversion",
             ],
         }
         st.dataframe(pd.DataFrame(kb_data), use_container_width=True, hide_index=True)
@@ -395,11 +409,11 @@ with _main:
 
     | Category | Domains |
     |----------|---------|
-    | **Government** | moe.gov.sg, seab.gov.sg, skillsfuture.gov.sg, cpf.gov.sg, psc.gov.sg, ssg.gov.sg |
+    | **Government** | moe.gov.sg, seab.gov.sg, skillsfuture.gov.sg, cpf.gov.sg, psc.gov.sg, ssg.gov.sg, ica.gov.sg |
     | **Universities** | nus.edu.sg, ntu.edu.sg, smu.edu.sg, sutd.edu.sg, sit.edu.sg, suss.edu.sg |
     | **Polytechnics** | sp.edu.sg, tp.edu.sg, nyp.edu.sg, np.edu.sg, rp.edu.sg |
     | **Other .edu.sg** | ite.edu.sg, nie.edu.sg, any *.edu.sg subdomain |
-    | **Other .gov.sg** | Any *.gov.sg subdomain |
+    | **Other .gov.sg** | Any *.gov.sg subdomain (MINDEF, ICA, etc.) |
         """)
 
 
@@ -409,9 +423,9 @@ with _main:
         st.markdown("""
     **1. SQLite** (`storage/edupathsg.sqlite`) — user credentials (bcrypt-hashed) + chat history
 
-    **2. JSON Seed Files** (`data/seed/`) — 12 files loaded at startup via `@lru_cache`
+    **2. JSON Seed Files** (`data/seed/`) — 14 files loaded at startup via `@lru_cache`
 
-    **3. TF-IDF Store** (`storage/tfidf_store.pkl`) — pre-built index, auto-rebuilt if missing
+    **3. TF-IDF Store** (`storage/tfidf_store.pkl`) — pre-built index (254 chunks), auto-rebuilt if missing
 
     **4. Geocode Cache** (`storage/geocode_cache.json`) — OneMap results for school coordinates
         """)
@@ -437,12 +451,12 @@ with _main:
     │   ├── pathway_service.py          # Education stage + fork data loaders
     │   ├── score_service.py            # L1R5 / ELR2B2 / UAS / GPA calculators
     │   ├── career_service.py           # Reverse career → pathway tracer
-    │   ├── rag_service.py              # TF-IDF RAG (282 chunks)
-    │   ├── llm_service.py              # OpenAI GPT-4o-mini + stub mode
+    │   ├── rag_service.py              # TF-IDF RAG (254 chunks)
+    │   ├── llm_service.py              # OpenAI GPT-4o-mini + local RAG mode
     │   ├── web_search_service.py       # DuckDuckGo + domain allowlist + guardrails
     │   ├── location_service.py         # OneMap geocoding + travel time
     │   └── geocode_bootstrap.py        # Auto-geocode schools on cold start
-    ├── data/seed/                      # 12 JSON files (education data)
+    ├── data/seed/                      # 14 JSON files (education data)
     │   ├── education_stages.json       # 12 stages (early childhood → postgrad)
     │   ├── secondary_schools.json      # 88 schools with PSLE cutoffs
     │   ├── primary_schools.json        # 72 schools with P1 registration data
@@ -454,14 +468,16 @@ with _main:
     │   ├── fallback_policies.json      # 10 exam failure / retake scenarios
     │   ├── support_resources.json      # Counselling, scholarships, career guidance
     │   ├── success_stories.json        # 10 Singapore success stories
-    │   └── institution_locations.json  # 14 poly/ITE/uni locations (lat/lng)
+    │   ├── institution_locations.json  # 14 poly/ITE/uni locations (lat/lng)
+    │   ├── international_schools.json  # 18 international schools (IB/IGCSE/AP)
+    │   └── pr_international_pathways.json  # AEIS, fees, NS, Student Pass, FSBB
     ├── utils/
     │   ├── config.py                   # Secrets loader (_secret helper)
     │   ├── session_manager.py          # Session state helpers (user, stage, career)
     │   └── stage_config.py             # 5 education stages with color themes
     ├── storage/                        # Auto-generated at runtime
     │   ├── edupathsg.sqlite            # User DB + chat history
-    │   ├── tfidf_store.pkl             # TF-IDF index
+    │   ├── tfidf_store.pkl             # TF-IDF index (254 chunks)
     │   └── geocode_cache.json          # OneMap coordinate cache
     └── requirements.txt                # 10 dependencies
         """, language="text")
@@ -477,7 +493,7 @@ with _main:
                   │                     │                     │
         ┌─────────▼──────────┐ ┌───────▼────────┐ ┌─────────▼──────────┐
         │   pathway_service  │ │ score_service  │ │  career_service    │
-        │   12 seed JSONs    │ │ 4 calculators  │ │  15 career paths   │
+        │   14 seed JSONs    │ │ 4 calculators  │ │  15 career paths   │
         │   @lru_cache       │ │ 4 matchers     │ │  reverse tracing   │
         └────────────────────┘ └────────────────┘ └────────────────────┘
                   │                     │                     │
@@ -487,8 +503,8 @@ with _main:
                   │                     │                     │
         ┌─────────▼──────────┐ ┌───────▼────────┐ ┌─────────▼──────────┐
         │   rag_service      │ │ web_search     │ │  llm_service       │
-        │   TF-IDF / 282     │ │ DuckDuckGo     │ │  GPT-4o-mini       │
-        │   chunks           │ │ .gov.sg only   │ │  or Demo stub      │
+        │   TF-IDF / 254     │ │ DuckDuckGo     │ │  GPT-4o-mini       │
+        │   chunks           │ │ .gov.sg only   │ │  or local RAG mode │
         └────────────────────┘ └────────────────┘ └────────────────────┘
                   │                     │                     │
                   └─────────────────────┼─────────────────────┘
@@ -505,6 +521,6 @@ with _main:
     <a href="https://www.seab.gov.sg">SEAB</a> ·
     <a href="https://www.ite.edu.sg">ITE</a> ·
     <a href="https://www.skillsfuture.gov.sg">SkillsFuture</a><br>
-    <small>EduPath SG is a capstone project. Not affiliated with the Singapore Government.</small>
+    <small>EduPath SG is an AI Champion Bootcamp capstone project. Not affiliated with the Singapore Government.</small>
     </div>
     """, unsafe_allow_html=True)
