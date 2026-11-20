@@ -58,7 +58,7 @@ with _main:
                 "🏫 International Schools",
             ],
             "Description": [
-                "Interactive visual timeline with citizenship-specific notes, fees, and admission rules",
+                "Interactive visual timeline with Full-Time / Part-Time toggle, citizenship-specific fees, and admission rules",
                 "Enter PSLE AL / L1R5 / rank points / poly GPA — matched schools with fee comparison by citizenship",
                 "Official policies on retakes, private candidates, certificate implications, and alternatives",
                 "Poly/ITE work-study, SUSS/SIT/private part-time degrees, SkillsFuture funding, fee comparison",

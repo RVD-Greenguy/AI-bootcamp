@@ -28,13 +28,17 @@ with _main:
         st.markdown("## Use Case 1: Education Pathway Navigator + Career Goal Flow")
         st.markdown("""
     The Pathway Navigator takes a user's **role** (parent/student), **education stage**,
-    **citizenship**, and optionally a **career aspiration** — then renders a personalised
-    visual roadmap through Singapore's education system. When a career goal is set, the
-    **reverse pathway engine** traces backward from the target university programme to show
-    the required scores at every stage.
+    **citizenship**, **study mode** (Full-Time / Part-Time), and optionally a **career aspiration**
+    — then renders a personalised visual roadmap through Singapore's education system.
+
+    - **Full-Time mode:** Standard roadmap — PSLE streams, O-level forks, JC/Poly/ITE, university
+    - **Part-Time mode:** Work-study and evening/weekend pathways — ITE Work-Study, Poly Work-Study Diploma, SUSS/SIT/private degrees, with fees by citizenship and a "Full-Time Only" exclusion list
+
+    When a career goal is set, the **reverse pathway engine** traces backward from the target
+    university programme to show the required scores at every stage.
 
     Citizenship-specific guidance covers:
-    - **Singapore Citizens:** P1 priority, subsidised fees, SkillsFuture, Edusave
+    - **Singapore Citizens:** P1 priority, subsidised fees, SkillsFuture Credit, Edusave, Mid-Career Subsidy
     - **Permanent Residents:** Phase 2C registration, PR fee tier, NS obligations, Tuition Grant without bond
     - **International Students:** AEIS/S-AEIS entry, Student Pass requirements, international school alternatives, fee tiers, Tuition Grant with 3-year bond
         """)
@@ -74,7 +78,7 @@ with _main:
       <div class="fc-node" style="background:#172554;border:2px solid #3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.2);">
         <p class="fc-step" style="color:#93c5fd;">Step 1 — Inputs</p>
         <p class="fc-title">👤 User Profile + Career Goal</p>
-        <p class="fc-sub" style="color:#93c5fd;">Role (parent/student) · Education stage · Citizenship (SC/PR/International) · Career aspiration (optional)</p>
+        <p class="fc-sub" style="color:#93c5fd;">Role (parent/student) · Education stage · Citizenship (SC/PR/International) · Study mode (Full-Time/Part-Time) · Career aspiration (optional)</p>
       </div>
 
       <div class="fc-arrow">↓</div>
@@ -100,7 +104,7 @@ with _main:
           <div class="fc-node" style="background:#022c22;border:1.5px solid #10b981;">
             <p class="fc-step" style="color:#6ee7b7;">Step 4A — Roadmap</p>
             <p class="fc-title">🗺️ Render HTML Roadmap</p>
-            <p class="fc-sub" style="color:#6ee7b7;">4 PSLE streams · 3 post-sec paths · Current stage glow<br>Citizenship-specific notes (fees, AEIS, NS, Student Pass)</p>
+            <p class="fc-sub" style="color:#6ee7b7;">Full-Time: 4 PSLE streams · 3 post-sec paths · Stage glow<br>Part-Time: Work-study diplomas · SUSS/SIT/private degrees · Fees by citizenship</p>
           </div>
         </div>
 
@@ -125,7 +129,7 @@ with _main:
       <div class="fc-node" style="background:#052e16;border:2px solid #22c55e;box-shadow:0 0 0 3px rgba(34,197,94,0.2);">
         <p class="fc-step" style="color:#86efac;">Step 5 — Output</p>
         <p class="fc-title">✅ Personalised Pathway + Citizenship Notes</p>
-        <p class="fc-sub" style="color:#86efac;">Entry criteria · Fees by citizenship · AEIS/NS/Student Pass info<br>Primary school guide (if stage = primary) · Score Matcher link</p>
+        <p class="fc-sub" style="color:#86efac;">Entry criteria · Fees by citizenship · AEIS/NS/Student Pass info<br>Part-time: comparison table + full-time exclusions · Score Matcher link</p>
       </div>
 
     </div>
@@ -136,9 +140,12 @@ with _main:
         st.markdown("""
     | Fork | Exam | Timing | Key Metric | Outcome |
     |------|------|--------|-----------|---------|
+    | **Study Mode** | — | User selection | Full-Time / Part-Time | Full-time roadmap or part-time work-study roadmap |
     | Primary → Secondary | PSLE | Nov (posting Dec) | Total AL (4–32) | Express / NA / NT / IP (FSBB: Posting Groups 1–3 from 2024) |
     | Secondary → Post-Sec | O-levels | Nov (JAE Jan) | L1R5 / ELR2B2 | JC / Poly / ITE |
     | Post-Sec → University | A-levels or Poly GPA | Nov/Mar | UAS / GPA | Local uni / Overseas / Work |
+    | Part-Time Diploma | Work experience | Rolling | NITEC / O-level / work exp | ITE Work-Study / Poly WSDip / Private diploma |
+    | Part-Time Degree | Diploma / mature entry | Rolling | Poly GPA 2.5+ or age 30+ | SUSS / SIT / SIM-UOL / Kaplan / PSB |
     | International Entry | AEIS / S-AEIS | Sep / Feb | English + Maths test | Government school placement (P2–P5, S1–S3) |
         """)
 
