@@ -80,67 +80,19 @@ def _process_question(q: str, user: dict, history: list[dict], user_id: int):
     _save_turn_to_db(user_id, q, answer, chunks)
 
 
-def _inject_floating_tab_css(msg_count: int, is_open: bool):
-    """Inject the fixed-position floating tab on the right edge."""
-    badge = f'<span class="ep-badge">{msg_count}</span>' if msg_count else ""
-    tab_display = "none" if is_open else "flex"
-
-    st.markdown(f"""
+def _inject_chat_css():
+    """Inject shared chat animations."""
+    st.markdown("""
 <style>
-@keyframes ep-tab-pulse {{
-    0%, 100% {{ transform: scale(1); }}
-    50%      {{ transform: scale(1.05); }}
-}}
-@keyframes ep-fade-in {{
-    from {{ opacity: 0; transform: translateY(8px); }}
-    to   {{ opacity: 1; transform: translateY(0); }}
-}}
-
-.ep-float-tab {{
-    position: fixed;
-    right: 0;
-    bottom: 100px;
-    z-index: 99999;
-    display: {tab_display};
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    background: linear-gradient(135deg, #0269D0, #0151A0);
-    color: white;
-    padding: 16px 12px;
-    border-radius: 12px 0 0 12px;
-    cursor: pointer;
-    box-shadow: -2px 2px 16px rgba(0,0,0,0.18);
-    writing-mode: vertical-rl;
-    font-size: 0.85em;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.25s ease;
-    animation: ep-tab-pulse 2s ease-in-out 3;
-}}
-.ep-float-tab:hover {{
-    padding-right: 18px;
-    box-shadow: -4px 2px 24px rgba(2,105,208,0.35);
-}}
-.ep-badge {{
-    background: #ef4444;
-    color: white;
-    font-size: 10px;
-    font-weight: 700;
-    min-width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    writing-mode: horizontal-tb;
-    animation: ep-fade-in 0.3s ease-out;
-}}
+@keyframes ep-tab-pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.05); }
+}
+@keyframes ep-fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
 </style>
-
-<div class="ep-float-tab" title="Click 'Open AI Assistant' button below to chat">
-    🤖 AI Assistant {badge}
-</div>
 """, unsafe_allow_html=True)
 
 
@@ -173,15 +125,19 @@ def render_chat_panel():
     is_open = st.session_state.get("chat_panel_open", False)
     msg_count = len(history) // 2
 
-    _inject_floating_tab_css(msg_count, is_open)
+    _inject_chat_css()
+
+    with st.sidebar:
+        st.divider()
 
     if not is_open:
-        if st.button("🤖 Open AI Assistant", key="chat_open_btn", type="primary", use_container_width=True):
-            st.session_state["chat_panel_open"] = True
-            st.rerun()
+        badge = f" ({msg_count})" if msg_count else ""
+        with st.sidebar:
+            if st.button(f"🤖 AI Assistant{badge}", key="chat_open_btn", type="primary", use_container_width=True):
+                st.session_state["chat_panel_open"] = True
+                st.rerun()
     else:
         with st.sidebar:
-            st.divider()
 
             st.markdown("""
 <div style="background:linear-gradient(135deg,#0269D0,#0151A0);
