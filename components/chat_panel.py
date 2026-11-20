@@ -125,21 +125,22 @@ def _render_chat_ui(user: dict, history: list[dict]):
     if msg_count:
         st.caption(f"📋 {msg_count} exchanges")
 
-    question = st.text_input("Ask:", key="chat_input", placeholder="Ask about pathways…", label_visibility="collapsed")
-    c1, c2 = st.columns([4, 1])
-    with c1:
-        send = st.button("Send", type="primary", use_container_width=True, key="chat_send")
-    with c2:
-        clear = st.button("🗑️", use_container_width=True, key="chat_clear")
+    def _on_send():
+        q = st.session_state.get("chat_input", "").strip()
+        if q:
+            st.session_state[_PENDING_KEY] = q
+            st.session_state["chat_input"] = ""
 
-    if clear:
+    def _on_clear():
         st.session_state[_HISTORY_KEY] = []
         st.session_state["chat_input"] = ""
-        st.rerun()
-    if send and question and question.strip():
-        st.session_state[_PENDING_KEY] = question.strip()
-        st.session_state["chat_input"] = ""
-        st.rerun()
+
+    st.text_input("Ask:", key="chat_input", placeholder="Ask about pathways…", label_visibility="collapsed", on_change=_on_send)
+    c1, c2 = st.columns([4, 1])
+    with c1:
+        st.button("Send", type="primary", use_container_width=True, key="chat_send", on_click=_on_send)
+    with c2:
+        st.button("🗑️", use_container_width=True, key="chat_clear", on_click=_on_clear)
 
     st.markdown("""
 <div style="font-size:0.62em;color:#6B6B6B;text-align:center;margin-top:3px;">
