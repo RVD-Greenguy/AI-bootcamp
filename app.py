@@ -70,8 +70,6 @@ from utils.session_manager import get_user, set_user, clear_user, get_career_goa
 from utils.config import DISCLAIMER
 from services.auth_service import login_user, register_user
 from components.role_context import get_role_labels
-from components.chat_panel import render_chat_panel
-from components.stage_theme import apply_stage_theme
 
 user = get_user()
 
@@ -209,6 +207,8 @@ if user:
 """, unsafe_allow_html=True)
 
     from components.sidebar import render_sidebar
+    from components.chat_panel import render_chat_panel
+    from components.stage_theme import apply_stage_theme
     render_sidebar()
     render_chat_panel()
     apply_stage_theme()
