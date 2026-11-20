@@ -70,6 +70,62 @@ with _main:
     st.warning(f"⚠️ {DISCLAIMER}", icon="⚠️")
     st.info("All cutoff figures are **approximate** based on recent years. Actual cutoffs vary annually — always verify at the school's official website or MOE.")
 
+    _cit_col1, _cit_col2 = st.columns([1, 3])
+    with _cit_col1:
+        _citizenship = st.selectbox(
+            "Citizenship:",
+            ["Singapore Citizen", "Permanent Resident", "International (ASEAN)", "International (non-ASEAN)"],
+            key="scorer_citizenship",
+        )
+
+    FEE_DATA = {
+        "Singapore Citizen": {
+            "primary": "$6.50/mth", "secondary": "$5/mth", "jc": "$6/mth",
+            "poly": "~$2,900/yr", "ite": "~$500/yr", "university": "$8,000–$12,000/yr",
+            "edusave": "Edusave: $290/yr auto-deposited (P1–S4)",
+            "admission": None,
+            "bond": None,
+            "emoji": "🇸🇬",
+        },
+        "Permanent Resident": {
+            "primary": "$230/mth", "secondary": "$380/mth", "jc": "$380/mth",
+            "poly": "~$5,100/yr", "ite": "~$3,600/yr", "university": "$11,000–$16,500/yr",
+            "edusave": "Edusave: $290/yr auto-deposited (P1–S4)",
+            "admission": "PR students: P1 registration from Phase 2C; secondary posting tie-break favours SC",
+            "bond": "MOE Tuition Grant at university — no bond required",
+            "emoji": "🟢",
+        },
+        "International (ASEAN)": {
+            "primary": "$490/mth", "secondary": "$780/mth", "jc": "$940/mth",
+            "poly": "~$10,200/yr", "ite": "~$7,700/yr", "university": "With Tuition Grant + 3-yr bond",
+            "edusave": "Not eligible for Edusave or SkillsFuture",
+            "admission": "Entry via AEIS (Sep) / S-AEIS (Feb) test — SGD 672 fee. No school choice; MOE assigns placement",
+            "bond": "MOE Tuition Grant at university — 3-year work bond in Singapore",
+            "emoji": "🌏",
+        },
+        "International (non-ASEAN)": {
+            "primary": "$825/mth", "secondary": "$1,450/mth", "jc": "$1,750/mth",
+            "poly": "~$10,200/yr", "ite": "~$7,700/yr", "university": "$30,000–$55,000/yr (full fees)",
+            "edusave": "Not eligible for Edusave or SkillsFuture",
+            "admission": "Entry via AEIS (Sep) / S-AEIS (Feb) test — SGD 672 fee. No school choice; MOE assigns placement",
+            "bond": "MOE Tuition Grant at university — 3-year work bond in Singapore",
+            "emoji": "🌐",
+        },
+    }
+    _fees = FEE_DATA[_citizenship]
+
+    def _fee_banner(level_key: str, level_label: str):
+        """Render a fee info box for the selected citizenship and education level."""
+        fee = _fees[level_key]
+        parts = [f"{_fees['emoji']} **{_citizenship}** — {level_label} fees: **{fee}**"]
+        if _fees["edusave"]:
+            parts.append(f"  |  {_fees['edusave']}")
+        st.info(" ".join(parts))
+        if _fees["admission"]:
+            st.caption(f"📋 {_fees['admission']}")
+        if _fees["bond"] and level_key == "university":
+            st.caption(f"📋 {_fees['bond']}")
+
     GRADE_OPTIONS = ["A1", "A2", "B3", "B4", "C5", "C6", "D7", "E8", "F9"]
     GRADE_POINTS = {"A1": 1, "A2": 2, "B3": 3, "B4": 4, "C5": 5, "C6": 6, "D7": 7, "E8": 8, "F9": 9}
 
@@ -84,6 +140,7 @@ with _main:
     # ── TAB 1: PSLE ──────────────────────────────────────────────────────────────
     with tab_psle:
         st.subheader("📊 PSLE Achievement Level → Secondary School")
+        _fee_banner("secondary", "Secondary school")
 
         with st.expander("ℹ️ How PSLE AL scoring works", expanded=False):
             st.markdown("""
@@ -155,6 +212,12 @@ with _main:
     # ── TAB 2: O-LEVELS → JAE ────────────────────────────────────────────────────
     with tab_olevels:
         st.subheader("🏫 O-level Results → JAE (JC / Poly / ITE)")
+        _oj1, _oj2, _oj3 = st.columns(3)
+        _oj1.info(f"{_fees['emoji']} **JC fees:** {_fees['jc']}")
+        _oj2.info(f"{_fees['emoji']} **Poly fees:** {_fees['poly']}")
+        _oj3.info(f"{_fees['emoji']} **ITE fees:** {_fees['ite']}")
+        if _fees["admission"]:
+            st.caption(f"📋 {_fees['admission']}")
 
         jc_col, poly_col = st.columns(2)
 
@@ -266,6 +329,7 @@ with _main:
     # ── TAB 3: A-LEVELS → UNIVERSITY ─────────────────────────────────────────────
     with tab_alevels:
         st.subheader("🎓 A-level Rank Points → University")
+        _fee_banner("university", "University")
 
         with st.expander("ℹ️ How University Admission Score (UAS) works", expanded=False):
             pts_df = pd.DataFrame({
@@ -391,6 +455,7 @@ with _main:
     # ── TAB 4: POLY → DAE ────────────────────────────────────────────────────────
     with tab_dae:
         st.subheader("📜 Polytechnic Diploma → University (DAE)")
+        _fee_banner("university", "University")
 
         st.markdown("""
         **Direct Admissions Exercise (DAE)** allows polytechnic graduates to apply directly to university
@@ -737,12 +802,36 @@ with _main:
     *Distance priority applies to **primary school P1 registration** only. Secondary (PSLE), JC (JAE), Poly/ITE/Uni admissions are based purely on scores — distance has no bearing.*
         """)
 
+        if _citizenship.startswith("International"):
+            st.markdown("### 🏫 International School Alternative")
+            st.markdown("""
+    International students can also enrol directly in any of **18 international schools** in Singapore
+    (no AEIS required). Fees range from **$20,000–$55,000/yr** depending on the school and level.
+    Curricula include IB, IGCSE, AP, and national curricula. See the **Pathway Planner** for details.
+            """)
+
+    st.divider()
+    st.markdown("### 💰 Fee Comparison by Citizenship")
+    st.caption("Monthly fees for MOE government schools (2024). All amounts in SGD.")
+    _fee_compare = pd.DataFrame({
+        "Education Level": [
+            "Primary (P1–P6)", "Secondary (S1–S4/S5)", "Pre-University (JC/MI)",
+            "Polytechnic (per year)", "ITE (per year)", "University (per year)",
+        ],
+        "🇸🇬 SC": ["$6.50/mth", "$5/mth", "$6/mth", "~$2,900", "~$500", "$8K–$12K"],
+        "🟢 PR": ["$230/mth", "$380/mth", "$380/mth", "~$5,100", "~$3,600", "$11K–$16.5K"],
+        "🌏 Intl (ASEAN)": ["$490/mth", "$780/mth", "$940/mth", "~$10,200", "~$7,700", "With TG + 3-yr bond"],
+        "🌐 Intl (non-ASEAN)": ["$825/mth", "$1,450/mth", "$1,750/mth", "~$10,200", "~$7,700", "$30K–$55K"],
+    })
+    st.dataframe(_fee_compare, use_container_width=True, hide_index=True)
+    st.caption("SC = Singapore Citizen · PR = Permanent Resident · TG = MOE Tuition Grant · Intl school fees: $20K–$55K/yr")
+
     st.markdown("""
     <div class="gov-footer">
     <a href="https://www.moe.gov.sg">MOE</a> ·
     <a href="https://www.seab.gov.sg">SEAB</a> ·
     <a href="https://www.ite.edu.sg">ITE</a> ·
     <a href="https://www.skillsfuture.gov.sg">SkillsFuture</a><br>
-    <small>EduPath SG is a capstone project. Not affiliated with the Singapore Government.</small>
+    <small>EduPath SG is an AI Champion Bootcamp capstone project. Not affiliated with the Singapore Government.</small>
     </div>
     """, unsafe_allow_html=True)

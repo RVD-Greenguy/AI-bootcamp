@@ -44,6 +44,7 @@ with _main:
         """)
 
         st.markdown("## Key Features")
+        import pandas as pd
         data = {
             "Feature": [
                 "🗺️ Pathway Planner",
@@ -55,18 +56,111 @@ with _main:
                 "🏫 International Schools",
             ],
             "Description": [
-                "Interactive visual timeline of the full Singapore education journey with citizenship-specific notes",
-                "Enter PSLE AL / L1R5 / rank points / poly GPA and get matched schools & programmes with eligibility indicators",
-                "Official policies on retakes, private candidates, certificate implications, and alternative pathways",
-                "Ask any question about Singapore education policy — answered using retrieved official references",
-                "TF-IDF retrieval over 250+ chunks sourced from MOE, SEAB, ITE, polytechnic, university, and international school data",
-                "AEIS/S-AEIS admission, fee tiers by citizenship, Student Pass requirements, NS timelines, Tuition Grant & bond info",
-                "18 international schools with curricula (IB, IGCSE, AP), fee ranges, and university pathway conversion guides",
+                "Interactive visual timeline with citizenship-specific notes, fees, and admission rules",
+                "Enter PSLE AL / L1R5 / rank points / poly GPA — matched schools with eligibility indicators",
+                "Official policies on retakes, private candidates, certificate implications, and alternatives",
+                "Ask any question about SG education — answered using retrieved official references",
+                "TF-IDF retrieval over 254+ chunks from MOE, SEAB, ITE, polytechnic, university, and intl school data",
+                "AEIS/S-AEIS admission, fee tiers, Student Pass, NS timelines, Tuition Grant & bond info",
+                "18 international schools with curricula (IB, IGCSE, AP), fee ranges, and uni pathway conversion",
             ],
-            "Users": ["All roles", "Student / Parent", "All roles", "All roles", "All roles", "PR / International", "International"],
+            "SC": ["✅", "✅", "✅", "✅", "✅", "—", "—"],
+            "PR": ["✅", "✅", "✅", "✅", "✅", "✅", "✅"],
+            "International": ["✅", "✅", "✅", "✅", "✅", "✅", "✅"],
+            "Login Roles": [
+                "All roles",
+                "Student / Parent",
+                "All roles",
+                "All roles",
+                "All roles",
+                "All roles",
+                "All roles",
+            ],
         }
-        import pandas as pd
         st.dataframe(pd.DataFrame(data), use_container_width=True, hide_index=True)
+
+        st.markdown("## Fee Comparison by Citizenship")
+        st.markdown("*Monthly fees for MOE government schools (2024). All amounts in SGD.*")
+        fee_data = {
+            "Education Level": [
+                "Primary (P1–P6)",
+                "Secondary (S1–S4/S5)",
+                "Pre-University (JC / MI)",
+                "Polytechnic (per year)",
+                "ITE (per year)",
+                "University (per year, before grants)",
+            ],
+            "🇸🇬 Singapore Citizen": [
+                "$6.50/mth",
+                "$5/mth",
+                "$6/mth",
+                "~$2,900/yr",
+                "~$500/yr",
+                "$8,000–$12,000/yr",
+            ],
+            "🟢 Permanent Resident": [
+                "$230/mth",
+                "$380/mth",
+                "$380/mth",
+                "~$5,100/yr",
+                "~$3,600/yr",
+                "$11,000–$16,500/yr",
+            ],
+            "🌏 International (ASEAN)": [
+                "$490/mth",
+                "$780/mth",
+                "$940/mth",
+                "~$10,200/yr",
+                "~$7,700/yr",
+                "With Tuition Grant + 3-yr bond",
+            ],
+            "🌐 International (non-ASEAN)": [
+                "$825/mth",
+                "$1,450/mth",
+                "$1,750/mth",
+                "~$10,200/yr",
+                "~$7,700/yr",
+                "Full fees: $30,000–$55,000/yr",
+            ],
+        }
+        st.dataframe(pd.DataFrame(fee_data), use_container_width=True, hide_index=True)
+
+        st.markdown("### Additional Financial Considerations")
+        fin_data = {
+            "Item": [
+                "Edusave Account",
+                "SkillsFuture Credit",
+                "MOE Tuition Grant (University)",
+                "Student Pass (ICA)",
+                "International School Fees",
+                "National Service (NS)",
+            ],
+            "SC": [
+                "$290/yr (P1–S4) auto-deposited",
+                "$500 credit at age 25",
+                "No bond required",
+                "Not applicable",
+                "Not applicable",
+                "2 yrs after sec/JC/poly",
+            ],
+            "PR": [
+                "$290/yr (P1–S4) auto-deposited",
+                "$500 credit at age 25",
+                "No bond required",
+                "Not applicable",
+                "Can enrol (fees apply)",
+                "2 yrs (male 2nd-gen PR)",
+            ],
+            "International": [
+                "Not eligible",
+                "Not eligible",
+                "3-year work bond in SG",
+                "SGD ~$450 application fee",
+                "$20,000–$55,000/yr",
+                "Not applicable",
+            ],
+        }
+        st.dataframe(pd.DataFrame(fin_data), use_container_width=True, hide_index=True)
 
     with col2:
         st.markdown("## Target Users")
