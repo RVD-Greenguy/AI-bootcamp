@@ -1,6 +1,7 @@
 """
-Sidebar AI assistant — SGDS gov.sg styled.
-Lives in the left sidebar below navigation. Main content always full-width.
+Right-side AI assistant — SGDS gov.sg styled.
+Shows as a floating tab on the right edge when minimised.
+Opens the full chat UI in the sidebar when expanded.
 Session-only history (clears on logout).
 """
 import streamlit as st
@@ -79,10 +80,76 @@ def _process_question(q: str, user: dict, history: list[dict], user_id: int):
     _save_turn_to_db(user_id, q, answer, chunks)
 
 
+def _inject_floating_tab_css(msg_count: int, is_open: bool):
+    """Inject the fixed-position floating tab on the right edge."""
+    badge = f'<span class="ep-badge">{msg_count}</span>' if msg_count else ""
+    tab_display = "none" if is_open else "flex"
+
+    st.markdown(f"""
+<style>
+@keyframes ep-tab-pulse {{
+    0%, 100% {{ transform: scale(1); }}
+    50%      {{ transform: scale(1.05); }}
+}}
+@keyframes ep-fade-in {{
+    from {{ opacity: 0; transform: translateY(8px); }}
+    to   {{ opacity: 1; transform: translateY(0); }}
+}}
+
+.ep-float-tab {{
+    position: fixed;
+    right: 0;
+    bottom: 100px;
+    z-index: 99999;
+    display: {tab_display};
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #0269D0, #0151A0);
+    color: white;
+    padding: 16px 12px;
+    border-radius: 12px 0 0 12px;
+    cursor: pointer;
+    box-shadow: -2px 2px 16px rgba(0,0,0,0.18);
+    writing-mode: vertical-rl;
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+    animation: ep-tab-pulse 2s ease-in-out 3;
+}}
+.ep-float-tab:hover {{
+    padding-right: 18px;
+    box-shadow: -4px 2px 24px rgba(2,105,208,0.35);
+}}
+.ep-badge {{
+    background: #ef4444;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: horizontal-tb;
+    animation: ep-fade-in 0.3s ease-out;
+}}
+</style>
+
+<div class="ep-float-tab" title="Click 'Open AI Assistant' button below to chat">
+    🤖 AI Assistant {badge}
+</div>
+""", unsafe_allow_html=True)
+
+
 def render_chat_panel():
     """
-    Render AI assistant in the sidebar. Main content stays full-width.
-    Returns st.container() for page content (always full-width).
+    Render AI assistant as a right-side floating tab + sidebar chat panel.
+    When minimised: floating tab visible on right edge, chat hidden.
+    When opened: full chat UI in sidebar, floating tab hidden.
+    Returns st.container() for page content.
     """
     user = get_user()
     if not user:
@@ -92,10 +159,11 @@ def render_chat_panel():
 
     if _HISTORY_KEY not in st.session_state:
         st.session_state[_HISTORY_KEY] = []
+    if "chat_panel_open" not in st.session_state:
+        st.session_state["chat_panel_open"] = False
 
     history: list[dict] = st.session_state.get(_HISTORY_KEY, [])
 
-    # Handle pending question before rendering UI
     pending = st.session_state.pop(_PENDING_KEY, None)
     if pending:
         with st.spinner("Searching knowledge base + official sources…"):
@@ -103,28 +171,26 @@ def render_chat_panel():
         st.rerun()
 
     is_open = st.session_state.get("chat_panel_open", False)
+    msg_count = len(history) // 2
 
-    with st.sidebar:
-        st.divider()
+    _inject_floating_tab_css(msg_count, is_open)
 
-        if not is_open:
-            # Collapsed state — prominent button with message count
-            msg_count = len(history) // 2
-            badge = f" ({msg_count})" if msg_count else ""
-            if st.button(f"🤖 AI Assistant{badge}", key="chat_open_btn", use_container_width=True, type="primary"):
-                st.session_state["chat_panel_open"] = True
-                st.rerun()
-            st.caption("Ask about PSLE, O-levels, pathways…")
-        else:
-            # ── Expanded chat ─────────────────────────────────
-            # Header
+    if not is_open:
+        if st.button("🤖 Open AI Assistant", key="chat_open_btn", type="primary", use_container_width=True):
+            st.session_state["chat_panel_open"] = True
+            st.rerun()
+    else:
+        with st.sidebar:
+            st.divider()
+
             st.markdown("""
 <div style="background:linear-gradient(135deg,#0269D0,#0151A0);
-    color:white;padding:10px 14px;border-radius:6px;
-    font-weight:600;font-size:0.88em;margin-bottom:8px;
-    display:flex;align-items:center;gap:6px;">
+    color:white;padding:12px 16px;border-radius:8px;
+    font-weight:600;font-size:0.9em;margin-bottom:10px;
+    display:flex;align-items:center;gap:8px;
+    animation: ep-fade-in 0.3s ease-out;">
     🤖 AI Assistant
-    <span style="margin-left:auto;opacity:0.7;font-size:0.82em;">RAG + GPT-4o</span>
+    <span style="margin-left:auto;opacity:0.7;font-size:0.78em;">RAG + GPT-4o</span>
 </div>
 """, unsafe_allow_html=True)
 
@@ -132,15 +198,17 @@ def render_chat_panel():
                 st.session_state["chat_panel_open"] = False
                 st.rerun()
 
-            # Messages
             chat_box = st.container(height=300)
             with chat_box:
                 if not history:
                     st.markdown("""
-<div style="text-align:center;padding:12px 4px;color:#6B6B6B;">
-    <div style="font-size:1.5em;margin-bottom:6px;">🎓</div>
-    <div style="font-size:0.82em;font-weight:600;color:#3B3B3B;">
+<div style="text-align:center;padding:16px 4px;color:#6B6B6B;">
+    <div style="font-size:1.8em;margin-bottom:8px;">🎓</div>
+    <div style="font-size:0.85em;font-weight:600;color:#3B3B3B;">
         Ask about SG education
+    </div>
+    <div style="font-size:0.78em;color:#6B6B6B;margin-top:4px;">
+        PSLE, O-levels, JC, Poly, ITE, University...
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -154,24 +222,23 @@ def render_chat_panel():
                         if msg["role"] == "user":
                             st.markdown(f"""
 <div style="background:#ECF5FE;border:1px solid #C8E2FB;
-    padding:6px 10px;border-radius:6px 6px 2px 6px;
-    margin:4px 0;font-size:0.82em;color:#0E0E0E;">
+    padding:8px 12px;border-radius:8px 8px 2px 8px;
+    margin:6px 0;font-size:0.82em;color:#0E0E0E;
+    animation:ep-fade-in 0.3s ease-out;">
     💬 {msg['content']}
 </div>""", unsafe_allow_html=True)
                         else:
                             st.markdown(f"""
 <div style="background:#fff;border:1px solid #DFDFDF;border-left:3px solid #0269D0;
-    padding:6px 10px;border-radius:2px 6px 6px 6px;
-    margin:4px 0;font-size:0.82em;color:#3B3B3B;">
+    padding:8px 12px;border-radius:2px 8px 8px 8px;
+    margin:6px 0;font-size:0.82em;color:#3B3B3B;
+    animation:ep-fade-in 0.3s ease-out;">
     {msg['content'].replace(chr(10), '<br>')}
 </div>""", unsafe_allow_html=True)
 
-            # Source indicator
-            msg_count = len(history) // 2
             if msg_count:
                 st.caption(f"📋 {msg_count} exchanges · KB + gov.sg")
 
-            # Input
             question = st.text_input(
                 "Ask:",
                 key="chat_input",
@@ -192,9 +259,8 @@ def render_chat_panel():
                 st.session_state[_PENDING_KEY] = question.strip()
                 st.rerun()
 
-            # Footer
             st.markdown("""
-<div style="font-size:0.68em;color:#6B6B6B;text-align:center;margin-top:4px;">
+<div style="font-size:0.68em;color:#6B6B6B;text-align:center;margin-top:6px;">
     <a href="https://www.moe.gov.sg" style="color:#0269D0;">MOE</a> ·
     <a href="https://www.seab.gov.sg" style="color:#0269D0;">SEAB</a> ·
     <a href="https://www.ite.edu.sg" style="color:#0269D0;">ITE</a><br>

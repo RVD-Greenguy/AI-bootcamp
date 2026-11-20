@@ -27,16 +27,30 @@ apply_stage_theme()
 from utils.session_manager import get_education_stage
 from utils.stage_config import get_stage_config
 _stage = get_education_stage()
+_stage_cfg = get_stage_config(_stage)
 _tab_hints = {
-    "early_childhood": "📍 The **Nearby Schools** tab is most useful at this stage.",
-    "primary": "📊 Use the **PSLE → Secondary School** tab to find matching secondary schools.",
-    "secondary": "🏫 Use the **O-levels → JC / Poly / ITE** tab for post-secondary options.",
-    "post_secondary": "🎓 Use the **A-levels → University** or **Poly → University (DAE)** tab.",
-    "university_plus": "📜 Use the **Poly Diploma → University (DAE)** tab.",
+    "early_childhood": ("📍 Nearby Schools", "Find primary schools near you — P1 registration distance matters!", "📍"),
+    "primary":         ("📊 PSLE → Secondary School", "Enter PSLE AL scores to see which secondary schools match.", "📊"),
+    "secondary":       ("🏫 O-levels → JC / Poly / ITE (JAE)", "Calculate L1R5 for JC or ELR2B2 for polytechnic.", "🏫"),
+    "post_secondary":  ("🎓 A-levels → University", "Calculate rank points for university admission.", "🎓"),
+    "university_plus": ("📜 Poly Diploma → University (DAE)", "Check which universities accept your GPA via DAE.", "📜"),
 }
 if _stage in _tab_hints:
-    _c = get_stage_config(_stage)
-    st.info(f"💡 **{_c['label']}:** {_tab_hints[_stage]}")
+    _hint_tab, _hint_text, _hint_icon = _tab_hints[_stage]
+    st.markdown(f"""
+<div style="background:linear-gradient(135deg, {_stage_cfg['bg']}, {_stage_cfg['bg']}90);
+    border:2px solid {_stage_cfg['color']}; border-radius:10px; padding:14px 20px;
+    margin-bottom:12px; display:flex; align-items:center; gap:12px;
+    animation: ep-fade-slide-in 0.4s ease-out;">
+    <div style="font-size:1.8em;">{_hint_icon}</div>
+    <div>
+        <div style="font-weight:700;color:{_stage_cfg['dark']};font-size:0.95em;">
+            {_stage_cfg['label']} → Go to "{_hint_tab}" tab
+        </div>
+        <div style="color:{_stage_cfg['dark']}cc;font-size:0.82em;">{_hint_text}</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 from utils.session_manager import get_career_goal
 _career = get_career_goal()
@@ -690,7 +704,7 @@ with tab_nearby:
                     # Legend
                     leg_cols = st.columns(5)
                     for col, (cat, color) in zip(leg_cols, TYPE_COLOR.items()):
-                        col.markdown(f"<span style='color:{color_map[color]}'>⬤</span> {TYPE_LABEL[cat]}", unsafe_allow_html=True)
+                        col.markdown(f"<span style='color:{color_map_hex[color]}'>⬤</span> {TYPE_LABEL[cat]}", unsafe_allow_html=True)
 
                     # Detail expanders (top 10 nearest)
                     st.divider()

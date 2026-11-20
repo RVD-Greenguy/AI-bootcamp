@@ -146,11 +146,20 @@ STAGE_ID_MAP = {
     "Post-Graduate": "postgrad",
 }
 
+_SIDEBAR_TO_FORM = {
+    "early_childhood": 0,
+    "primary": 1,
+    "secondary": 2,
+    "post_secondary": 3,
+    "university_plus": 4,
+}
+_form_default_idx = _SIDEBAR_TO_FORM.get(_get_stage(), 2)
+
 # ── INPUT FORM ──────────────────────────────────────────────────────────────
 with st.form("pathway_form"):
     col1, col2, col3 = st.columns(3)
     with col1:
-        stage_label = st.selectbox("Current stage:", list(STAGE_ID_MAP.keys()))
+        stage_label = st.selectbox("Current stage:", list(STAGE_ID_MAP.keys()), index=_form_default_idx)
     with col2:
         citizenship = st.selectbox("Citizenship:", ["Singapore Citizen", "Permanent Resident", "International Student"])
     with col3:

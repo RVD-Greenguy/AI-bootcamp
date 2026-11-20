@@ -22,16 +22,30 @@ apply_stage_theme()
 from utils.session_manager import get_education_stage
 from utils.stage_config import get_stage_config
 _stage = get_education_stage()
+_stage_cfg = get_stage_config(_stage)
 _fb_hints = {
-    "early_childhood": "🏫 See the **Primary School** tab for P1 and early primary guidance.",
-    "primary": "🏫 The **Primary School** tab covers PSLE fallbacks, transfers, and struggling students.",
-    "secondary": "📚 The **Secondary School** tab covers O-level/N-level retakes and stream changes.",
-    "post_secondary": "🎓 The **Post-Secondary** tab covers JC/Poly/ITE retakes and certificate implications.",
-    "university_plus": "🎓 The **Post-Secondary** tab covers private candidate rules and university retake policies.",
+    "early_childhood": ("🏫 Primary School", "P1 registration, school transfers, learning support, PSLE fallbacks.", "🏫"),
+    "primary":         ("🏫 Primary School", "PSLE didn't go as planned? Transfers, retakes, and alternative pathways.", "📝"),
+    "secondary":       ("📚 Secondary School", "O-level/N-level retakes, stream changes, private candidate rules.", "📚"),
+    "post_secondary":  ("🎓 Post-Secondary", "A-level retakes, poly GPA recovery, ITE progression, certificate implications.", "🎓"),
+    "university_plus": ("🎓 Post-Secondary", "Private candidate rules, university retake policies, DAE fallbacks.", "🏛️"),
 }
 if _stage in _fb_hints:
-    _c = get_stage_config(_stage)
-    st.info(f"💡 **{_c['label']}:** {_fb_hints[_stage]}")
+    _hint_tab, _hint_text, _hint_icon = _fb_hints[_stage]
+    st.markdown(f"""
+<div style="background:linear-gradient(135deg, {_stage_cfg['bg']}, {_stage_cfg['bg']}90);
+    border:2px solid {_stage_cfg['color']}; border-radius:10px; padding:14px 20px;
+    margin-bottom:12px; display:flex; align-items:center; gap:12px;
+    animation: ep-fade-slide-in 0.4s ease-out;">
+    <div style="font-size:1.8em;">{_hint_icon}</div>
+    <div>
+        <div style="font-weight:700;color:{_stage_cfg['dark']};font-size:0.95em;">
+            {_stage_cfg['label']} → Go to "{_hint_tab}" tab
+        </div>
+        <div style="color:{_stage_cfg['dark']}cc;font-size:0.82em;">{_hint_text}</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 st.title("🔄 Fallback & Recovery Guide")
 st.caption(f"{labels['fallback_prefix']} didn't go as planned — retake policies, alternative pathways, and success stories.")

@@ -70,6 +70,8 @@ from utils.session_manager import get_user, set_user, clear_user, get_career_goa
 from utils.config import DISCLAIMER
 from services.auth_service import login_user, register_user
 from components.role_context import get_role_labels
+from components.chat_panel import render_chat_panel
+from components.stage_theme import apply_stage_theme
 
 user = get_user()
 
@@ -79,6 +81,41 @@ st.markdown("""
 [data-testid="stSidebarNav"] {display: none !important;}
 </style>
 """, unsafe_allow_html=True)
+
+# ── THANK-YOU PAGE (shown after logout) ─────────────────────────────────────
+if st.session_state.get("show_logout"):
+    st.markdown("""
+    <style>
+    section[data-testid="stSidebar"] {display: none !important;}
+    </style>
+    """, unsafe_allow_html=True)
+
+    _logout_name = st.session_state.pop("_logout_name", "")
+    st.session_state.pop("show_logout", None)
+    clear_user()
+
+    st.markdown("""
+<div style="max-width:520px; margin:80px auto; text-align:center;
+    animation: ep-fade-slide-in 0.5s ease-out;">
+    <div style="font-size:3em; margin-bottom:12px;">👋</div>
+    <h2 style="color:#0E0E0E; margin-bottom:4px;">Thank you{name_part}!</h2>
+    <p style="color:#6B6B6B; font-size:0.95em; margin-bottom:24px;">
+        Your session has ended. We hope EduPath SG helped you navigate
+        Singapore's education pathways.
+    </p>
+    <div style="background:#dbeafe; border:1px solid #3b82f6; border-radius:8px;
+        padding:14px 20px; margin-bottom:24px; font-size:0.88em; color:#1e3a5f;">
+        💡 <strong>Tip:</strong> Bookmark this page so you can come back anytime
+        to explore scores, pathways, and career options.
+    </div>
+</div>
+""".replace("{name_part}", f", {_logout_name}" if _logout_name else ""), unsafe_allow_html=True)
+
+    st.markdown("<div style='max-width:520px;margin:0 auto;'>", unsafe_allow_html=True)
+    if st.button("🔐 Back to Login", type="primary", use_container_width=True):
+        st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
+    st.stop()
 
 if not user:
     # Collapse sidebar on login page
@@ -158,7 +195,7 @@ if user:
     col1.page_link("pages/1_Pathway_Planner.py", label="🗺️ Pathway Planner", use_container_width=True)
     col2.page_link("pages/2_Score_Matcher.py", label="🎯 Score & School Matcher", use_container_width=True)
     col3.page_link("pages/3_Fallback_Support.py", label="🔄 Fallback & Support", use_container_width=True)
-    st.caption("💬 Use the **🤖 AI Assistant** (bottom-right) to ask questions on any page.")
+    st.caption("💬 Use the **🤖 AI Assistant** tab on the right side to ask questions on any page.")
 
     st.markdown("""
 <div class="gov-footer">
@@ -173,6 +210,8 @@ if user:
 
     from components.sidebar import render_sidebar
     render_sidebar()
+    render_chat_panel()
+    apply_stage_theme()
 
 else:
     # ── LOGIN / REGISTER ─────────────────────────────────────────────────────

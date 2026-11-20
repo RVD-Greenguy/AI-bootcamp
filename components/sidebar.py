@@ -1,6 +1,6 @@
 import streamlit as st
 from utils.session_manager import (
-    get_user, clear_user, get_education_stage, set_education_stage,
+    get_user, get_education_stage, set_education_stage,
     get_career_goal, set_career_goal,
 )
 from utils.stage_config import STAGES, STAGE_ORDER
@@ -77,5 +77,6 @@ def render_sidebar():
 
         st.divider()
         if st.button("🚪 Logout", use_container_width=True):
-            clear_user()
+            st.session_state["show_logout"] = True
+            st.session_state["_logout_name"] = get_user()["full_name"].split()[0]
             st.rerun()
